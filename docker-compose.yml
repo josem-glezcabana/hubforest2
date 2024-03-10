@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  mariadb:
+    image: mariadb:10.4.21
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hubforest
+      MYSQL_USER: hubForestUser
+      MYSQL_PASSWORD: hubForestUserPass
+    volumes:
+      - ./mariadb_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.1.1
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mariadb
+      PMA_USER: hubForestUser
+      PMA_PASSWORD: hubForestUserPass
+    ports:
+      - "8081:80"
+    depends_on:
+      - mariadb
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./REST:/var/www/html
+    environment:
+      - ServerName=localhost
+    restart: unless-stopped

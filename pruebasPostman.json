@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "691415c3-3f38-4996-80a3-ec00ff5896ca",
+		"name": "hubForest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16845293"
+	},
+	"item": [
+		{
+			"name": "creacionEntidadesArquitecturaBase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "entidad",
+							"value": "usuario",
+							"type": "text"
+						},
+						{
+							"key": "action",
+							"value": "ADD",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "managementCore",
+							"value": "crear",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HubForestBack/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HubForestBack",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addUsuarios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "controlador",
+							"value": "usuario",
+							"type": "text"
+						},
+						{
+							"key": "action",
+							"value": "ADD",
+							"type": "text"
+						},
+						{
+							"key": "correo",
+							"value": "correo",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "pepe",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "rol",
+							"value": "prueba",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HubForestBack/index.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HubForestBack",
+						"index.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editUsuarios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "controlador",
+							"value": "usuario",
+							"type": "text"
+						},
+						{
+							"key": "action",
+							"value": "EDIT",
+							"type": "text"
+						},
+						{
+							"key": "correo",
+							"value": "correo",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "nombre2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "rol",
+							"value": "prueba",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HubForestBack/index.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HubForestBack",
+						"index.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchUsuarios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "controlador",
+							"value": "usuario",
+							"type": "text"
+						},
+						{
+							"key": "action",
+							"value": "SEARCH",
+							"type": "text"
+						},
+						{
+							"key": "correo",
+							"value": "correo",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "nombre",
+							"value": "nombre5",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "rol",
+							"value": "prueba",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HubForestBack/index.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HubForestBack",
+						"index.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchByUsuarios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "controlador",
+							"value": "usuario",
+							"type": "text"
+						},
+						{
+							"key": "action",
+							"value": "SEARCH_BY",
+							"type": "text"
+						},
+						{
+							"key": "correo",
+							"value": "correo",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "nombre",
+							"value": "pepe",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "rol",
+							"value": "prueba",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HubForestBack/index.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HubForestBack",
+						"index.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUsuarios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "controlador",
+							"value": "usuario",
+							"type": "text"
+						},
+						{
+							"key": "action",
+							"value": "DELETE",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/HubForestBack/index.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HubForestBack",
+						"index.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

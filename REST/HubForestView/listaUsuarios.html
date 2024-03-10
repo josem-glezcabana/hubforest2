@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script type="text/javascript" src="js/funcionesComunes.js"></script>
+    <script type="text/javascript" src="js_app/usuario/usuario.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/crearformularios.js"></script>
+    <title>Listado de usuarios</title>
+    <!-- Incluye los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body onload="(async () => {
+    includeHeader(); includeFooter();
+    getListUsuarios();
+})();">
+
+    <!-- Encabezado y Barra de Navegación -->
+    <div id="header"></div>
+
+    <div class="container mt-5">
+        <h2>Listado de usuarios</h2>
+        <div class="mt-2 mb-3 float-right">
+            <button class="btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('Añadir usuario')">Añadir usuario</button>
+            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('Buscar usuario')">Buscar usuario</button>
+            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListUsuarios()">Reiniciar tabla</button>
+            
+        </div>
+            
+
+        <table class="table table-striped" id="tablaUsuarios">
+            <thead >
+                    <th class="id">Id</div>
+                    </th>
+                    <th class="nombre">Nombre</div>
+                    </th>
+                    <th class="password">Password</div>
+                    </th>
+                    <th class="correo">Correo</div>
+                    </th>
+                    <th class="rol">Rol</div>
+                    </th>
+            </thead>
+            
+            <tbody id="datosUsuarios">
+            </tbody>
+       
+            
+        </table>
+            <div id="formularioentidad"></div>
+        
+    </div>
+    
+    <div id="ventanaModal" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarModal()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="Titulo"></div>
+            <div id="mensajeError" class="text-center" style="display: none;">             
+                <h7>
+                    No existen usuarios que coincidan con estos parametros
+                </h7>
+                <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formUsuario" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id" style="display: none;">Id:</label>
+                    <input type="text" class="form-control" id="id" name="id" style="display: none;">
+                </div>
+    
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" >
+                </div>
+    
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="text" class="form-control" id="password" name="password" >
+                </div>
+
+                <div class="form-group">
+                    <label for="correo">Correo:</label>
+                    <input type="email" class="form-control" id="correo" name="correo" >
+                </div>
+    
+                <div class="form-group">
+                    <label for="rol">Rol:</label>
+                    <select class="form-control" id="rol" name="rol" >
+                        <option value="">-- Selecciona un rol --</option>
+                        <option value="usuario">Usuario</option>
+                        <option value="admin">Administrador</option>
+                        <option value="gestor de proyecto">Gestor de proyectos</option>
+                        <option value="observador">Observador</option>
+                    </select>
+                </div>
+                
+                <button type="submit" id="aceptar" class="btn btn-primary"></button>
+                <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+            </form> 
+        </div>
+    </div>
+    
+    <div id="comprobarBorrar" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="text-center" id="Titulo"><h2>¿Estas seguro?</h2></div>
+            
+            <form id="formBorrarUsuario" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id" style="display: none;">Id:</label>
+                    <input type="text" class="form-control" id="idBorrar" name="id" style="display: none;">
+                </div>
+                <div class="col text-center">
+                    <button type="submit" id="aceptar" class="btn btn-danger">Aceptar</button>
+                    <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
+                </div>
+                
+            </form>  
+        </div>
+    </div>
+</div>
+
+    <!-- Pie de Página -->
+	<div id="footer"><div>
+</body>
+</html>

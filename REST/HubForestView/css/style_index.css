@@ -1,0 +1,440 @@
+/* GLOBAL STYLES
+    -------------------------------------------------- */
+    /* Padding below the footer and lighter body text */
+
+    body {
+      padding-bottom: 40px;
+      color: #5a5a5a;
+    }
+	
+.text-align-right{text-align:right;}
+.text-align-left{text-align:left;}
+ul.inline{
+	margin-left:0;
+	list-style:none;
+}
+ul.inline > li {
+	display:inline-block;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+p{text-align:justify;}
+	footer {
+	display:block;
+		background:#000;
+    padding:20px 20px 10px 20px;
+    -webkit-border-radius:  10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin-top: 30px;
+	}
+  footer > p{
+    color:#bbb;
+    font-size: 12px;
+    text-align: right;
+    line-height: 16px;
+  }
+#idiomas{
+  position: absolute;
+  right: 0px;
+  top: 15px;
+}
+
+#idiomas ul{
+  list-style: none;
+}
+#idiomas ul li{
+  float:left;
+  margin-right: 5px;
+}
+
+#newsletter {
+	position:absolute;
+	
+}
+
+.logo_header {
+position:absolute; z-index:999; left:0px;
+}
+
+.row { margin-top:50px;}
+
+.section-box {
+  padding: 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 20px;
+  color: inherit;
+  background-color: #d9dcde;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+.section-box h2 {
+  margin-bottom: 0;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: inherit;
+}
+.media-list {
+	list-style:none;
+}
+.logos-list {
+	list-style: none;
+}
+.logos-list li a:hover {text-decoration:none;}
+.logo-container {
+	width: 200px;
+	height: 200px;
+	padding: 15px;
+	margin-right: 12px;
+	margin-bottom: 12px;
+}
+.logo-img {
+	width: 170px;
+	height: 40px;
+	padding: 50px 15px;
+}
+.logo-title {
+	color:#353535;
+	font-size:11px;
+	text-align:center;	
+}
+.logo-title:hover {
+	text-decoration: none;
+	color: #353535;
+}
+
+/* NOTICIAS INICIO */
+.lista-noticias {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+.item-noticia {
+	padding: 12px;
+}
+.lista-noticias li a{
+	text-decoration: none;
+}
+
+.lista-noticias li:hover{
+	text-decoration: none;
+	background:#efefef;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+.titulo-noticia {
+	color: #0e8ccb;
+	font-weight:700;
+}
+.texto-noticia {
+	color: #333;
+	text-align: justify;
+}
+
+/* NOTICIAS AMPLIADO */
+.lista-noticias-ampliado {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+.lista-noticias-ampliado li {
+	padding: 10px;
+	margin: 10px;
+}
+.item-noticia-ampliado {
+	text-align: right;
+}
+.fecha-noticia-ampliado {
+	float: left;
+	width: 35px;
+	padding: 5px 5px;
+	background: #0e8ccb;
+	color: #fff;
+	font-size:14px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 14px;
+}
+.titulo-noticia-ampliado {
+	color: #0e8ccb;
+	font-weight:700;
+	font-size: 24px;
+	line-height:36px;
+}
+.subtitulo-noticia-ampliado {
+	color: #cdcdcd;
+	font-size: 18px;
+	font-style: italic;
+	line-height: 24px;
+	margin-bottom: 14px;
+}
+.texto-noticia-ampliado {
+	color: #333;
+	text-align: justify;
+}
+/* DESCARGAS Y MEDIA */
+.item-descargas {
+	height: 75px;
+	padding: 12px;
+	margin-right: 12px;
+	margin-bottom: 12px;
+}
+.item-descargas .archivo-icono {
+	width:50px;
+	height:50px;
+	background:#efefef;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	float:left;
+	margin-right:12px;
+}
+
+.media-title {
+	font-size:16px;
+	color:#767676;
+	font-style:italic;
+	font-weight:bold;
+	margin-bottom: 6px;
+}
+.media-img {
+	margin-bottom:6px;
+	padding:14px;
+}
+
+/* GENERAL */
+.margin-top-m{margin-top:20px;}
+
+.margin-top-xl{margin-top:80px;}
+
+/* FORMULARIOS */
+.fieldset_form{
+  border : 1px;
+  border-style: solid;
+}
+
+
+    /* CUSTOMIZE THE NAVBAR
+    -------------------------------------------------- */
+
+    /* Special class on .container surrounding .navbar, used for positioning it into place. */
+    .navbar-wrapper {
+      position: relative;
+      z-index: 10;
+      margin-top: 20px;
+      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+    }
+
+    /* Remove border and change up box shadow for more contrast */
+    .navbar .navbar-inner {
+      border: 0;
+      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+              box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+
+    /* Downsize the brand/project name a bit */
+    .navbar .brand {
+      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+    /* Navbar links: increase padding for taller navbar */
+    .navbar .nav > li > a {
+      padding: 15px 15px;
+    }
+
+    /* Offset the responsive button for proper vertical alignment */
+    .navbar .btn-navbar {
+      margin-top: 10px;
+    }
+
+
+
+    /* CUSTOMIZE THE NAVBAR
+    -------------------------------------------------- */
+
+    /* Carousel base class */
+    .carousel {
+      margin-bottom: 60px;
+    }
+
+    .carousel .container {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .carousel-control {
+      background-color: transparent;
+      border: 0;
+      font-size: 120px;
+      margin-top: 0;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+    }
+
+    .carousel .item {
+      height: 500px;
+    }
+    .carousel img {
+      min-width: 100%;
+      height: 500px;
+    }
+
+    .carousel-caption {
+      background-color: transparent;
+      position: static;
+      max-width: 550px;
+      padding: 0 20px;
+      margin-bottom: 100px;
+    }
+    .carousel-caption h1,
+    .carousel-caption .lead {
+      margin: 0;
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+    }
+    .carousel-caption .btn {
+      margin-top: 10px;
+    }
+
+
+
+    /* MARKETING CONTENT
+    -------------------------------------------------- */
+
+    /* Center align the text within the three columns below the carousel */
+    .marketing .span4 {
+      text-align: justify;
+    }
+    .marketing h2 {
+      font-weight: normal;
+    }
+    .marketing .span4 p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+
+    /* Featurettes
+    ------------------------- */
+
+    .featurette-divider {
+      margin: 80px 0; /* Space out the Bootstrap <hr> more */
+    }
+    .featurette {
+      padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
+      overflow: hidden; /* Vertically center images part 2: clear their floats. */
+    }
+    .featurette-image {
+      margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+    }
+
+    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+    .featurette-image.pull-left {
+      margin-right: 40px;
+    }
+    .featurette-image.pull-right {
+      margin-left: 40px;
+    }
+
+    /* Thin out the marketing headings */
+    .featurette-heading {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+
+
+    /* RESPONSIVE CSS
+    -------------------------------------------------- */
+
+    @media (max-width: 979px) {
+
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+
+      .carousel .item {
+        height: 500px;
+      }
+      .carousel img {
+        width: auto;
+        height: 500px;
+      }
+
+      .featurette {
+        height: auto;
+        padding: 0;
+      }
+      .featurette-image.pull-left,
+      .featurette-image.pull-right {
+        display: block;
+        float: none;
+        max-width: 40%;
+        margin: 0 auto 20px;
+      }
+    }
+
+
+    @media (max-width: 767px) {
+
+      .navbar-inner {
+        margin: -20px;
+      }
+
+      .carousel {
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+      .carousel .container {
+
+      }
+      .carousel .item {
+        height: 300px;
+      }
+      .carousel img {
+        height: 300px;
+      }
+      .carousel-caption {
+        width: 65%;
+        padding: 0 70px;
+        margin-bottom: 40px;
+      }
+      .carousel-caption h1 {
+        font-size: 30px;
+      }
+      .carousel-caption .lead,
+      .carousel-caption .btn {
+        font-size: 18px;
+      }
+
+      .marketing .span4 + .span4 {
+        margin-top: 40px;
+      }
+
+      .featurette-heading {
+        font-size: 30px;
+      }
+      .featurette .lead {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+    }

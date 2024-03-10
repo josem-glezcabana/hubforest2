@@ -1,0 +1,123 @@
+<form name="formbase" id="formbase" action="programa_XXXXXXX()" method="POST" onsubmit="comprobar_submit_programa_XXXXX()" enctype="multipart/form-data">
+
+    <caption id="id_programa">id_programa</caption>:
+    <input type="text" name="id_programa" id="id_programa" maxlength="6" size="6" required ></input>
+    
+
+    <caption id="nombre_programa">nombre_programa</caption>:
+    <input type="text" name="nombre_programa" id="nombre_programa" maxlength="60" size="60" required ></input>
+    <br>
+
+    <caption id="acronimo_programa">acronimo_programa</caption>:
+    <input type="text" name="acronimo_programa" id="acronimo_programa" maxlength="20" size="20" required ></input>
+    <br>
+
+    <caption id="nombre_original_programa">nombre_original_programa</caption>:
+    <input type="text" name="nombre_original_programa" id="nombre_original_programa" maxlength="60" size="60" required ></input>
+    <br>
+
+    <caption id="autor_programa">autor_programa</caption>:
+    <input type="text" name="autor_programa" id="autor_programa" maxlength="50" size="50" required ></input>
+    <br>
+
+    <caption id="autor_original_programa">autor_original_programa</caption>:
+    <input type="text" name="autor_original_programa" id="autor_original_programa" maxlength="50" size="50" required ></input>
+    <br>
+
+    <caption id="ano_programa">ano_programa</caption>:
+    <input type="number" name="ano_programa" id="ano_programa" maxlength="4" size="6" required ></input>
+    
+
+    <caption id="ano_original_programa">ano_original_programa</caption>:
+    <input type="number" name="ano_original_programa" id="ano_original_programa" maxlength="4" size="6" required ></input>
+    <br>
+
+    <caption id="requisitos_programa">requisitos_programa</caption>:
+    <textarea  name="requisitos_programa" id="requisitos_programa" maxlength="300" size="300" cols="97" rows="3" required ></textarea>
+    <br>
+
+    <caption id="poblacion_desde_programa">poblacion_desde_programa</caption>:
+    <input type="number" name="poblacion_desde_programa" id="poblacion_desde_programa" maxlength="2" size="4" required ></input>
+    
+
+    <caption id="poblacion_hasta_programa">poblacion_hasta_programa</caption>:
+    <input type="number" name="poblacion_hasta_programa" id="poblacion_hasta_programa" maxlength="2" size="4" required ></input>
+    
+
+    <caption id="unidad_poblacion">unidad_poblacion</caption>:
+    <select name="unidad_poblacion" id="unidad_poblacion" required >
+        <option value="MESES">MESES</option>
+        <option value="AÑOS">AÑOS</option>
+    </select>
+    <br>
+
+    <caption id="tipo_programa">tipo_programa</caption>:
+    <select name="tipo_programa" id="tipo_programa" required >
+        <option value="EVALUACIÓN">EVALUACIÓN</option>
+        <option value="INTERVENCIÓN">INTERVENCIÓN</option>
+        <option value="EVALUACIÓN E INTERVENCIÓN">EVALUACIÓN E INTERVENCIÓN</option>
+    </select>
+    <br>
+
+    <caption id="tiempo_aplicacion_programa">tiempo_aplicacion_programa</caption>:
+    <input type="number" name="tiempo_aplicacion_programa" id="tiempo_aplicacion_programa" maxlength="4" size="6" required ></input>
+    <br>
+
+    <caption id="descrip_interp_programa">descrip_interp_programa</caption>:
+    <textarea  name="descrip_interp_programa" id="descrip_interp_programa" maxlength="1000" size="1000" cols="97" rows="10" required ></textarea>
+    <br>
+
+    <fieldset class="fieldset_form">
+        <caption id="caption_fichero_programa">fichero_programa : </caption><input type="text" name="fichero_programa" id="fichero_programa" readonly >
+        <a href="" id="id_href_link_fichero_programa"><img id="id_link_fichero_programa" height="30" width="30" src="../img/documento.png"></img></a><br>
+        <caption id="caption_nuevo_fichero_programa">Nuevo fichero: </caption><input type="file" name="nuevo_fichero_programa" id="nuevo_fichero_programa"  maxlength="60" size="60" required ></input>
+        <br>
+    </fieldset>
+
+    <caption id="enlace_programa">enlace_programa</caption>:<input type="text" name="enlace_programa" id="enlace_programa" maxlength="100" size="97" required ></input>
+    <br>
+
+    <caption id="formato_programa">formato_programa</caption>:
+    <select name="formato_programa" id="formato_programa" required >
+        <option value="PAPEL">PAPEL</option>
+        <option value="ELECTRÓNICO">ELECTRÓNICO</option>
+        <option value="PAPEL Y ELECTRÓNICO">PAPEL Y ELECTRÓNICO</option>
+    </select>
+    <br>
+
+    <caption id="modo_correccion_programa">modo_correccion_programa</caption>:
+    <select name="modo_correccion_programa" id="modo_correccion_programa" required >
+        <option value="PAPEL">PAPEL</option>
+        <option value="ELECTRÓNICO">ELECTRÓNICO</option>
+        <option value="PAPEL Y ELECTRÓNICO">PAPEL Y ELECTRÓNICO</option>
+    </select>
+
+
+    <caption id="modo_aplicacion_programa">modo_aplicacion_programa</caption>:
+    <select name="modo_aplicacion_programa" id="modo_aplicacion_programa" required >
+        <option value="INDIVIDUAL">INDIVIDUAL</option>
+        <option value="COLECTIVO">COLECTIVO</option>
+        <option value="INDIVIDUAL Y COLECTIVO">INDIVIDUAL Y COLECTIVO</option>
+    </select>
+    <br>
+
+    <fieldset class="fieldset_form">
+    <caption id="caption_imagen_programa">imagen_programa : </caption><input type="text" name="imagen_programa" id="imagen_programa" readonly>
+    <a href="" id="id_href_link_imagen_programa"><img id="id_link_imagen_programa" height="30" width="30" src="../img/documento.png"></img></a><br><br>
+    <caption id="caption_nuevo_imagen_programa">Nueva imagen: </caption><input type="file" name="nuevo_imagen_programa" id="nuevo_imagen_programa" maxlength="60" size="60" required ></input>
+    <br>
+    </fieldset>
+
+    <caption id="caption_etiqueta">Etiquetas</caption>:
+    <select name="etiqueta[]" id="etiqueta" multiple>
+    </select>
+    <br>
+
+    <caption id="area">Areas</caption>:
+    <select name="area[]" id="area" multiple>
+    </select>
+    <br>
+
+    <input id="id_submit_formbase" type="submit" value="Enviar"></input>
+
+</form>

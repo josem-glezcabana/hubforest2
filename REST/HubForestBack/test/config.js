@@ -1,0 +1,1 @@
+const urlPeticionesAjax = "http://localhost/HubForestBack/index_test.php";
