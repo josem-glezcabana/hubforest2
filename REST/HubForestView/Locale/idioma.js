@@ -23,19 +23,19 @@ function setLang(lang =''){
     switch(lang) {
     	case 'ES' : 
     	   traduccion=arrayES;
-            document.getElementById("imagenIdioma").src = "images/Spain.png";
+            document.getElementById("imagenIdioma").src = "../img/Spain.png";
     	break;
     	case 'EN' :
     	   traduccion=arrayEN;
-           document.getElementById("imagenIdioma").src = "images/United-Kingdom.png";
+           document.getElementById("imagenIdioma").src = "../img/United-Kingdom.png";
     	break;
-    	case 'GA' :
-    	   traduccion=arrayGA;
-           document.getElementById("imagenIdioma").src = "images/Galicia.png";
-    	break;
+    	// case 'GA' :
+    	//    traduccion=arrayGA;
+        //    document.getElementById("imagenIdioma").src = "images/Galicia.png";
+    	// break;
     	default:
     	   traduccion=arrayES;
-           document.getElementById("imagenIdioma").src = "images/Spain.png";
+           document.getElementById("imagenIdioma").src = "../img/Spain.png";
     	break;
     }
 
