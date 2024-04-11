@@ -44,6 +44,48 @@ function peticionBackGeneral(formulario, controlador, action, datosextra=null){
 
 }
 
+function peticionBackConToken(formulario, controlador, action, bearerToken, datosextra = null) {
+    var datos;
+
+    if (formulario === '') {
+        datos = new FormData();
+    } else {
+        formulario = document.getElementById(formulario);
+        datos = new FormData(formulario);
+    }
+
+    datos.append('controlador', controlador);
+    datos.append('action', action);
+
+    if (datosextra != null) {
+        for (var clave in datosextra) {
+            datos.append(clave, datosextra[clave]);
+        }
+    }
+
+    return new Promise(function (resolve) {
+        $.ajax({
+            type: "POST",
+            url: urlAPIREST,
+            data: datos,
+            processData: false,
+            contentType: false,
+            beforeSend: function (xhr) {
+                // Añadir el token de portador a la cabecera 'Authorization' si está disponible
+                if (bearerToken) {
+                    xhr.setRequestHeader('Authorization', bearerToken);
+                }
+            }
+        })
+        .done(res => {
+            resolve(res);
+        })
+        .fail(res => {
+            alert('error : ' + res.status);
+        })
+    });
+}
+
 async function creartablavista(entidad, titulos=null, datos=null){
     
 

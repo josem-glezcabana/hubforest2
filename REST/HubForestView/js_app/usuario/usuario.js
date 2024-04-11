@@ -1,5 +1,5 @@
 
-function getListUsuarios() {
+async function getListUsuarios() {
 
     return peticionBackGeneral('', 'usuario', 'SEARCH')
         .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaUsuario(response['resource']) : null)
@@ -11,7 +11,7 @@ function getListUsuarios() {
 }
 
 
-function getListByParamUsuarios(nombre, correo, password, rol) {
+async function getListByParamUsuarios(nombre, correo, password, rol) {
     const usuario = {
         nombre: nombre,
         correo: correo,
@@ -26,7 +26,7 @@ function getListByParamUsuarios(nombre, correo, password, rol) {
         });
 }
 
-function getListByParamUsuarios_search(nombre, correo, password, rol) {
+async function getListByParamUsuarios_search(nombre, correo, password, rol) {
     const usuario = {
         nombre: nombre,
         correo: correo,
@@ -41,7 +41,7 @@ function getListByParamUsuarios_search(nombre, correo, password, rol) {
         });
 }
 
-function addUsuario(nombre, correo, password, rol) {
+async function addUsuario(nombre, correo, password, rol) {
     const usuario = {
         nombre: nombre,
         correo: correo,
@@ -52,6 +52,7 @@ function addUsuario(nombre, correo, password, rol) {
     return peticionBackGeneral('', 'usuario', 'ADD', usuario)
         .then(response => {
             location.reload();
+            response['resource']
             return { status: 'OK', data: response };
         })
         .catch(error => {
@@ -60,7 +61,7 @@ function addUsuario(nombre, correo, password, rol) {
         });
 }
 
-function editUsuario(idUsuario,nombre, correo, password, rol) {
+async function editUsuario(idUsuario,nombre, correo, password, rol) {
     const usuario = {
         id: idUsuario,
         nombre: nombre,
@@ -80,7 +81,7 @@ function editUsuario(idUsuario,nombre, correo, password, rol) {
         });
 }
 
-function deleteUsuario(idUsuario) {
+async function deleteUsuario(idUsuario) {
     
     return peticionBackGeneral('', 'usuario', 'DELETE', {'id': idUsuario})
         .then(response => {
@@ -91,6 +92,85 @@ function deleteUsuario(idUsuario) {
             console.error('Error en la solicitud:', error);
             return null;
         });
+}
+
+async function registrarUsuario(nombre, correo, password, rol) {
+
+    const usuario = {
+        nombre: nombre,
+        correo: correo,
+        password: password,
+        rol: rol
+    };
+
+    return peticionBackGeneral('', 'AUTH', 'REGISTRAR', usuario)
+        .then(response => {
+            if(response.ok){
+                setCookie("tokenUsuario",response.resource, 1)
+                return { status: 'OK', data: response };
+            } else{
+                return { status: 'KO', data: response }; 
+            }
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return error;
+        });
+        
+}
+
+async function loginUsuario(nombre, password) {
+
+    const datos = {
+        nombre: nombre,
+        password: password
+    };
+
+    return peticionBackGeneral('', 'AUTH', 'LOGIN', datos)
+        .then(response => {
+            if(response.ok){
+                setCookie("tokenUsuario",response.resource, 1)
+                return { status: 'OK', data: response };
+            } else{
+                return { status: 'KO', data: response }; 
+            }
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return error;
+        });
+        
+}
+
+async function cambiarContrasenha(nombre, password) {
+
+    const datos = {
+        nombre: nombre,
+        password: password
+    };
+
+    return peticionBackGeneral('', 'AUTH', 'CAMBIAR_CONTRASENA', datos)
+        .then(response => {
+            return { status: 'OK', data: response };
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return null;
+        });
+        
+}
+
+async function validarUsuario() {
+
+    return peticionBackConToken('', 'AUTH', 'VALIDAR_TOKEN', getCookie("tokenUsuario") ,'')
+        .then(response => {
+            return { status: 'OK', data: response };
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return { status: 'False', data: response };;
+        });
+        
 }
 
 function construyeTablaUsuario(filas) {
@@ -106,12 +186,11 @@ function construyeTablaUsuario(filas) {
 
     $("#datosUsuarios").html("");
     filas.forEach(fila => {
-        var atributosTabla = ["'" + fila.id + "'","'" + fila.nombre + "'", "'" + fila.password + "'", "'" + fila.correo + "'", "'" + fila.rol + "'"];
+        var atributosTabla = ["'" + fila.id + "'","'" + fila.nombre + "'", "'" + fila.password+ "'", "'" + fila.correo + "'", "'" + fila.rol + "'"];
         var botonEdit='<button class="btn btn-info" id="editarUsuario" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id + 
                 '</td> <td>' + fila.nombre + 
-                '</td> <td>' + fila.password + 
                 '</td> <td>' + fila.correo + 
                 '</td> <td>' + fila.rol + 
                 '</td> <td class="text-center">' + botonEdit +
@@ -127,7 +206,7 @@ function construyeTablaUsuario(filas) {
 function getAtributos(tipo){
     var id = document.getElementById("id").value
     var nombre = document.getElementById("nombre").value
-    var password = document.getElementById("password").value
+    var password = encriptar("password")
     var correo = document.getElementById("correo").value
     var rol = document.getElementById("rol").value
      switch(tipo){
@@ -160,6 +239,7 @@ function mostrarModal(tipo, id=null, nombre=null, password=null, correo=null, ro
 
         $("#id").val(id);
         $("#nombre").val(nombre);
+        $('#formPassword').show();
         $("#password").val(password);
         $("#correo").val(correo);
         $("#rol").val(rol);
@@ -167,12 +247,18 @@ function mostrarModal(tipo, id=null, nombre=null, password=null, correo=null, ro
     else{
         if(tipo.includes("Buscar")){
             document.getElementById("nombre").required = false;
+            $('#formPassword').hide();
             document.getElementById("password").required = false;
             document.getElementById("correo").required = false;
             document.getElementById("rol").required = false;
             $("#formUsuario").attr('action' , 'javascript:getAtributos("Buscar");');
         }
         else{
+            document.getElementById("nombre").required = true;
+            $('#formPassword').show();
+            document.getElementById("password").required = true;
+            document.getElementById("correo").required = true;
+            document.getElementById("rol").required = true;
             $("#formUsuario").attr('action' , 'javascript:getAtributos("Añadir");');
         }
 
@@ -190,25 +276,9 @@ function cerrarModal(){
     var modal = document.getElementById("ventanaModal");
     modal.style.display = "none"
 
-    document.getElementById("nombre").required = true;
-    document.getElementById("password").required = true;
-    document.getElementById("correo").required = true;
-    document.getElementById("rol").required = true;
+    
 
 }
-
-function mostrarErrorBusq(){
-    // Ventana modal
-    document.getElementById("mensajeError").style.display = "block";
-   
-}
-
-function cerrarErrorBusq(){
-    // Ventana modal
-    document.getElementById("mensajeError").style.display = "none";
-   
-}
-
 
 function mostrarBorrar(id){
     // Ventana modal
@@ -220,11 +290,4 @@ function mostrarBorrar(id){
 function borrar(){
     var id = document.getElementById("idBorrar").value
     deleteUsuario(id)
-}
-
-function cerrarBorrar(){
-    // Ventana modal
-    var modal = document.getElementById("comprobarBorrar");
-    modal.style.display = "none"
-
 }

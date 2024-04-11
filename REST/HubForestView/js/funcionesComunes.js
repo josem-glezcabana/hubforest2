@@ -1,17 +1,56 @@
-function cargarVista(vista) {
-  // Utiliza AJAX para cargar el contenido de la vista
-  $.ajax({
-      url: vista,
-      type: 'GET',
-      dataType: 'html',
-      success: function(data) {
-          // Inserta el contenido en el div con id "contenido"
-          $('#contenido').html(data);
-      },
-      error: function(error) {
-          console.error('Error al cargar la vista:', error);
-      }
-  });
+async function cargarRegistro() {
+    try {
+        const resultadoValidacion = await validarUsuario();
+        console.log(resultadoValidacion.data.ok);
+        if (resultadoValidacion.data.ok === false || resultadoValidacion.data.ok === undefined) {
+            console.log("entra dentro")
+            volverRegistro()
+        } else {
+            volverHome();
+            console.log("entra fuera")
+        }
+    } catch (error) {
+        console.error('Error al cargar el registro:', error);
+        volverRegistro() // Cambia 'registro.html' por la URL de tu página de registro
+    }
+}
+
+function volverRegistro(){
+    $.ajax({
+        url: 'registro.html',
+        type: 'GET',
+        dataType: 'html',
+        success: function(data) {
+            // Inserta el contenido en el div con id "contenido"
+            $("#contenido").html(data);
+            $("#menu").hide();
+            $("#logout").hide();
+        },
+        error: function(error) {
+            console.error('Error al cargar la vista:', error);
+        }
+    });
+}
+function volverHome(){
+    $.ajax({
+        url: 'home.html',
+        type: 'GET',
+        dataType: 'html',
+        success: function(data) {
+            // Inserta el contenido en el div con id "contenido"
+            $('#contenido').html(data);
+            $( "#menu" ).show();
+            $( "#logout" ).show();
+        },
+        error: function(error) {
+            console.error('Error al cargar la vista:', error);
+        }
+    });
+}
+function logout(){
+
+    deleteCookie("tokenUsuario");
+    cargarRegistro();
 }
 
 /** Añade un header a una vista */
@@ -21,14 +60,16 @@ function includeHeader() {
     let header = '<header class="bg-dark text-white py-3">' +
                 '<div class="container">' +
                 '<div class="row">' +
-                '<div class="col-md-4">' +
-                '<img src="img/logo.png" alt="Logo de la Aplicación" class="img-fluid" style="width: 30%">' +
+                '<div class="col-md-1">' +
+                '<a href="index.html" class="d-flex justify-content-start">' +
+                '<img src="img/logo.png" alt="Logo de la Aplicación" class="img-fluid" style="width: 100%">' +
+                '</a>' +
                 '</div>' +
-                '<div class="col-md-8">' +
-                '<nav class="navbar navbar-expand-md navbar-dark">' +
-                '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">' +
-                '<span class="navbar-toggler-icon"></span>' +
+                '<div class="col-md-1">' +
+                '<button id="logout" style="background-color: transparent; border: none; padding: 0;"  onclick="logout()">' +
+                '<img src="img/logout.png" alt="Logout" style="margin-top: 6px;">' +
                 '</button>' +
+                '</div>'+
                 '<div class="collapse navbar-collapse" id="navbarNav">' +
                 '<ul class="navbar-nav ml-auto">' +
                 '<li class="nav-item">' +
@@ -110,8 +151,62 @@ function getCookie(name) {
     return null;
 }
 
+function deleteCookie(name) {
+    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
 /** Comprueba que un usuario esté logueado, obteniendo la cookie 'token'*/
 function userLoggedIn() {
     let user_token = getCookie('token');
     return (user_token !== null);
+}
+
+/** Cierra el modal de confirmación de eliminar un elemento */
+function cerrarBorrar(){
+    // Ventana modal
+    var modal = document.getElementById("comprobarBorrar");
+    modal.style.display = "none"
+}
+
+/**Función para encriptar la pass en md5*/
+function encriptar(idElemento){
+  	return hex_md5(document.getElementById(idElemento).value);
+}
+
+function iniciarSesion() {
+    // Obtener los valores de nombre de usuario y contraseña
+    var nombreUsuario = $('#correoLogin').val();
+    var contrasena = encriptar('passwordLogin');
+    // Llamar a la función loginUsuario con los datos del formulario
+    loginUsuario(nombreUsuario, contrasena)
+      .then(response => {
+        if (response.status==="OK") {
+            cargarRegistro()
+        } else {
+          // Mostrar el modal de error en caso de un inicio de sesión fallido
+          $('#errorModal').modal('show');
+        }
+      });
+  }
+  function submitFormRegistro() {
+    const nombre = $('#nombre').val();
+    const password = encriptar('password');
+    const correo = $('#correo').val();
+
+    registrarUsuario(nombre, correo, password, 'Usuario')
+        .then(response => {
+            if (response && response.status === 'OK') {
+                $('#registroModal').modal('hide');
+                cargarRegistro();
+            } else {
+                $('#registroErrorModal').modal('show');
+            }
+        })
+        .catch(error => {
+            console.error('Error en el registro:', error);
+            $('#registroErrorModal').modal('show');
+        });
+
+    // Evitar que el formulario se envíe de manera tradicional
+    return false;
 }
