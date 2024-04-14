@@ -59,30 +59,38 @@ function includeHeader() {
 
     let header = '<header class="bg-dark text-white py-3">' +
                 '<div class="container">' +
-                '<div class="row">' +
-                '<div class="col-md-1">' +
-                '<a href="index.html" class="d-flex justify-content-start">' +
-                '<img src="img/logo.png" alt="Logo de la Aplicación" class="img-fluid" style="width: 100%">' +
-                '</a>' +
-                '</div>' +
-                '<div class="col-md-1">' +
-                '<button id="logout" style="background-color: transparent; border: none; padding: 0;"  onclick="logout()">' +
-                '<img src="img/logout.png" alt="Logout" style="margin-top: 6px;">' +
-                '</button>' +
-                '</div>'+
-                '<div class="collapse navbar-collapse" id="navbarNav">' +
-                '<ul class="navbar-nav ml-auto">' +
-                '<li class="nav-item">' +
-                '<a class="nav-link" href="index.html">Inicio</a>' +
-                '</li>' +
-                '<li class="nav-item">' +
-                '<a class="nav-link" href="listaUsuarios.html">Lista usuarios</a>' +
-                '</li>' +
-                '</ul>' +
-                '</div>' +
-                '</nav>' +
-                '</div>' +
-                '</div>' +
+                    '<div class="row">' +
+                        '<div class="col-md-1">' +
+                            '<a href="index.html" class="d-flex justify-content-start">' +
+                                '<img src="img/logo.png" alt="Logo de la Aplicación" class="img-fluid" style="width: 100%">' +
+                            '</a>' +
+                        '</div>' +
+                        '<div class="col-md-1">' +
+                            '<button id="logout" style="background-color: transparent; border: none; padding: 0;"  onclick="logout()">' +
+                                '<img src="img/logout.png" alt="Logout" style="margin-top: 6px;">' +
+                            '</button>' +
+                        '</div>'+
+                        '<div id="menu" class="col-md-10">' +
+                            '<nav class="navbar navbar-expand-md navbar-dark">' +
+                                '<ul class="navbar-nav ml-auto">' +
+                                    '<li class="nav-item">' +
+                                        '<a class="nav-link" href="index.html">Inicio</a>' +
+                                    '</li>' +
+                                    '<li class="nav-item">' +
+                                        '<div class="dropdown">' +
+                                            '<button class="btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Secciones' +
+                                                '<span class="caret"></span>' +
+                                            '</button>' +
+                                            '<ul class="dropdown-menu">' +
+                                                '<li><a class="dropdown-item" href="proyectos.html">Proyectos</a></li>' +
+                                                '<li><a class="dropdown-item" href="muestreos.html">Muestreos</a></li>' +
+                                            '</ul>' +
+                                        '</div>' +
+                                    '</li>' +
+                                '</ul>' +
+                            '</nav>' +
+                        '</div>' +
+                    '</div>' +
                 '</div>' +
                 '</header>';
     
@@ -106,7 +114,7 @@ function includeFooter() {
                 '<a href="https://github.com/ncgomez17/HubForest" target="_blank">' +
                 '<img src="img/github-icon.svg" alt="Instagram" width="24" height="24">' +
                 '</a>' +
-                '<a href="https://www.instagram.com/iagosevic_" target="_blank">' +
+                '<a href="https://www.instagram.com/ruben_fb_2" target="_blank">' +
                 '<img src="img/instagram-icon.svg" alt="Instagram" width="24" height="24">' +
                 '</a>' +
                 '</div>' +
@@ -155,11 +163,11 @@ function deleteCookie(name) {
     document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
-/** Comprueba que un usuario esté logueado, obteniendo la cookie 'token'*/
-function userLoggedIn() {
-    let user_token = getCookie('token');
-    return (user_token !== null);
-}
+// /** Comprueba que un usuario esté logueado, obteniendo la cookie 'tokenUsuario'*/
+// function userLoggedIn() {
+//     let user_token = getCookie('tokenUsuario');
+//     return (user_token !== null);
+// }
 
 /** Cierra el modal de confirmación de eliminar un elemento */
 function cerrarBorrar(){
@@ -210,3 +218,16 @@ function iniciarSesion() {
     // Evitar que el formulario se envíe de manera tradicional
     return false;
 }
+
+/** Muestra un error en la búsqueda en el modal */
+function mostrarErrorBusq(){
+    // Ventana modal
+    document.getElementById("mensajeError").style.display = "block";
+}
+
+/** Oculta un error en la búsqueda en el modal */
+function cerrarErrorBusq(){
+    // Ventana modal
+    document.getElementById("mensajeError").style.display = "none";
+}
+
