@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 abstract class ControllerBase{
 
 	function __construct(){
@@ -31,7 +31,7 @@ abstract class ControllerBase{
 
 	}
 
-	function enviarAVista($vista, $data='', $controlador, $action){
+	function enviarAVista($vista, $controlador, $action, $data=''){
 		$data = array('vista'=>$vista, 'data'=>$data, 'controlador'=>$controlador, 'action'=>$action);
 		$_SESSION['data'] = $data;
 		new PorDefecto;
@@ -39,7 +39,7 @@ abstract class ControllerBase{
 
 	function devolverRest($respuesta){
 	    
-	    header('Content-type: application/json;charset=utf-8');
+	    @header('Content-type: application/json;charset=utf-8');
 		echo(json_encode($respuesta));
 		exit();
 
