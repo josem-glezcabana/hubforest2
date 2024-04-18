@@ -21,4 +21,18 @@ class user_MODEL extends ModelBase{
 
 	}
 
+	function cambiar_contrasena(){
+		$this->mapping = new mapping($this->tabla);
+		$query = "UPDATE user SET passwd = '".$_POST['passwd']."' WHERE (name_user = '".$_POST['name_user']."')";
+		$result = $this->mapping->lanzarquery($query);
+		return $result;
+	}
+	
+	function comprobar_usuario($nombre, $password){
+		$this->mapping = new mapping($this->tabla);
+		$query = "SELECT *  FROM user WHERE  passwd = '".$password."' AND name_user = '".$nombre."'";
+		$result = $this->mapping->lanzarqueryconresults($query);
+		return $result;
+	}
+
 }

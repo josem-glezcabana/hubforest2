@@ -1,7 +1,7 @@
 
 async function getListUsuarios() {
 
-    return peticionBackGeneral('', 'usuario', 'SEARCH')
+    return peticionBackGeneral('', 'user', 'SEARCH')
         .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaUsuario(response['resource']) : null)
         .catch(error => {
             console.error('Error en la solicitud:', error);
@@ -11,14 +11,16 @@ async function getListUsuarios() {
 }
 
 
-async function getListByParamUsuarios(nombre, correo, password, rol) {
-    const usuario = {
-        nombre: nombre,
-        correo: correo,
-        password: password,
-        rol: rol
+async function getListByParamUsuarios(name_user, surname_user, organization_user, email_user, passwd, position_user) {
+    const user = {
+        name_user: name_user,
+        surname_user: surname_user,
+        organization_user: organization_user,
+        email_user: email_user,
+        passwd: passwd,
+        position_user: position_user
     };
-    return peticionBackGeneral('', 'usuario', 'SEARCH_BY', usuario)
+    return peticionBackGeneral('', 'user', 'SEARCH_BY', user)
         .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaUsuario(response['resource']) :  mostrarErrorBusq())
         .catch(error => {
             console.error('Error en la solicitud:', error);
@@ -26,14 +28,16 @@ async function getListByParamUsuarios(nombre, correo, password, rol) {
         });
 }
 
-async function getListByParamUsuarios_search(nombre, correo, password, rol) {
-    const usuario = {
-        nombre: nombre,
-        correo: correo,
-        password: password,
-        rol: rol
+async function getListByParamUsuarios_search(name_user, surname_user, organization_user, email_user, passwd, position_user) {
+    const user = {
+        name_user: name_user,
+        surname_user: surname_user,
+        organization_user: organization_user,
+        email_user: email_user,
+        passwd: passwd,
+        position_user: position_user
     };
-    return peticionBackGeneral('', 'usuario', 'SEARCH', usuario)
+    return peticionBackGeneral('', 'user', 'SEARCH', user)
         .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaUsuario(response['resource']) :  mostrarErrorBusq())
         .catch(error => {
             console.error('Error en la solicitud:', error);
@@ -41,15 +45,17 @@ async function getListByParamUsuarios_search(nombre, correo, password, rol) {
         });
 }
 
-async function addUsuario(nombre, correo, password, rol) {
-    const usuario = {
-        nombre: nombre,
-        correo: correo,
-        password: password,
-        rol: rol
+async function addUsuario(name_user, surname_user, organization_user, email_user, passwd, position_user) {
+    const user = {
+        name_user: name_user,
+        surname_user: surname_user,
+        organization_user: organization_user,
+        email_user: email_user,
+        passwd: passwd,
+        position_user: position_user
     };
 
-    return peticionBackGeneral('', 'usuario', 'ADD', usuario)
+    return peticionBackGeneral('', 'user', 'ADD', user)
         .then(response => {
             location.reload();
             response['resource']
@@ -61,16 +67,18 @@ async function addUsuario(nombre, correo, password, rol) {
         });
 }
 
-async function editUsuario(idUsuario,nombre, correo, password, rol) {
-    const usuario = {
-        id: idUsuario,
-        nombre: nombre,
-        correo: correo,
-        password: password,
-        rol: rol
+async function editUsuario(id_user, name_user, surname_user, organization_user, email_user, passwd, position_user) {
+    const user = {
+        id_user: id_user,
+        name_user: name_user,
+        surname_user: surname_user,
+        organization_user: organization_user,
+        email_user: email_user,
+        passwd: passwd,
+        position_user: position_user
     };
 
-    return peticionBackGeneral('', 'usuario', 'EDIT', usuario)
+    return peticionBackGeneral('', 'user', 'EDIT', user)
         .then(response => {
             location.reload();
             return { status: 'OK', data: response };
@@ -81,9 +89,9 @@ async function editUsuario(idUsuario,nombre, correo, password, rol) {
         });
 }
 
-async function deleteUsuario(idUsuario) {
+async function deleteUsuario(id_user) {
     
-    return peticionBackGeneral('', 'usuario', 'DELETE', {'id': idUsuario})
+    return peticionBackGeneral('', 'user', 'DELETE', {'id_user': id_user})
         .then(response => {
             location.reload();
             return { status: 'OK', data: response };
@@ -94,16 +102,18 @@ async function deleteUsuario(idUsuario) {
         });
 }
 
-async function registrarUsuario(nombre, correo, password, rol) {
+async function registrarUsuario(name_user, surname_user, organization_user, email_user, passwd, position_user) {
 
-    const usuario = {
-        nombre: nombre,
-        correo: correo,
-        password: password,
-        rol: rol
+    const user = {
+        name_user: name_user,
+        surname_user: surname_user,
+        organization_user: organization_user,
+        email_user: email_user,
+        passwd: passwd,
+        position_user: position_user
     };
 
-    return peticionBackGeneral('', 'AUTH', 'REGISTRAR', usuario)
+    return peticionBackGeneral('', 'AUTH', 'REGISTRAR', user)
         .then(response => {
             if(response.ok){
                 setCookie("tokenUsuario",response.resource, 1)
@@ -119,11 +129,11 @@ async function registrarUsuario(nombre, correo, password, rol) {
         
 }
 
-async function loginUsuario(nombre, password) {
+async function loginUsuario(name_user, passwd) {
 
     const datos = {
-        nombre: nombre,
-        password: password
+        name_user: name_user,
+        passwd: passwd
     };
 
     return peticionBackGeneral('', 'AUTH', 'LOGIN', datos)
@@ -142,11 +152,11 @@ async function loginUsuario(nombre, password) {
         
 }
 
-async function cambiarContrasenha(nombre, password) {
+async function cambiarContrasenha(name_user, passwd) {
 
     const datos = {
-        nombre: nombre,
-        password: password
+        name_user: name_user,
+        passwd: passwd
     };
 
     return peticionBackGeneral('', 'AUTH', 'CAMBIAR_CONTRASENA', datos)
@@ -186,13 +196,15 @@ function construyeTablaUsuario(filas) {
 
     $("#datosUsuarios").html("");
     filas.forEach(fila => {
-        var atributosTabla = ["'" + fila.id + "'","'" + fila.nombre + "'", "'" + fila.password+ "'", "'" + fila.correo + "'", "'" + fila.rol + "'"];
+        var atributosTabla = ["'" + fila.id_user + "'","'" + fila.name_user + "'", "'" + fila.surname_user + "'", "'" + fila.email_user + "'", "'" + fila.position_user + "'","'" + fila.organization_user + "'"];
         var botonEdit='<button class="btn btn-info" id="editarUsuario" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
-        filasTabla += '<tr> <td>' + fila.id + 
-                '</td> <td>' + fila.nombre + 
-                '</td> <td>' + fila.correo + 
-                '</td> <td>' + fila.rol + 
+        filasTabla += '<tr> <td>' + fila.id_user + 
+                '</td> <td>' + fila.name_user + 
+                '</td> <td>' + fila.surname_user + 
+                '</td> <td>' + fila.email_user + 
+                '</td> <td>' + fila.position_user + 
+                '</td> <td>' + fila.organization_user + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="btn btn-danger" id="borrarUsuario" onclick="mostrarBorrar('+fila.id+')">Eliminar</button>'
                 
@@ -204,20 +216,22 @@ function construyeTablaUsuario(filas) {
 }
 
 function getAtributos(tipo){
-    var id = document.getElementById("id").value
-    var nombre = document.getElementById("nombre").value
-    var password = encriptar("password")
-    var correo = document.getElementById("correo").value
-    var rol = document.getElementById("rol").value
+    var id_user = document.getElementById("id_user").value
+    var name_user = document.getElementById("name_user").value
+    var surname_user = document.getElementById("surname_user").value
+    var organization_user = document.getElementById("organization_user").value
+    var email_user = document.getElementById("email_user").value
+    var passwd = encriptar("passwd")
+    var position_user = document.getElementById("position_user").value
      switch(tipo){
         case "Editar":
-            editUsuario(id,nombre,correo,password,rol)
+            editUsuario(id_user,name_user, surname_user, organization_user, email_user, passwd, position_user)
             break;
         case "Añadir":
-            addUsuario(nombre,correo,password,rol)
+            addUsuario(name_user, surname_user, organization_user, email_user, passwd, position_user)
             break;
         case "Buscar":
-            getListByParamUsuarios_search(nombre,correo,password,rol)
+            getListByParamUsuarios_search(name_user, surname_user, organization_user, email_user, passwd, position_user)
             break;
      }
    /* if(tipo.includes("Editar")){

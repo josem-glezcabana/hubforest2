@@ -4,17 +4,17 @@
           <h2 class="text-center mb-4">Login</h2>
           <form id="formLogin">
               <div class="form-group">
-                  <label for="correoLogin">Nombre:</label>
-                  <input type="text" class="form-control" id="correoLogin" name="correoLogin" required>
+                  <label for="nameLogin">Name:</label>
+                  <input type="text" class="form-control" id="nameLogin" name="nameLogin" required>
               </div>
 
               <div class="form-group">
-                  <label for="passwordLogin">Contraseña:</label>
+                  <label for="passwordLogin">Password:</label>
                   <input type="password" class="form-control" id="passwordLogin" name="passwordLogin" required>
               </div>
 
-              <button type="button" class="btn btn-primary" onclick="iniciarSesion()">Iniciar sesión</button>
-              <button type="button" class="btn btn-link" data-toggle="modal" data-target="#registroModal">Registrarse</button>
+              <button type="button" class="btn btn-primary" onclick="iniciarSesion()">Log in</button>
+              <button type="button" class="btn btn-link" data-toggle="modal" data-target="#registroModal">Register</button>
           </form>
       </div>
   </div>
@@ -25,7 +25,7 @@
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title">Registro</h5>
+              <h5 class="modal-title">Register</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
@@ -34,21 +34,34 @@
               <!-- Contenido del formulario de registro -->
               <form id="formRegistro" onsubmit="return submitFormRegistro();">
                   <div class="form-group">
-                      <label for="nombre">Nombre:</label>
-                      <input type="text" class="form-control" id="nombre" name="nombre" required>
+                      <label for="name_user">Name:</label>
+                      <input type="text" class="form-control" id="name_user" name="name_user" required>
                   </div>
 
                   <div class="form-group">
-                      <label for="password">Contraseña:</label>
-                      <input type="password" class="form-control" id="password" name="password" required>
-                  </div>
+                    <label for="surname_user">Surname:</label>
+                    <input type="text" class="form-control" id="surname_user" name="surname_user" required>
+                </div>
 
-                  <div class="form-group">
-                      <label for="correo">Correo:</label>
-                      <input type="email" class="form-control" id="correo" name="correo" required>
-                  </div>
+                <div class="form-group">
+                  <label for="organization_user">Organization:</label>
+                  <input type="text" class="form-control" id="organization_user" name="organization_user" required>
+              </div>
 
-                  <button type="submit" class="btn btn-primary">Registrarse</button>
+              <div class="form-group">
+                  <label for="email_user">Email:</label>
+                  <input type="email" class="form-control" id="email_user" name="email_user" required>
+              </div>
+              <div class="form-group">
+                  <label for="passwd">Password:</label>
+                  <input type="password" class="form-control" id="passwd" name="passwd" required>
+              </div>
+              <div class="form-group">
+                  <label for="position_user">Position:</label>
+                  <input type="text" class="form-control" id="position_user" name="position_user" required>
+              </div>
+
+                  <button type="submit" class="btn btn-primary">Register</button>
               </form>
           </div>
       </div>

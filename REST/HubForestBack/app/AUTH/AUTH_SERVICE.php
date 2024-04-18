@@ -16,19 +16,19 @@ class AUTH_SERVICE extends appServiceBase{
 
 	function inicializarRest(){
 
-		$this->listaAtributos = array('id','correo','nombre','password','rol');
+		$this->listaAtributos = array('id_user','name_user','surname_user','position_user','organization_user','email_user','file_curr_user','passwd');
 
-		$this->listaAtributosSelect = array('id','correo','nombre','password','rol');
+		$this->listaAtributosSelect = array('id_user','name_user','surname_user','position_user','organization_user','email_user','file_curr_user','passwd');
 
 		$this->notnull = array(
-						'LOGIN'=>array('nombre', 'password'),
-						'DESCONECTAR'=>array('nombre'),
-						'CAMBIAR_CONTRASENA'=>array('nombre','password'),
+						'LOGIN'=>array('name_user', 'passwd'),
+						'DESCONECTAR'=>array('name_user'),
+						'CAMBIAR_CONTRASENA'=>array('name_user','passwd'),
 						'VALIDAR_TOKEN'=>array(),
-						'REGISTRAR'=>array('correo','nombre','password','rol')
+						'REGISTRAR'=>array('email_user','name_user','surname_user','passwd','organization_user','position_user')
 						);
 
-		$this->modelo = $this->crearModelOne('usuario');
+		$this->modelo = $this->crearModelOne('user');
 
 	}
 
@@ -47,20 +47,19 @@ class AUTH_SERVICE extends appServiceBase{
 	}
 
 	function LOGIN(){
-		include_once './app/usuario/usuario_SERVICE.php';
-		$_POST['controlador'] = 'usuario';
+		include_once './app/user/user_SERVICE.php';
+		$_POST['controlador'] = 'user';
 		$_POST['action'] = 'SEARCH_BY'; 
-		$usuario = new usuario_SERVICE;
-		$respuesta = $usuario->ejecutar();
+		$user = new user_SERVICE;
+		$respuesta = $user->ejecutar();
 
 		if (!(empty($respuesta['resource']))){
 
 			$fila = $respuesta['resource'][0];
-			if ($fila['password'] == $_POST['password']){
+			if ($fila['passwd'] == $_POST['passwd']){
 
-				//$usuarioDatos = ['usuario' => $_POST['usuario'],'contrasena' => $_POST['contrasena']];
 				include_once "./Base/JWT/token.php";
-				$token = MiToken::creaToken($_POST['nombre'],$_POST['password'] );
+				$token = MiToken::creaToken($_POST['name_user'],$_POST['passwd'] );
 
 				$feedback['ok'] = true;
 				$feedback['code'] = literal['LOGIN_OK'];
@@ -70,35 +69,32 @@ class AUTH_SERVICE extends appServiceBase{
 			else{
 				$feedback['ok'] = false;
 				$feedback['code'] = literal['USUARIO_PASS_KO'];
-				$feedback['resource'] = array($_POST['nombre'],$_POST['password']);
+				$feedback['resource'] = array($_POST['name_user'],$_POST['passwd']);
 			}
 		}
 		else{
 			$feedback['ok'] = false;
 			$feedback['code'] = literal['USUARIO_LOGIN_KO'];
-			$feedback['resource'] = array($_POST['nombre'],$_POST['password']);
+			$feedback['resource'] = array($_POST['name_user'],$_POST['passwd']);
 		}
-
-
 		return $feedback;
 
 	}
 
 	function REGISTRAR(){
-			include_once './app/usuario/usuario_SERVICE.php';
-			$_POST['controlador'] = 'usuario';
+			include_once './app/user/user_SERVICE.php';
+			$_POST['controlador'] = 'user';
 			$_POST['action'] = 'ADD';
-			$_POST['rol'] = 'Usuario';
 			$res['resource'] = '';
-			$usuario = new usuario_SERVICE;
-			$res = $usuario->ejecutar();
+			$user = new user_SERVICE;
+			$res = $user->ejecutar();
 
 			if ($res['ok'] === true){ // no hay error insertando usuario
-				$res = $usuario->cambiar_contrasena();
+				$res = $user->cambiar_contrasena();
 				if ($res['ok'] === true){ // no hay error cambiando la contraseña
 					$res['code'] = literal['REGISTRAR_OK'];
 					include_once "./Base/JWT/token.php";
-					$token = MiToken::creaToken($_POST['nombre'],$_POST['password'] );
+					$token = MiToken::creaToken($_POST['name_user'],$_POST['passwd'] );
 					$res['resource'] = $token;
 				}
 				else //error cambiando contraseña
@@ -116,10 +112,10 @@ class AUTH_SERVICE extends appServiceBase{
 
 	function CAMBIAR_CONTRASENA(){
 		
-		include_once './app/usuario/usuario_SERVICE.php';
-		$_POST['controlador'] = 'usuario';
-		$usuario = new usuario_SERVICE;
-		$res = $usuario->cambiar_contrasena();
+		include_once './app/user/user_SERVICE.php';
+		$_POST['controlador'] = 'user';
+		$user = new user_SERVICE;
+		$res = $user->cambiar_contrasena();
 		if ($res['ok'] === true){ // no hay error cambiando la contraseña
 			$res['code'] = literal['CAMBIAR_contrasena_OK'];
 		}
@@ -138,9 +134,9 @@ class AUTH_SERVICE extends appServiceBase{
         $resultado = MiToken::devuelveToken($current_token);
         $password = $resultado->data->id;
         $login = $resultado->data->name;
-        include_once './app/usuario/usuario_SERVICE.php';
-        $_POST['controlador'] = 'usuario';
-        $usuario = new usuario_SERVICE;
+        include_once './app/user/user_SERVICE.php';
+        $_POST['controlador'] = 'user';
+        $usuario = new user_SERVICE;
         $res = $usuario->comprobar_usuario($login, $password);
 
         return $res;
@@ -149,7 +145,6 @@ class AUTH_SERVICE extends appServiceBase{
         return array('ok' => false, 'code' => 'BAD_TOKEN');
     }
 }
-
 
 }
 

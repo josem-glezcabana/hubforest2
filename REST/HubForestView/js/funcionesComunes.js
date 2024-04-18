@@ -1,7 +1,6 @@
 async function cargarRegistro() {
     try {
         const resultadoValidacion = await validarUsuario();
-        console.log(resultadoValidacion.data.ok);
         if (resultadoValidacion.data.ok === false || resultadoValidacion.data.ok === undefined) {
             console.log("entra dentro")
             volverRegistro()
@@ -182,7 +181,7 @@ function encriptar(idElemento){
 
 function iniciarSesion() {
     // Obtener los valores de nombre de usuario y contraseña
-    var nombreUsuario = $('#correoLogin').val();
+    var nombreUsuario = $('#nameLogin').val();
     var contrasena = encriptar('passwordLogin');
     // Llamar a la función loginUsuario con los datos del formulario
     loginUsuario(nombreUsuario, contrasena)
@@ -200,7 +199,7 @@ function iniciarSesion() {
     const password = encriptar('password');
     const correo = $('#correo').val();
 
-    registrarUsuario(nombre, correo, password, 'Usuario')
+    registrarUsuario(nombre, correo, password, 'user')
         .then(response => {
             if (response && response.status === 'OK') {
                 $('#registroModal').modal('hide');

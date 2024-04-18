@@ -30,4 +30,13 @@ class user_SERVICE extends appServiceBase{
 
 	}
 
+	function cambiar_contrasena(){
+		$res = $this->modelo->cambiar_contrasena();
+		return $res;
+	}
+	function comprobar_usuario($login, $password){
+		$res = $this->modelo->comprobar_usuario($login, $password);
+		return $res;
+	}
+
 }
