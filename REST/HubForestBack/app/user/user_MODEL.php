@@ -2,7 +2,7 @@
 
 include_once './Base/ModelBase.php';
 
-class usuario_MODEL extends ModelBase{
+class user_MODEL extends ModelBase{
 
 
 	//METODOS
@@ -13,11 +13,11 @@ class usuario_MODEL extends ModelBase{
     // unicos array(atributos unique)
 	function __construct(){
 
-		$this->tabla = 'usuario';
-		$this->clave = array('id');
+		$this->tabla = 'user';
+		$this->clave = array('id_user');
 		$this->foraneas = array();
-		$this->autoincrement = array('id');
-        $this->unicos = array();
+		$this->autoincrement = array('id_user');
+        $this->unicos = array('email_user');
 
 	}
 

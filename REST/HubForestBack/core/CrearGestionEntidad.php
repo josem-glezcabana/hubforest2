@@ -494,8 +494,6 @@ class managementCore{
     function reemplazarenArchivo($archivo, $referencia, $textonuevo){
 
         $oldFile= $archivo;
-        echo shell_exec('whoami');
-        var_dump(fileperms('/var/www/html/HubForestBack/core/../app/usuario/usuario_MODEL.php'));
 
         file_put_contents($oldFile,str_replace($referencia,$textonuevo,file_get_contents($oldFile)));
 
