@@ -195,11 +195,16 @@ function iniciarSesion() {
       });
   }
   function submitFormRegistro() {
-    const nombre = $('#nombre').val();
-    const password = encriptar('password');
-    const correo = $('#correo').val();
+    var name_user = document.getElementById("name_user").value
+    var surname_user = document.getElementById("surname_user").value
+    var organization_user = document.getElementById("organization_user").value
+    var email_user = document.getElementById("email_user").value
+    var passwd = encriptar("passwd")
+    var position_user = document.getElementById("position_user").value
+    var is_admin = false;
+    var file_curr_user = null;
 
-    registrarUsuario(nombre, correo, password, 'user')
+    registrarUsuario(name_user,surname_user, organization_user,email_user,passwd, position_user, is_admin, file_curr_user, 'user')
         .then(response => {
             if (response && response.status === 'OK') {
                 $('#registroModal').modal('hide');

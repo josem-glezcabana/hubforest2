@@ -102,7 +102,7 @@ async function deleteUsuario(id_user) {
         });
 }
 
-async function registrarUsuario(name_user, surname_user, organization_user, email_user, passwd, position_user) {
+async function registrarUsuario(name_user, surname_user, organization_user, email_user, passwd, position_user, is_admin, file_curr_user) {
 
     const user = {
         name_user: name_user,
@@ -110,7 +110,10 @@ async function registrarUsuario(name_user, surname_user, organization_user, emai
         organization_user: organization_user,
         email_user: email_user,
         passwd: passwd,
-        position_user: position_user
+        position_user: position_user,
+        is_admin: is_admin,
+        file_curr_user: file_curr_user
+
     };
 
     return peticionBackGeneral('', 'AUTH', 'REGISTRAR', user)
@@ -206,7 +209,7 @@ function construyeTablaUsuario(filas) {
                 '</td> <td>' + fila.position_user + 
                 '</td> <td>' + fila.organization_user + 
                 '</td> <td class="text-center">' + botonEdit +
-                '</td> <td class="text-center"><button class="btn btn-danger" id="borrarUsuario" onclick="mostrarBorrar('+fila.id+')">Eliminar</button>'
+                '</td> <td class="text-center"><button class="btn btn-danger" id="borrarUsuario" onclick="mostrarBorrar('+fila.id_user+')">Eliminar</button>'
                 
                 '</td>  </tr>';
     });

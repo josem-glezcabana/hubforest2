@@ -25,7 +25,7 @@ class AUTH_SERVICE extends appServiceBase{
 						'DESCONECTAR'=>array('name_user'),
 						'CAMBIAR_CONTRASENA'=>array('name_user','passwd'),
 						'VALIDAR_TOKEN'=>array(),
-						'REGISTRAR'=>array('email_user','name_user','surname_user','passwd','organization_user','position_user')
+						'REGISTRAR'=>array('email_user','name_user','surname_user','passwd','organization_user','position_user','is_admin')
 						);
 
 		$this->modelo = $this->crearModelOne('user');
@@ -104,7 +104,7 @@ class AUTH_SERVICE extends appServiceBase{
 			}
 			else{ //hay error insertando usuario
 				$_POST['action'] = 'DELETE';
-				$persona->ejecutar();
+				$$user->ejecutar();
 			}
 
 		return $res;
