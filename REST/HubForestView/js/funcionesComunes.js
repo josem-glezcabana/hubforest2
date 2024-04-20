@@ -2,11 +2,9 @@ async function cargarRegistro() {
     try {
         const resultadoValidacion = await validarUsuario();
         if (resultadoValidacion.data.ok === false || resultadoValidacion.data.ok === undefined) {
-            console.log("entra dentro")
             volverRegistro()
         } else {
             volverHome();
-            console.log("entra fuera")
         }
     } catch (error) {
         console.error('Error al cargar el registro:', error);
@@ -24,6 +22,7 @@ function volverRegistro(){
             $("#contenido").html(data);
             $("#menu").hide();
             $("#logout").hide();
+            setLang();
         },
         error: function(error) {
             console.error('Error al cargar la vista:', error);
@@ -40,6 +39,7 @@ function volverHome(){
             $('#contenido').html(data);
             $( "#menu" ).show();
             $( "#logout" ).show();
+            setLang();
         },
         error: function(error) {
             console.error('Error al cargar la vista:', error);
@@ -57,40 +57,45 @@ function includeHeader() {
     $("#header").html("");
 
     let header = '<header class="bg-dark text-white py-3">' +
-                '<div class="container">' +
-                    '<div class="row">' +
-                        '<div class="col-md-1">' +
-                            '<a href="index.html" class="d-flex justify-content-start">' +
-                                '<img src="img/logo.png" alt="Logo de la Aplicación" class="img-fluid" style="width: 100%">' +
-                            '</a>' +
-                        '</div>' +
-                        '<div class="col-md-1">' +
-                            '<button id="logout" style="background-color: transparent; border: none; padding: 0;"  onclick="logout()">' +
-                                '<img src="img/logout.png" alt="Logout" style="margin-top: 6px;">' +
-                            '</button>' +
-                        '</div>'+
-                        '<div id="menu" class="col-md-10">' +
-                            '<nav class="navbar navbar-expand-md navbar-dark">' +
-                                '<ul class="navbar-nav ml-auto">' +
-                                    '<li class="nav-item">' +
-                                        '<a class="nav-link" href="index.html">Inicio</a>' +
-                                    '</li>' +
-                                    '<li class="nav-item">' +
-                                        '<div class="dropdown">' +
-                                            '<button class="btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Secciones' +
-                                                '<span class="caret"></span>' +
-                                            '</button>' +
-                                            '<ul class="dropdown-menu">' +
-                                                '<li><a class="dropdown-item" href="listaUsuarios.html">Usuarios</a></li>' +
-                                            '</ul>' +
-                                        '</div>' +
-                                    '</li>' +
+    '<div class="container">' +
+        '<div class="row">' +
+            '<div class="col-md-1">' +
+                '<a href="index.html" class="d-flex justify-content-start">' +
+                    '<img src="img/logo.png" alt="Logo de la Aplicación" class="img-fluid" style="width: 100%">' +
+                '</a>' +
+            '</div>' +
+            '<div id="menu" class="col-md-8">' +
+                '<nav class="navbar navbar-expand-md navbar-dark">' +
+                    '<ul class="navbar-nav ml-auto">' +
+                        '<li class="nav-item">' +
+                            '<a class="nav-link" href="index.html">Inicio</a>' +
+                        '</li>' +
+                        '<li class="nav-item">' +
+                            '<div class="dropdown">' +
+                                '<button class="btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Secciones' +
+                                    '<span class="caret"></span>' +
+                                '</button>' +
+                                '<ul class="dropdown-menu">' +
+                                    '<li><a class="dropdown-item" href="listaUsuarios.html">Usuarios</a></li>' +
                                 '</ul>' +
-                            '</nav>' +
-                        '</div>' +
-                    '</div>' +
+                            '</div>' +
+                        '</li>' +
+                    '</ul>' +
+                '</nav>' +
+            '</div>' +
+            '<div class="col-md-2 ml-auto">' + // Contenedor de banderas y logout
+                '<div class="d-flex justify-content-end">' +
+                    '<img src="img/SPAIN.png" alt="Español" style="width: 30px; cursor: pointer;" onclick="cambiarLang(\'ES\')">' +
+                    '<img src="img/United-Kingdom.png" alt="English" style="width: 30px; cursor: pointer; margin-left: 10px;" onclick="cambiarLang(\'EN\')">' +
+                    '<button id="logout" style="background-color: transparent; border: none; padding: 0; margin-left: 10px;" onclick="logout()">' +
+                        '<img src="img/logout.png" alt="Logout">' +
+                    '</button>' +
                 '</div>' +
-                '</header>';
+            '</div>' +
+        '</div>' +
+    '</div>' +
+'</header>';
+
     
     $("#header").append(header);
 }

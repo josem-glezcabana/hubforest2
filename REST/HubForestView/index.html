@@ -10,6 +10,9 @@
     <script type="text/javascript" src="js_app/usuario/usuario.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/crearformularios.js"></script>
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script type="text/javascript" src="locale/Lang_EN.js"></script>
+    <script type="text/javascript" src="locale/Lang_ES.js"></script>
     <script type="text/javascript" src="js/md5.js"></script>    
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -18,15 +21,11 @@
     <title>HubForest</title>
 </head>
 <body onload="(async () => {
-	// if (userLoggedIn()) {
-	// 	cargarVista('home.html');
-	// 	includeHeader();
-	// 	includeFooter();
-	// } else cargarVista('login.html');
-	cargarRegistro();
-	includeHeader();
-	includeFooter();
+    await cargarRegistro();
+    await includeHeader();
+    await includeFooter();
 })();">
+
 
     <!-- Encabezado y Barra de Navegación -->
 	<div id="header"></div>
