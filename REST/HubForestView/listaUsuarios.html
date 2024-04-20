@@ -8,8 +8,9 @@
     <link rel="icon" href="img/logo.png" type="image/png">
     <script type="text/javascript" src="js/funcionesComunes.js"></script>
     <script type="text/javascript" src="js_app/usuario/usuario.js"></script>
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/crearformularios.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>    
     <title>Listado de usuarios</title>
     <!-- Incluye los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -86,12 +87,12 @@
                 
                 <div class="form-group">
                     <label for="surname_user">Apellidos:</label>
-                    <input type="email" class="form-control" id="surname_user" name="surname_user" >
+                    <input type="text" class="form-control" id="surname_user" name="surname_user" >
                 </div>
 
                 <div id="formPassword" class="form-group">
                     <label for="passwd">Contraseña:</label>
-                    <input type="text" class="form-control" id="passwd" name="passwd" >
+                    <input type="password" class="form-control" id="passwd" name="passwd" >
                 </div>
 
                 <div class="form-group">
@@ -109,9 +110,9 @@
                     <input type="text" class="form-control" id="position_user" name="position_user" >
                 </div>
 
-                <div class="form-group">
+                <div id="form_file_curr_user" class="form-group">
                     <label for="file_curr_user">Archivo:</label>
-                    <input type="fyle" class="form-control" id="file_curr_user" name="file_curr_user" >
+                    <input type="file" class="form-control" id="file_curr_user" name="file_curr_user" >
                 </div>
                 
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>

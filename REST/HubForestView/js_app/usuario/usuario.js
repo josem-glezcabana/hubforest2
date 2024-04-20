@@ -28,31 +28,32 @@ async function getListByParamUsuarios(name_user, surname_user, organization_user
         });
 }
 
-async function getListByParamUsuarios_search(name_user, surname_user, organization_user, email_user, passwd, position_user) {
+async function getListByParamUsuarios_search(name_user, surname_user, organization_user, email_user, position_user) {
     const user = {
         name_user: name_user,
         surname_user: surname_user,
         organization_user: organization_user,
         email_user: email_user,
-        passwd: passwd,
         position_user: position_user
     };
     return peticionBackGeneral('', 'user', 'SEARCH', user)
-        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaUsuario(response['resource']) :  mostrarErrorBusq())
+        .then(response => {console.log('response: ', response); (response['code'] === 'RECORDSET_DATOS') ? construyeTablaUsuario(response['resource']) :  mostrarErrorBusq()})
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
         });
 }
 
-async function addUsuario(name_user, surname_user, organization_user, email_user, passwd, position_user) {
+async function addUsuario(name_user, surname_user, organization_user, email_user, passwd, position_user, file_curr_user) {
     const user = {
         name_user: name_user,
         surname_user: surname_user,
         organization_user: organization_user,
         email_user: email_user,
         passwd: passwd,
-        position_user: position_user
+        position_user: position_user,
+        file_curr_user: file_curr_user,
+        is_admin: "NO"
     };
 
     return peticionBackGeneral('', 'user', 'ADD', user)
@@ -67,7 +68,7 @@ async function addUsuario(name_user, surname_user, organization_user, email_user
         });
 }
 
-async function editUsuario(id_user, name_user, surname_user, organization_user, email_user, passwd, position_user) {
+async function editUsuario(id_user, name_user, surname_user, organization_user, email_user, passwd, position_user, file_curr_user) {
     const user = {
         id_user: id_user,
         name_user: name_user,
@@ -75,11 +76,14 @@ async function editUsuario(id_user, name_user, surname_user, organization_user, 
         organization_user: organization_user,
         email_user: email_user,
         passwd: passwd,
-        position_user: position_user
+        position_user: position_user,
+        file_curr_user:  file_curr_user,
+        is_admin: "NO"
     };
 
     return peticionBackGeneral('', 'user', 'EDIT', user)
         .then(response => {
+            console.log('response: ', response)
             location.reload();
             return { status: 'OK', data: response };
         })
@@ -199,15 +203,15 @@ function construyeTablaUsuario(filas) {
 
     $("#datosUsuarios").html("");
     filas.forEach(fila => {
-        var atributosTabla = ["'" + fila.id_user + "'","'" + fila.name_user + "'", "'" + fila.surname_user + "'", "'" + fila.email_user + "'", "'" + fila.position_user + "'","'" + fila.organization_user + "'"];
+        var atributosTabla = ["'" + fila.id_user + "'","'" + fila.name_user + "'", "'" + fila.surname_user + "'", "'" + fila.passwd + "'", "'" + fila.email_user + "'", "'" + fila.organization_user + "'","'" + fila.position_user + "'"];
         var botonEdit='<button class="btn btn-info" id="editarUsuario" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_user + 
                 '</td> <td>' + fila.name_user + 
                 '</td> <td>' + fila.surname_user + 
                 '</td> <td>' + fila.email_user + 
-                '</td> <td>' + fila.position_user + 
                 '</td> <td>' + fila.organization_user + 
+                '</td> <td>' + fila.position_user + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="btn btn-danger" id="borrarUsuario" onclick="mostrarBorrar('+fila.id_user+')">Eliminar</button>'
                 
@@ -226,27 +230,22 @@ function getAtributos(tipo){
     var email_user = document.getElementById("email_user").value
     var passwd = encriptar("passwd")
     var position_user = document.getElementById("position_user").value
+    var file_curr_user = document.getElementById("file_curr_user").value
      switch(tipo){
         case "Editar":
-            editUsuario(id_user,name_user, surname_user, organization_user, email_user, passwd, position_user)
+            editUsuario(id_user,name_user, surname_user, organization_user, email_user, passwd, position_user, file_curr_user)
             break;
         case "Añadir":
-            addUsuario(name_user, surname_user, organization_user, email_user, passwd, position_user)
+            addUsuario(name_user, surname_user, organization_user, email_user, passwd, position_user, file_curr_user)
             break;
         case "Buscar":
-            getListByParamUsuarios_search(name_user, surname_user, organization_user, email_user, passwd, position_user)
+            getListByParamUsuarios_search(name_user, surname_user, organization_user, email_user, position_user)
             break;
      }
-   /* if(tipo.includes("Editar")){
-        
-    }
-    else{
-       
-        
-    }*/
 }
 
-function mostrarModal(tipo, id=null, nombre=null, password=null, correo=null, rol=null){
+function mostrarModal(tipo, id_user=null, name_user=null, surname_user=null, passwd=null, email_user=null, 
+                        organization_user=null, position_user=null, file_curr_user=null){
     // Ventana modal
     document.getElementById("ventanaModal").style.display = "block";
     document.getElementById("Titulo").innerHTML = '<h2>'+tipo+'</h2>';
@@ -254,36 +253,53 @@ function mostrarModal(tipo, id=null, nombre=null, password=null, correo=null, ro
     if(tipo.includes("Editar")){
         $("#formUsuario").attr('action' , 'javascript:getAtributos("Editar");');
 
-        $("#id").val(id);
-        $("#nombre").val(nombre);
+        $("#id_user").val(id_user);
+        $("#name_user").val(name_user);
         $('#formPassword').show();
-        $("#password").val(password);
-        $("#correo").val(correo);
-        $("#rol").val(rol);
+        $("#passwd").val(passwd);
+        $('#form_file_curr_user').show();
+        $("#surname_user").val(surname_user);
+        $("#email_user").val(email_user);
+        $("#organization_user").val(organization_user);
+        $("#position_user").val(position_user);
+        $("#file_curr_user").val(file_curr_user);
     }
     else{
         if(tipo.includes("Buscar")){
-            document.getElementById("nombre").required = false;
+            document.getElementById("name_user").required = false;
             $('#formPassword').hide();
-            document.getElementById("password").required = false;
-            document.getElementById("correo").required = false;
-            document.getElementById("rol").required = false;
+            document.getElementById("passwd").required = false;
+            document.getElementById("surname_user").required = false;
+            document.getElementById("email_user").required = false;
+            document.getElementById("organization_user").required = false;
+            document.getElementById("position_user").required = false;
+            $('#form_file_curr_user').hide();
+            document.getElementById("file_curr_user").required = false;
+
             $("#formUsuario").attr('action' , 'javascript:getAtributos("Buscar");');
         }
         else{
-            document.getElementById("nombre").required = true;
+            document.getElementById("name_user").required = true;
             $('#formPassword').show();
-            document.getElementById("password").required = true;
-            document.getElementById("correo").required = true;
-            document.getElementById("rol").required = true;
+            document.getElementById("passwd").required = true;
+            document.getElementById("surname_user").required = true;
+            document.getElementById("email_user").required = true;
+            document.getElementById("organization_user").required = true;
+            document.getElementById("position_user").required = true;
+            $('#form_file_curr_user').show();
+            document.getElementById("file_curr_user").required = false;
+
             $("#formUsuario").attr('action' , 'javascript:getAtributos("Añadir");');
         }
 
-        $("#id").val('');
-        $("#nombre").val('');
-        $("#password").val('');
-        $("#correo").val('');
-        $("#rol").val('');
+        $("#id_user").val('');
+        $("#name_user").val('');
+        $("#passwd").val('');
+        $("#surname_user").val('');
+        $("#email_user").val('');
+        $("#organization_user").val('');
+        $("#position_user").val('');
+        $("#file_curr_user").val('');
     }
 }
 
@@ -292,9 +308,6 @@ function cerrarModal(){
     // Ventana modal
     var modal = document.getElementById("ventanaModal");
     modal.style.display = "none"
-
-    
-
 }
 
 function mostrarBorrar(id){
