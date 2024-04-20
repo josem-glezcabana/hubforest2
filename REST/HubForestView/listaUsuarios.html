@@ -11,7 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/crearformularios.js"></script>
     <script type="text/javascript" src="js/md5.js"></script>    
-    <title>Listado de usuarios</title>
+    <title>Usuarios</title>
     <!-- Incluye los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -37,18 +37,12 @@
             
         <table class="table table-striped" id="tablaUsuarios">
             <thead >
-                    <th class="id_user">Id</div>
-                    </th>
-                    <th class="name_user">Nombre</div>
-                    </th>
-                    <th class="surname_user">Apellidos</div>
-                    </th>
-                    <th class="email_user">Correo</div>
-                    </th>
-                    <th class="organization_user">Organización</div>
-                    </th>
-                    <th class="position_user">Puesto</div>
-                    </th>
+                    <th class="id_user">Id</th>
+                    <th class="name_user">Nombre</th>
+                    <th class="surname_user">Apellidos</th>
+                    <th class="email_user">Correo</th>
+                    <th class="organization_user">Organización</th>
+                    <th class="position_user">Puesto</th>
             </thead>
             
             <tbody id="datosUsuarios">
@@ -68,7 +62,7 @@
             <div id="Titulo"></div>
             <div id="mensajeError" class="text-center" style="display: none;">             
                 <h7>
-                    No existen usuarios que coincidan con estos parametros
+                    No existen usuarios que coincidan con estos parámetros
                 </h7>
                 <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
                     <span aria-hidden="true">&times;</span>
