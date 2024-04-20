@@ -37,7 +37,7 @@ async function getListByParamUsuarios_search(name_user, surname_user, organizati
         position_user: position_user
     };
     return peticionBackGeneral('', 'user', 'SEARCH', user)
-        .then(response => {console.log('response: ', response); (response['code'] === 'RECORDSET_DATOS') ? construyeTablaUsuario(response['resource']) :  mostrarErrorBusq()})
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaUsuario(response['resource']) :  mostrarErrorBusq())
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
@@ -83,7 +83,6 @@ async function editUsuario(id_user, name_user, surname_user, organization_user, 
 
     return peticionBackGeneral('', 'user', 'EDIT', user)
         .then(response => {
-            console.log('response: ', response)
             location.reload();
             return { status: 'OK', data: response };
         })
