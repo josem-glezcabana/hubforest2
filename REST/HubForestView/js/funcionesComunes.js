@@ -49,7 +49,7 @@ function volverHome(){
 function logout(){
 
     deleteCookie("tokenUsuario");
-    cargarRegistro();
+    volverRegistro();
 }
 
 /** Añade un header a una vista */
