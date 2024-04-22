@@ -8,7 +8,6 @@ var traduccion;
 
 /**Función que coge el idioma de las cookies, por defecto está en ES*/
 function setLang(lang =''){
-
     if (lang=='') {
         if (getCookie('lang') != '') {
           lang = getCookie('lang');
@@ -18,24 +17,17 @@ function setLang(lang =''){
 
     }
 
-    setCookie('lang', lang, 1);
+    setCookie('lang', lang, 5);
 
     switch(lang) {
-    	case 'ES' : 
-    	   traduccion=arrayES;
-            document.getElementById("imagenIdioma").src = "../img/Spain.png";
+    	case 'ES' :
+    	    traduccion=arrayES;
     	break;
     	case 'EN' :
     	   traduccion=arrayEN;
-           document.getElementById("imagenIdioma").src = "../img/United-Kingdom.png";
     	break;
-    	// case 'GA' :
-    	//    traduccion=arrayGA;
-        //    document.getElementById("imagenIdioma").src = "images/Galicia.png";
-    	// break;
     	default:
     	   traduccion=arrayES;
-           document.getElementById("imagenIdioma").src = "../img/Spain.png";
     	break;
     }
 

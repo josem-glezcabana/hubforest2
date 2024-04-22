@@ -8,9 +8,10 @@
     <link rel="icon" href="img/logo.png" type="image/png">
     <script type="text/javascript" src="js/funcionesComunes.js"></script>
     <script type="text/javascript" src="js_app/usuario/usuario.js"></script>
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/crearformularios.js"></script>
-    <title>Listado de usuarios</title>
+    <script type="text/javascript" src="js/md5.js"></script>    
+    <title>Usuarios</title>
     <!-- Incluye los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -36,18 +37,12 @@
             
         <table class="table table-striped" id="tablaUsuarios">
             <thead >
-                    <th class="id_user">Id</div>
-                    </th>
-                    <th class="name_user">Nombre</div>
-                    </th>
-                    <th class="surname_user">Apellidos</div>
-                    </th>
-                    <th class="email_user">Correo</div>
-                    </th>
-                    <th class="organization_user">Organización</div>
-                    </th>
-                    <th class="position_user">Puesto</div>
-                    </th>
+                    <th class="id_user">Id</th>
+                    <th class="name_user">Nombre</th>
+                    <th class="surname_user">Apellidos</th>
+                    <th class="email_user">Correo</th>
+                    <th class="organization_user">Organización</th>
+                    <th class="position_user">Puesto</th>
             </thead>
             
             <tbody id="datosUsuarios">
@@ -67,7 +62,7 @@
             <div id="Titulo"></div>
             <div id="mensajeError" class="text-center" style="display: none;">             
                 <h7>
-                    No existen usuarios que coincidan con estos parametros
+                    No existen usuarios que coincidan con estos parámetros
                 </h7>
                 <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
                     <span aria-hidden="true">&times;</span>
@@ -86,12 +81,12 @@
                 
                 <div class="form-group">
                     <label for="surname_user">Apellidos:</label>
-                    <input type="email" class="form-control" id="surname_user" name="surname_user" >
+                    <input type="text" class="form-control" id="surname_user" name="surname_user" >
                 </div>
 
                 <div id="formPassword" class="form-group">
                     <label for="passwd">Contraseña:</label>
-                    <input type="text" class="form-control" id="passwd" name="passwd" >
+                    <input type="password" class="form-control" id="passwd" name="passwd" >
                 </div>
 
                 <div class="form-group">
@@ -109,9 +104,9 @@
                     <input type="text" class="form-control" id="position_user" name="position_user" >
                 </div>
 
-                <div class="form-group">
+                <div id="form_file_curr_user" class="form-group">
                     <label for="file_curr_user">Archivo:</label>
-                    <input type="fyle" class="form-control" id="file_curr_user" name="file_curr_user" >
+                    <input type="file" class="form-control" id="file_curr_user" name="file_curr_user" >
                 </div>
                 
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>
