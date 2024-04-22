@@ -18,6 +18,32 @@ USE `hubforest`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `ecosystem`
+--
+
+DROP TABLE IF EXISTS `ecosystem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ecosystem` (
+  `id_ecosystem` int NOT NULL AUTO_INCREMENT,
+  `name_ecosystem` varchar(50) NOT NULL,
+  `description_ecosystem` varchar(5000) DEFAULT NULL,
+  `bib_ref_ecosystem` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_ecosystem`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ecosystem`
+--
+
+LOCK TABLES `ecosystem` WRITE;
+/*!40000 ALTER TABLE `ecosystem` DISABLE KEYS */;
+INSERT INTO `ecosystem` VALUES (1,'Ecosistema1','Ecosistema de ejemplo','bib_ref_ecosystem');
+/*!40000 ALTER TABLE `ecosystem` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `project`
 --
 
@@ -81,9 +107,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
--- La contraseña de los usuarios va encriptada ya que desde el front se encripta esta y se compara con lo almacenado en la bd que está encriptado también
--- La contraseña encriptada se llama prueba
-INSERT INTO `user` VALUES (1,'admin','admin','admin','hubforest','admin@email.com',NULL,'c893bad68927b457dbed39460e6afd62','SI'),(2,'user','user','user','hubforest','user@email.com',NULL,'c893bad68927b457dbed39460e6afd62','NO');
+INSERT INTO `user` VALUES (1,'admin','admin','21232f297a57a5a743894a0e4a801fc3','hubforest','admin@email.com',NULL,'admin','SI'),(2,'user','user','ee11cbb19052e40b07aac0ca060c23ee','hubforest','user@email.com',NULL,'user','NO');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,4 +149,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-17  5:15:28
+-- Dump completed on 2024-04-23  1:55:12
