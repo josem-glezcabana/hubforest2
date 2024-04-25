@@ -1,6 +1,10 @@
 
 //let urlAPIREST = 'https://jrodeiro.webs.uvigo.es/PsEducaBase/index.php';
-let urlAPIREST = 'http://localhost:8080/HubForestBack/index.php';         // Creo que sería esta la URL para las peticiones
+
+// URL para las peticiones (despliegue con Docker)
+// let urlAPIREST = 'http://localhost:8080/HubForestBack/index.php';
+// URL para las peticiones (despliegue con el instalador)
+let urlAPIREST = 'http://localhost/hubforest2/REST/HubForestBack/index.php';
 
 
 function peticionBackGeneral(formulario, controlador, action, datosextra=null){

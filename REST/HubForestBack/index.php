@@ -1,12 +1,11 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
 session_start();
 
 include_once './Comun/config.php';
 
 //Comprobar_si_existe_BD();
-
-header('Access-Control-Allow-Origin: *');
 
 if (isset($_POST['managementCore'])){
 	if ($_POST['managementCore']=='crear'){
