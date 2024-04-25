@@ -1,5 +1,6 @@
 arrayES={
 	//Atributos
+	//REGISTRO, LOGIN Y LOGOUT
 	'nameRegistro' : 'Nombre',
 	'passwordLogin' : 'Contraseña',
 	'botonLogin' : 'Iniciar Sesión',
@@ -9,5 +10,20 @@ arrayES={
 	'registroOrganizacion' : 'Organizacion',
 	'registroEmail' : 'Correo',
 	'registroPassword' : 'Contraseña',
-	'registroPosition' : 'Position'
+	'registroPosition' : 'Position',
+	//PERMISOS
+	'selectUsuarios' : '-- Selecciona el usuario asociado al proyecto --',
+	'selectProyectos' : '-- Selecciona el proyecto --',
+	'listadoPermisos' : 'Listado de permisos',
+	'añadirPermiso' : 'Añadir permiso',
+	'buscarPermiso' : 'Buscar permiso',
+	'reiniciarPermisos' : 'Reiniciar tabla',
+	'id_project' : 'Id proyecto',
+	'id_user' : 'Id usuario',
+	'rol' : 'Rol',
+	'permisosError' : 'No existen permisos que coincidan con estos parámetros',
+	'cerrarModalPermiso' : 'Cerrar',
+	'permisosPregunta' : '¿Estas seguro?',
+	'permisosAceptar' : 'Aceptar'
+
 }

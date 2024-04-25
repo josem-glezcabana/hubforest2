@@ -78,6 +78,7 @@ function includeHeader() {
                                 '<ul class="dropdown-menu">' +
                                     '<li><a class="dropdown-item" href="listaUsuarios.html">Usuarios</a></li>' +
                                     '<li><a class="dropdown-item" href="proyectos.html">Proyectos</a></li>' +
+                                    '<li><a class="dropdown-item" href="permisos.html">Permisos Proyectos</a></li>' +
                                 '</ul>' +
                             '</div>' +
                         '</li>' +

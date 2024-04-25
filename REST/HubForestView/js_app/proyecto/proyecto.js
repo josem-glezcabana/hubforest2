@@ -96,9 +96,9 @@ async function editProyecto(id_project, name_project, start_date_project, end_da
         });
 }
 
-async function deleteProyecto(id_project) {
+async function deleteProyectoUser(id_user,id_project) {
     
-    return peticionBackGeneral('', 'project', 'DELETE', {'id_project': id_project})
+    return peticionBackGeneral('', 'user_project', 'DELETE', {'id_user': id_user, 'id_project': id_project})
         .then(response => {
             location.reload();
             return { status: 'OK', data: response };

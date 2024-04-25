@@ -20,16 +20,13 @@ function AUTH_TEST(){
 
 	$prueba = 'registrar correcto';
 	$POST = array(
-				'dni'=> '99', 
-				'nombre_persona'=> 'Nombre9', 
-				'apellidos_persona'=> 'Apellidos9',
-				'fechaNacimiento_persona'=> '09/09/9999', 
-				'direccion_persona'=> 'Direccion9',
-				'telefono_persona'=> '999999999',
-				'email_persona'=> '99@99.99',
-				'foto_persona'=> 'Foto9.png',
-				'usuario'=>'usuario99',
-				'contrasena'=>'contrasena99',
+				'name_user'=> '99', 
+				'surname_user'=> 'Nombre9', 
+				'organization_user'=> 'Apellidos9',
+				'email_user'=> '09/09/9999', 
+				'passwd'=> 'Direccion9',
+				'position_user'=> '999999999',
+				'is_admin'=> 'true',
 				'controlador'=>$entidad,
 				'action'=>$accion
 			);
@@ -40,20 +37,17 @@ function AUTH_TEST(){
 //--------------------------------------------------------------------------------------------------------------------
 
 $prueba = 'registrar correcto';
-	$POST = array(
-				'dni'=> '11111111A', 
-				'nombre_persona'=> 'Nombrea', 
-				'apellidos_persona'=> 'Apellidosa',
-				'fechaNacimiento_persona'=> '09/09/9999', 
-				'direccion_persona'=> 'Direcciona',
-				'telefono_persona'=> '999999998',
-				'email_persona'=> '99@99.999',
-				'foto_persona'=> 'Foto9.png',
-				'usuario'=>'usuarioxx',
-				'contrasena'=>'contrasenaxx',
-				'controlador'=>$entidad,
-				'action'=>$accion
-			);
+$POST = array(
+			'name_user'=> '99', 
+			'surname_user'=> 'Nombre9', 
+			'organization_user'=> 'Apellidos9',
+			'email_user'=> '09/09/9999', 
+			'passwd'=> 'Direccion9',
+			'position_user'=> '999999999',
+			'is_admin'=> 'true',
+			'controlador'=>$entidad,
+			'action'=>$accion
+		);
 
 	$codeEsperado = 'REGISTRAR_OK';
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
@@ -67,29 +61,27 @@ $prueba = 'registrar correcto';
 	$tipo = 'Accion';
 
 //---------------------------------------------------------------------------------------------------------------------
-
+//Prueba usuario incorrecto, la contraseña no está encriptada en md5
 	$prueba = 'login usuario incorrecto';
-	$POST = array('usuario' => 'usuario98', 'contrasena' => 'contrasena99','controlador'=>'AUTH','action'=>'LOGIN');
+	$POST = array('name_user' => 'passwd', 'contrasena' => 'prueba','controlador'=>'AUTH','action'=>'LOGIN');
 	$codeEsperado = 'USUARIO_LOGIN_KO';
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
-
+//Prueba usuario correcto, la contraseña está encriptada en md5
 	$prueba = 'login usuario correcto';
-	$POST = array('usuario' => 'usuario99', 'contrasena' => 'contrasena99','controlador'=>'AUTH','action'=>'LOGIN');
+	$POST = array('name_user' => 'user', 'contrasena' => 'c893bad68927b457dbed39460e6afd62','controlador'=>'AUTH','action'=>'LOGIN');
 	$codeEsperado = 'LOGIN_OK';
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
-
+//Prueba usuario admin correcto, la contraseña está encriptada en md5
 	$prueba = 'login contraseña correcto';
-	$POST = array('usuario' => 'usuario99', 'contrasena' => 'contrasena98','controlador'=>'AUTH','action'=>'LOGIN');
+	$POST = array('name_user' => 'admin', 'contrasena' => 'c893bad68927b457dbed39460e6afd62','controlador'=>'AUTH','action'=>'LOGIN');
 	$codeEsperado = 'USUARIO_PASS_KO';
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------------------------
 
 	//rol
 	$entidad = 'AUTH';
@@ -99,60 +91,11 @@ $prueba = 'registrar correcto';
 //---------------------------------------------------------------------------------------------------------------------
 
 	$prueba = 'cambiar contraseña correcto';
-	$POST = array('dni' => '1', 'contrasena' => 'contrasena99','controlador'=>'AUTH','action'=>'CAMBIAR_CONTRASENA');
+	$POST = array('name_user' => 'admin', 'contrasena' => 'prueba','controlador'=>'AUTH','action'=>'CAMBIAR_CONTRASENA');
 	$codeEsperado = 'CAMBIAR_contrasena_OK';
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 //---------------------------------------------------------------------------------------------------------------------
-
-	//---------------------------------------------------------------------------------------------------------------------	
-	//persona
-	$entidad = 'usuario';
-	$accion = 'DELETE';
-	$tipo = 'Accion';
-
-	//---------------------------------------------------------------------------------------------------------------------
-	
-	$prueba = 'borrar usuario registrado';
-	$POST = array(
-				'dni'=> '99',
-				'controlador'=>$entidad,
-				'action'=>$accion
-			);
-	
-	$codeEsperado = 'SQL_OK';
-	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
-
-	//---------------------------------------------------------------------------------------------------------------------
-	
-	$prueba = 'borrar usuario registrado';
-	$POST = array(
-				'dni'=> '11111111A',
-				'controlador'=>$entidad,
-				'action'=>$accion
-			);
-	
-	$codeEsperado = 'SQL_OK';
-	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
-
-	//---------------------------------------------------------------------------------------------------------------------
-	
-	//persona
-	$entidad = 'persona';
-	$accion = 'DELETE';
-	$tipo = 'Accion';
-
-	//---------------------------------------------------------------------------------------------------------------------
-	
-	$prueba = 'borrar persona registrada';
-	$POST = array(
-				'dni'=> '99', 
-				'controlador'=>$entidad,
-				'action'=>$accion
-			);
-	
-	$codeEsperado = 'SQL_OK';
-	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 
 
