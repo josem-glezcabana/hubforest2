@@ -24,6 +24,7 @@ arrayES={
 	'permisosError' : 'No existen permisos que coincidan con estos parámetros',
 	'cerrarModalPermiso' : 'Cerrar',
 	'permisosPregunta' : '¿Estas seguro?',
-	'permisosAceptar' : 'Aceptar'
+	'permisosAceptar' : 'Aceptar',
+	'permisosMenu': 'Permisos Menú'
 
 }

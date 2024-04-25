@@ -24,5 +24,6 @@ arrayEN={
 	'permisosError' : 'There are no permissions that match these parameters',
 	'cerrarModalPermiso' : 'Close',
 	'permisosPregunta' : 'Are you sure?',
-	'permisosAceptar' : 'Accept'
+	'permisosAceptar' : 'Accept',
+	'permisosMenu': 'Permissions Menu'
 }
