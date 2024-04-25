@@ -37,3 +37,5 @@ Comando que compila el proyecto
 docker-compose up
 ```
 Comando que levanta un contenedor con el entorno del proyecto
+
+Para acceder en Docker debemos acceder en la url localhost:8080/HubForestView/
