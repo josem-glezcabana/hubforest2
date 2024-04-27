@@ -31,5 +31,7 @@ arrayES={
 	'permisosMenu': 'Permisos Menú',
 	'EditarPermisos' : 'Editar permisos',
 	'BuscarPermisos' : 'Buscar Permisos',
-	'AñadirPermisos' : 'Añadir Permisos'
+	'AñadirPermisos' : 'Añadir Permisos',
+	'name_project' : 'Nombre Proyecto',
+	'name_user' : 'Nombre Usuario'
 }

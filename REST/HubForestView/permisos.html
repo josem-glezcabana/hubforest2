@@ -39,8 +39,8 @@
             
         <table class="table table-striped" id="tablaProyectos">
             <thead >
-                    <th class="id_project">Id proyecto</th>
-                    <th class="id_user">Id usuario</th>
+                    <th class="name_project">Nombre Proyecto</th>
+                    <th class="name_user">Nombre Usuario</th>
                     <th class="rol">Rol</th>
             </thead>
             
@@ -68,19 +68,24 @@
                 </button>
             </div>
             <form id="formUsuarioProyecto" action="" method="post" onsubmit="">
+
                 <div class="form-group">
-                    <label for="id_project" class="id_project" style="display: none;">Id proyecto:</label>
-                    <input type="text" class="form-control" id="id_project" name="id_project" style="display: none;">
+                    <label for="id_project">Id proyecto:</label>
+                    <select class="form-control" id="id_project" name="id_project"></select>
                 </div>
-    
+
                 <div class="form-group">
-                    <label for="id_user" class="id_user">Id usuario:</label>
-                    <input type="text" class="form-control" id="id_user" name="id_user" >
+                    <label for="id_user">Id usuario:</label>
+                    <select class="form-control" id="id_user" name="id_user"></select>
                 </div>
                 
                 <div class="form-group">
                     <label for="rol" class="rol">Rol:</label>
-                    <input type="text" class="form-control" id="rol" name="rol" >
+                    <select class="form-control" id="rol" name="rol">
+                        <option value="dir">Dir</option>
+                        <option value="user">User</option>
+                        <option value="gov">Gov</option>
+                    </select>
                 </div>
                 
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>

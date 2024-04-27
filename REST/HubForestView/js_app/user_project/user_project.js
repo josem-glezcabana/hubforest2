@@ -1,6 +1,6 @@
 async function getListUsuarioProjecto() {
 
-  return peticionBackGeneral('', 'user_project', 'SEARCH')
+  return peticionBackGeneral('', 'user_project', 'SEARCH_PERMISSIONS')
       .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaUsuarioProyecto(response['resource']) : null)
       .catch(error => {
           console.error('Error en la solicitud:', error);
@@ -115,13 +115,12 @@ function construyeTablaUsuarioProyecto(filas) {
 
   $("#datosUsuarioProyectos").html("");
   filas.forEach(fila => {
-      console.log('fila', fila)
 
-      let atributosTabla = ["'" + fila.id_project + "'","'" + fila.id_user + "'", "'" + fila.rol + "'"];
+      let atributosTabla = ["'" + fila.id_project + "'","'" + fila.id_user + "'", "'" + fila.rol + "'","'" + fila.name_project + "'","'" + fila.name_user + "'"];
       let botonEdit='<button class="BotonEditar btn btn-info " id="editarUsuarioProyecto" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
-      filasTabla += '<tr> <td>' + fila.id_user + 
-              '</td> <td>' + fila.id_project + 
+      filasTabla += '<tr> <td>' + fila.name_project + 
+              '</td> <td>' + fila.name_user + 
               '</td> <td>' + fila.rol+ 
               '</td> <td class="text-center">' + botonEdit +
               '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarProyecto" onclick="mostrarBorrar('+fila.id_user+','+fila.id_project+')">Eliminar</button>'
@@ -140,28 +139,23 @@ function getAtributos(tipo){
   var rol = document.getElementById("rol").value
    switch(tipo){
       case "Editar":
-          editProyecto(id_user, id_project, rol)
+          editUsuarioProyecto(id_user, id_project, rol)
           break;
       case "Añadir":
-          addProyecto(id_user, id_project, rol)
+          addUsuarioProyecto(id_user, id_project, rol)
           break;
       case "Buscar":
-          getListByParamProyectos_search(id_user, id_project, rol)
+          getListByParamUsuarioProyecto_search(id_user, id_project, rol)
           break;
    }
 }
 
-function mostrarModal(tipo, id_user=null, id_project=null, rol=null){
+function mostrarModal(tipo, id_user=null, id_project=null, rol=null, name_project =null, name_user=null){
   // Ventana modal
   document.getElementById("ventanaModal").style.display = "block";
   document.getElementById("Titulo").innerHTML = '<h2 class="'+tipo+'">'+tipo+'</h2>';
   document.getElementById("aceptar").innerHTML = tipo;
   document.getElementById("aceptar").classList.add(tipo);
-
-
-
-
-  
 
 
   getListUsuarios(id_user)
@@ -176,10 +170,12 @@ function mostrarModal(tipo, id_user=null, id_project=null, rol=null){
   }
   else{
       if(tipo.includes("Buscar")){
-          document.getElementById("id_user").required = false;
-          document.getElementById("id_project").required = false;
-          document.getElementById("rol").required = false;
-          $("#formUsuarioProyecto").attr('action' , 'javascript:getAtributos("Buscar");');
+          document.getElementById("rol").required = true;
+
+          document.getElementById("id_project").setAttribute("hidden", true);
+          document.querySelector('label[for="id_project"]').setAttribute("hidden", true);
+          document.getElementById("id_user").setAttribute("hidden", true);
+          document.querySelector('label[for="id_user"]').setAttribute("hidden", true);
       }
       else{
         document.getElementById("id_user").required = true;
@@ -199,7 +195,8 @@ function mostrarModal(tipo, id_user=null, id_project=null, rol=null){
 function rellenarSelectUsuarios(tipo, filas, usuario) {
   let element = document.getElementById(tipo);
   let option = document.createElement('option');
-
+  console.log(element);
+  console.log(filas);
   option.value = "";
   option.textContent = "-- Selecciona el usuario asociado al proyecto --";
   option.className = "selectUsuarios";
@@ -231,7 +228,7 @@ function rellenarSelectProyectos(tipo, filas, proyecto) {
       element.appendChild(option);
   })
 
-  if (usuario != null) element.value = proyecto;
+  if (proyecto != null) element.value = proyecto;
 }
 
 function cerrarModal(){

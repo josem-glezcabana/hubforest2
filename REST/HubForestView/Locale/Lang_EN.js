@@ -31,5 +31,7 @@ arrayEN={
 	'permisosMenu': 'Permissions Menu',
 	'EditarPermisos' : 'Edit Permissions',
 	'BuscarPermisos' : 'Permissions Search',
-	'AñadirPermisos' : 'Add Permissions'
+	'AñadirPermisos' : 'Add Permissions',
+	'name_project' : 'Name Project',
+	'name_user' : 'Name User'
 }
