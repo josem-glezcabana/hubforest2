@@ -195,40 +195,37 @@ function mostrarModal(tipo, id_user=null, id_project=null, rol=null, name_projec
 function rellenarSelectUsuarios(tipo, filas, usuario) {
   let element = document.getElementById(tipo);
   let option = document.createElement('option');
-  console.log(element);
-  console.log(filas);
-  option.value = "";
-  option.textContent = "-- Selecciona el usuario asociado al proyecto --";
-  option.className = "selectUsuarios";
-  element.appendChild(option);
-
+  
+  // Eliminar opciones existentes antes de agregar las nuevas
+  element.innerHTML = '';
+  
   filas.forEach(fila => {
       option = document.createElement('option');
       option.value = fila.id_user;
       option.textContent = fila.name_user;
       element.appendChild(option);
   })
-
+  
   if (usuario != null) element.value = usuario;
+  
 }
 
 function rellenarSelectProyectos(tipo, filas, proyecto) {
   let element = document.getElementById(tipo);
   let option = document.createElement('option');
-
-  option.value = "";
-  option.textContent = "-- Selecciona el proyecto --";
-  option.className = "selectProyectos";
-  element.appendChild(option);
-
+  
+  // Eliminar opciones existentes antes de agregar las nuevas
+  element.innerHTML = '';
+  
   filas.forEach(fila => {
       option = document.createElement('option');
       option.value = fila.id_project;
       option.textContent = fila.name_project;
       element.appendChild(option);
   })
-
+  
   if (proyecto != null) element.value = proyecto;
+  
 }
 
 function cerrarModal(){

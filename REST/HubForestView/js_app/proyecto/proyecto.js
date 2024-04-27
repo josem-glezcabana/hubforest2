@@ -267,6 +267,8 @@ function rellenarSelectUsuarios(tipo, filas, usuario) {
     let element = document.getElementById(tipo);
     let option = document.createElement('option');
 
+      // Eliminar opciones existentes antes de agregar las nuevas
+    element.innerHTML = '';
     option.value = "";
     option.textContent = "-- Selecciona responsable de proyecto --";
     element.appendChild(option);
