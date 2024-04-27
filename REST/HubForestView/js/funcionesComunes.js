@@ -13,22 +13,14 @@ async function cargarRegistro() {
 }
 
 function volverRegistro(){
-    $.ajax({
-        url: 'registro.html',
-        type: 'GET',
-        dataType: 'html',
-        success: function(data) {
-            // Inserta el contenido en el div con id "contenido"
-            $("#contenido").html(data);
-            $("#menu").hide();
-            $("#logout").hide();
-            setLang();
-        },
-        error: function(error) {
-            console.error('Error al cargar la vista:', error);
-        }
-    });
+    window.location.href = 'registro.html';
 }
+
+function ocultarMenu(){
+    $( "#menu" ).hide();
+    $( "#logout" ).hide();
+}
+
 function volverHome(){
     $.ajax({
         url: 'home.html',
