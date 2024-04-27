@@ -10,8 +10,10 @@
     <script type="text/javascript" src="js_app/user_project/user_project.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/crearformularios.js"></script>
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script type="text/javascript" src="locale/Lang_EN.js"></script>
+    <script type="text/javascript" src="locale/Lang_ES.js"></script>
    
-    <title>Permisos</title>
     <!-- Incluye los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -29,8 +31,8 @@
     <div class="container mt-5">
         <h2 class="listadoPermisos">Listado de permisos</h2>
         <div class="mt-2 mb-3 float-right">
-            <button class="añadirPermiso btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('Añadir permiso')">Añadir permiso</button>
-            <button class="buscarPermiso btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('Buscar permiso')">Buscar permiso</button>
+            <button class="añadirPermiso btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('AñadirPermisos')">Añadir permiso</button>
+            <button class="buscarPermiso btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('BuscarPermisos')">Buscar permiso</button>
             <button class="reiniciarPermisos btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListUsuarioProjecto()">Reiniciar tabla</button>
             
         </div>
@@ -42,7 +44,7 @@
                     <th class="rol">Rol</th>
             </thead>
             
-            <tbody id="datosProyectos">
+            <tbody id="datosUsuarioProyectos">
             </tbody>
        
             

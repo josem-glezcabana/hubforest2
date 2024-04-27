@@ -107,7 +107,7 @@ async function getListProyectos(proyecto) {
 function construyeTablaUsuarioProyecto(filas) {
 
   let filasTabla = '';
-  let tipo = "'Editar Permisos'";
+  let tipo = "'EditarPermisos'";
   let element = document.getElementById("datosUsuarioProyectos");
   while (element.firstChild) {
       element.removeChild(element.firstChild);
@@ -118,19 +118,20 @@ function construyeTablaUsuarioProyecto(filas) {
       console.log('fila', fila)
 
       let atributosTabla = ["'" + fila.id_project + "'","'" + fila.id_user + "'", "'" + fila.rol + "'"];
-      let botonEdit='<button class="btn btn-info" id="editarUsuarioProyecto" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
+      let botonEdit='<button class="BotonEditar btn btn-info " id="editarUsuarioProyecto" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
       filasTabla += '<tr> <td>' + fila.id_user + 
               '</td> <td>' + fila.id_project + 
               '</td> <td>' + fila.rol+ 
               '</td> <td class="text-center">' + botonEdit +
-              '</td> <td class="text-center"><button class="btn btn-danger" id="borrarProyecto" onclick="mostrarBorrar('+fila.id_user+','+fila.id_project+')">Eliminar</button>'
+              '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarProyecto" onclick="mostrarBorrar('+fila.id_user+','+fila.id_project+')">Eliminar</button>'
               
               '</td>  </tr>';
   });
   
   $("#datosUsuarioProyectos").append(filasTabla);
   cerrarModal()
+  setLang();
 }
 
 function getAtributos(tipo){
@@ -153,8 +154,15 @@ function getAtributos(tipo){
 function mostrarModal(tipo, id_user=null, id_project=null, rol=null){
   // Ventana modal
   document.getElementById("ventanaModal").style.display = "block";
-  document.getElementById("Titulo").innerHTML = '<h2>'+tipo+'</h2>';
+  document.getElementById("Titulo").innerHTML = '<h2 class="'+tipo+'">'+tipo+'</h2>';
   document.getElementById("aceptar").innerHTML = tipo;
+  document.getElementById("aceptar").classList.add(tipo);
+
+
+
+
+  
+
 
   getListUsuarios(id_user)
   getListProyectos(id_project)
@@ -185,6 +193,7 @@ function mostrarModal(tipo, id_user=null, id_project=null, rol=null){
       $("#id_project").val('');
       $("#rol").val('');
   }
+  setLang();
 }
 
 function rellenarSelectUsuarios(tipo, filas, usuario) {

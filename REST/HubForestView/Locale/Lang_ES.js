@@ -1,5 +1,8 @@
 arrayES={
 	//Atributos
+	//GENERALES
+	'BotonEditar' : 'Editar',
+	'BotonEliminar' : 'Eliminar',
 	//REGISTRO, LOGIN Y LOGOUT
 	'nameRegistro' : 'Nombre',
 	'passwordLogin' : 'Contraseña',
@@ -25,6 +28,8 @@ arrayES={
 	'cerrarModalPermiso' : 'Cerrar',
 	'permisosPregunta' : '¿Estas seguro?',
 	'permisosAceptar' : 'Aceptar',
-	'permisosMenu': 'Permisos Menú'
-
+	'permisosMenu': 'Permisos Menú',
+	'EditarPermisos' : 'Editar permisos',
+	'BuscarPermisos' : 'Buscar Permisos',
+	'AñadirPermisos' : 'Añadir Permisos'
 }

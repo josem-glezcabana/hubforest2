@@ -1,5 +1,8 @@
 arrayEN={
 	//Atributos
+	//GENERALES
+	'BotonEditar' : 'Edit',
+	'BotonEliminar' : 'Delete',
 	//REGISTRO, LOGIN Y LOGOUT
 	'nameRegistro' : 'Name',
 	'passwordLogin' : 'Password',
@@ -14,7 +17,7 @@ arrayEN={
 	//PERMISOS
 	'selectUsuarios' : '-- Select the user associated with the project --',
 	'selectProyectos' : '-- Select the project --',
-	'listadoPermisos' : 'List of permits',
+	'listadoPermisos' : 'List of Permissions',
 	'añadirPermiso' : 'Add permit',
 	'buscarPermiso' : 'Search permit',
 	'reiniciarPermisos' : 'Reload table',
@@ -25,5 +28,8 @@ arrayEN={
 	'cerrarModalPermiso' : 'Close',
 	'permisosPregunta' : 'Are you sure?',
 	'permisosAceptar' : 'Accept',
-	'permisosMenu': 'Permissions Menu'
+	'permisosMenu': 'Permissions Menu',
+	'EditarPermisos' : 'Edit Permissions',
+	'BuscarPermisos' : 'Permissions Search',
+	'AñadirPermisos' : 'Add Permissions'
 }
