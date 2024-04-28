@@ -16,7 +16,7 @@
     <script type="text/javascript" src="locale/Lang_EN.js"></script>
     <script type="text/javascript" src="locale/Lang_ES.js"></script>
    
-    <title>Proyectos</title>
+    <title class="titleProyectos">Proyectos</title>
     <!-- Incluye los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -33,11 +33,11 @@
 
     <div id="contenido" >
     <div class="container mt-5">
-        <h2>Listado de proyectos</h2>
+        <h2 class="listadoProyectos">Listado de proyectos</h2>
         <div class="mt-2 mb-3 float-right">
-            <button class="btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('Añadir proyecto')">Añadir proyecto</button>
-            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('Buscar proyecto')">Buscar proyecto</button>
-            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListProyectos()">Reiniciar tabla</button>
+            <button class="añadirProyecto btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('Añadir proyecto')">Añadir proyecto</button>
+            <button class="buscarProyecto btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('Buscar proyecto')">Buscar proyecto</button>
+            <button class="reiniciarProyecto btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListProyectos()">Reiniciar tabla</button>
             
         </div>
             
@@ -71,7 +71,7 @@
             </button>
             <div id="Titulo"></div>
             <div id="mensajeError" class="text-center" style="display: none;">             
-                <h7>
+                <h7 class="proyectosError">
                     No existen proyectos que coincidan con estos parámetros
                 </h7>
                 <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
@@ -130,7 +130,7 @@
                 </div>
                 
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>
-                <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+                <button type="button" id="cerrar" class="cerrarModalProyecto btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
             </form> 
         </div>
     </div>
@@ -140,7 +140,7 @@
             <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
                 <span aria-hidden="true">&times;</span>
             </button>
-            <div class="text-center" id="Titulo"><h2>¿Estas seguro?</h2></div>
+            <div class="text-center" id="Titulo"><h2 class="proyectosPregunta">¿Estás seguro?</h2></div>
             
             <form id="formBorrarProyecto" action="" method="post" onsubmit="">
                 <div class="form-group">
@@ -148,8 +148,8 @@
                     <input type="text" class="form-control" id="idBorrar" name="id_project" style="display: none;">
                 </div>
                 <div class="col text-center">
-                    <button type="submit" id="aceptar" class="btn btn-danger">Aceptar</button>
-                    <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
+                    <button type="submit" id="aceptar" class="proyectosAceptar btn btn-danger">Aceptar</button>
+                    <button type="button" id="cerrar" class="cerrarModalProyecto btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
                 </div>     
             </form>  
         </div>

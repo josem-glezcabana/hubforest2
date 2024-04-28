@@ -3,6 +3,12 @@ arrayEN={
 	//GENERALES
 	'BotonEditar' : 'Edit',
 	'BotonEliminar' : 'Delete',
+	//HEADER
+	'inicioPage': 'Start',
+	'seccionesMenu': 'Sections',
+	'usuariosMenu': 'Users',
+	'proyectosMenu': 'Projects',
+	'ecosystemsMenu': 'Ecosystems',
 	//REGISTRO, LOGIN Y LOGOUT
 	'nameRegistro' : 'Name',
 	'passwordLogin' : 'Password',
@@ -33,5 +39,26 @@ arrayEN={
 	'BuscarPermisos' : 'Permissions Search',
 	'AñadirPermisos' : 'Add Permissions',
 	'name_project' : 'Name Project',
-	'name_user' : 'Name User'
+	'name_user' : 'Name User',
+	//USUARIOS
+
+	//PROYECTOS
+	'titleProyectos': 'Projects',
+	'listadoProyectos': 'List of projects',
+	'añadirProyecto': 'Add project',
+	'buscarProyecto': 'Search project',
+	'reiniciarProyecto': 'Reload table',
+	'name_project': 'Project name',
+	'start_date_project': 'Start date',
+	'end_date_project': 'End date',
+	'responsable_project': 'Responsible',
+	'organization_project': 'Organisation',
+	'description_project': 'Description',
+	'file_project': 'File',
+	'code_project': 'Project code',
+	'acronym_project': 'Acronym',
+	'proyectosError': 'There are no projects that match these parameters',
+	'cerrarModalProyecto': 'Close',
+	'proyectosPregunta': 'Are you sure?',
+	'proyectosAceptar': 'Accept',
 }

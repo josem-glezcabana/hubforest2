@@ -60,16 +60,17 @@ function includeHeader() {
                 '<nav class="navbar navbar-expand-md navbar-dark">' +
                     '<ul class="navbar-nav ml-auto">' +
                         '<li class="nav-item">' +
-                            '<a class="nav-link" href="index.html">Inicio</a>' +
+                            '<a class="inicioPage nav-link" href="index.html">Inicio</a>' +
                         '</li>' +
                         '<li class="nav-item">' +
                             '<div class="dropdown">' +
-                                '<button class="btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Secciones' +
+                                '<button class="seccionesMenu btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Secciones' +
                                     '<span class="caret"></span>' +
                                 '</button>' +
                                 '<ul class="dropdown-menu">' +
-                                    '<li><a class="dropdown-item" href="listaUsuarios.html">Usuarios</a></li>' +
-                                    '<li><a class="dropdown-item" href="proyectos.html">Proyectos</a></li>' +
+                                    '<li><a class="usuariosMenu dropdown-item" href="listaUsuarios.html">Usuarios</a></li>' +
+                                    '<li><a class="proyectosMenu dropdown-item" href="proyectos.html">Proyectos</a></li>' +
+                                    '<li><a class="ecosystemsMenu dropdown-item" href="listaEcosystem.html">Ecosistemas</a></li>' +
                                     '<li><a class="permisosMenu dropdown-item" href="permisos.html">Permisos Proyectos</a></li>' +
                                     '<li><a class="dropdown-item" href="sites.html">Sites</a></li>' +
                                 '</ul>' +
