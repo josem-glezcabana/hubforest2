@@ -203,7 +203,7 @@ function construyeTablaUsuario(filas) {
     $("#datosUsuarios").html("");
     filas.forEach(fila => {
         var atributosTabla = ["'" + fila.id_user + "'","'" + fila.name_user + "'", "'" + fila.surname_user + "'", "'" + fila.passwd + "'", "'" + fila.email_user + "'", "'" + fila.organization_user + "'","'" + fila.position_user + "'"];
-        var botonEdit='<button class="btn btn-info" id="editarUsuario" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
+        var botonEdit='<button class="BotonEditar btn btn-info" id="editarUsuario" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_user + 
                 '</td> <td>' + fila.name_user + 
@@ -212,13 +212,14 @@ function construyeTablaUsuario(filas) {
                 '</td> <td>' + fila.organization_user + 
                 '</td> <td>' + fila.position_user + 
                 '</td> <td class="text-center">' + botonEdit +
-                '</td> <td class="text-center"><button class="btn btn-danger" id="borrarUsuario" onclick="mostrarBorrar('+fila.id_user+')">Eliminar</button>'
+                '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarUsuario" onclick="mostrarBorrar('+fila.id_user+')">Eliminar</button>'
                 
                 '</td>  </tr>';
     });
     
     $("#datosUsuarios").append(filasTabla);
-    cerrarModal()
+    cerrarModal();
+    setLang();
 }
 
 function getAtributos(tipo){
@@ -300,6 +301,7 @@ function mostrarModal(tipo, id_user=null, name_user=null, surname_user=null, pas
         $("#position_user").val('');
         $("#file_curr_user").val('');
     }
+    setLang();
 }
 
 

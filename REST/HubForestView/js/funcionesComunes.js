@@ -108,7 +108,7 @@ function includeFooter() {
                 '<div class="row d-flex align-items-center" style="justify-content: space-evenly">' +
                 '<img src="img/logo.png" alt="Logo Pequeño" class="img-fluid" style="width: 50px; height: auto;">' +
                 '<div class="row w-50 d-flex justify-content-around">' +
-                '<span>Siguenos en:</span>' +
+                '<span class="followUs">Siguenos en:</span>' +
                 '<div class="row">' +
                 '<a href="https://github.com/ncgomez17/HubForest" target="_blank">' +
                 '<img src="img/github-icon.svg" alt="Instagram" width="24" height="24">' +
@@ -121,7 +121,7 @@ function includeFooter() {
                 '</div>' +
                 '</div>' +
                 '<div class="col-md-8">' +
-                '<h5>Contacto</h5>' +
+                '<h5 class="contactUs">Contacto</h5>' +
                 '<div class="row d-flex" style="justify-content: space-evenly">' +
                 '<span>Correo: info@hubforest.com</span>' +
                 '<span>Teléfono: +123 456 789</span>' +
