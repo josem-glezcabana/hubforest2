@@ -80,6 +80,61 @@ INSERT INTO `project` VALUES (1,'proyecto1','2024-04-16','2025-04-16',1,'esei','
 UNLOCK TABLES;
 
 --
+-- Table structure for table `project_ecosystem`
+--
+
+DROP TABLE IF EXISTS `project_ecosystem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `project_ecosystem` (
+  `id_project` int NOT NULL,
+  `id_ecosystem` int NOT NULL,
+  PRIMARY KEY (`id_project`,`id_ecosystem`),
+  KEY `idEcosProj_idx` (`id_ecosystem`),
+  CONSTRAINT `idEcosProj` FOREIGN KEY (`id_ecosystem`) REFERENCES `ecosystem` (`id_ecosystem`),
+  CONSTRAINT `idProjectEcos` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `project_ecosystem`
+--
+
+LOCK TABLES `project_ecosystem` WRITE;
+/*!40000 ALTER TABLE `project_ecosystem` DISABLE KEYS */;
+/*!40000 ALTER TABLE `project_ecosystem` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sampling_methodology`
+--
+
+DROP TABLE IF EXISTS `sampling_methodology`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sampling_methodology` (
+  `id_sampling_methodology` int NOT NULL AUTO_INCREMENT,
+  `id_project` int NOT NULL,
+  `name_methodology` varchar(60) NOT NULL,
+  `description_methodology` varchar(5000) NOT NULL,
+  `bib_ref_methodology` varchar(200) NOT NULL,
+  `file_methodology` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_sampling_methodology`,`id_project`),
+  KEY `idProjectSM_idx` (`id_project`),
+  CONSTRAINT `idProjectSM` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sampling_methodology`
+--
+
+LOCK TABLES `sampling_methodology` WRITE;
+/*!40000 ALTER TABLE `sampling_methodology` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sampling_methodology` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `site`
 --
 
@@ -140,7 +195,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','admin','admin','hubforest','admin@email.com',NULL,'admin','SI'),(2,'user','user','user','hubforest','user@email.com',NULL,'user','NO');
+INSERT INTO `user` VALUES (1,'admin','admin','admin','hubforest','admin@email.com',NULL,'21232f297a57a5a743894a0e4a801fc3','SI'),(2,'user','user','user','hubforest','user@email.com',NULL,'ee11cbb19052e40b07aac0ca060c23ee','NO');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,4 +237,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-28 21:50:19
+-- Dump completed on 2024-04-29  0:11:47

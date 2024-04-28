@@ -9,9 +9,12 @@ arrayES={
 	'usuariosMenu': 'Usuarios',
 	'proyectosMenu': 'Proyectos',
 	'ecosystemsMenu': 'Ecosistemas',
+	'sitesMenu': 'Sitios',
+
 	//FOOTER
 	'followUs': 'Síguenos en:',
 	'contactUs': 'Contacto',
+
 	//REGISTRO, LOGIN Y LOGOUT
 	'nameRegistro' : 'Nombre',
 	'passwordLogin' : 'Contraseña',
@@ -77,4 +80,28 @@ arrayES={
 	'cerrarModalProyecto': 'Cerrar',
 	'proyectosPregunta': '¿Estás seguro?',
 	'proyectosAceptar': 'Aceptar',
+
+	//SITE
+	'titleSites': 'Sitios',
+	'listadoSites': 'Listado de sitios',
+	'añadirSite': 'Añadir sitio',
+	'buscarSite': 'Buscar sitio',
+	'reiniciarTabla': 'Reiniciar tabla',
+	'id_site': 'Id sitio',
+	'id_project': 'Id proyecto',
+	'id_ecosystem': 'Id ecosistema',
+	'coorN_site': 'CoorN sitio',
+	'coorW_site': 'CoorW sitio',
+	'slope_site': 'Pendiente sitio',
+	'orientation_site': 'Orientation sitio',
+	'sitios_error': 'No existen sitios que coincidan con estos parámetros',
+	'sitiosPregunta': '¿Estás seguro?',
+	'aceptar': 'Aceptar',
+	'cerrar': 'Close',
+	'editar': 'Editar',
+	'eliminar': 'Eliminar',
+	'aceptar': 'Aceptar',
+	'editarS': 'Editar sitio',
+	'añadirS': 'Añadir sitio',
+	'buscarS': 'Buscar sitio',
 }
