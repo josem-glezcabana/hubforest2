@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script type="text/javascript" src="js/funcionesComunes.js"></script>
+    <script type="text/javascript" src="js_app/proyecto/proyecto.js"></script>
+    <script type="text/javascript" src="js_app/usuario/usuario.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/crearformularios.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>   
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script type="text/javascript" src="locale/Lang_EN.js"></script>
+    <script type="text/javascript" src="locale/Lang_ES.js"></script>
+   
+    <title>Proyectos</title>
+    <!-- Incluye los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body onload="(async () => {
+    includeHeader(); includeFooter();
+    getListProyectos();
+})();">
+
+    <!-- Encabezado y Barra de Navegación -->
+    <div id="header"></div>
+
+    <div id="contenido" >
+    <div class="container mt-5">
+        <h2>Listado de proyectos</h2>
+        <div class="mt-2 mb-3 float-right">
+            <button class="btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('Añadir proyecto')">Añadir proyecto</button>
+            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('Buscar proyecto')">Buscar proyecto</button>
+            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListProyectos()">Reiniciar tabla</button>
+            
+        </div>
+            
+        <table class="table table-striped" id="tablaProyectos">
+            <thead >
+                    <th class="id_project">Id</th>
+                    <th class="name_project">Nombre del proyecto</th>
+                    <th class="start_date_project">Fecha de inicio</th>
+                    <th class="end_date_project">Fecha de fin</th>
+                    <th class="responsable_project">Responsable</th>
+                    <th class="organization_project">Organización</th>
+                    <th class="description_project">Descripción</th>
+                    <!-- <th class="file_project">Archivo</th> -->
+                    <th class="code_project">Código de proyecto</th>
+                    <th class="acronym_project">Acrónimo</th>
+            </thead>
+            
+            <tbody id="datosProyectos">
+            </tbody>
+       
+            
+        </table>
+            <div id="formularioentidad"></div>
+        
+    </div>
+    
+    <div id="ventanaModal" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarModal()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="Titulo"></div>
+            <div id="mensajeError" class="text-center" style="display: none;">             
+                <h7>
+                    No existen proyectos que coincidan con estos parámetros
+                </h7>
+                <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formProyecto" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id_project" style="display: none;">Id:</label>
+                    <input type="text" class="form-control" id="id_project" name="id_project" style="display: none;">
+                </div>
+    
+                <div class="form-group">
+                    <label for="name_project">Nombre del proyecto:</label>
+                    <input type="text" class="form-control" id="name_project" name="name_project" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="start_date_project">Fecha inicio:</label>
+                    <input type="date" class="form-control" id="start_date_project" name="start_date_project" >
+                </div>
+
+                <div class="form-group">
+                    <label for="end_date_project">Fecha fin:</label>
+                    <input type="date" class="form-control" id="end_date_project" name="end_date_project" >
+                </div>
+
+                <div class="form-group">
+                    <label for="responsable_project">Responsable:</label>
+                    <select class="form-control" id="responsable_project" name="responsable_project"></select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="organization_project">Organización:</label>
+                    <input type="text" class="form-control" id="organization_project" name="organization_project" >
+                </div>
+
+                <div class="form-group">
+                    <label for="description_project">Descripción:</label>
+                    <input type="text" class="form-control" id="description_project" name="description_project" >
+                </div>
+                
+                <div id="form_file_project" class="form-group">
+                    <label for="file_project">Archivo:</label>
+                    <input type="file" class="form-control" id="file_project" name="file_project" >
+                </div>
+
+                <div class="form-group">
+                    <label for="code_project">Código:</label>
+                    <input type="text" class="form-control" id="code_project" name="code_project" >
+                </div>
+
+                <div class="form-group">
+                    <label for="acronym_project">Acrónimo:</label>
+                    <input type="text" class="form-control" id="acronym_project" name="acronym_project" >
+                </div>
+                
+                <button type="submit" id="aceptar" class="btn btn-primary"></button>
+                <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+            </form> 
+        </div>
+    </div>
+    
+    <div id="comprobarBorrar" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="text-center" id="Titulo"><h2>¿Estas seguro?</h2></div>
+            
+            <form id="formBorrarProyecto" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id_project" style="display: none;">Id:</label>
+                    <input type="text" class="form-control" id="idBorrar" name="id_project" style="display: none;">
+                </div>
+                <div class="col text-center">
+                    <button type="submit" id="aceptar" class="btn btn-danger">Aceptar</button>
+                    <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
+                </div>     
+            </form>  
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Pie de Página -->
+	<div id="footer"><div>
+</body>
+</html>

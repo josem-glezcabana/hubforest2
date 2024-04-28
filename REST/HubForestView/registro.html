@@ -1,3 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script type="text/javascript" src="js/funcionesComunes.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="text/javascript" src="js_app/usuario/usuario.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/crearformularios.js"></script>
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script type="text/javascript" src="locale/Lang_EN.js"></script>
+    <script type="text/javascript" src="locale/Lang_ES.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>    
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>HubForest</title>
+</head>
+<body onload="(async () => {
+    await includeHeader();
+    await includeFooter();
+    await setLang();
+    await ocultarMenu();
+})();">
+<div id="header"></div>
+<div id="contenido" >
 <div class="container mt-5">
   <div class="row">
       <div class="col-md-6 offset-md-3">
@@ -105,7 +135,8 @@
         </div>
     </div>
 </div>
-
+</div>
+<div id="footer"><div>
 <script>
     $(document).ready(function () {
       $('#registroModal').modal({
@@ -113,3 +144,4 @@
       });
     });
   </script>
+  </html>
