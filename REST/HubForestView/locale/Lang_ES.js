@@ -41,7 +41,20 @@ arrayES={
 	'name_project' : 'Nombre Proyecto',
 	'name_user' : 'Nombre Usuario',
 	//USUARIOS
-
+	'titleUsuarios': 'Usuarios',
+	'listadoUsuarios': 'Listado de usuarios',
+	'añadirUsuario': 'Añadir usuario',
+	'buscarUsuario': 'Buscar usuario',
+	'reiniciarUsuario': 'Reiniciar tabla',
+	'name_user': 'Nombre',
+	'surname_user': 'Apellidos',
+	'email_user': 'Correo',
+	'organization_user': 'Organización',
+	'position_user': 'Puesto',
+	'usuariosError': 'No existen usuarios que coincidan con estos parámetros',
+	'cerrarModalUsuario': 'Cerrar',
+	'usuariosPregunta': '¿Estás seguro?',
+	'usuariosAceptar': 'Aceptar',
 	//PROYECTOS
 	'titleProyectos': 'Proyectos',
 	'listadoProyectos': 'Listado de proyectos',

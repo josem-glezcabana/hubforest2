@@ -41,7 +41,20 @@ arrayEN={
 	'name_project' : 'Name Project',
 	'name_user' : 'Name User',
 	//USUARIOS
-
+	'titleUsuarios': 'Users',
+	'listadoUsuarios': 'List of users',
+	'añadirUsuario': 'Add user',
+	'buscarUsuario': 'Search user',
+	'reiniciarUsuario': 'Reload table',
+	'name_user': 'Name',
+	'surname_user': 'Surname',
+	'email_user': 'Email',
+	'organization_user': 'Organisation',
+	'position_user': 'Position',
+	'usuariosError': 'There are no users that match these parameters',
+	'cerrarModalUsuario': 'Close',
+	'usuariosPregunta': 'Are you sure?',
+	'usuariosAceptar': 'Accept',
 	//PROYECTOS
 	'titleProyectos': 'Projects',
 	'listadoProyectos': 'List of projects',

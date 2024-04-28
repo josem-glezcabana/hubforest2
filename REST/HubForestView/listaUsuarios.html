@@ -14,7 +14,7 @@
     <script type="text/javascript" src="locale/idioma.js"></script>
     <script type="text/javascript" src="locale/Lang_EN.js"></script>
     <script type="text/javascript" src="locale/Lang_ES.js"></script>
-    <title>Usuarios</title>
+    <title class="titleUsuarios">Usuarios</title>
     <!-- Incluye los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -32,11 +32,11 @@
     <div id="contenido" >
 
     <div class="container mt-5">
-        <h2>Listado de usuarios</h2>
+        <h2 class="listadoUsuarios">Listado de usuarios</h2>
         <div class="mt-2 mb-3 float-right">
-            <button class="btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('Añadir usuario')">Añadir usuario</button>
-            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('Buscar usuario')">Buscar usuario</button>
-            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListUsuarios()">Reiniciar tabla</button>
+            <button class="añadirUsuario btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('Añadir usuario')">Añadir usuario</button>
+            <button class="buscarUsuario btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('Buscar usuario')">Buscar usuario</button>
+            <button class="reiniciarUsuario btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListUsuarios()">Reiniciar tabla</button>
             
         </div>
             
@@ -66,7 +66,7 @@
             </button>
             <div id="Titulo"></div>
             <div id="mensajeError" class="text-center" style="display: none;">             
-                <h7>
+                <h7 class="usuariosError">
                     No existen usuarios que coincidan con estos parámetros
                 </h7>
                 <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
@@ -115,7 +115,7 @@
                 </div>
                 
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>
-                <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+                <button type="button" id="cerrar" class="cerrarModalUsuario btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
             </form> 
         </div>
     </div>
@@ -125,7 +125,7 @@
             <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
                 <span aria-hidden="true">&times;</span>
             </button>
-            <div class="text-center" id="Titulo"><h2>¿Estas seguro?</h2></div>
+            <div class="text-center" id="Titulo"><h2 class="usuariosPregunta">¿Estás seguro?</h2></div>
             
             <form id="formBorrarUsuario" action="" method="post" onsubmit="">
                 <div class="form-group">
