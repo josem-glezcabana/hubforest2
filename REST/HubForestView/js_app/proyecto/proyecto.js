@@ -96,9 +96,13 @@ async function editProyecto(id_project, name_project, start_date_project, end_da
         });
 }
 
-async function deleteProyectoUser(id_user,id_project) {
+// async function deleteProyectoUser(id_user,id_project) {
     
-    return peticionBackGeneral('', 'user_project', 'DELETE', {'id_user': id_user, 'id_project': id_project})
+//     return peticionBackGeneral('', 'user_project', 'DELETE', {'id_user': id_user, 'id_project': id_project})
+
+async function deleteProyecto(id_project) {
+    
+    return peticionBackGeneral('', 'project', 'DELETE', {'id_project': id_project})
         .then(response => {
             location.reload();
             return { status: 'OK', data: response };
@@ -111,7 +115,7 @@ async function deleteProyectoUser(id_user,id_project) {
 
 async function getListUsuarios(usuario) {
     return peticionBackGeneral('', 'user', 'SEARCH')
-        .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectUsuarios("responsable_project", response['resource'], usuario) : null)
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectResponsables("responsable_project", response['resource'], usuario) : null)
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
@@ -150,7 +154,7 @@ function construyeTablaProyecto(filas) {
         let atributosTabla = ["'" + fila.id_project + "'","'" + fila.name_project + "'", "'" + fila.start_date_project + "'", "'" + fila.end_date_project + "'",
                               "'" + fila.responsable_project + "'", "'" + fila.organization_project + "'","'" + fila.description_project + "'",
                               /* "'" + fila.file_project + "'", */ "'" + fila.code_project + "'", "'" + fila.acronym_project + "'"];
-        let botonEdit='<button class="btn btn-info" id="editarProyectoUsuario" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
+        let botonEdit='<button class="BotonEditar btn btn-info" id="editarProyectoUsuario" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_project + 
                 '</td> <td>' + fila.name_project + 
@@ -163,13 +167,14 @@ function construyeTablaProyecto(filas) {
                 '</td> <td>' + fila.code_project + 
                 '</td> <td>' + fila.acronym_project + 
                 '</td> <td class="text-center">' + botonEdit +
-                '</td> <td class="text-center"><button class="btn btn-danger" id="borrarProyecto" onclick="mostrarBorrar('+fila.id_project+')">Eliminar</button>'
+                '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarProyecto" onclick="mostrarBorrar('+fila.id_project+')">Eliminar</button>'
                 
                 '</td>  </tr>';
     });
     
     $("#datosProyectos").append(filasTabla);
-    cerrarModal()
+    cerrarModal();
+    setLang();
 }
 
 function getAtributos(tipo){
@@ -261,9 +266,10 @@ function mostrarModal(tipo, id_project=null, name_project=null, start_date_proje
         $("#code_project").val('');
         $("#acronym_project").val('');
     }
+    setLang();
 }
 
-function rellenarSelectUsuarios(tipo, filas, usuario) {
+function rellenarSelectResponsables(tipo, filas, usuario) {
     let element = document.getElementById(tipo);
     let option = document.createElement('option');
 
