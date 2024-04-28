@@ -66,7 +66,7 @@ CREATE TABLE `project` (
   UNIQUE KEY `acronym_project_UNIQUE` (`acronym_project`),
   KEY `responsable project_idx` (`responsable_project`),
   CONSTRAINT `responsable project` FOREIGN KEY (`responsable_project`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,8 +94,12 @@ CREATE TABLE `site` (
   `coorW_site` varchar(45) NOT NULL,
   `slope_site` varchar(45) NOT NULL,
   `orientation_site` varchar(45) NOT NULL,
-  PRIMARY KEY (`id_site`,`id_project`,`id_ecosystem`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+  PRIMARY KEY (`id_site`),
+  KEY `idProject_idx` (`id_project`),
+  KEY `idEcosystem_idx` (`id_ecosystem`),
+  CONSTRAINT `idEcosystem` FOREIGN KEY (`id_ecosystem`) REFERENCES `ecosystem` (`id_ecosystem`),
+  CONSTRAINT `idProject` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +140,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','admin','admin','hubforest','admin@email.com',NULL,'21232f297a57a5a743894a0e4a801fc3','SI'),(2,'user','user','user','hubforest','user@email.com',NULL,'ee11cbb19052e40b07aac0ca060c23ee','NO');
+INSERT INTO `user` VALUES (1,'admin','admin','admin','hubforest','admin@email.com',NULL,'admin','SI'),(2,'user','user','user','hubforest','user@email.com',NULL,'user','NO');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,4 +182,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-28 19:56:44
+-- Dump completed on 2024-04-28 21:50:19
