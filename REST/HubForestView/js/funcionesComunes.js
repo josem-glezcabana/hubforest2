@@ -72,6 +72,7 @@ function includeHeader() {
                                     '<li><a class="proyectosMenu dropdown-item" href="proyectos.html">Proyectos</a></li>' +
                                     '<li><a class="ecosystemsMenu dropdown-item" href="listaEcosystem.html">Ecosistemas</a></li>' +
                                     '<li><a class="permisosMenu dropdown-item" href="permisos.html">Permisos Proyectos</a></li>' +
+                                    '<li><a class="dropdown-item" href="sites.html">Sites</a></li>' +
                                 '</ul>' +
                             '</div>' +
                         '</li>' +

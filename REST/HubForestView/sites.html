@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script type="text/javascript" src="js/funcionesComunes.js"></script>
+    <script type="text/javascript" src="js_app/site/site.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/crearformularios.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>    
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script type="text/javascript" src="locale/Lang_EN.js"></script>
+    <script type="text/javascript" src="locale/Lang_ES.js"></script>
+    <title>Sites</title>
+    <!-- Incluye los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body onload="(async () => {
+    includeHeader(); includeFooter();
+    getListSites();
+})();">
+
+    <!-- Encabezado y Barra de Navegación -->
+    <div id="header"></div>
+
+    <div id="contenido" >
+
+    <div class="container mt-5">
+        <h2>Listado de Sites</h2>
+        <div class="mt-2 mb-3 float-right">
+            <button class="btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('Añadir Site')">Añadir Site</button>
+            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('Buscar Site')">Buscar Site</button>
+            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListSites()">Reiniciar tabla</button>
+            
+        </div>
+
+        <table class="table table-striped" id="tablaSites">
+            <thead >
+                    <th class="id_site">Id</th>
+                    <th class="id_project">Id_project</th>
+                    <th class="id_ecosystem">Id_ecosystem</th>
+                    <th class="coorN_site">CoorN_site</th>
+                    <th class="coorW_site">CoorW_site</th>
+                    <th class="slope_site">Slope_site</th>
+                    <th class="orientation_site">Orientation_site</th>
+            </thead>
+            
+            <tbody id="datosSites">
+            </tbody>
+       
+            
+        </table>
+            <div id="formularioentidad"></div>
+        
+    </div>
+    
+    <div id="ventanaModal" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarModal()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="Titulo"></div>
+            <div id="mensajeError" class="text-center" style="display: none;">             
+                <h7>
+                    No existen Sites que coincidan con estos parámetros
+                </h7>
+                <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formSite" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id_site" style="display: none;">Id:</label>
+                    <input type="text" class="form-control" id="id_site" name="id_site" style="display: none;">
+                </div>
+    
+                <div class="form-group">
+                    <label for="id_project">Id_project:</label>
+                    <input type="text" class="form-control" id="id_project" name="id_project" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_ecosystem">Id_ecosystem:</label>
+                    <input type="text" class="form-control" id="id_ecosystem" name="id_ecosystem" >
+                </div>
+
+                <div class="form-group">
+                    <label for="coorN_site">CoorN_site:</label>
+                    <input type="text" class="form-control" id="coorN_site" name="coorN_site" >
+                </div>
+
+                <div class="form-group">
+                    <label for="coorW_site">CoorW_site:</label>
+                    <input type="text" class="form-control" id="coorW_site" name="coorW_site" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="slope_site">Slope_site:</label>
+                    <input type="text" class="form-control" id="slope_site" name="slope_site" >
+                </div>
+
+                <div class="form-group">
+                    <label for="orientation_site">Orientation_site:</label>
+                    <input type="text" class="form-control" id="orientation_site" name="orientation_site" >
+                </div>
+                
+                <button type="submit" id="aceptar" class="btn btn-primary"></button>
+                <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+            </form> 
+        </div>
+    </div>
+    
+    <div id="comprobarBorrar" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="text-center" id="Titulo"><h2>¿Estas seguro?</h2></div>
+            
+            <form id="formBorrarSite" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id_site" style="display: none;">Id:</label>
+                    <input type="text" class="form-control" id="idBorrar" name="id_site" style="display: none;">
+                </div>
+                <div class="col text-center">
+                    <button type="submit" id="aceptar" class="btn btn-danger">Aceptar</button>
+                    <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
+                </div>
+                
+            </form>  
+        </div>
+    </div>
+</div>
+</div>
+
+    <!-- Pie de Página -->
+	<div id="footer"><div>
+</body>
+</html>
