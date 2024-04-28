@@ -9,6 +9,9 @@ arrayEN={
 	'usuariosMenu': 'Users',
 	'proyectosMenu': 'Projects',
 	'ecosystemsMenu': 'Ecosystems',
+	//FOOTER
+	'followUs': 'Follow us:',
+	'contactUs': 'Contact',
 	//REGISTRO, LOGIN Y LOGOUT
 	'nameRegistro' : 'Name',
 	'passwordLogin' : 'Password',

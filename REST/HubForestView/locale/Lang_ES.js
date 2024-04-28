@@ -9,6 +9,9 @@ arrayES={
 	'usuariosMenu': 'Usuarios',
 	'proyectosMenu': 'Proyectos',
 	'ecosystemsMenu': 'Ecosistemas',
+	//FOOTER
+	'followUs': 'Síguenos en:',
+	'contactUs': 'Contacto',
 	//REGISTRO, LOGIN Y LOGOUT
 	'nameRegistro' : 'Nombre',
 	'passwordLogin' : 'Contraseña',
