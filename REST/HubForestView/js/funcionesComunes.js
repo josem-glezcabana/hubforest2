@@ -79,7 +79,7 @@ function includeHeader() {
             '</div>' +
             '<div class="col-md-2 ml-auto">' + // Contenedor de banderas y logout
                 '<div class="d-flex justify-content-end">' +
-                    '<img src="img/SPAIN.png" alt="Español" style="width: 30px; cursor: pointer;" onclick="cambiarLang(\'ES\')">' +
+                    '<img src="img/Spain.png" alt="Español" style="width: 30px; cursor: pointer;" onclick="cambiarLang(\'ES\')">' +
                     '<img src="img/United-Kingdom.png" alt="English" style="width: 30px; cursor: pointer; margin-left: 10px;" onclick="cambiarLang(\'EN\')">' +
                     '<button id="logout" style="background-color: transparent; border: none; padding: 0; margin-left: 10px;" onclick="logout()">' +
                         '<img src="img/logout.png" alt="Logout">' +
