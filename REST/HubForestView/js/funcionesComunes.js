@@ -31,6 +31,14 @@ function volverHome(){
             $('#contenido').html(data);
             $( "#menu" ).show();
             $( "#logout" ).show();
+            recuperarYComprobarUsuarioLogeadoIsAdmin().then(resultado => {
+                if(!resultado){
+                    $("#permisosMenu").hide();
+                }
+                else{
+                    $("#permisosMenu").show();
+                }
+            });
             setLang();
         },
         error: function(error) {
@@ -71,7 +79,7 @@ function includeHeader() {
                                     '<li><a class="usuariosMenu dropdown-item" href="listaUsuarios.html">Usuarios</a></li>' +
                                     '<li><a class="proyectosMenu dropdown-item" href="proyectos.html">Proyectos</a></li>' +
                                     '<li><a class="ecosystemsMenu dropdown-item" href="listaEcosystem.html">Ecosistemas</a></li>' +
-                                    '<li><a class="permisosMenu dropdown-item" href="permisos.html">Permisos Proyectos</a></li>' +
+                                    '<li id="permisosMenu"><a class="permisosMenu dropdown-item" href="permisos.html">Permisos Proyectos</a></li>' +
                                     '<li><a class="dropdown-item" href="sites.html">Sites</a></li>' +
                                 '</ul>' +
                             '</div>' +
@@ -91,9 +99,17 @@ function includeHeader() {
         '</div>' +
     '</div>' +
 '</header>';
-
+    recuperarYComprobarUsuarioLogeadoIsAdmin().then(resultado => {
+        if(!resultado){
+            $("#permisosMenu").hide();
+        }
+        else{
+            $("#permisosMenu").show();
+        }
+    });
     
     $("#header").append(header);
+
 }
 
 /** Añade el footer a una vista */
@@ -234,4 +250,19 @@ function cerrarErrorBusq(){
     // Ventana modal
     document.getElementById("mensajeError").style.display = "none";
 }
+
+async function recuperarYComprobarUsuarioLogeadoIsAdmin() {
+    try {
+        const response = await peticionBackConToken('', 'AUTH', 'RECUPERAR_USUARIO_LOGEADO',getCookie("tokenUsuario"),'');
+        if (response && response.ok === true && response.resource[0].is_admin === 'SI') {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        console.error('Error en la solicitud:', error);
+        return false;
+    }
+}
+
 

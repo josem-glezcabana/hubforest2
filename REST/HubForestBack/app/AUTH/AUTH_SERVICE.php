@@ -25,7 +25,8 @@ class AUTH_SERVICE extends appServiceBase{
 						'DESCONECTAR'=>array('name_user'),
 						'CAMBIAR_CONTRASENA'=>array('name_user','passwd'),
 						'VALIDAR_TOKEN'=>array(),
-						'REGISTRAR'=>array('email_user','name_user','surname_user','passwd','organization_user','position_user','is_admin')
+						'REGISTRAR'=>array('email_user','name_user','surname_user','passwd','organization_user','position_user','is_admin'),
+						'RECUPERAR_USUARIO_LOGEADO'=>array()
 						);
 
 		$this->modelo = $this->crearModelOne('user');
@@ -145,6 +146,27 @@ class AUTH_SERVICE extends appServiceBase{
         return array('ok' => false, 'code' => 'BAD_TOKEN');
     }
 }
+
+function RECUPERAR_USUARIO_LOGEADO(){
+	try {
+			include_once "./Base/JWT/token.php";
+			$current_token = $this->cargarTokenCabecera();
+			$resultado = MiToken::devuelveToken($current_token);
+			$password = $resultado->data->id;
+			$login = $resultado->data->name;
+			include_once './app/user/user_SERVICE.php';
+			$_POST['controlador'] = 'user';
+			$_POST['action'] = 'SEARCH_BY';
+			$_POST['name_user'] = $login;
+			$usuario = new user_SERVICE;
+			$res = $usuario->ejecutar();
+			return $res;
+	} catch (excepcionToken $e) {
+			// En caso de excepción, devolver respuesta con okk = false y code = BAD_TOKEN
+			return array('ok' => false, 'code' => 'BAD_TOKEN');
+	}
+}
+
 
 }
 
