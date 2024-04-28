@@ -58,7 +58,7 @@ CREATE TABLE `project` (
   `responsable_project` int DEFAULT NULL,
   `organization_project` varchar(100) NOT NULL,
   `description_project` varchar(500) DEFAULT NULL,
-  `file_project` varchar(100) NOT NULL,
+  `file_project` varchar(100) DEFAULT NULL,
   `code_project` varchar(50) NOT NULL,
   `acronym_project` varchar(15) NOT NULL,
   PRIMARY KEY (`id_project`),
@@ -77,6 +77,35 @@ LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
 INSERT INTO `project` VALUES (1,'proyecto1','2024-04-16','2025-04-16',1,'esei','Proyecto de prueba','files','123ASD','P1');
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `site`
+--
+
+DROP TABLE IF EXISTS `site`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `site` (
+  `id_site` int NOT NULL AUTO_INCREMENT,
+  `id_project` int NOT NULL,
+  `id_ecosystem` int NOT NULL,
+  `coorN_site` varchar(45) NOT NULL,
+  `coorW_site` varchar(45) NOT NULL,
+  `slope_site` varchar(45) NOT NULL,
+  `orientation_site` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_site`,`id_project`,`id_ecosystem`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `site`
+--
+
+LOCK TABLES `site` WRITE;
+/*!40000 ALTER TABLE `site` DISABLE KEYS */;
+INSERT INTO `site` VALUES (1,1,1,'-4.1222','-6.2547','10','N');
+/*!40000 ALTER TABLE `site` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -149,4 +178,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-23  1:55:12
+-- Dump completed on 2024-04-28 19:56:44
