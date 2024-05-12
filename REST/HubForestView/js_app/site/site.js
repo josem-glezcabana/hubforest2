@@ -119,6 +119,7 @@ function construyeTablaSite(filas) {
     $("#datosSites").html("");
     filas.forEach(fila => {
         var atributosTabla = ["'" + fila.id_site + "'","'" + fila.id_project + "'", "'" + fila.id_ecosystem + "'", "'" + fila.coorN_site + "'", "'" + fila.coorW_site + "'", "'" + fila.slope_site + "'","'" + fila.orientation_site + "'"];
+        
         var botonEdit='<button class="btn btn-info editar" id="editarSite" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_site + 
@@ -166,6 +167,7 @@ function mostrarModal(tipo, id_site=null, id_project=null, id_ecosystem=null, co
     document.getElementById("ventanaModal").style.display = "block";
     document.getElementById("Titulo").innerHTML = '<h2>'+tipo+'</h2>';
     document.getElementById("aceptar").classList.add(tipo);
+    
     if(tipo.includes("Editar")){
         $("#formSite").attr('action' , 'javascript:getAtributos("Editar");');
 
