@@ -181,7 +181,7 @@ CREATE TABLE `user` (
   `position_user` varchar(60) NOT NULL,
   `organization_user` varchar(100) DEFAULT NULL,
   `email_user` varchar(60) DEFAULT NULL,
-  `file_curr_user` varchar(100) DEFAULT NULL,
+  `file_curr_user` varchar(100),
   `passwd` varchar(48) NOT NULL,
   `is_admin` varchar(10) NOT NULL,
   PRIMARY KEY (`id_user`),
@@ -195,7 +195,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','admin','admin','hubforest','admin@email.com',NULL,'21232f297a57a5a743894a0e4a801fc3','SI'),(2,'user','user','user','hubforest','user@email.com',NULL,'ee11cbb19052e40b07aac0ca060c23ee','NO');
+INSERT INTO `user` VALUES (1,'admin','admin','admin','hubforest','admin@email.com','','21232f297a57a5a743894a0e4a801fc3','SI'),(2,'user','user','user','hubforest','user@email.com','','ee11cbb19052e40b07aac0ca060c23ee','NO');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
