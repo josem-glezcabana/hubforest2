@@ -168,7 +168,7 @@ function mostrarModal(tipo, id_site=null, id_project=null, id_ecosystem=null, co
     document.getElementById("Titulo").innerHTML = '<h2>'+tipo+'</h2>';
     document.getElementById("aceptar").classList.add(tipo);
     
-    if(tipo.includes("Editar")){
+    if(tipo.includes("editar")){
         $("#formSite").attr('action' , 'javascript:getAtributos("Editar");');
 
         $("#id_site").val(id_site);

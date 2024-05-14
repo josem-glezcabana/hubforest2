@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `hubforest` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `hubforest`;
 USE `hubforest`;
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
@@ -16,6 +16,106 @@ USE `hubforest`;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `analysis_preparation`
+--
+
+DROP TABLE IF EXISTS `analysis_preparation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `analysis_preparation` (
+  `Id_analysis_preparation` int NOT NULL,
+  `name_analysis_preparation` varchar(100) NOT NULL,
+  PRIMARY KEY (`Id_analysis_preparation`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `analysis_preparation`
+--
+
+LOCK TABLES `analysis_preparation` WRITE;
+/*!40000 ALTER TABLE `analysis_preparation` DISABLE KEYS */;
+/*!40000 ALTER TABLE `analysis_preparation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `analysis_technique`
+--
+
+DROP TABLE IF EXISTS `analysis_technique`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `analysis_technique` (
+  `id_analysis_technique` int NOT NULL,
+  `name_analysis_technique` varchar(100) NOT NULL,
+  `description_analysis_technique` varchar(5000) NOT NULL,
+  `bib_analysis_technique` varchar(200) NOT NULL,
+  `file_analysis_tecnique` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_analysis_technique`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `analysis_technique`
+--
+
+LOCK TABLES `analysis_technique` WRITE;
+/*!40000 ALTER TABLE `analysis_technique` DISABLE KEYS */;
+/*!40000 ALTER TABLE `analysis_technique` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `characteristic`
+--
+
+DROP TABLE IF EXISTS `characteristic`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `characteristic` (
+  `id_characteristic` int NOT NULL,
+  `name_characteristic` varchar(100) NOT NULL,
+  `description_characteristic` varchar(5000) NOT NULL,
+  `data_type_characteristic` enum('number','set') NOT NULL,
+  `bibref_characteristic` varchar(200) NOT NULL,
+  `file_characteristic` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_characteristic`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `characteristic`
+--
+
+LOCK TABLES `characteristic` WRITE;
+/*!40000 ALTER TABLE `characteristic` DISABLE KEYS */;
+/*!40000 ALTER TABLE `characteristic` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `characteristic_sample`
+--
+
+DROP TABLE IF EXISTS `characteristic_sample`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `characteristic_sample` (
+  `id_characteristic` int NOT NULL,
+  `id_unit` int NOT NULL,
+  PRIMARY KEY (`id_characteristic`,`id_unit`),
+  CONSTRAINT `charact` FOREIGN KEY (`id_characteristic`) REFERENCES `characteristic` (`id_characteristic`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `characteristic_sample`
+--
+
+LOCK TABLES `characteristic_sample` WRITE;
+/*!40000 ALTER TABLE `characteristic_sample` DISABLE KEYS */;
+/*!40000 ALTER TABLE `characteristic_sample` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `ecosystem`
@@ -44,6 +144,32 @@ INSERT INTO `ecosystem` VALUES (1,'Ecosistema1','Ecosistema de ejemplo','bib_ref
 UNLOCK TABLES;
 
 --
+-- Table structure for table `lab_process`
+--
+
+DROP TABLE IF EXISTS `lab_process`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `lab_process` (
+  `id_lab_process` int NOT NULL,
+  `name_lab_process` varchar(100) NOT NULL,
+  `description_lab_process` varchar(5000) NOT NULL,
+  `bib_lab_process` varchar(100) NOT NULL,
+  `file_lab_process` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_lab_process`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lab_process`
+--
+
+LOCK TABLES `lab_process` WRITE;
+/*!40000 ALTER TABLE `lab_process` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lab_process` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `project`
 --
 
@@ -58,15 +184,18 @@ CREATE TABLE `project` (
   `responsable_project` int DEFAULT NULL,
   `organization_project` varchar(100) NOT NULL,
   `description_project` varchar(500) DEFAULT NULL,
-  `file_project` varchar(100) DEFAULT NULL,
+  `file_project` varchar(100) NOT NULL,
   `code_project` varchar(50) NOT NULL,
   `acronym_project` varchar(15) NOT NULL,
+  `id_sampling_methodology` int NOT NULL,
   PRIMARY KEY (`id_project`),
   UNIQUE KEY `code_project_UNIQUE` (`code_project`),
   UNIQUE KEY `acronym_project_UNIQUE` (`acronym_project`),
   KEY `responsable project_idx` (`responsable_project`),
-  CONSTRAINT `responsable project` FOREIGN KEY (`responsable_project`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+  KEY `id_sampling_methodology` (`id_sampling_methodology`),
+  CONSTRAINT `responsable project` FOREIGN KEY (`responsable_project`) REFERENCES `user` (`id_user`),
+  CONSTRAINT `sampling_method` FOREIGN KEY (`id_sampling_methodology`) REFERENCES `sampling_methodology` (`id_sampling_methodology`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +204,7 @@ CREATE TABLE `project` (
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
-INSERT INTO `project` VALUES (1,'proyecto1','2024-04-16','2025-04-16',1,'esei','Proyecto de prueba','files','123ASD','P1');
+INSERT INTO `project` VALUES (1,'proyecto1','2024-04-16','2025-04-16',1,'esei','Proyecto de prueba','files','123ASD','P1',0);
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,10 +218,12 @@ DROP TABLE IF EXISTS `project_ecosystem`;
 CREATE TABLE `project_ecosystem` (
   `id_project` int NOT NULL,
   `id_ecosystem` int NOT NULL,
-  PRIMARY KEY (`id_project`,`id_ecosystem`),
-  KEY `idEcosProj_idx` (`id_ecosystem`),
-  CONSTRAINT `idEcosProj` FOREIGN KEY (`id_ecosystem`) REFERENCES `ecosystem` (`id_ecosystem`),
-  CONSTRAINT `idProjectEcos` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`)
+  `number_replicas_by_sampling` int NOT NULL,
+  `number_samplings` int DEFAULT NULL,
+  KEY `project_idx` (`id_project`),
+  KEY `ecosystem_idx` (`id_ecosystem`),
+  CONSTRAINT `ecosystem` FOREIGN KEY (`id_ecosystem`) REFERENCES `ecosystem` (`id_ecosystem`),
+  CONSTRAINT `project` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -106,6 +237,68 @@ LOCK TABLES `project_ecosystem` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `replica`
+--
+
+DROP TABLE IF EXISTS `replica`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `replica` (
+  `id_project` int NOT NULL,
+  `id_ecosystem` int NOT NULL,
+  `id_site` int NOT NULL,
+  `id_sampling` int NOT NULL,
+  `date_sampling` date NOT NULL,
+  `id_replica` varchar(30) NOT NULL COMMENT 'country code (ES) number code site (XXX) sequential sampling occurrence (XX) code replica (A,B,C)\r\n ',
+  PRIMARY KEY (`id_sampling`,`id_replica`),
+  KEY `id_replica` (`id_replica`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `replica`
+--
+
+LOCK TABLES `replica` WRITE;
+/*!40000 ALTER TABLE `replica` DISABLE KEYS */;
+/*!40000 ALTER TABLE `replica` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sampling`
+--
+
+DROP TABLE IF EXISTS `sampling`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sampling` (
+  `id_project` int NOT NULL,
+  `id_ecosystem` int NOT NULL,
+  `id_sampling` int NOT NULL,
+  `id_site` int NOT NULL,
+  `date_sampling` date NOT NULL,
+  `time_sampling` time NOT NULL,
+  `temp_air_sampling` int NOT NULL,
+  `collectors_sampling` varchar(500) NOT NULL COMMENT 'Name of collectors separated by ; 	',
+  PRIMARY KEY (`id_project`),
+  KEY `site_idx2` (`id_site`),
+  KEY `ecosS_idx` (`id_ecosystem`),
+  CONSTRAINT `ecosS` FOREIGN KEY (`id_ecosystem`) REFERENCES `project_ecosystem` (`id_ecosystem`),
+  CONSTRAINT `projectS` FOREIGN KEY (`id_project`) REFERENCES `project_ecosystem` (`id_project`),
+  CONSTRAINT `site` FOREIGN KEY (`id_site`) REFERENCES `site` (`id_site`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sampling`
+--
+
+LOCK TABLES `sampling` WRITE;
+/*!40000 ALTER TABLE `sampling` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sampling` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `sampling_methodology`
 --
 
@@ -113,15 +306,12 @@ DROP TABLE IF EXISTS `sampling_methodology`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sampling_methodology` (
-  `id_sampling_methodology` int NOT NULL AUTO_INCREMENT,
-  `id_project` int NOT NULL,
-  `name_methodology` varchar(60) NOT NULL,
+  `id_sampling_methodology` int NOT NULL,
+  `name_methodology` varchar(100) NOT NULL,
   `description_methodology` varchar(5000) NOT NULL,
-  `bib_ref_methodology` varchar(200) NOT NULL,
+  `bibref_methodology` varchar(200) NOT NULL,
   `file_methodology` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_sampling_methodology`,`id_project`),
-  KEY `idProjectSM_idx` (`id_project`),
-  CONSTRAINT `idProjectSM` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`)
+  PRIMARY KEY (`id_sampling_methodology`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -131,6 +321,7 @@ CREATE TABLE `sampling_methodology` (
 
 LOCK TABLES `sampling_methodology` WRITE;
 /*!40000 ALTER TABLE `sampling_methodology` DISABLE KEYS */;
+INSERT INTO `sampling_methodology` VALUES (0,'methodology1','methodology1','bibref','file');
 /*!40000 ALTER TABLE `sampling_methodology` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,19 +333,20 @@ DROP TABLE IF EXISTS `site`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `site` (
-  `id_site` int NOT NULL AUTO_INCREMENT,
-  `id_project` int NOT NULL,
-  `id_ecosystem` int NOT NULL,
-  `coorN_site` varchar(45) NOT NULL,
-  `coorW_site` varchar(45) NOT NULL,
-  `slope_site` varchar(45) NOT NULL,
-  `orientation_site` varchar(45) NOT NULL,
-  PRIMARY KEY (`id_site`),
-  KEY `idProject_idx` (`id_project`),
-  KEY `idEcosystem_idx` (`id_ecosystem`),
-  CONSTRAINT `idEcosystem` FOREIGN KEY (`id_ecosystem`) REFERENCES `ecosystem` (`id_ecosystem`),
-  CONSTRAINT `idProject` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+  `id_site` int NOT NULL,
+  `country_site` varchar(60) NOT NULL,
+  `state_province_site` varchar(60) NOT NULL,
+  `city_town_site` varchar(60) NOT NULL,
+  `geographical_direction1` enum('N','S','E','W') NOT NULL,
+  `coordinate1_value_site` decimal(9,7) NOT NULL COMMENT 'first geographical position two int (grade) and seven decimals (minutes)\r\n ',
+  `geographical_direction2` enum('N','S','E','W') NOT NULL,
+  `coordinate2_value_site` decimal(9,7) NOT NULL COMMENT 'Second geographical position two int (grade) and seven decimals (minutes) 	',
+  `owner_site` varchar(100) NOT NULL,
+  `slope_form_site` varchar(2) NOT NULL COMMENT 'combines S,V,C,T,X',
+  `slope_gradient_site` varchar(2) NOT NULL COMMENT 'values between 01-10',
+  `orientation_site` varchar(4) NOT NULL COMMENT 'combination (2 or more elements) of for values N,E,S,W',
+  PRIMARY KEY (`id_site`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,8 +355,224 @@ CREATE TABLE `site` (
 
 LOCK TABLES `site` WRITE;
 /*!40000 ALTER TABLE `site` DISABLE KEYS */;
-INSERT INTO `site` VALUES (1,1,1,'-4.1222','-6.2547','10','N');
 /*!40000 ALTER TABLE `site` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `storage_method`
+--
+
+DROP TABLE IF EXISTS `storage_method`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `storage_method` (
+  `id_storage_method` int NOT NULL,
+  `name_storage_method` varchar(100) NOT NULL,
+  `description_storage_method` varchar(5000) NOT NULL,
+  `storage_container` enum('plastic bag','PVC core','plastic container','document') NOT NULL,
+  `size_storage_container` int DEFAULT NULL,
+  `unit_storage_container` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id_storage_method`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `storage_method`
+--
+
+LOCK TABLES `storage_method` WRITE;
+/*!40000 ALTER TABLE `storage_method` DISABLE KEYS */;
+/*!40000 ALTER TABLE `storage_method` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `technique_sample`
+--
+
+DROP TABLE IF EXISTS `technique_sample`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `technique_sample` (
+  `id_technique_sample` int NOT NULL,
+  `name_technique_sample` varchar(100) NOT NULL,
+  `description_technique_sample` varchar(5000) NOT NULL,
+  `bib_technique_sample` varchar(200) NOT NULL,
+  `file_technique_sample` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_technique_sample`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `technique_sample`
+--
+
+LOCK TABLES `technique_sample` WRITE;
+/*!40000 ALTER TABLE `technique_sample` DISABLE KEYS */;
+/*!40000 ALTER TABLE `technique_sample` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `temporal_sampling_site_params`
+--
+
+DROP TABLE IF EXISTS `temporal_sampling_site_params`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `temporal_sampling_site_params` (
+  `id_project` int NOT NULL,
+  `id_ecosystem` int NOT NULL,
+  `id_ecosystem_param` int NOT NULL,
+  `category_param` enum('ecosystem','humus','soil_auger','soil_pit') NOT NULL,
+  `name_ecosystem_param` varchar(50) NOT NULL,
+  `values_ecosystem_param` varchar(200) DEFAULT NULL COMMENT 'string de valores separados por ;',
+  PRIMARY KEY (`id_project`,`id_ecosystem`,`id_ecosystem_param`),
+  KEY `ecosystSampSite_idx` (`id_ecosystem`),
+  CONSTRAINT `ecosystSampSite` FOREIGN KEY (`id_ecosystem`) REFERENCES `project_ecosystem` (`id_ecosystem`),
+  CONSTRAINT `projectSampSite` FOREIGN KEY (`id_project`) REFERENCES `project_ecosystem` (`id_project`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `temporal_sampling_site_params`
+--
+
+LOCK TABLES `temporal_sampling_site_params` WRITE;
+/*!40000 ALTER TABLE `temporal_sampling_site_params` DISABLE KEYS */;
+/*!40000 ALTER TABLE `temporal_sampling_site_params` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `temporal_sampling_site_values`
+--
+
+DROP TABLE IF EXISTS `temporal_sampling_site_values`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `temporal_sampling_site_values` (
+  `id_project` int NOT NULL,
+  `id_ecosystem` int NOT NULL,
+  `id_site` int NOT NULL,
+  `date_sampling` date NOT NULL,
+  `id_ecosystem_param` int NOT NULL,
+  `id_replica` int NOT NULL,
+  `value_ecosystem_param` varchar(60) NOT NULL,
+  PRIMARY KEY (`id_ecosystem`,`id_site`,`date_sampling`,`id_ecosystem_param`,`id_replica`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `temporal_sampling_site_values`
+--
+
+LOCK TABLES `temporal_sampling_site_values` WRITE;
+/*!40000 ALTER TABLE `temporal_sampling_site_values` DISABLE KEYS */;
+/*!40000 ALTER TABLE `temporal_sampling_site_values` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `to_sample`
+--
+
+DROP TABLE IF EXISTS `to_sample`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `to_sample` (
+  `id_sampling` int NOT NULL,
+  `id_project` int NOT NULL,
+  `id_ecosystem` int NOT NULL,
+  `id_site` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `to_sample`
+--
+
+LOCK TABLES `to_sample` WRITE;
+/*!40000 ALTER TABLE `to_sample` DISABLE KEYS */;
+/*!40000 ALTER TABLE `to_sample` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `token_in_analysis`
+--
+
+DROP TABLE IF EXISTS `token_in_analysis`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `token_in_analysis` (
+  `id_token_in_lab` int NOT NULL,
+  `id_token_in_analysis` int NOT NULL,
+  `id_analysis_technique` int NOT NULL,
+  `id_analysis_preparation` int NOT NULL,
+  PRIMARY KEY (`id_token_in_lab`,`id_token_in_analysis`),
+  UNIQUE KEY `id_token_in_analysis` (`id_token_in_analysis`),
+  KEY `analisis_prep_idx` (`id_analysis_preparation`),
+  KEY `analisis_tec_idx` (`id_analysis_technique`),
+  CONSTRAINT `analisis_prep` FOREIGN KEY (`id_analysis_preparation`) REFERENCES `analysis_preparation` (`Id_analysis_preparation`),
+  CONSTRAINT `analisis_tec` FOREIGN KEY (`id_analysis_technique`) REFERENCES `analysis_technique` (`id_analysis_technique`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `token_in_analysis`
+--
+
+LOCK TABLES `token_in_analysis` WRITE;
+/*!40000 ALTER TABLE `token_in_analysis` DISABLE KEYS */;
+/*!40000 ALTER TABLE `token_in_analysis` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `token_in_lab`
+--
+
+DROP TABLE IF EXISTS `token_in_lab`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `token_in_lab` (
+  `id_token_in_sampling` int NOT NULL,
+  `id_token_in_lab` int NOT NULL,
+  `id_lab_process` int NOT NULL,
+  PRIMARY KEY (`id_token_in_sampling`,`id_token_in_lab`),
+  UNIQUE KEY `id_token_in_lab` (`id_token_in_lab`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='items processing in lab from token collected in sampling ';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `token_in_lab`
+--
+
+LOCK TABLES `token_in_lab` WRITE;
+/*!40000 ALTER TABLE `token_in_lab` DISABLE KEYS */;
+/*!40000 ALTER TABLE `token_in_lab` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `token_in_sampling`
+--
+
+DROP TABLE IF EXISTS `token_in_sampling`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `token_in_sampling` (
+  `id_project` int NOT NULL,
+  `id_ecosystem` int NOT NULL,
+  `id_token_in_sampling` int NOT NULL,
+  `id_storage_method` int NOT NULL,
+  `id_technique_sample` int NOT NULL,
+  PRIMARY KEY (`id_project`,`id_ecosystem`,`id_token_in_sampling`),
+  UNIQUE KEY `id_token_in_sampling` (`id_token_in_sampling`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `token_in_sampling`
+--
+
+LOCK TABLES `token_in_sampling` WRITE;
+/*!40000 ALTER TABLE `token_in_sampling` DISABLE KEYS */;
+/*!40000 ALTER TABLE `token_in_sampling` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -195,7 +603,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','admin','admin','hubforest','admin@email.com',NULL,'21232f297a57a5a743894a0e4a801fc3','SI'),(2,'user','user','user','hubforest','user@email.com',NULL,'ee11cbb19052e40b07aac0ca060c23ee','NO');
+INSERT INTO `user` VALUES (1,'admin','admin','21232f297a57a5a743894a0e4a801fc3','hubforest','admin@email.com',NULL,'admin','SI'),(2,'user','user','ee11cbb19052e40b07aac0ca060c23ee','hubforest','user@email.com',NULL,'user','NO');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -237,4 +645,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-29  0:11:47
+-- Dump completed on 2024-05-14 21:54:59
