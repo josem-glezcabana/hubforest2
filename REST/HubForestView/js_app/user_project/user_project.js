@@ -22,26 +22,53 @@ async function getListByParamUsuarioProyecto(id_user,id_project,rol) {
       });
 }
 
-async function getListByParamUsuarioProyecto_search(id_user,id_project,rol) {
+async function getListByParamUsuarioProyecto(id_user, id_project, rol) {
   const user_project = {
     id_user: id_user,
     id_project: id_project,
-    rol: rol
+    rol: rol,
   };
-  return peticionBackGeneral('', 'user_project', 'SEARCH', user_project)
-      .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaUsuarioProyecto(response['resource']) :  mostrarErrorBusq())
-      .catch(error => {
-          console.error('Error en la solicitud:', error);
-          return null;
-      });
+
+  try {
+    const response = await peticionBackGeneral('', 'user_project', 'SEARCH_BY', user_project);
+
+    if (response['code'] === "RECORDSET_DATOS") {
+      const datos = response['resource'];
+
+      const updatedDatos = await Promise.all(
+        datos.map(async (element) => {
+          const user = await getUsuarioPorId(element.id_user);
+          const project = await getProyectoPorId(element.id_project);
+
+          // Crear un nuevo objeto con las propiedades actualizadas
+          return {
+            ...element,
+            name_user: user[0].name_user,
+            name_project: project[0].name_project
+          };
+        })
+      );
+
+      return construyeTablaUsuarioProyecto(updatedDatos);
+    } else {
+      return mostrarErrorBusq();
+    }
+  } catch (error) {
+    console.error("Error en la solicitud:", error);
+    return null;
+  }
 }
 
+
 async function addUsuarioProyecto(id_user,id_project,rol) {
+  const currentDate = new Date();
   const user_project = {
     id_user: id_user,
     id_project: id_project,
-    rol: rol
+    rol: rol,
+    date_user_project: currentDate.toISOString().slice(0, 10)
   };
+
 
   return peticionBackGeneral('', 'user_project', 'ADD', user_project)
       .then(response => {
@@ -55,27 +82,9 @@ async function addUsuarioProyecto(id_user,id_project,rol) {
       });
 }
 
-async function editUsuarioProyecto(id_user,id_project,rol) {
-  const user_project = {
-    id_user: id_user,
-    id_project: id_project,
-    rol: rol
-  };
-
-  return peticionBackGeneral('', 'user_project', 'EDIT', user_project)
-      .then(response => {
-          location.reload();
-          return { status: 'OK', data: response };
-      })
-      .catch(error => {
-          console.error('Error en la solicitud:', error);
-          return null;
-      });
-}
-
-async function deleteUsuarioProyecto(id_user,id_project) {
+async function deleteUsuarioProyecto(id_user, id_project, rol) {
   
-  return peticionBackGeneral('', 'user_project', 'DELETE', {'id_user': id_user, 'id_project': id_project})
+  return peticionBackGeneral('', 'user_project', 'DELETE', {'id_user': id_user, 'id_project': id_project, 'rol': rol})
       .then(response => {
           location.reload();
           return { status: 'OK', data: response };
@@ -86,7 +95,7 @@ async function deleteUsuarioProyecto(id_user,id_project) {
       });
 }
 
-async function getListUsuarios(usuario) {
+async function getListUsuariosPermisos(usuario) {
   return peticionBackGeneral('', 'user', 'SEARCH')
       .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectUsuarios("id_user", response['resource'], usuario) : null)
       .catch(error => {
@@ -95,7 +104,7 @@ async function getListUsuarios(usuario) {
       });
 }
 
-async function getListProyectos(proyecto) {
+async function getListProyectosPermisos(proyecto) {
   return peticionBackGeneral('', 'project', 'SEARCH')
       .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectProyectos("id_project", response['resource'], proyecto) : null)
       .catch(error => {
@@ -116,15 +125,11 @@ function construyeTablaUsuarioProyecto(filas) {
   $("#datosUsuarioProyectos").html("");
   filas.forEach(fila => {
 
-      let atributosTabla = ["'" + fila.id_project + "'","'" + fila.id_user + "'", "'" + fila.rol + "'","'" + fila.name_project + "'","'" + fila.name_user + "'"];
-      let botonEdit='<button class="BotonEditar btn btn-info " id="editarUsuarioProyecto" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
-
       filasTabla += '<tr> <td>' + fila.name_project + 
               '</td> <td>' + fila.name_user + 
               '</td> <td>' + fila.rol+ 
-              '</td> <td class="text-center">' + botonEdit +
-              '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarProyecto" onclick="mostrarBorrar('+fila.id_user+','+fila.id_project+')">Eliminar</button>'
-              
+              '</td> <td>' + fila.date_user_project+ 
+              '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarProyecto" onclick="mostrarBorrarPermiso(' + fila.id_user + ',' + fila.id_project + ',\'' + fila.rol + '\')">Eliminar</button>'
               '</td>  </tr>';
   });
   
@@ -133,24 +138,21 @@ function construyeTablaUsuarioProyecto(filas) {
   setLang();
 }
 
-function getAtributos(tipo){
+async function getAtributosPermisos(tipo){
   var id_user = document.getElementById("id_user").value
   var id_project = document.getElementById("id_project").value
   var rol = document.getElementById("rol").value
    switch(tipo){
-      case "Editar":
-          editUsuarioProyecto(id_user, id_project, rol)
-          break;
       case "Añadir":
           addUsuarioProyecto(id_user, id_project, rol)
           break;
       case "Buscar":
-          getListByParamUsuarioProyecto_search(id_user, id_project, rol)
+          getListByParamUsuarioProyecto(id_user, id_project, rol)
           break;
    }
 }
 
-function mostrarModal(tipo, id_user=null, id_project=null, rol=null, name_project =null, name_user=null){
+function mostrarModalPermisos(tipo, id_user=null, id_project=null, rol=null, name_project =null, name_user=null){
   // Ventana modal
   document.getElementById("ventanaModal").style.display = "block";
   document.getElementById("Titulo").innerHTML = '<h2 class="'+tipo+'">'+tipo+'</h2>';
@@ -158,37 +160,22 @@ function mostrarModal(tipo, id_user=null, id_project=null, rol=null, name_projec
   document.getElementById("aceptar").classList.add(tipo);
 
 
-  getListUsuarios(id_user)
-  getListProyectos(id_project)
-
-  if(tipo.includes("Editar")){
-      $("#formUsuarioProyecto").attr('action' , 'javascript:getAtributos("Editar");');
-
-      $("#id_user").val(id_user);
-      $("#id_project").val(id_project);
-      $("#rol").val(rol);
-  }
-  else{
+  getListUsuariosPermisos(id_user);
+  getListProyectosPermisos(id_project);
       if(tipo.includes("Buscar")){
-          document.getElementById("rol").required = true;
-
-          document.getElementById("id_project").setAttribute("hidden", true);
-          document.querySelector('label[for="id_project"]').setAttribute("hidden", true);
-          document.getElementById("id_user").setAttribute("hidden", true);
-          document.querySelector('label[for="id_user"]').setAttribute("hidden", true);
+          $("#formUsuarioProyecto").attr('action' , 'javascript:getAtributosPermisos("Buscar");');
       }
       else{
         document.getElementById("id_user").required = true;
         document.getElementById("id_project").required = true;
         document.getElementById("rol").required = true;
 
-          $("#formUsuarioProyecto").attr('action' , 'javascript:getAtributos("Añadir");');
+          $("#formUsuarioProyecto").attr('action' , 'javascript:getAtributosPermisos("Añadir");');
       }
 
-      $("#id_user").val('');
-      $("#id_project").val('');
-      $("#rol").val('');
-  }
+  $("#id_user").val('');
+  $("#id_project").val('');
+  $("#rol").val('');
   setLang();
 }
 
@@ -234,19 +221,21 @@ function cerrarModal(){
   modal.style.display = "none"
 }
 
-function mostrarBorrar(id){
+function mostrarBorrarPermiso(id_user, id_proyecto, rol){
   // Ventana modal
+  const attributes = [id_user, id_proyecto, rol]
   document.getElementById("comprobarBorrar").style.display = "block";
-  $("#idBorrar").val(id)
-  $("#formBorrarUsuarioProyecto").attr('action' , 'javascript:borrar();');
+  $("#idBorrar").val(attributes)
+  $("#formBorrarUsuarioProyecto").attr('action' , 'javascript:borrarPermiso();');
 }
 
-function borrar(){
-  var ids = document.getElementById("idBorrar").value
+function borrarPermiso(){
+  var ids = $("#idBorrar").val();
   var idArray = ids.split(","); 
     // Obtener los IDs por separado
     var id_user = idArray[0];
     var id_project = idArray[1];
+    var rol = idArray[2];
     
-  deleteUsuarioProyecto(id_user, id_project)
+  deleteUsuarioProyecto(id_user, id_project, rol)
 }

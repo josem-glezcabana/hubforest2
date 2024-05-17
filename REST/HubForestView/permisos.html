@@ -8,6 +8,7 @@
     <link rel="icon" href="img/logo.png" type="image/png">
     <script type="text/javascript" src="js/funcionesComunes.js"></script>
     <script type="text/javascript" src="js_app/user_project/user_project.js"></script>
+    <script type="text/javascript" src="js_app/proyecto/proyecto.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/crearformularios.js"></script>
     <script type="text/javascript" src="js_app/usuario/usuario.js"></script>
@@ -33,8 +34,8 @@
     <div class="container mt-5">
         <h2 class="listadoPermisos">Listado de permisos</h2>
         <div class="mt-2 mb-3 float-right">
-            <button class="añadirPermiso btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('AñadirPermisos')">Añadir permiso</button>
-            <button class="buscarPermiso btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('BuscarPermisos')">Buscar permiso</button>
+            <button class="añadirPermiso btn btn-primary float-right" id="abrirModal" onclick="mostrarModalPermisos('AñadirPermisos')">Añadir permiso</button>
+            <button class="buscarPermiso btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalPermisos('BuscarPermisos')">Buscar permiso</button>
             <button class="reiniciarPermisos btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListUsuarioProjecto()">Reiniciar tabla</button>
             
         </div>
@@ -44,6 +45,7 @@
                     <th class="name_project">Nombre Proyecto</th>
                     <th class="name_user">Nombre Usuario</th>
                     <th class="rol">Rol</th>
+                    <th class="fechaProyecto">Fecha de entrada en el Proyecto</th>
             </thead>
             
             <tbody id="datosUsuarioProyectos">
@@ -72,12 +74,12 @@
             <form id="formUsuarioProyecto" action="" method="post" onsubmit="">
 
                 <div class="form-group">
-                    <label for="id_project">Id proyecto:</label>
+                    <label for="name_project">Nombre proyecto:</label>
                     <select class="form-control" id="id_project" name="id_project"></select>
                 </div>
 
                 <div class="form-group">
-                    <label for="id_user">Id usuario:</label>
+                    <label for="name_user">Nombre usuario:</label>
                     <select class="form-control" id="id_user" name="id_user"></select>
                 </div>
                 
@@ -103,10 +105,11 @@
             </button>
             <div class="text-center" id="Titulo"><h2 class="permisosPregunta">¿Estas seguro?</h2></div>
             
-            <form id="formBorrarProyecto" action="" method="post" onsubmit="">
+            <form id="formBorrarUsuarioProyecto" action="" method="post" onsubmit="">
+                <br>
                 <div class="form-group">
-                    <label for="id_project" style="display: none;">Id proyecto:</label>
-                    <input type="text" class="form-control" id="idBorrar" name="id_project" style="display: none;">
+                    <h5 class="mensajeBorrarPermisos text-center">Se van eliminar los permisos del usuario indicado</h5>
+                    <input type="text" class="form-control" id="idBorrar" style="display: none;">
                 </div>
                 <div class="col text-center">
                     <button type="submit" id="aceptar" class="permisosAceptar btn btn-danger">Aceptar</button>

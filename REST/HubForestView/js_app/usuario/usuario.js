@@ -27,6 +27,17 @@ async function getListByParamUsuarios(name_user, surname_user, organization_user
             return null;
         });
 }
+async function getUsuarioPorId(id_user) {
+    const user = {
+        id_user: id_user
+    };
+    return peticionBackGeneral('', 'user', 'SEARCH_BY', user)
+        .then(response => response['resource'])
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return null;
+        });
+}
 
 async function getListByParamUsuarios_search(name_user, surname_user, organization_user, email_user, position_user) {
     const user = {

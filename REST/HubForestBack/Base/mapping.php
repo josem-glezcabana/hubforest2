@@ -2,15 +2,18 @@
 
 include_once './Base/MappingBase.php';
 
-class mapping extends MappingBase{
+class mapping extends MappingBase
+{
 
 	var $tabla;
 
-	function __construct($tabla){
+	function __construct($tabla)
+	{
 		$this->tabla = $tabla;
 	}
 
-	function lanzarquery($query){
+	function lanzarquery($query)
+	{
 
 		$this->query = $query;
 		$this->execute_single_query();
@@ -18,7 +21,8 @@ class mapping extends MappingBase{
 
 	}
 
-	function lanzarqueryconresults($query){
+	function lanzarqueryconresults($query)
+	{
 
 		$this->query = $query;
 		$this->get_results_from_query();
@@ -26,95 +30,91 @@ class mapping extends MappingBase{
 
 	}
 
-	function construirCondicionesWhereLIKE($valores){
+	function construirCondicionesWhereLIKE($valores)
+	{
 
 		$cadena = '';
 		$primero = true;
 
-		foreach ($valores as $key => $value){
+		foreach ($valores as $key => $value) {
 
-			if ($primero){
+			if ($primero) {
 				$primero = false;
-			}
-			else{
+			} else {
 				$cadena = $cadena . ' AND ';
 			}
 
-			$cadena = $cadena . "(" . $key . " LIKE " . "'%". $value . "%')";
+			$cadena = $cadena . "(" . $key . " LIKE " . "'%" . $value . "%')";
 
 		}
 
 		return $cadena;
 	}
 
-	function construirCondicionesWhereEQUALS($valores){
+	function construirCondicionesWhereEQUALS($valores)
+	{
 
 		$cadena = '';
 		$primero = true;
 
 		$atributosnumericos = $this->formatonumericoatributos($this->tabla);
 
-		foreach ($valores as $key => $value){
+		foreach ($valores as $key => $value) {
 
-			if (strlen($value)!=0){
+			if (strlen($value) != 0) {
 
-				if ($primero){
+				if ($primero) {
 					$primero = false;
 					$insertarand = '';
-				}
-				else{
+				} else {
 					$insertarand = ' AND ';
 					$cadena = $cadena . $insertarand;
 				}
 
-				if (empty($atributosnumericos)){
-					$cadena = $cadena . "(" . $key . "=" . "'". $value . "')";
-				}
-				else{
-					if (in_array($key, $atributosnumericos)){
+				if (empty($atributosnumericos)) {
+					$cadena = $cadena . "(" . $key . "=" . "'" . $value . "')";
+				} else {
+					if (in_array($key, $atributosnumericos)) {
 						$cadena = $cadena . "(" . $key . "=" . $value . ")";
-					}
-					else{
-						$cadena = $cadena . "(" . $key . "=" . "'". $value . "')";
+					} else {
+						$cadena = $cadena . "(" . $key . "=" . "'" . $value . "')";
 					}
 				}
 			}
-			
+
 		}
 
 		return $cadena;
 	}
 
-	function construirCondicionesWhereEQUALSclaves($clave, $valores){
+	function construirCondicionesWhereEQUALSclaves($clave, $valores)
+	{
 
 		$cadena = '';
 		$primero = true;
 
 		$atributosnumericos = $this->formatonumericoatributos($this->tabla);
 
-		foreach ($valores as $key => $value){
+		foreach ($valores as $key => $value) {
 
-			if (in_array($key, $clave)){
+			if (in_array($key, $clave)) {
 
-				if ($primero){
+				if ($primero) {
 					$primero = false;
-				}
-				else{
-					if (strlen($value)!=0){
+				} else {
+					if (strlen($value) != 0) {
 						$cadena = $cadena . ' AND ';
 					}
 				}
 
-				if (strlen($value)!=0){
-					if (empty($atributosnumericos)){
-						$cadena = $cadena . "(" . $key . "=" . "'". $value . "')";
-					}
-					else{
-						if (in_array($key, $atributosnumericos)){
+				if (strlen($value) != 0) {
+					if (empty($atributosnumericos)) {
+						$cadena = $cadena . "(" . $key . "=" . "'" . $value . "')";
+					} else {
+						if (in_array($key, $atributosnumericos)) {
 							$cadena = $cadena . "(" . $key . "=" . $value . ")";
-						}
-						else{
-							$cadena = $cadena . "(" . $key . "=" . "'". $value . "')";
+						} else {
+							$cadena = $cadena . "(" . $key . "=" . "'" . $value . "')";
 						}
 					}
 				}
@@ -125,27 +125,27 @@ class mapping extends MappingBase{
 		return $cadena;
 	}
 
-	function formatonumericoatributos($tabla){
+	function formatonumericoatributos($tabla)
+	{
 
 
 		$mapping1 = new mapping($tabla);
 
 		$mapping1->query = "SHOW COLUMNS FROM " . $tabla;
 		$res = $mapping1->get_results_from_query();
-		if ($mapping1->feedback['ok']){
+		if ($mapping1->feedback['ok']) {
 
 			$respuesta = $mapping1->feedback['resource'];
 
 			$atributosnumericos = array();
-			foreach ($respuesta as $atributo){
+			foreach ($respuesta as $atributo) {
 				$tiposnumericos = array('int', 'float');
-				if (in_array(substr($atributo['Type'], 0, strpos($atributo['Type'], '(')), $tiposnumericos)){
+				if (in_array(substr($atributo['Type'], 0, strpos($atributo['Type'], '(')), $tiposnumericos)) {
 					array_push($atributosnumericos, $atributo['Field']); //creo array con los atributos que son numericos
 				}
 			}
 			return $atributosnumericos;
-		}
-		else{
+		} else {
 			return $res;
 		}
 
@@ -153,31 +153,34 @@ class mapping extends MappingBase{
 	}
 
 
-	function buscarforaneas($tabla){
+	function buscarforaneas($tabla)
+	{
 
 		$mapping1 = new mapping($tabla);
-		$respuesta = $mapping1->SEARCH($tabla,'','','nulo','nulo','');
+		$respuesta = $mapping1->SEARCH($tabla, '', '', 'nulo', 'nulo', '');
 		return $respuesta;
 
 	}
 
-	function incluirforaneas($principal=null, $tabla, $clave){
+	function incluirforaneas($principal = null, $tabla, $clave)
+	{
 
 		$filasforaneas = $this->buscarforaneas($tabla); //obtener filas de tabla principal de las claves foraneas de esta entidad
 
 		$auxiliar = array();
 
-		if (empty($principal) || ($principal === null) || ($principal== '')) {}
-		else{
+		if (empty($principal) || ($principal === null) || ($principal == '')) {
+		} else {
 
 			foreach ($principal as $fila) { //recorro array recordset fila a fila
 
-				if ($filasforaneas['code'] == 'RECORDSET_VACIO') {} //sino no hay foraneas por fallo en la integridad de los datos
-				else{
+				if ($filasforaneas['code'] == 'RECORDSET_VACIO') {
+				} //sino no hay foraneas por fallo en la integridad de los datos
+				else {
 
 					foreach ($filasforaneas['resource'] as $filasforanea) { //recorro array foraneas fila a fila
 
-						if ($fila[$clave] == $filasforanea[$clave]){ // si el valor de la clave en la fila del recordset es igual a la clave del array de foraneas
+						if ($fila[$clave] == $filasforanea[$clave]) { // si el valor de la clave en la fila del recordset es igual a la clave del array de foraneas
 
 							$fila[$clave] = $filasforanea; // cambio el valor de la clave por el array de atriburos de la fila en la tabla foranea con esa clave
 
@@ -196,14 +199,14 @@ class mapping extends MappingBase{
 	}
 
 
-	function SEARCH($tabla, $atributos = null, $valores, $empieza, $filaspagina, $foraneas=null){
+	function SEARCH($tabla, $atributos = null, $valores, $empieza, $filaspagina, $foraneas = null)
+	{
 
+		$query = "SELECT * FROM " . $tabla;
 
-		$query = "SELECT * FROM ".$tabla;
+		if (!empty($atributos)) {
 
-		if (!empty($atributos)){
-
-			$query = $query." WHERE (";
+			$query = $query . " WHERE (";
 
 			$condiciones = $this->construirCondicionesWhereLIKE($valores);
 
@@ -214,8 +217,8 @@ class mapping extends MappingBase{
 		}
 
 
-		if (($empieza == 'nulo') and ($filaspagina == 'nulo')) {}
-		else {
+		if (($empieza == 'nulo') and ($filaspagina == 'nulo')) {
+		} else {
 
 			$query = $query . ' LIMIT ' . $empieza . ',' . $filaspagina;
 
@@ -226,10 +229,10 @@ class mapping extends MappingBase{
 
 		$this->get_results_from_query();
 
-		if (empty($this->feedback['resource'])){}
-		else{
+		if (empty($this->feedback['resource'])) {
+		} else {
 
-			if (!empty($foraneas)){
+			if (!empty($foraneas)) {
 				foreach ($foraneas as $key => $value) {
 					$this->feedback['resource'] = $this->incluirforaneas($this->feedback['resource'], $key, $value);
 				}
@@ -241,28 +244,29 @@ class mapping extends MappingBase{
 
 	}
 
-	function COUNT($tabla){
+	function COUNT($tabla)
+	{
 
-		$this->query = "SELECT COUNT(*) FROM ". $tabla;
+		$this->query = "SELECT COUNT(*) FROM " . $tabla;
 
 		$this->get_one_result_from_query();
 
 		return $this->feedback;
 	}
 
-	function ADD($tabla, $atributos, $valores, $autoincrement){
+	function ADD($tabla, $atributos, $valores, $autoincrement)
+	{
 
-		$query = "INSERT INTO ".$tabla. "(";
+		$query = "INSERT INTO " . $tabla . "(";
 
 		$primero = true;
-		foreach ($atributos as $atributo){
-			
-			if (!(in_array($atributo, $autoincrement))){
-				
-				if ($primero){
+		foreach ($atributos as $atributo) {
+
+			if (!(in_array($atributo, $autoincrement))) {
+
+				if ($primero) {
 					$primero = false;
-				}
-				else{
+				} else {
 					$query = $query . ',';
 				}
 
@@ -276,22 +280,20 @@ class mapping extends MappingBase{
 		$atributosnumericos = $this->formatonumericoatributos($tabla); //obtengo atributos de show columns de la $tabla
 
 		$primero = true;
-		foreach ($atributos as $atributo){
+		foreach ($atributos as $atributo) {
 
-			if (!(in_array($atributo, $autoincrement))){
+			if (!(in_array($atributo, $autoincrement))) {
 
-				if ($primero){
+				if ($primero) {
 					$primero = false;
-				}
-				else{
+				} else {
 					$query = $query . ',';
 				}
 
-				if (in_array($atributo, $atributosnumericos)){//numerico
+				if (in_array($atributo, $atributosnumericos)) {//numerico
 					$query = $query . $valores[$atributo];
-				}
-				else{
-					$query = $query . '\''. $valores[$atributo] . '\'';
+				} else {
+					$query = $query . '\'' . $valores[$atributo] . '\'';
 				}
 			}
 		}
@@ -306,11 +308,12 @@ class mapping extends MappingBase{
 
 	}
 
-	function DELETE($tabla, $clave, $valor){
+	function DELETE($tabla, $clave, $valor)
+	{
 
 		$this->query = "DELETE FROM " . $tabla . " WHERE (";
 
-		$cadena = $this->construirCondicionesWhereEQUALSclaves($clave,$valor);
+		$cadena = $this->construirCondicionesWhereEQUALSclaves($clave, $valor);
 
 		$this->query = $this->query . $cadena . ")";
 
@@ -320,7 +323,8 @@ class mapping extends MappingBase{
 
 	}
 
-	function EDIT($tabla, $atributos, $valores, $clave){
+	function EDIT($tabla, $atributos, $valores, $clave)
+	{
 
 		$atributosnumericos = $this->formatonumericoatributos($this->tabla);
 
@@ -330,18 +334,16 @@ class mapping extends MappingBase{
 
 		$primero = true;
 		foreach ($valores as $key => $value) {
-			if (!(in_array($key, $clave))){
-				if ($primero){
+			if (!(in_array($key, $clave))) {
+				if ($primero) {
 					$primero = false;
-				}
-				else{
+				} else {
 					$cadena .= ', ';
 				}
-				if (in_array($key, $atributosnumericos)){
-					$cadena .= $key . ' = '.$value;
-				}
-				else{
-					$cadena .= $key . ' = '.'\''.$value.'\'';
+				if (in_array($key, $atributosnumericos)) {
+					$cadena .= $key . ' = ' . $value;
+				} else {
+					$cadena .= $key . ' = ' . '\'' . $value . '\'';
 				}
 			}
 		}
@@ -354,18 +356,16 @@ class mapping extends MappingBase{
 		$cadena = '';
 		$primero = true;
 		foreach ($valores as $key => $value) {
-			if (in_array($key, $clave)){
-				if ($primero){
+			if (in_array($key, $clave)) {
+				if ($primero) {
 					$primero = false;
-				}
-				else{
+				} else {
 					$cadena .= ' AND ';
 				}
-				if (in_array($key, $atributosnumericos)){
-					$cadena .= $key. ' = '.$value;
-				}
-				else{
-					$cadena .= $key. ' = '.'\''.$value.'\'';
+				if (in_array($key, $atributosnumericos)) {
+					$cadena .= $key . ' = ' . $value;
+				} else {
+					$cadena .= $key . ' = ' . '\'' . $value . '\'';
 				}
 			}
 		}
@@ -381,14 +381,15 @@ class mapping extends MappingBase{
 
 	//busca sobre los ids de la tabla
 
-	function SEARCH_BY($tabla, $clave, $valores, $foraneas=null){
+	function SEARCH_BY($tabla, $clave, $valores, $foraneas = null)
+	{
 
 
-		$query = "SELECT * FROM ".$tabla;
+		$query = "SELECT * FROM " . $tabla;
 
-		if (!empty($valores)){
+		if (!empty($valores)) {
 
-			$query = $query." WHERE (";
+			$query = $query . " WHERE (";
 
 			$condiciones = $this->construirCondicionesWhereEQUALS($valores);
 
@@ -403,11 +404,11 @@ class mapping extends MappingBase{
 		$this->get_results_from_query();
 
 
-		if (!empty($foraneas)){
+		if (!empty($foraneas)) {
 			foreach ($foraneas as $key => $value) {
 
-				$aux = 	$this->feedback['resource'];
-				if (is_array($aux)){
+				$aux = $this->feedback['resource'];
+				if (is_array($aux)) {
 					$this->feedback['resource'] = $this->incluirforaneas($aux, $key, $value);
 				}
 

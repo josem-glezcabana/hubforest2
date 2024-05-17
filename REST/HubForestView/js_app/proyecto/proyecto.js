@@ -46,6 +46,18 @@ async function getListByParamProyectos_search(name_project, start_date_project, 
         });
 }
 
+async function getProyectoPorId(id_project) {
+    const project = {
+        id_project: id_project
+    };
+    return peticionBackGeneral('', 'project', 'SEARCH_BY', project)
+        .then(response => response['resource'])
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return null;
+        });
+}
+
 async function addProyecto(name_project, start_date_project, end_date_project, responsable_project, organization_project, description_project, file_project, code_project, acronym_project) {
     const project = {
         name_project: name_project,
