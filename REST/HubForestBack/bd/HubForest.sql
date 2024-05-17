@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `hubforest` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `hubforest` /*!40100 DEFAULT CHARACTER SET utf8mb4  */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `hubforest`;
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
@@ -28,7 +28,7 @@ CREATE TABLE `analysis_preparation` (
   `Id_analysis_preparation` int NOT NULL AUTO_INCREMENT,
   `name_analysis_preparation` varchar(100) NOT NULL,
   PRIMARY KEY (`Id_analysis_preparation`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `analysis_technique` (
   `bib_analysis_technique` varchar(200) NOT NULL,
   `file_analysis_tecnique` varchar(100) NOT NULL,
   PRIMARY KEY (`id_analysis_technique`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,7 +83,7 @@ CREATE TABLE `characteristic` (
   `bibref_characteristic` varchar(200) NOT NULL,
   `file_characteristic` varchar(100) NOT NULL,
   PRIMARY KEY (`id_characteristic`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +110,7 @@ CREATE TABLE `characteristic_sample` (
   KEY `unit_idx` (`id_unit`),
   CONSTRAINT `charact` FOREIGN KEY (`id_characteristic`) REFERENCES `characteristic` (`id_characteristic`),
   CONSTRAINT `unit` FOREIGN KEY (`id_unit`) REFERENCES `unit` (`id_unit`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +136,7 @@ CREATE TABLE `ecosystem` (
   `description_ecosystem` varchar(5000) DEFAULT '--',
   `bib_ref_ecosystem` varchar(200) NOT NULL,
   PRIMARY KEY (`id_ecosystem`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,7 +163,7 @@ CREATE TABLE `lab_process` (
   `bib_lab_process` varchar(100) NOT NULL,
   `file_lab_process` varchar(100) NOT NULL,
   PRIMARY KEY (`id_lab_process`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,7 +202,7 @@ CREATE TABLE `project` (
   KEY `id_sampling_methodology` (`id_sampling_methodology`),
   CONSTRAINT `responsable project` FOREIGN KEY (`responsable_project`) REFERENCES `user` (`id_user`),
   CONSTRAINT `sampling_method` FOREIGN KEY (`id_sampling_methodology`) REFERENCES `sampling_methodology` (`id_sampling_methodology`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -232,7 +232,7 @@ CREATE TABLE `project_ecosystem` (
   KEY `ecosystem_idx` (`id_ecosystem`),
   CONSTRAINT `ecosystem` FOREIGN KEY (`id_ecosystem`) REFERENCES `ecosystem` (`id_ecosystem`),
   CONSTRAINT `project` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -269,7 +269,7 @@ CREATE TABLE `replica` (
   CONSTRAINT `proj_rep` FOREIGN KEY (`id_project`) REFERENCES `sampling` (`id_project`),
   CONSTRAINT `sampl_rep` FOREIGN KEY (`id_sampling`) REFERENCES `sampling` (`id_sampling`),
   CONSTRAINT `site_rep` FOREIGN KEY (`id_site`) REFERENCES `sampling` (`id_site`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -305,7 +305,7 @@ CREATE TABLE `sampling` (
   CONSTRAINT `ecosS` FOREIGN KEY (`id_ecosystem`) REFERENCES `project_ecosystem` (`id_ecosystem`),
   CONSTRAINT `projectS` FOREIGN KEY (`id_project`) REFERENCES `project_ecosystem` (`id_project`),
   CONSTRAINT `siteS` FOREIGN KEY (`id_site`) REFERENCES `site` (`id_site`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -332,7 +332,7 @@ CREATE TABLE `sampling_methodology` (
   `bibref_methodology` varchar(200) NOT NULL,
   `file_methodology` varchar(100) NOT NULL,
   PRIMARY KEY (`id_sampling_methodology`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -366,7 +366,7 @@ CREATE TABLE `site` (
   `slope_gradient_site` varchar(2) NOT NULL COMMENT 'values between 01-10',
   `orientation_site` varchar(4) NOT NULL COMMENT 'combination (2 or more elements) of for values N,E,S,W',
   PRIMARY KEY (`id_site`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -394,7 +394,7 @@ CREATE TABLE `storage_method` (
   `size_storage_container` int DEFAULT '0',
   `unit_storage_container` varchar(30) DEFAULT '--',
   PRIMARY KEY (`id_storage_method`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -421,7 +421,7 @@ CREATE TABLE `technique_sample` (
   `bib_technique_sample` varchar(200) NOT NULL,
   `file_technique_sample` varchar(100) NOT NULL,
   PRIMARY KEY (`id_technique_sample`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -453,7 +453,7 @@ CREATE TABLE `temporal_sampling_site_params` (
   KEY `projectSampSite` (`id_project`),
   CONSTRAINT `ecosystSampSite` FOREIGN KEY (`id_ecosystem`) REFERENCES `project_ecosystem` (`id_ecosystem`),
   CONSTRAINT `projectSampSite` FOREIGN KEY (`id_project`) REFERENCES `project_ecosystem` (`id_project`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -483,7 +483,7 @@ CREATE TABLE `temporal_sampling_site_values` (
   KEY `replica_idx` (`id_replica`),
   CONSTRAINT `ecos_param` FOREIGN KEY (`id_ecosystem_param`) REFERENCES `temporal_sampling_site_params` (`id_ecosystem_param`),
   CONSTRAINT `sampling` FOREIGN KEY (`id_sampling`) REFERENCES `replica` (`id_sampling`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -516,7 +516,7 @@ CREATE TABLE `token_in_analysis` (
   CONSTRAINT `analisis_prep` FOREIGN KEY (`id_analysis_preparation`) REFERENCES `analysis_preparation` (`Id_analysis_preparation`),
   CONSTRAINT `analisis_tec` FOREIGN KEY (`id_analysis_technique`) REFERENCES `analysis_technique` (`id_analysis_technique`),
   CONSTRAINT `token_in_lab` FOREIGN KEY (`id_token_in_lab`) REFERENCES `token_in_lab` (`id_token_in_lab`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -546,7 +546,7 @@ CREATE TABLE `token_in_lab` (
   KEY `token_sampl_idx` (`id_token_in_sampling`),
   CONSTRAINT `lab_process` FOREIGN KEY (`id_lab_process`) REFERENCES `lab_process` (`id_lab_process`),
   CONSTRAINT `token_sampl` FOREIGN KEY (`id_token_in_sampling`) REFERENCES `token_in_sampling` (`id_token_in_sampling`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COMMENT='items processing in lab from token collected in sampling ';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='items processing in lab from token collected in sampling ';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -580,7 +580,7 @@ CREATE TABLE `token_in_sampling` (
   CONSTRAINT `ecos_tok` FOREIGN KEY (`id_ecosystem`) REFERENCES `project_ecosystem` (`id_ecosystem`),
   CONSTRAINT `project_tok` FOREIGN KEY (`id_project`) REFERENCES `project_ecosystem` (`id_project`),
   CONSTRAINT `storage_meth` FOREIGN KEY (`id_storage_method`) REFERENCES `storage_method` (`id_storage_method`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -605,7 +605,7 @@ CREATE TABLE `unit` (
   `name_unit` varchar(100) DEFAULT '--',
   `description_unit` varchar(5000) DEFAULT '--',
   PRIMARY KEY (`id_unit`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -637,7 +637,7 @@ CREATE TABLE `user` (
   `is_admin` varchar(10) NOT NULL,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `email_user_UNIQUE` (`email_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -666,7 +666,7 @@ CREATE TABLE `user_project` (
   KEY `id_project_idx` (`id_project`),
   CONSTRAINT `id_project` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`),
   CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
