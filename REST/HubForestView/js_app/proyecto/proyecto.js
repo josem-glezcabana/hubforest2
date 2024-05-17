@@ -133,7 +133,6 @@ function construyeTablaProyecto(filas) {
 
     $("#datosProyectos").html("");
     filas.forEach(fila => {
-        console.log('fila', fila)
 
         if (typeof fila.start_date_project !== 'string') {
             // se coge la parte de la fecha y hora, sin obtener segundos
@@ -170,6 +169,18 @@ function construyeTablaProyecto(filas) {
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarProyecto" onclick="mostrarBorrar('+fila.id_project+')">Eliminar</button>'
                 
                 '</td>  </tr>';
+    });
+
+    recuperarYComprobarUsuarioLogeadoIsAdmin().then(resultado => {
+        if (!resultado) {
+            $("#editarProyectoUsuario").hide();
+            $("#borrarProyecto").hide();
+            $("#abrirModal").hide();
+        } else {
+            $("#editarProyectoUsuario").show();
+            $("#borrarProyecto").show();
+            $("#abrirModal").show();
+        }
     });
     
     $("#datosProyectos").append(filasTabla);
