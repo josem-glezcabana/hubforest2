@@ -53,7 +53,7 @@ CREATE TABLE `analysis_technique` (
   `name_analysis_technique` varchar(100) NOT NULL,
   `description_analysis_technique` varchar(5000) NOT NULL,
   `bib_analysis_technique` varchar(200) NOT NULL,
-  `file_analysis_tecnique` varchar(100) NOT NULL,
+  `file_analysis_tecnique` varchar(100) DEFAULT '--',
   PRIMARY KEY (`id_analysis_technique`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -81,7 +81,7 @@ CREATE TABLE `characteristic` (
   `description_characteristic` varchar(5000) NOT NULL,
   `data_type_characteristic` enum('number','set') NOT NULL,
   `bibref_characteristic` varchar(200) NOT NULL,
-  `file_characteristic` varchar(100) NOT NULL,
+  `file_characteristic` varchar(100) DEFAULT '--',
   PRIMARY KEY (`id_characteristic`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -161,7 +161,7 @@ CREATE TABLE `lab_process` (
   `name_lab_process` varchar(100) NOT NULL,
   `description_lab_process` varchar(5000) NOT NULL,
   `bib_lab_process` varchar(100) NOT NULL,
-  `file_lab_process` varchar(100) NOT NULL,
+  `file_lab_process` varchar(100) DEFAULT '--',
   PRIMARY KEY (`id_lab_process`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -191,7 +191,7 @@ CREATE TABLE `project` (
   `responsable_project` int NOT NULL,
   `organization_project` varchar(100) NOT NULL,
   `description_project` varchar(500) DEFAULT '--',
-  `file_project` varchar(100) NOT NULL,
+  `file_project` varchar(100) DEFAULT '--',
   `code_project` varchar(50) NOT NULL,
   `acronym_project` varchar(15) NOT NULL,
   `id_sampling_methodology` int NOT NULL,
@@ -330,7 +330,7 @@ CREATE TABLE `sampling_methodology` (
   `name_methodology` varchar(100) NOT NULL,
   `description_methodology` varchar(5000) NOT NULL,
   `bibref_methodology` varchar(200) NOT NULL,
-  `file_methodology` varchar(100) NOT NULL,
+  `file_methodology` varchar(100) DEFAULT '--',
   PRIMARY KEY (`id_sampling_methodology`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -341,7 +341,7 @@ CREATE TABLE `sampling_methodology` (
 
 LOCK TABLES `sampling_methodology` WRITE;
 /*!40000 ALTER TABLE `sampling_methodology` DISABLE KEYS */;
-INSERT INTO `sampling_methodology` VALUES (0,'methodology1','methodology1','bibref','file');
+INSERT INTO `sampling_methodology` VALUES (1,'methodology1','methodology1','bibref','file');
 /*!40000 ALTER TABLE `sampling_methodology` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -419,7 +419,7 @@ CREATE TABLE `technique_sample` (
   `name_technique_sample` varchar(100) NOT NULL,
   `description_technique_sample` varchar(5000) NOT NULL,
   `bib_technique_sample` varchar(200) NOT NULL,
-  `file_technique_sample` varchar(100) NOT NULL,
+  `file_technique_sample` varchar(100) DEFAULT '--',
   PRIMARY KEY (`id_technique_sample`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -646,7 +646,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','admin','admin','hubforest','admin@email.com',NULL,'21232f297a57a5a743894a0e4a801fc3','SI'),(2,'user','user','user','hubforest','user@email.com',NULL,'ee11cbb19052e40b07aac0ca060c23ee','NO');
+INSERT INTO `user` VALUES (1,'admin','admin','admin','hubforest','admin@email.com','','21232f297a57a5a743894a0e4a801fc3','SI'),(2,'user','user','user','hubforest','user@email.com','','ee11cbb19052e40b07aac0ca060c23ee','NO');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
