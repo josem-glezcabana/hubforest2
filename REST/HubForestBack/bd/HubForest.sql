@@ -53,7 +53,7 @@ CREATE TABLE `analysis_technique` (
   `name_analysis_technique` varchar(100) NOT NULL,
   `description_analysis_technique` varchar(5000) NOT NULL,
   `bib_analysis_technique` varchar(200) NOT NULL,
-  `file_analysis_tecnique` varchar(100) NOT NULL,
+  `file_analysis_tecnique` varchar(100),
   PRIMARY KEY (`id_analysis_technique`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -81,7 +81,7 @@ CREATE TABLE `characteristic` (
   `description_characteristic` varchar(5000) NOT NULL,
   `data_type_characteristic` enum('number','set') NOT NULL,
   `bibref_characteristic` varchar(200) NOT NULL,
-  `file_characteristic` varchar(100) NOT NULL,
+  `file_characteristic` varchar(100),
   PRIMARY KEY (`id_characteristic`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -161,7 +161,7 @@ CREATE TABLE `lab_process` (
   `name_lab_process` varchar(100) NOT NULL,
   `description_lab_process` varchar(5000) NOT NULL,
   `bib_lab_process` varchar(100) NOT NULL,
-  `file_lab_process` varchar(100) NOT NULL,
+  `file_lab_process` varchar(100),
   PRIMARY KEY (`id_lab_process`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -191,7 +191,7 @@ CREATE TABLE `project` (
   `responsable_project` int NOT NULL,
   `organization_project` varchar(100) NOT NULL,
   `description_project` varchar(500) DEFAULT '--',
-  `file_project` varchar(100) NOT NULL,
+  `file_project` varchar(100),
   `code_project` varchar(50) NOT NULL,
   `acronym_project` varchar(15) NOT NULL,
   `id_sampling_methodology` int NOT NULL,
@@ -330,7 +330,7 @@ CREATE TABLE `sampling_methodology` (
   `name_methodology` varchar(100) NOT NULL,
   `description_methodology` varchar(5000) NOT NULL,
   `bibref_methodology` varchar(200) NOT NULL,
-  `file_methodology` varchar(100) NOT NULL,
+  `file_methodology` varchar(100),
   PRIMARY KEY (`id_sampling_methodology`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -419,7 +419,7 @@ CREATE TABLE `technique_sample` (
   `name_technique_sample` varchar(100) NOT NULL,
   `description_technique_sample` varchar(5000) NOT NULL,
   `bib_technique_sample` varchar(200) NOT NULL,
-  `file_technique_sample` varchar(100) NOT NULL,
+  `file_technique_sample` varchar(100),
   PRIMARY KEY (`id_technique_sample`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
