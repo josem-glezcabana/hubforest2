@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script type="text/javascript" src="js/funcionesComunes.js"></script>
+    <script type="text/javascript" src="js_app/temporal_sampling_site_params/temporal_sampling_site_params.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/crearformularios.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>    
+    <title>temporal_sampling_site_params</title>
+    <!-- Incluye los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body onload="(async () => {
+    includeHeader(); includeFooter();
+    getListtemporal_sampling_site_params();
+})();">
+
+    <!-- Encabezado y Barra de Navegación -->
+    <div id="header"></div>
+
+    <div class="container mt-5">
+        <h2>Listado de temporal_sampling_site_params</h2>
+        <div class="mt-2 mb-3 float-right">
+            <button class="btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('Añadir temporal_sampling_site_params')">Añadir temporal_sampling_site_params</button>
+            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('Buscar temporal_sampling_site_params')">Buscar temporal_sampling_site_params</button>
+            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListtemporal_sampling_site_params()">Reiniciar tabla</button>
+            
+        </div>
+            
+        <table class="table table-striped" id="tablatemporal_sampling_site_params">
+            <thead >
+                    <th class="id_project">id_project</th>
+                    <th class="id_ecosystem">id_ecosystem</th>
+                    <th class="id_ecosystem_param">id_ecosystem_param</th>
+                    <th class="category_param">category_param</th>
+                    <th class="name_ecosystem_param">name_ecosystem_param</th>
+                    <th class="values_ecosystem_param">values_ecosystem_param</th>
+            </thead>
+            
+            <tbody id="datostemporal_sampling_site_params">
+            </tbody>
+       
+            
+        </table>
+            <div id="formularioentidad"></div>
+        
+    </div>
+    
+    <div id="ventanaModal" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarModal()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="Titulo"></div>
+            <div id="mensajeError" class="text-center" style="display: none;">             
+                <h7>
+                    No existen temporal_sampling_site_params que coincidan con estos parámetros
+                </h7>
+                <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formtemporal_sampling_site_params" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id_project" style="display: none;">id_project:</label>
+                    <input type="text" class="form-control" id="id_project" name="id_project" style="display: none;">
+                </div>
+    
+                <div class="form-group">
+                    <label for="id_ecosystem">id_ecosystem:</label>
+                    <input type="text" class="form-control" id="id_ecosystem" name="id_ecosystem" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_ecosystem_param">id_ecosystem_param:</label>
+                    <input type="text" class="form-control" id="id_ecosystem_param" name="id_ecosystem_param" >
+                </div>
+
+                <div class="form-group">
+                    <label for="category_param">category_param:</label>
+                    <input type="text" class="form-control" id="category_param" name="category_param" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="name_ecosystem_param">name_ecosystem_param:</label>
+                    <input type="text" class="form-control" id="name_ecosystem_param" name="name_ecosystem_param" >
+                </div>
+
+                <div class="form-group">
+                    <label for="values_ecosystem_param">values_ecosystem_param:</label>
+                    <input type="text" class="form-control" id="values_ecosystem_param" name="values_ecosystem_param" >
+                </div>
+                
+                <button type="submit" id="aceptar" class="btn btn-primary"></button>
+                <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+            </form> 
+        </div>
+    </div>
+    
+    <div id="comprobarBorrar" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="text-center" id="Titulo"><h2>¿Estas seguro?</h2></div>
+            
+            <form id="formBorrartemporal_sampling_site_params" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id_ecosystem_param " style="display: none;">Id:</label>
+                    <input type="text" class="form-control" id="idBorrar" name="id_ecosystem_param " style="display: none;">
+                </div>
+                <div class="col text-center">
+                    <button type="submit" id="aceptar" class="btn btn-danger">Aceptar</button>
+                    <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
+                </div>
+                
+            </form>  
+        </div>
+    </div>
+</div>
+
+    <!-- Pie de Página -->
+	<div id="footer"><div>
+</body>
+</html>
