@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script type="text/javascript" src="js/funcionesComunes.js"></script>
+    <script type="text/javascript" src="js_app/user_project/user_project.js"></script>
+    <script type="text/javascript" src="js_app/proyecto/proyecto.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/crearformularios.js"></script>
+    <script type="text/javascript" src="js_app/usuario/usuario.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>   
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script type="text/javascript" src="locale/Lang_EN.js"></script>
+    <script type="text/javascript" src="locale/Lang_ES.js"></script>
+   
+    <!-- Incluye los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body onload="(async () => {
+    includeHeader(); includeFooter();
+    getListUsuarioProjecto();
+})();">
+
+    <!-- Encabezado y Barra de Navegación -->
+    <div id="header"></div>
+    <div id="contenido" >
+    <div class="container mt-5">
+        <h2 class="listadoSampling">Listado de metodologías de muestreo</h2>
+        <div class="mt-2 mb-3 float-right">
+            <button class="añadirSampling btn btn-primary float-right" id="abrirModal" onclick="mostrarModalSampling('AñadirSampling')">Añadir metodología muestreo</button>
+            <button class="buscarSampling btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalSampling('BuscarSampling')">Buscar metodología muestreo</button>
+            <button class="reiniciarTabla btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListSampling()">Reiniciar tabla</button>
+            
+        </div>
+            
+        <table class="table table-striped" id="tablaSamplings">
+            <thead >
+                    <th class="name_project">Nombre Proyecto</th>
+                    <th class="name_ecosystem">Nombre Ecosistema</th>
+                    <th class="site">Sitio</th>
+                    <th class="fechaSampling">Fecha de creación metodología de muestreo</th>
+                    <th class="timeSampling">Tiempo de muestreo</th>
+                    <th class="tempSampling">Temperatura</th>
+            </thead>
+            
+            <tbody id="datosSamplings">
+            </tbody>
+       
+            
+        </table>
+            <div id="formularioentidad"></div>
+        
+    </div>
+    
+    <div id="ventanaModal" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarModal()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="Titulo"></div>
+            <div id="mensajeError" class="text-center" style="display: none;">             
+                <h7 class="samplingError">
+                    No existen metodologías de muestreo que coincidan con estos parámetros
+                </h7>
+                <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formSampling" action="" method="post" onsubmit="">
+
+                <div class="form-group">
+                    <label for="name_project">Nombre proyecto:</label>
+                    <select class="form-control" id="id_project" name="id_project"></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="name_ecosystem">Nombre ecosystema:</label>
+                    <select class="form-control" id="id_ecosystem" name="id_ecosystem"></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="site">Sitio</label>
+                    <select class="form-control" id="id_sitio" name="id_sitio"></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fechaSampling">Tiempo de muestreo:</label>
+                    <input type="date" class="form-control" id="timeSampling" name="timeSampling" >
+                </div>
+
+                <div class="form-group">
+                    <label for="timeSampling">Fecha de creación metodología de muestreo:</label>
+                    <input type="datetime-local" class="form-control" id="fechaSampling" name="fechaSampling" >
+                </div>
+
+                <div class="form-group">
+                    <label for="tempSampling">Temperatura:</label>
+                    <input type="number" class="form-control" id="temperatura" name="temperatura" >
+                </div>
+                
+                <button type="submit" id="aceptar" class="btn btn-primary"></button>
+                <button type="button" id="cerrar" class=" cerrarModalPermiso btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+            </form> 
+        </div>
+    </div>
+    
+    <div id="comprobarBorrar" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="text-center" id="Titulo"><h2 class="samplingPregunta">¿Estas seguro?</h2></div>
+            
+            <form id="formBorrarUsuarioProyecto" action="" method="post" onsubmit="">
+                <br>
+                <div class="form-group">
+                    <h5 class="mensajeBorrarSamplings text-center">Se va eliminar el sampling indicado</h5>
+                    <input type="text" class="form-control" id="idBorrar" style="display: none;">
+                </div>
+                <div class="col text-center">
+                    <button type="submit" id="aceptar" class="samplingAceptar btn btn-danger">Aceptar</button>
+                    <button type="button" id="cerrar" class="cerrarModalSampling btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
+                </div>     
+            </form>  
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Pie de Página -->
+	<div id="footer"><div>
+</body>
+</html>

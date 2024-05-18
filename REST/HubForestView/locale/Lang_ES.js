@@ -106,4 +106,23 @@ arrayES={
 	'editarS': 'Editar sitio',
 	'añadirS': 'Añadir sitio',
 	'buscarS': 'Buscar sitio',
+
+	//SAMPLING
+	'listadoSampling': 'Listado de metodologías de muestreo',
+	'añadirSampling': 'Añadir metodología de muestreo',
+	'buscarSampling': 'Buscar metodología de muestreo',
+	'reiniciarTabla': 'Reiniciar tabla',
+	'name_project': 'Nombre Proyecto',
+	'name_ecosystem': 'Nombre ecosistema',
+	'site': 'sitio',
+	'fechaSampling': 'Fecha de creación metodología de muestreo' ,
+	'timeampling': 'Tiempo de muestreo',
+	'tempSampling': 'Temperatura',
+	'samplingError': 'No existen metodologías de muestreo que coincidan con estos parámetros',
+	'samplingPregunta' : '¿Estás seguro?',
+	'mensajeBorrarSamplings': 'Se va borrar el sampling indicado',
+	'samplingAceptar': 'Aceptar',
+	'cerrarModalSampling': 'Cerrar'
+
+
 }

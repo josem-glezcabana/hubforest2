@@ -106,4 +106,22 @@ arrayEN={
 	'editarS': 'Edit site',
 	'añadirS': 'Add site',
 	'buscarS': 'Search site',
+
+	//SAMPLING
+	'listadoSampling': 'List of sampling methodologies',
+	'añadirSampling': 'Add sampling methodology',
+	'buscarSampling': 'Search sampling methodology',
+	'reiniciarTabla': 'Reset table',
+	'name_project': 'Name Project',
+	'name_ecosystem': 'Name ecosystem',
+	'site': 'Site',
+	'fechaSampling': 'Date of creation sampling methodology' ,
+	'timeampling': 'Sampling time',
+	'tempSampling': 'Temperature',
+	'samplingError': 'There are no sampling methodologies that match these parameters.',
+	'samplingPregunta' : 'Are you sure?',
+	'mensajeBorrarSamplings': 'The indicated sampling will be deleted',
+	'samplingAceptar': 'Accept',
+	'cerrarModalSampling': 'Close'
+
 }
