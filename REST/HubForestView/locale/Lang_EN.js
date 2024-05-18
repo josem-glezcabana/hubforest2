@@ -9,9 +9,8 @@ arrayEN={
 	'usuariosMenu': 'Users',
 	'proyectosMenu': 'Projects',
 	'ecosystemsMenu': 'Ecosystems',
-
 	'sitesMenu': 'Sites',
-
+	'projectEcosystemMenu': 'Project-ecosystems',
 	//FOOTER
 	'followUs': 'Follow us:',
 	'contactUs': 'Contact',
@@ -76,6 +75,7 @@ arrayEN={
 	'responsable_project': 'Responsible',
 	'organization_project': 'Organisation',
 	'description_project': 'Description',
+	'id_sampling_methodology': 'Sampling methodology',
 	'file_project': 'File',
 	'code_project': 'Project code',
 	'acronym_project': 'Acronym',

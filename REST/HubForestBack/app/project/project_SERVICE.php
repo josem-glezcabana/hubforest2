@@ -16,13 +16,13 @@ class project_SERVICE extends appServiceBase{
 
 	function inicializarRest(){
 
-		$this->listaAtributos = array('id_project','name_project','start_date_project','end_date_project','responsable_project','organization_project','description_project','file_project','code_project','acronym_project');
+		$this->listaAtributos = array('id_project','name_project','start_date_project','end_date_project','responsable_project','organization_project','description_project','file_project','code_project','acronym_project','id_sampling_methodology');
 
-		$this->listaAtributosSelect = array('id_project','name_project','start_date_project','end_date_project','responsable_project','organization_project','description_project','file_project','code_project','acronym_project');
+		$this->listaAtributosSelect = array('id_project','name_project','start_date_project','end_date_project','responsable_project','organization_project','description_project','file_project','code_project','acronym_project','id_sampling_methodology');
 
 		$this->notnull = array(
-						'ADD' => array('name_project','start_date_project','end_date_project','organization_project','file_project','code_project','acronym_project'),
-						'EDIT' => array('name_project','start_date_project','end_date_project','organization_project','file_project','code_project','acronym_project'),
+						'ADD' => array('name_project','start_date_project','end_date_project','responsable_project','organization_project','code_project','acronym_project','id_sampling_methodology'),
+						'EDIT' => array('name_project','start_date_project','end_date_project','responsable_project','organization_project','code_project','acronym_project','id_sampling_methodology'),
 						'DELETE' => array('id_project')
 						);
 

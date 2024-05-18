@@ -8,7 +8,7 @@ async function getListProyectos() {
         });       
 }
 
-async function getListByParamProyectos(name_project, start_date_project, end_date_project, responsable_project, organization_project, description_project, code_project, acronym_project) {
+async function getListByParamProyectos(name_project, start_date_project, end_date_project, responsable_project, organization_project, description_project, code_project, acronym_project, id_sampling_methodology) {
     const project = {
         name_project: name_project,
         start_date_project: start_date_project,
@@ -17,7 +17,8 @@ async function getListByParamProyectos(name_project, start_date_project, end_dat
         organization_project: organization_project,
         description_project: description_project,
         code_project: code_project,
-        acronym_project: acronym_project
+        acronym_project: acronym_project,
+        id_sampling_methodology: id_sampling_methodology
     };
     return peticionBackGeneral('', 'project', 'SEARCH_BY', project)
         .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaProyecto(response['resource']) :  mostrarErrorBusq())
@@ -27,7 +28,7 @@ async function getListByParamProyectos(name_project, start_date_project, end_dat
         });
 }
 
-async function getListByParamProyectos_search(name_project, start_date_project, end_date_project, responsable_project, organization_project, description_project, code_project, acronym_project) {
+async function getListByParamProyectos_search(name_project, start_date_project, end_date_project, responsable_project, organization_project, description_project, code_project, acronym_project, id_sampling_methodology) {
     const project = {
         name_project: name_project,
         start_date_project: start_date_project,
@@ -36,7 +37,8 @@ async function getListByParamProyectos_search(name_project, start_date_project, 
         organization_project: organization_project,
         description_project: description_project,
         code_project: code_project,
-        acronym_project: acronym_project
+        acronym_project: acronym_project,
+        id_sampling_methodology: id_sampling_methodology
     };
     return peticionBackGeneral('', 'project', 'SEARCH', project)
         .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaProyecto(response['resource']) :  mostrarErrorBusq())
@@ -58,7 +60,7 @@ async function getProyectoPorId(id_project) {
         });
 }
 
-async function addProyecto(name_project, start_date_project, end_date_project, responsable_project, organization_project, description_project, file_project, code_project, acronym_project) {
+async function addProyecto(name_project, start_date_project, end_date_project, responsable_project, organization_project, description_project, file_project, code_project, acronym_project, id_sampling_methodology) {
     const project = {
         name_project: name_project,
         start_date_project: start_date_project,
@@ -68,7 +70,8 @@ async function addProyecto(name_project, start_date_project, end_date_project, r
         description_project: description_project,
         file_project: file_project,
         code_project: code_project,
-        acronym_project: acronym_project
+        acronym_project: acronym_project,
+        id_sampling_methodology: id_sampling_methodology
     };
 
     return peticionBackGeneral('', 'project', 'ADD', project)
@@ -83,7 +86,7 @@ async function addProyecto(name_project, start_date_project, end_date_project, r
         });
 }
 
-async function editProyecto(id_project, name_project, start_date_project, end_date_project, responsable_project, organization_project, description_project, file_project, code_project, acronym_project) {
+async function editProyecto(id_project, name_project, start_date_project, end_date_project, responsable_project, organization_project, description_project, file_project, code_project, acronym_project, id_sampling_methodology) {
     const project = {
         id_project: id_project,
         name_project: name_project,
@@ -94,7 +97,8 @@ async function editProyecto(id_project, name_project, start_date_project, end_da
         description_project: description_project,
         file_project: file_project,
         code_project: code_project,
-        acronym_project: acronym_project
+        acronym_project: acronym_project,
+        id_sampling_methodology: id_sampling_methodology
     };
 
     return peticionBackGeneral('', 'project', 'EDIT', project)
@@ -107,10 +111,6 @@ async function editProyecto(id_project, name_project, start_date_project, end_da
             return null;
         });
 }
-
-// async function deleteProyectoUser(id_user,id_project) {
-    
-//     return peticionBackGeneral('', 'user_project', 'DELETE', {'id_user': id_user, 'id_project': id_project})
 
 async function deleteProyecto(id_project) {
     
@@ -125,13 +125,22 @@ async function deleteProyecto(id_project) {
         });
 }
 
-async function getListUsuarios(usuario) {
+async function getListUsuariosProyectos(usuario) {
     return peticionBackGeneral('', 'user', 'SEARCH')
         .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectResponsables("responsable_project", response['resource'], usuario) : null)
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
         });
+}
+
+async function getListSamplingMethodologiesProyectos(id_sampling_methodology) {
+    return peticionBackGeneral('', 'sampling_methodology', 'SEARCH')
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectIdSampling("id_sampling_methodology", response['resource'], id_sampling_methodology) : null)
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return null;
+        })
 }
 
 function construyeTablaProyecto(filas) {
@@ -164,8 +173,8 @@ function construyeTablaProyecto(filas) {
 
         let atributosTabla = ["'" + fila.id_project + "'","'" + fila.name_project + "'", "'" + fila.start_date_project + "'", "'" + fila.end_date_project + "'",
                               "'" + fila.responsable_project + "'", "'" + fila.organization_project + "'","'" + fila.description_project + "'",
-                              /* "'" + fila.file_project + "'", */ "'" + fila.code_project + "'", "'" + fila.acronym_project + "'"];
-        let botonEdit='<button class="BotonEditar btn btn-info" id="editarProyectoUsuario" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
+                              /* "'" + fila.file_project + "'", */ "'" + fila.code_project + "'", "'" + fila.acronym_project + "'", "'" + fila.id_sampling_methodology + "'"];
+        let botonEdit='<button class="BotonEditar btn btn-info" id="editarProyectoUsuario" onclick="mostrarModalProyecto('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_project + 
                 '</td> <td>' + fila.name_project + 
@@ -176,9 +185,10 @@ function construyeTablaProyecto(filas) {
                 '</td> <td>' + fila.description_project + 
                 // '</td> <td>' + fila.file_project + 
                 '</td> <td>' + fila.code_project + 
-                '</td> <td>' + fila.acronym_project + 
+                '</td> <td>' + fila.acronym_project +
+                '</td> <td>' + fila.id_sampling_methodology +
                 '</td> <td class="text-center">' + botonEdit +
-                '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarProyecto" onclick="mostrarBorrar('+fila.id_project+')">Eliminar</button>'
+                '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarProyecto" onclick="mostrarBorrarProyecto('+fila.id_project+')">Eliminar</button>'
                 
                 '</td>  </tr>';
     });
@@ -200,7 +210,7 @@ function construyeTablaProyecto(filas) {
     setLang();
 }
 
-function getAtributos(tipo){
+function getAtributosProyecto(tipo){
     var id_project = document.getElementById("id_project").value
     var name_project = document.getElementById("name_project").value
     var start_date_project = document.getElementById("start_date_project").value
@@ -211,30 +221,35 @@ function getAtributos(tipo){
     var file_project = document.getElementById("file_project").value
     let code_project = document.getElementById("code_project").value
     let acronym_project = document.getElementById("acronym_project").value
+    let id_sampling_methodology = document.getElementById("id_sampling_methodology").value
      switch(tipo){
         case "Editar":
-            editProyecto(id_project, name_project, start_date_project, end_date_project, responsable_project, organization_project, description_project, file_project, code_project, acronym_project)
+            editProyecto(id_project, name_project, start_date_project, end_date_project, responsable_project,
+                        organization_project, description_project, file_project, code_project, acronym_project,id_sampling_methodology)
             break;
         case "Añadir":
-            addProyecto(name_project, start_date_project, end_date_project, responsable_project, organization_project, description_project, file_project, code_project, acronym_project)
+            addProyecto(name_project, start_date_project, end_date_project, responsable_project,
+                        organization_project, description_project, file_project, code_project, acronym_project, id_sampling_methodology)
             break;
         case "Buscar":
-            getListByParamProyectos_search(name_project, start_date_project, end_date_project, responsable_project, organization_project, description_project, code_project, acronym_project)
+            getListByParamProyectos_search(name_project, start_date_project, end_date_project, responsable_project,
+                                        organization_project, description_project, code_project, acronym_project, id_sampling_methodology)
             break;
      }
 }
 
-function mostrarModal(tipo, id_project=null, name_project=null, start_date_project=null, end_date_project=null, responsable_project=null, 
-                        organization_project=null, description_project=null, file_project=null, code_project=null, acronym_project=null){
+function mostrarModalProyecto(tipo, id_project=null, name_project=null, start_date_project=null, end_date_project=null, responsable_project=null, 
+                        organization_project=null, description_project=null, file_project=null, code_project=null, acronym_project=null, id_sampling_methodology=null){
     // Ventana modal
     document.getElementById("ventanaModal").style.display = "block";
     document.getElementById("Titulo").innerHTML = '<h2>'+tipo+'</h2>';
     document.getElementById("aceptar").innerHTML = tipo;
 
-    getListUsuarios(responsable_project);
+    getListUsuariosProyectos(responsable_project);
+    getListSamplingMethodologiesProyectos(id_sampling_methodology);
 
     if(tipo.includes("Editar")){
-        $("#formProyecto").attr('action' , 'javascript:getAtributos("Editar");');
+        $("#formProyecto").attr('action' , 'javascript:getAtributosProyecto("Editar");');
 
         $("#id_project").val(id_project);
         $("#name_project").val(name_project);
@@ -247,6 +262,7 @@ function mostrarModal(tipo, id_project=null, name_project=null, start_date_proje
         $("#file_project").val(file_project);
         $("#code_project").val(code_project);
         $("#acronym_project").val(acronym_project);
+        $("#id_sampling_methodology").val(id_sampling_methodology);
     }
     else{
         if(tipo.includes("Buscar")){
@@ -260,22 +276,24 @@ function mostrarModal(tipo, id_project=null, name_project=null, start_date_proje
             document.getElementById("file_project").required = false;
             document.getElementById("code_project").required = false;
             document.getElementById("acronym_project").required = false;
+            document.getElementById("id_sampling_methodology").required = false;
 
-            $("#formProyecto").attr('action' , 'javascript:getAtributos("Buscar");');
+            $("#formProyecto").attr('action' , 'javascript:getAtributosProyecto("Buscar");');
         }
         else{
             document.getElementById("name_project").required = true;
             document.getElementById("start_date_project").required = true;
             document.getElementById("end_date_project").required = true;
-            document.getElementById("responsable_project").required = false;
+            document.getElementById("responsable_project").required = true;
             document.getElementById("organization_project").required = true;
             document.getElementById("description_project").required = false;
             $('#form_file_project').show();
             document.getElementById("file_project").required = false;
             document.getElementById("code_project").required = true;
             document.getElementById("acronym_project").required = true;
+            document.getElementById("id_sampling_methodology").required = true;
 
-            $("#formProyecto").attr('action' , 'javascript:getAtributos("Añadir");');
+            $("#formProyecto").attr('action' , 'javascript:getAtributosProyecto("Añadir");');
         }
 
         $("#id_project").val('');
@@ -288,6 +306,7 @@ function mostrarModal(tipo, id_project=null, name_project=null, start_date_proje
         $("#file_project").val('');
         $("#code_project").val('');
         $("#acronym_project").val('');
+        $("#id_sampling_methodology").val('');
     }
     setLang();
 }
@@ -312,20 +331,40 @@ function rellenarSelectResponsables(tipo, filas, usuario) {
     if (usuario != null) element.value = usuario;
 }
 
+function rellenarSelectIdSampling(tipo, filas, usuario) {
+    let element = document.getElementById(tipo);
+    let option = document.createElement('option');
+
+      // Eliminar opciones existentes antes de agregar las nuevas
+    element.innerHTML = '';
+    option.value = "";
+    option.textContent = "-- Selecciona metodología de sampling --";
+    element.appendChild(option);
+
+    filas.forEach(fila => {
+        option = document.createElement('option');
+        option.value = fila.id_sampling_methodology;
+        option.textContent = fila.name_methodology;
+        element.appendChild(option);
+    })
+
+    if (usuario != null) element.value = usuario;
+}
+
 function cerrarModal(){
     // Ventana modal
     var modal = document.getElementById("ventanaModal");
     modal.style.display = "none"
 }
 
-function mostrarBorrar(id){
+function mostrarBorrarProyecto(id){
     // Ventana modal
     document.getElementById("comprobarBorrar").style.display = "block";
     $("#idBorrar").val(id)
-    $("#formBorrarProyecto").attr('action' , 'javascript:borrar();');
+    $("#formBorrarProyecto").attr('action' , 'javascript:borrarproyecto();');
 }
 
-function borrar(){
+function borrarproyecto(){
     var id = document.getElementById("idBorrar").value
     deleteProyecto(id)
 }

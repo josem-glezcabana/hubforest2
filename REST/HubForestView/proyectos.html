@@ -35,24 +35,25 @@
     <div class="container mt-5">
         <h2 class="listadoProyectos">Listado de proyectos</h2>
         <div class="mt-2 mb-3 float-right">
-            <button class="añadirProyecto btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('Añadir proyecto')">Añadir proyecto</button>
-            <button class="buscarProyecto btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('Buscar proyecto')">Buscar proyecto</button>
+            <button class="añadirProyecto btn btn-primary float-right" id="abrirModal" onclick="mostrarModalProyecto('Añadir proyecto')">Añadir proyecto</button>
+            <button class="buscarProyecto btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalProyecto('Buscar proyecto')">Buscar proyecto</button>
             <button class="reiniciarProyecto btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListProyectos()">Reiniciar tabla</button>
             
         </div>
             
         <table class="table table-striped" id="tablaProyectos">
-            <thead >
-                    <th class="id_project">Id</th>
-                    <th class="name_project">Nombre del proyecto</th>
-                    <th class="start_date_project">Fecha de inicio</th>
-                    <th class="end_date_project">Fecha de fin</th>
-                    <th class="responsable_project">Responsable</th>
-                    <th class="organization_project">Organización</th>
-                    <th class="description_project">Descripción</th>
-                    <!-- <th class="file_project">Archivo</th> -->
-                    <th class="code_project">Código de proyecto</th>
-                    <th class="acronym_project">Acrónimo</th>
+            <thead>
+                <th class="id_project">Id</th>
+                <th class="name_project">Nombre del proyecto</th>
+                <th class="start_date_project">Fecha de inicio</th>
+                <th class="end_date_project">Fecha de fin</th>
+                <th class="responsable_project">Responsable</th>
+                <th class="organization_project">Organización</th>
+                <th class="description_project">Descripción</th>
+                <!-- <th class="file_project">Archivo</th> -->
+                <th class="code_project">Código de proyecto</th>
+                <th class="acronym_project">Acrónimo</th>
+                <th class="id_sampling_methodology">Metodología de sampling</th>
             </thead>
             
             <tbody id="datosProyectos">
@@ -127,6 +128,11 @@
                 <div class="form-group">
                     <label for="acronym_project">Acrónimo:</label>
                     <input type="text" class="form-control" id="acronym_project" name="acronym_project" >
+                </div>
+
+                <div class="form-group">
+                    <label for="id_sampling_methodology">Metodología de sampling:</label>
+                    <select class="form-control" id="id_sampling_methodology" name="id_sampling_methodology"></select>
                 </div>
                 
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>
