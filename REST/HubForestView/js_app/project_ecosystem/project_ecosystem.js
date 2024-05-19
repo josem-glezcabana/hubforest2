@@ -1,6 +1,6 @@
 async function getListProjectEcosystem() {
 
-    return peticionBackGeneral('', 'proj_ecosystem', 'SEARCH')
+    return peticionBackGeneral('', 'project_ecosystem', 'SEARCH')
         .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaProjectEcosystem(response['resource']) : null)
         .catch(error => {
             console.error('Error en la solicitud:', error);
@@ -8,14 +8,15 @@ async function getListProjectEcosystem() {
         });       
   }
   
-  async function getListByParamProjectEcosystem(id_project, id_ecosystem) {
-    const proj_ecosystem = {
+  async function getListByParamProjectEcosystem(id_project, id_ecosystem, number_replicas_by_sampling, number_samplings) {
+    const project_ecosystem = {
         id_project: id_project,
-        id_ecosystem: id_ecosystem
-       
+        id_ecosystem: id_ecosystem,
+        number_replicas_by_sampling: number_replicas_by_sampling,
+        number_samplings: number_samplings
         
     };
-    return peticionBackGeneral('', 'proj_ecosystem', 'SEARCH_BY', proj_ecosystem)
+    return peticionBackGeneral('', 'project_ecosystem', 'SEARCH_BY', project_ecosystem)
         .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaProjectEcosystem(response['resource']) :  mostrarErrorBusq())
         .catch(error => {
             console.error('Error en la solicitud:', error);
@@ -23,33 +24,34 @@ async function getListProjectEcosystem() {
         });
   }
   
-  async function getListByParamProjectEcosystem_search(id_project, id_ecosystem) {
-    const proj_ecosystem = {
+  async function getListByParamProjectEcosystem_search(id_project, id_ecosystem, number_replicas_by_sampling, number_samplings) {
+    const project_ecosystem = {
         id_project: id_project,
-        id_ecosystem: id_ecosystem
-      
+        id_ecosystem: id_ecosystem,
+        number_replicas_by_sampling: number_replicas_by_sampling,
+        number_samplings: number_samplings
       
     };
-    return peticionBackGeneral('', 'proj_ecosystem', 'SEARCH', proj_ecosystem)
-        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaProjectEcosystem(response['resource']) :  mostrarErrorBusq())
+    return peticionBackGeneral('', 'project_ecosystem', 'SEARCH', project_ecosystem)
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaProjectEcosystem(response['resource']) : console.log(response))
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
         });
   }
   
-  async function addProjectEcosystem(id_project, id_ecosystem) {
-    const proj_ecosystem = {
+  async function addProjectEcosystem(id_project, id_ecosystem, number_replicas_by_sampling, number_samplings) {
+    const project_ecosystem = {
         id_project: id_project,
-        id_ecosystem: id_ecosystem
-      
+        id_ecosystem: id_ecosystem,
+        number_replicas_by_sampling: number_replicas_by_sampling,
+        number_samplings: number_samplings
       
     };
   
-    return peticionBackGeneral('', 'proj_ecosystem', 'ADD', proj_ecosystem)
+    return peticionBackGeneral('', 'project_ecosystem', 'ADD', project_ecosystem)
         .then(response => {
             location.reload();
-            response['resource']
             return { status: 'OK', data: response };
         })
         .catch(error => {
@@ -58,20 +60,19 @@ async function getListProjectEcosystem() {
         });
   }
   
-  async function editProjectEcosystem(id_project, id_ecosystem) {
-    const proj_ecosystem = {
+  async function editProjectEcosystem(id_project, id_ecosystem, number_replicas_by_sampling, number_samplings) {
+    const project_ecosystem = {
         id_project: id_project,
-        id_ecosystem: id_ecosystem
-      
+        id_ecosystem: id_ecosystem,
+        number_replicas_by_sampling: number_replicas_by_sampling,
+        number_samplings: number_samplings
       
     };
   
-    return peticionBackGeneral('', 'proj_ecosystem', 'EDIT', proj_ecosystem)
+    return peticionBackGeneral('', 'project_ecosystem', 'EDIT', project_ecosystem)
         .then(response => {
-            console.log(id_project)
-            console.log(id_ecosystem)
-            console.log(response)
-            //location.reload();
+            
+            location.reload();
             return { status: 'OK', data: response };
         })
         .catch(error => {
@@ -81,8 +82,7 @@ async function getListProjectEcosystem() {
   }
   
   async function deleteProjectEcosystem(id_project,id_ecosystem) {
-    
-    return peticionBackGeneral('', 'proj_ecosystem', 'DELETE', {'id_project': id_project, 'id_ecosystem': id_ecosystem})
+    return peticionBackGeneral('', 'project_ecosystem', 'DELETE', {'id_project': id_project, 'id_ecosystem': id_ecosystem})
         .then(response => {
             location.reload();
             return { status: 'OK', data: response };
@@ -114,52 +114,95 @@ async function getListProjectEcosystem() {
   function construyeTablaProjectEcosystem(filas) {
   
     let filasTabla = '';
-    let tipo = "'EditarPermisos'";
+    let tipo = "'EditarProjectEcosystems'";
     let element = document.getElementById("datosProjectEcosystems");
     while (element.firstChild) {
         element.removeChild(element.firstChild);
     }
-  
+    
     $("#datosProjectEcosystems").html("");
     filas.forEach(fila => {
-  
-        let atributosTabla = ["'" + fila.id_ecosystem + "'","'" + fila.id_project +"'"];
+        
+        let atributosTabla = ["'" + fila.id_project + "'","'" + fila.id_ecosystem + "'","'" + fila.number_replicas_by_sampling + "'","'" + fila.number_samplings + "'"];
         let botonEdit='<button class="BotonEditar btn btn-info " id="editarProjectEcosystem" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
   
         filasTabla += '<tr> <td>' + fila.id_ecosystem + 
-                '</td> <td>' + fila.id_project +  
-                '</td> <td class="text-center">' + botonEdit +
-                '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarProyecto" onclick="mostrarBorrar('+fila.id_project+','+fila.id_project+')">Eliminar</button>'
+            '</td> <td>' + fila.id_project +  
+            '</td> <td>' + fila.number_replicas_by_sampling + 
+            '</td> <td>' + fila.number_samplings + 
+            '</td> <td class="text-center">' + botonEdit +
+            '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarProjectEcosystem" onclick="mostrarBorrar('+fila.id_project+','+fila.id_ecosystem+')">Eliminar</button>'
                 
-                '</td>  </tr>';
+            '</td>  </tr>';
+
+            
     });
     
+    comprobarAdmin();
+
     $("#datosProjectEcosystems").append(filasTabla);
     cerrarModal()
     setLang();
   }
+
+  function comprobarAdmin(){
+    recuperarYComprobarUsuarioLogeadoIsAdmin().then(resultado => {
+        if (!resultado) {
+            var elements = document.getElementsByClassName('BotonEliminar');
+                for (var e of elements) {
+                    e.style.display ='none';
+                }
+            elements = document.getElementsByClassName('BotonEditar');
+                for (var e of elements) {
+                    e.style.display ='none';
+                }
+            elements = document.getElementsByClassName('añadirProjectEcosystems');
+                for (var e of elements) {
+                    e.style.display ='none';
+                }
+           
+        } else {
+            var elements = document.getElementsByClassName('BotonEliminar');
+                for (var e of elements) {
+                    e.style.display ='block';
+                }
+            elements = document.getElementsByClassName('BotonEditar');
+                for (var e of elements) {
+                    e.style.display ='block';
+                }
+            elements = document.getElementsByClassName('añadirProjectEcosystems');
+                for (var e of elements) {
+                    e.style.display ='block';
+                }
+        }
+    });
+  }
   
   function getAtributos(tipo){
-    var id_project = document.getElementById("id_project").value
-    var id_ecosystem = document.getElementById("id_ecosystem").value
+    var id_project = document.getElementById("id_project").value;
+    var id_ecosystem = document.getElementById("id_ecosystem").value;
+    var number_replicas_by_sampling = document.getElementById("number_replicas_by_sampling").value;
+    var number_samplings = document.getElementById("number_samplings").value;
+    
+
      switch(tipo){
         case "Editar":
-            editProjectEcosystem(id_project, id_ecosystem)
+            editProjectEcosystem(id_project, id_ecosystem, number_replicas_by_sampling, number_samplings)
             break;
         case "Añadir":
-            addProjectEcosystem(id_project, id_ecosystem)
+            addProjectEcosystem(id_project, id_ecosystem, number_replicas_by_sampling, number_samplings)
             break;
         case "Buscar":
-            getListByParamProjectEcosystem_search(id_project, id_ecosystem)
+            console.log("HOla")
+            getListByParamProjectEcosystem_search(id_project, id_ecosystem, number_replicas_by_sampling, number_samplings)
             break;
      }
   }
   
-  function mostrarModal(tipo, id_project=null, id_ecosystem=null, rol=null, name_ecosystem =null, name_project=null){
+  function mostrarModal(tipo, id_project=null, id_ecosystem=null, number_replicas_by_sampling=null, number_samplings=null){
     // Ventana modal
     document.getElementById("ventanaModal").style.display = "block";
     document.getElementById("Titulo").innerHTML = '<h2 class="'+tipo+'">'+tipo+'</h2>';
-    document.getElementById("aceptar").innerHTML = tipo;
     document.getElementById("aceptar").classList.add(tipo);
   
   
@@ -168,30 +211,36 @@ async function getListProjectEcosystem() {
   
     if(tipo.includes("Editar")){
         $("#formProjectEcosystem").attr('action' , 'javascript:getAtributos("Editar");');
-  
+        
+        console.log(id_project)
         $("#id_project").val(id_project);
         $("#id_ecosystem").val(id_ecosystem);
-        $("#rol").val(rol);
+        $("#number_replicas_by_sampling").val(number_replicas_by_sampling);
+        $("#number_samplings").val(number_samplings);
     }
     else{
         if(tipo.includes("Buscar")){
-            document.getElementById("id_ecosystem").setAttribute("hidden", true);
-            document.querySelector('label[for="id_ecosystem"]').setAttribute("hidden", true);
-            document.getElementById("id_project").setAttribute("hidden", true);
-            document.querySelector('label[for="id_project"]').setAttribute("hidden", true);
+           
+
+            document.getElementById("number_replicas_by_sampling").required = false;
+            document.getElementById("number_samplings").required = false;
+            $("#formProjectEcosystem").attr('action' , 'javascript:getAtributos("Buscar");');
         }
         else{
-          document.getElementById("id_project").required = true;
-          document.getElementById("id_ecosystem").required = true;
-
-  
+            document.getElementById("id_project").required = true;
+            document.getElementById("id_ecosystem").required = true;
+            document.getElementById("number_replicas_by_sampling").required = false;
+            document.getElementById("number_samplings").required = false;
             $("#formProjectEcosystem").attr('action' , 'javascript:getAtributos("Añadir");');
         }
   
         $("#id_project").val('');
         $("#id_ecosystem").val('');
+        $("#number_replicas_by_sampling").val('');
+        $("#number_samplings").val('');
     }
     setLang();
+    document.getElementById("aceptar").classList.remove(tipo);
   }
   
   function rellenarSelectEcosystems(tipo, filas, ecosystem) {
@@ -236,19 +285,19 @@ async function getListProjectEcosystem() {
     modal.style.display = "none"
   }
   
-  function mostrarBorrar(id){
+  function mostrarBorrar(project, ecosystem){
     // Ventana modal
     document.getElementById("comprobarBorrar").style.display = "block";
-    $("#idBorrar").val(id)
+    
+    $("#idProject").val(project)
+    $("#idEcosystem").val(ecosystem)
+    console.log(ecosystem)
     $("#formBorrarProjectEcosystem").attr('action' , 'javascript:borrar();');
   }
   
   function borrar(){
-    var ids = document.getElementById("idBorrar").value
-    var idArray = ids.split(","); 
-      // Obtener los IDs por separado
-      var id_project = idArray[0];
-      var id_ecosystem = idArray[1];
-      
+    var id_project = document.getElementById("idProject").value
+    var id_ecosystem = document.getElementById("idEcosystem").value 
+   
     deleteProjectEcosystem(id_project, id_ecosystem)
   }

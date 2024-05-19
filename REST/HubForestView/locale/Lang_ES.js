@@ -84,6 +84,7 @@ arrayES={
 	'proyectosPregunta': '¿Estás seguro?',
 	'proyectosAceptar': 'Aceptar',
 
+
 	//SITE
 	'titleSites': 'Sitios',
 	'listadoSites': 'Listado de sitios',
@@ -91,11 +92,16 @@ arrayES={
 	'buscarSite': 'Buscar sitio',
 	'reiniciarTabla': 'Reiniciar tabla',
 	'id_site': 'Id sitio',
-	'id_project': 'Id proyecto',
-	'id_ecosystem': 'Id ecosistema',
-	'coorN_site': 'CoorN sitio',
-	'coorW_site': 'CoorW sitio',
-	'slope_site': 'Pendiente sitio',
+	'country_site': 'Pais',
+	'state_province_site': 'Estado/provincia',
+	'city_town_site': 'Ciudad',
+	'geographical_direction1': 'Direccion geografica 1',
+	'coordinate1_value_site': 'Coordenada 1',
+	'geographical_direction2': 'Direccion geografica 2',
+	'coordinate2_value_site': 'Coordenada 2',
+	'owner_site': 'Dueño',
+	'slope_form_site': 'Forma pendiente',
+	'slope_gradient_site': 'Gradiente pendiente',
 	'orientation_site': 'Orientation sitio',
 	'sitios_error': 'No existen sitios que coincidan con estos parámetros',
 	'sitiosPregunta': '¿Estás seguro?',
@@ -107,6 +113,18 @@ arrayES={
 	'editarS': 'Editar sitio',
 	'añadirS': 'Añadir sitio',
 	'buscarS': 'Buscar sitio',
+
+	//PROJECT_ECOSYSTEM
+	'titleProjectEcosystem': 'Proyectos/ecosistemas',
+	'listadoProjectEcosystems':'Listado de proyecto/ecosistemas',
+	'añadirProjectEcosystems': 'Añadir proyecto/ecosistema',
+	'buscarProjectEcosystems':'Buscar proyecto/ecosistema',
+	'buscarProjectEcosystems':'Reiniciar tabla',
+	'number_replicas_by_sampling':'Nº replicas/muestra',
+	'number_samplings':'Nº muestras',
+	'EditarProjectEcosystems': 'Editar Proyecto/ecosistema',
+	'AñadirProjectEcosystemss':'Añadir Proyecto/ecosistema',
+	'BuscarProjectEcosystemss': 'Buscar Proyecto/ecosistema',
 
 	//SAMPLING
 	'listadoSampling': 'Listado de metodologías de muestreo',

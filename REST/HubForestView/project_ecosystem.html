@@ -15,6 +15,7 @@
     <script type="text/javascript" src="locale/Lang_EN.js"></script>
     <script type="text/javascript" src="locale/Lang_ES.js"></script>
    
+    <title class="titleProjectEcosystem">Proyectos/ecosistemas</title>
     <!-- Incluye los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -30,18 +31,20 @@
     <div id="header"></div>
     <div id="contenido" >
     <div class="container mt-5">
-        <h2 class="listadoPermisos">Listado de permisos</h2>
+        <h2 class="listadoProjectEcosystems">Listado de proyecto/ecosistemas</h2>
         <div class="mt-2 mb-3 float-right">
-            <button class="añadirPermiso btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('AñadirPermisos')">Añadir permiso</button>
-            <button class="buscarPermiso btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('BuscarPermisos')">Buscar permiso</button>
-            <button class="reiniciarPermisos btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListUsuarioProjecto()">Reiniciar tabla</button>
+            <button class="añadirProjectEcosystems btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('AñadirProjectEcosystemss')">Añadir proyecto/ecosistema</button>
+            <button class="buscarProjectEcosystems btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('BuscarProjectEcosystemss')">Buscar proyecto/ecosistema</button>
+            <button class="reiniciarProjectEcosystemss btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListProjectEcosystem()">Reiniciar tabla</button>
             
         </div>
             
         <table class="table table-striped" id="tablaProjectEcosystems">
             <thead >
-                    <th class="name_ecosystem">Nombre ecosystem</th>
-                    <th class="name_project">Nombre project</th>
+                    <th class="name_ecosystem">Id ecosystem</th>
+                    <th class="name_project">Id project</th>
+                    <th class="number_replicas_by_sampling">Nº replicas/muestra</th>
+                    <th class="number_samplings">Nº muestras</th>
             </thead>
             
             <tbody id="datosProjectEcosystems">
@@ -79,11 +82,19 @@
                     <select class="form-control" id="id_project" name="id_project"></select>
                 </div>
 
-               
+               <div class="form-group">
+                    <label for="number_replicas_by_sampling">Nº replicas/muestra:</label>
+                    <input type="number" class="form-control" id="number_replicas_by_sampling" name="number_replicas_by_sampling" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="number_samplings">Nº muestras:</label>
+                    <input type="number" class="form-control" id="number_samplings" name="number_samplings" >
+                </div>
             
                 
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>
-                <button type="button" id="cerrar" class=" cerrarModalPermiso btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+                <button type="button" id="cerrar" class=" cerrarModalPorjectEcosystem btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
             </form> 
         </div>
     </div>
@@ -95,10 +106,14 @@
             </button>
             <div class="text-center" id="Titulo"><h2 class="permisosPregunta">¿Estas seguro?</h2></div>
             
-            <form id="formBorrarProyecto" action="" method="post" onsubmit="">
+            <form id="formBorrarProjectEcosystem" action="" method="post" onsubmit="">
                 <div class="form-group">
-                    <label for="id_project" style="display: none;">Id proyecto:</label>
-                    <input type="text" class="form-control" id="idBorrar" name="id_project" style="display: none;">
+                    <label for="idProject" style="display: none;">Id proyecto:</label>
+                    <input type="text" class="form-control" id="idProject" name="idProject" style="display: none;">
+                </div>
+                <div class="form-group">
+                    <label for="idEcosystem" style="display: none;">Id ecosystem:</label>
+                    <input type="text" class="form-control" id="idEcosystem" name="idEcosystem" style="display: none;">
                 </div>
                 <div class="col text-center">
                     <button type="submit" id="aceptar" class="permisosAceptar btn btn-danger">Aceptar</button>

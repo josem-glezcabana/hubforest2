@@ -16,13 +16,13 @@ class site_SERVICE extends appServiceBase{
 
 	function inicializarRest(){
 
-		$this->listaAtributos = array('id_site','id_project','id_ecosystem','coorN_site','coorW_site','slope_site','orientation_site');
+		$this->listaAtributos = array('id_site','country_site','state_province_site','city_town_site','geographical_direction1','coordinate1_value_site','geographical_direction2','coordinate2_value_site','owner_site','slope_form_site','slope_gradient_site','orientation_site');
 
-		$this->listaAtributosSelect = array('id_site','id_project','id_ecosystem','coorN_site','coorW_site','slope_site','orientation_site');
+		$this->listaAtributosSelect = array('id_site','country_site','state_province_site','city_town_site','geographical_direction1','coordinate1_value_site','geographical_direction2','coordinate2_value_site','owner_site','slope_form_site','slope_gradient_site','orientation_site');
 
 		$this->notnull = array(
-						'ADD' => array('id_project','id_ecosystem','coorN_site','coorW_site','slope_site','orientation_site'),
-						'EDIT' => array('id_project','id_ecosystem','coorN_site','coorW_site','slope_site','orientation_site'),
+						'ADD' => array('country_site','state_province_site','city_town_site','geographical_direction1','coordinate1_value_site','geographical_direction2','coordinate2_value_site','owner_site','slope_form_site','slope_gradient_site','orientation_site'),
+						'EDIT' => array('country_site','state_province_site','city_town_site','geographical_direction1','coordinate1_value_site','geographical_direction2','coordinate2_value_site','owner_site','slope_form_site','slope_gradient_site','orientation_site'),
 						'DELETE' => array('id_site')
 						);
 

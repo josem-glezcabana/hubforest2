@@ -32,37 +32,44 @@
 
     <div id="contenido" >
 
-    <div class="container mt-5">
+    <div class="container mt-5" >
         <h2 class="listadoSites">Listado de Sitios</h2>
-        <div class="mt-2 mb-3 float-right">
-            <button class="añadirSite btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('añadirS')">Añadir Sitio</button>
-            <button class="buscarSite btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('buscarSite')">Buscar Sitio</button>
-            <button class="reiniciarTabla btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListSites()">Reiniciar tabla</button>
-            
+        <div style="overflow-x:scroll;">
+            <div class="mt-2 mb-3 float-right">
+                <button class="añadirSite btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('añadirS')">Añadir Sitio</button>
+                <button class="buscarSite btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('buscarSite')">Buscar Sitio</button>
+                <button class="reiniciarTabla btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListSites()">Reiniciar tabla</button>
+                
+            </div>
+            <table class="table table-striped" id="tablaSites" >
+                <thead >
+                        <th class="id_site">Id sitio</th>
+                        <th class="country_site">Pais</th>
+                        <th class="state_province_site">Estado/provincia</th>
+                        <th class="city_town_site">Ciudad</th>
+                        <th class="geographical_direction1">Direccion geografica 1</th>
+                        <th class="coordinate1_value_site">Coordenada 1</th>
+                        <th class="geographical_direction2">Direccion geografica 2</th>
+                        <th class="coordinate2_value_site">Coordenada 2</th>
+                        <th class="owner_site">Dueño</th>
+                        <th class="slope_form_site">Forma pendiente</th>
+                        <th class="slope_gradient_site">Gradiente pendiente</th>
+                        <th class="orientation_site">Orientacion sitio</th>
+                </thead>
+                
+                <tbody id="datosSites">
+                </tbody>
+           
+                
+            </table>
         </div>
-
-        <table class="table table-striped" id="tablaSites">
-            <thead >
-                    <th class="id_site">Id sitio</th>
-                    <th class="id_project">Id proyecto</th>
-                    <th class="id_ecosystem">Id ecosistema</th>
-                    <th class="coorN_site">CoorN sitio</th>
-                    <th class="coorW_site">CoorW sitio</th>
-                    <th class="slope_site">Pendiente sitio</th>
-                    <th class="orientation_site">Orientation sitio</th>
-            </thead>
-            
-            <tbody id="datosSites">
-            </tbody>
        
-            
-        </table>
-            <div id="formularioentidad"></div>
+        <div id="formularioentidad"></div>
         
     </div>
     
-    <div id="ventanaModal" class="modal">
-        <div class="contenido-modal">
+    <div id="ventanaModal" class="modal" style="overflow-y:scroll;">
+        <div class="contenido-modal" >
             <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarModal()" data-close>
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -80,30 +87,55 @@
                     <label for="id_site" style="display: none;">Id sitio:</label>
                     <input type="text" class="form-control" id="id_site" name="id_site" style="display: none;">
                 </div>
-    
+
                 <div class="form-group">
-                    <label for="id_project">Id proyecto:</label>
-                    <input type="text" class="form-control" id="id_project" name="id_project" >
+                    <label for="country_site">Pais:</label>
+                    <input type="text" class="form-control" id="country_site" name="country_site" >
                 </div>
                 
                 <div class="form-group">
-                    <label for="id_ecosystem">Id ecosistema:</label>
-                    <input type="text" class="form-control" id="id_ecosystem" name="id_ecosystem" >
+                    <label for="state_province_site">Estado/provincia:</label>
+                    <input type="text" class="form-control" id="state_province_site" name="state_province_site" >
                 </div>
 
                 <div class="form-group">
-                    <label for="coorN_site">CoorN sitio:</label>
-                    <input type="text" class="form-control" id="coorN_site" name="coorN_site" >
+                    <label for="city_town_site">Ciudad:</label>
+                    <input type="text" class="form-control" id="city_town_site" name="city_town_site" >
                 </div>
 
                 <div class="form-group">
-                    <label for="coorW_site">CoorW sitio:</label>
-                    <input type="text" class="form-control" id="coorW_site" name="coorW_site" >
+                    <label for="geographical_direction1">Direccion geografica 1:</label>
+                    <input type="text" class="form-control" id="geographical_direction1" name="geographical_direction1" >
                 </div>
                 
                 <div class="form-group">
-                    <label for="slope_site">Pendiente sitio:</label>
-                    <input type="text" class="form-control" id="slope_site" name="slope_site" >
+                    <label for="coordinate1_value_site">Coordenada 1:</label>
+                    <input type="text" class="form-control" id="coordinate1_value_site" name="coordinate1_value_site" >
+                </div>
+
+                <div class="form-group">
+                    <label for="geographical_direction2">Direccion geografica 2:</label>
+                    <input type="text" class="form-control" id="geographical_direction2" name="geographical_direction2" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="coordinate2_value_site">Coordenada 2:</label>
+                    <input type="text" class="form-control" id="coordinate2_value_site" name="coordinate2_value_site" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="owner_site">Dueño:</label>
+                    <input type="text" class="form-control" id="owner_site" name="owner_site" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="slope_form_site">Forma pendiente:</label>
+                    <input type="text" class="form-control" id="slope_form_site" name="slope_form_site" >
+                </div>
+
+                <div class="form-group">
+                    <label for="slope_gradient_site">Ciudad:</label>
+                    <input type="text" class="form-control" id="slope_gradient_site" name="slope_gradient_site" >
                 </div>
 
                 <div class="form-group">

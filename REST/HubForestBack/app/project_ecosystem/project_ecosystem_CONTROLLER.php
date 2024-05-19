@@ -2,7 +2,7 @@
 
 include_once './Base/ControllerBase.php';
 
-class proj_ecosystem extends ControllerBase{
+class project_ecosystem extends ControllerBase{
 
 
 	function __construct(){
