@@ -141,7 +141,17 @@ arrayES={
 	'samplingPregunta' : '¿Estás seguro?',
 	'mensajeBorrarSamplings': 'Se va borrar el sampling indicado',
 	'samplingAceptar': 'Aceptar',
-	'cerrarModalSampling': 'Cerrar'
+	'cerrarModalSampling': 'Cerrar',
+
+	//tempora_sampling_params
+	'aceptar': 'aceptar',
+	'cerrar': 'cerrar',
+	'listadodetemporal_sampling_site_params': 'Listado de temporal_sampling_site_params',
+	'añadirtemporal_sampling_site_params': 'Añadir temporal_sampling_site_params',
+	'buscartemporal_sampling_site_params': 'Buscar temporal_sampling_site_params',
+	'reiniciartemporal_sampling_site_params': 'Reiniciar table',
+	'noexistentemporal_sampling_site_paramsquecoincidanconestosparametros': 'No existen temporal_sampling_site_params que coindidan con estos parámetros',
+	'temporal_sampling_site_paramsPregunta': '¿Estás seguro?'
 
 
 }
