@@ -139,6 +139,18 @@ arrayEN={
 	'samplingPregunta' : 'Are you sure?',
 	'mensajeBorrarSamplings': 'The indicated sampling will be deleted',
 	'samplingAceptar': 'Accept',
-	'cerrarModalSampling': 'Close'
+	'cerrarModalSampling': 'Close',
+
+	//Atributos
+	'nameRegistro' : 'Name',
+	'passwordLogin' : 'Password',
+	'botonLogin' : 'Log in',
+	'botonIrRegistrar' : 'Register',
+	'registroNombre' : 'Name',
+	'registroApellido' : 'Surname',
+	'registroOrganizacion' : 'Organization',
+	'registroEmail' : 'Email',
+	'registroPassword' : 'Password',
+	'registroPosition' : 'Position'
 
 }
