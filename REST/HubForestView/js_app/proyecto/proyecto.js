@@ -174,7 +174,7 @@ function construyeTablaProyecto(filas) {
         let atributosTabla = ["'" + fila.id_project + "'","'" + fila.name_project + "'", "'" + fila.start_date_project + "'", "'" + fila.end_date_project + "'",
                               "'" + fila.responsable_project + "'", "'" + fila.organization_project + "'","'" + fila.description_project + "'",
                               /* "'" + fila.file_project + "'", */ "'" + fila.code_project + "'", "'" + fila.acronym_project + "'", "'" + fila.id_sampling_methodology + "'"];
-        let botonEdit='<button class="BotonEditar btn btn-info" id="editarProyectoUsuario" onclick="mostrarModalProyecto('+tipo+','+atributosTabla+')">Editar</button>'
+        let botonEdit='<button class="BotonEditar btn btn-info editarProyecto" id="editarProyecto" onclick="mostrarModalProyecto('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_project + 
                 '</td> <td>' + fila.name_project + 
@@ -188,19 +188,31 @@ function construyeTablaProyecto(filas) {
                 '</td> <td>' + fila.acronym_project +
                 '</td> <td>' + fila.id_sampling_methodology +
                 '</td> <td class="text-center">' + botonEdit +
-                '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarProyecto" onclick="mostrarBorrarProyecto('+fila.id_project+')">Eliminar</button>'
+                '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarProyecto" id="borrarProyecto" onclick="mostrarBorrarProyecto('+fila.id_project+')">Eliminar</button>'
                 
                 '</td>  </tr>';
     });
 
     recuperarYComprobarUsuarioLogeadoIsAdmin().then(resultado => {
         if (!resultado) {
-            $("#editarProyectoUsuario").hide();
-            $("#borrarProyecto").hide();
+            let editarProyecto = document.getElementsByClassName("editarProyecto");
+            for (const fila of editarProyecto) {
+                fila.style.display = 'none';
+            }
+            let borrarProyecto = document.getElementsByClassName("borrarProyecto");
+            for (const fila of borrarProyecto) {
+                fila.style.display = 'none';
+            }
             $("#abrirModal").hide();
         } else {
-            $("#editarProyectoUsuario").show();
-            $("#borrarProyecto").show();
+            let editarProyecto = document.getElementsByClassName("editarProyecto");
+            for (const fila of editarProyecto) {
+                fila.style.display = 'block';
+            }
+            let borrarProyecto = document.getElementsByClassName("borrarProyecto");
+            for (const fila of borrarProyecto) {
+                fila.style.display = 'block';
+            }
             $("#abrirModal").show();
         }
     });
