@@ -173,7 +173,7 @@ function construyeTablaProyecto(filas) {
 
         let atributosTabla = ["'" + fila.id_project + "'","'" + fila.name_project + "'", "'" + fila.start_date_project + "'", "'" + fila.end_date_project + "'",
                               "'" + fila.responsable_project + "'", "'" + fila.organization_project + "'","'" + fila.description_project + "'",
-                              /* "'" + fila.file_project + "'", */ "'" + fila.code_project + "'", "'" + fila.acronym_project + "'", "'" + fila.id_sampling_methodology + "'"];
+                              "'" + fila.file_project + "'", "'" + fila.code_project + "'", "'" + fila.acronym_project + "'", "'" + fila.id_sampling_methodology + "'"];
         let botonEdit='<button class="BotonEditar btn btn-info editarProyecto" id="editarProyecto" onclick="mostrarModalProyecto('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_project + 
@@ -183,7 +183,7 @@ function construyeTablaProyecto(filas) {
                 '</td> <td>' + fila.responsable_project + 
                 '</td> <td>' + fila.organization_project + 
                 '</td> <td>' + fila.description_project + 
-                // '</td> <td>' + fila.file_project + 
+                '</td> <td>' + fila.file_project + 
                 '</td> <td>' + fila.code_project + 
                 '</td> <td>' + fila.acronym_project +
                 '</td> <td>' + fila.id_sampling_methodology +
