@@ -326,7 +326,7 @@ DROP TABLE IF EXISTS `sampling_methodology`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sampling_methodology` (
-  `id_sampling_methodology` int NOT NULL,
+  `id_sampling_methodology` int NOT NULL AUTO_INCREMENT,
   `name_methodology` varchar(100) NOT NULL,
   `description_methodology` varchar(5000) NOT NULL,
   `bibref_methodology` varchar(200) NOT NULL,
