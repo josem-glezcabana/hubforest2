@@ -80,7 +80,7 @@ function includeHeader() {
                                     '<li><a class="proyectosMenu dropdown-item" href="proyectos.html">Proyectos</a></li>' +
                                     '<li><a class="ecosystemsMenu dropdown-item" href="listaEcosystem.html">Ecosistemas</a></li>' +
                                     '<li id="permisosMenu"><a class="permisosMenu dropdown-item" href="permisos.html">Permisos Proyectos</a></li>' +
-                                    '<li><a class="sitesMenu dropdown-item" href="sites.html">Sitios</a></li>' +
+                                    '<li><a class="TemporalsamplingSiteMenu dropdown-item" href="sites.html">Sitios</a></li>' +
                                     '<li><a class="sitesMenu dropdown-item" href="listaTemporal_sampling_site_params.html">Temp. samp. sites</a></li>' +
                                     '<li><a class="projectEcosystemMenu dropdown-item" href="project_ecosystem.html">Proyectos-ecosistemas</a></li>' +
                                     '<li><a class="samplingMenu dropdown-item" href="sampling.html">Metodología muestreo</a></li>' +
