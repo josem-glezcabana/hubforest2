@@ -3,6 +3,9 @@ arrayES={
 	//GENERALES
 	'BotonEditar' : 'Editar',
 	'BotonEliminar' : 'Eliminar',
+	'DeletePregunta': '¿Estás seguro?',
+	'DeleteAceptar' : 'Aceptar',
+	'DeleteCerrar': 'Cerrar',
 	//HEADER
 	'inicioPage': 'Inicio',
 	'seccionesMenu': 'Secciones',
@@ -106,7 +109,7 @@ arrayES={
 	'sitios_error': 'No existen sitios que coincidan con estos parámetros',
 	'sitiosPregunta': '¿Estás seguro?',
 	'aceptar': 'Aceptar',
-	'cerrar': 'Close',
+	'cerrar': 'Cerrar',
 	'editar': 'Editar',
 	'eliminar': 'Eliminar',
 	'aceptar': 'Aceptar',
@@ -130,7 +133,6 @@ arrayES={
 	'listadoSampling': 'Listado de metodologías de muestreo',
 	'añadirSampling': 'Añadir metodología de muestreo',
 	'buscarSampling': 'Buscar metodología de muestreo',
-	'reiniciarTabla': 'Reiniciar tabla',
 	'name_project': 'Nombre Proyecto',
 	'name_ecosystem': 'Nombre ecosistema',
 	'site': 'sitio',
@@ -145,13 +147,23 @@ arrayES={
 
 	//tempora_sampling_params
 	'aceptar': 'aceptar',
-	'cerrar': 'cerrar',
 	'listadodetemporal_sampling_site_params': 'Listado de temporal_sampling_site_params',
 	'añadirtemporal_sampling_site_params': 'Añadir temporal_sampling_site_params',
 	'buscartemporal_sampling_site_params': 'Buscar temporal_sampling_site_params',
 	'reiniciartemporal_sampling_site_params': 'Reiniciar table',
 	'noexistentemporal_sampling_site_paramsquecoincidanconestosparametros': 'No existen temporal_sampling_site_params que coindidan con estos parámetros',
-	'temporal_sampling_site_paramsPregunta': '¿Estás seguro?'
+	'temporal_sampling_site_paramsPregunta': '¿Estás seguro?',
 
-
+	// SAMPLING_METHODOLOGY
+	'titleSamplingMethod': 'Metologías de muestra',
+	'listadoSamplingMethod': 'Listado de metodologías de muestra',
+	'samplingMethodMenu': 'Metodologías de muestra',
+	'añadirSamplingMethod': 'Añadir metodología',
+	'editSamplingMethod': 'Editar metodología',
+	'buscarSamplingMethod': 'Buscar metodología',
+	'name_methodology': 'Nombre de la metodología',
+	'description_methodology': 'Descripción',
+	'bibref_methodology': 'Referencia bibliográfica',
+	'file_methodology': 'Archivo',
+	'samplingMethodError': 'No existen metodologías que coincidan con estos parámetros.',
 }

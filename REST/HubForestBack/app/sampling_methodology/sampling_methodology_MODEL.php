@@ -16,7 +16,7 @@ class sampling_methodology_MODEL extends ModelBase{
 		$this->tabla = 'sampling_methodology';
 		$this->clave = array('id_sampling_methodology');
 		$this->foraneas = array();
-		$this->autoincrement = array();
+		$this->autoincrement = array('id_sampling_methodology');
         $this->unicos = array();
 
 	}

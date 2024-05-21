@@ -3,6 +3,9 @@ arrayEN={
 	//GENERALES
 	'BotonEditar' : 'Edit',
 	'BotonEliminar' : 'Delete',
+	'DeletePregunta': 'Are you sure?',
+	'DeleteAceptar' : 'Accept',
+	'DeleteCerrar': 'Close',
 	//HEADER
 	'inicioPage': 'Start',
 	'seccionesMenu': 'Sections',
@@ -125,17 +128,16 @@ arrayEN={
 	'BuscarProjectEcosystemss': 'Search project/ecosystems',
 
 	//SAMPLING
-	'listadoSampling': 'List of sampling methodologies',
-	'añadirSampling': 'Add sampling methodology',
-	'buscarSampling': 'Search sampling methodology',
-	'reiniciarTabla': 'Reset table',
+	'listadoSampling': 'List of samplings',
+	'añadirSampling': 'Add sampling',
+	'buscarSampling': 'Search sampling',
 	'name_project': 'Name Project',
 	'name_ecosystem': 'Name ecosystem',
 	'site': 'Site',
-	'fechaSampling': 'Date of creation sampling methodology' ,
+	'fechaSampling': 'Date of creation samplings' ,
 	'timeampling': 'Sampling time',
 	'tempSampling': 'Temperature',
-	'samplingError': 'There are no sampling methodologies that match these parameters.',
+	'samplingError': 'There are no samplings that match these parameters.',
 	'samplingPregunta' : 'Are you sure?',
 	'mensajeBorrarSamplings': 'The indicated sampling will be deleted',
 	'samplingAceptar': 'Accept',
@@ -151,6 +153,19 @@ arrayEN={
 	'registroOrganizacion' : 'Organization',
 	'registroEmail' : 'Email',
 	'registroPassword' : 'Password',
-	'registroPosition' : 'Position'
+	'registroPosition' : 'Position',
 
+	// SAMPLING_METHODOLOGY
+	'titleSamplingMethod': 'Sampling methodologies',
+	'listadoSamplingMethod': 'List of sampling methodologies',
+	'samplingMethodMenu': 'Sampling metodologies',
+	'añadirSamplingMethod': 'Add methodology',
+	'editSamplingMethod': 'Edit methodology',
+	'buscarSamplingMethod': 'Search methodology',
+	'name_methodology': 'Methodology name',
+	'description_methodology': 'Description',
+	'bibref_methodology': 'Bibliographic reference',
+	'file_methodology': 'File',
+	'samplingMethodError': 'There are no sampling methodologies that match these parameters.',
+	'SamplingMethodPregunta': ''
 }
