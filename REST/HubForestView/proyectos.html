@@ -34,38 +34,40 @@
     <div id="contenido" >
     <div class="container mt-5">
         <h2 class="listadoProyectos">Listado de proyectos</h2>
-        <div class="mt-2 mb-3 float-right">
-            <button class="añadirProyecto btn btn-primary float-right" id="abrirModal" onclick="mostrarModalProyecto('Añadir proyecto')">Añadir proyecto</button>
-            <button class="buscarProyecto btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalProyecto('Buscar proyecto')">Buscar proyecto</button>
-            <button class="reiniciarProyecto btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListProyectos()">Reiniciar tabla</button>
-            
+        <div style="overflow-x:scroll;">
+            <div class="mt-2 mb-3 float-right">
+                <button class="añadirProyecto btn btn-primary float-right" id="abrirModal" onclick="mostrarModalProyecto('Añadir proyecto')">Añadir proyecto</button>
+                <button class="buscarProyecto btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalProyecto('Buscar proyecto')">Buscar proyecto</button>
+                <button class="reiniciarProyecto btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListProyectos()">Reiniciar tabla</button>
+                
+            </div>
+                
+            <table class="table table-striped" id="tablaProyectos">
+                <thead>
+                    <th class="id_project">Id</th>
+                    <th class="name_project">Nombre del proyecto</th>
+                    <th class="start_date_project">Fecha de inicio</th>
+                    <th class="end_date_project">Fecha de fin</th>
+                    <th class="responsable_project">Responsable</th>
+                    <th class="organization_project">Organización</th>
+                    <th class="description_project">Descripción</th>
+                    <th class="file_project">Archivo</th>
+                    <th class="code_project">Código de proyecto</th>
+                    <th class="acronym_project">Acrónimo</th>
+                    <th class="id_sampling_methodology">Metodología de sampling</th>
+                </thead>
+                
+                <tbody id="datosProyectos">
+                </tbody>
+        
+                
+            </table>
         </div>
-            
-        <table class="table table-striped" id="tablaProyectos">
-            <thead>
-                <th class="id_project">Id</th>
-                <th class="name_project">Nombre del proyecto</th>
-                <th class="start_date_project">Fecha de inicio</th>
-                <th class="end_date_project">Fecha de fin</th>
-                <th class="responsable_project">Responsable</th>
-                <th class="organization_project">Organización</th>
-                <th class="description_project">Descripción</th>
-                <th class="file_project">Archivo</th>
-                <th class="code_project">Código de proyecto</th>
-                <th class="acronym_project">Acrónimo</th>
-                <th class="id_sampling_methodology">Metodología de sampling</th>
-            </thead>
-            
-            <tbody id="datosProyectos">
-            </tbody>
-       
-            
-        </table>
-            <div id="formularioentidad"></div>
+        <div id="formularioentidad"></div>
         
     </div>
     
-    <div id="ventanaModal" class="modal">
+    <div id="ventanaModal" class="modal" style="overflow-y:scroll;">
         <div class="contenido-modal">
             <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarModal()" data-close>
                 <span aria-hidden="true">&times;</span>
@@ -136,7 +138,7 @@
                 </div>
                 
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>
-                <button type="button" id="cerrar" class="cerrarModalProyecto btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+                <button type="button" id="cerrar" class="cerrar btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
             </form> 
         </div>
     </div>
