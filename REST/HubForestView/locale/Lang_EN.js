@@ -142,6 +142,7 @@ arrayEN={
 	'mensajeBorrarSamplings': 'The indicated sampling will be deleted',
 	'samplingAceptar': 'Accept',
 	'cerrarModalSampling': 'Close',
+	'collectorsSampling' : 'Colectors',
 
 	//Atributos
 	'nameRegistro' : 'Name',

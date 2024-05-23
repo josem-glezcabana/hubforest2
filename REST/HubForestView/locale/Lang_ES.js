@@ -144,6 +144,7 @@ arrayES={
 	'mensajeBorrarSamplings': 'Se va borrar el sampling indicado',
 	'samplingAceptar': 'Aceptar',
 	'cerrarModalSampling': 'Cerrar',
+	'collectorsSampling' : 'Collectors',
 
 	//tempora_sampling_params
 	'aceptar': 'aceptar',

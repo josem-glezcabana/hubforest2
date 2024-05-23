@@ -315,6 +315,7 @@ CREATE TABLE `sampling` (
 LOCK TABLES `sampling` WRITE;
 /*!40000 ALTER TABLE `sampling` DISABLE KEYS */;
 INSERT INTO `sampling` VALUES (1,1,1,1,'2024-06-06','10:10:00',20,'colector');
+INSERT INTO `sampling` VALUES (1,1,2,1,'2024-06-06','10:10:00',20,'colector');
 /*!40000 ALTER TABLE `sampling` ENABLE KEYS */;
 UNLOCK TABLES;
 

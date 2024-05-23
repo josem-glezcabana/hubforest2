@@ -1,11 +1,11 @@
 async function getListSampling() {
 
-    return peticionBackGeneral('', 'sampling', 'SEARCH')
+    return peticionBackGeneral('', 'sampling', 'SEARCH_SAMPLINGS')
         .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaSampling(response['resource']) : null)
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
-        });       
+        });   
 }
 
 async function getListByParamSampling(id_project, id_ecosystem, id_sampling, id_site, date_sampling, time_sampling, collectors_sampling) {
@@ -86,6 +86,33 @@ async function deleteProyecto(id_sampling) {
         });
 }
 
+  async function getListEcosystems(ecosystem) {
+    return peticionBackGeneral('', 'ecosystem', 'SEARCH')
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectEcosystems("id_ecosystem", response['resource'], ecosystem) : null)
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return null;
+        });
+  }
+  
+  async function getListProyectos(proyecto) {
+    return peticionBackGeneral('', 'project', 'SEARCH')
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectProyectos("id_project", response['resource'], proyecto) : null)
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return null;
+        });
+  }
+
+  async function getListSites(site) {
+    return peticionBackGeneral('', 'site', 'SEARCH')
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectSites("id_site", response['resource'], site) : null)
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return null;
+        });
+  }
+
 function construyeTablaSampling(filas) {
 
     let filasTabla = '';
@@ -107,15 +134,16 @@ function construyeTablaSampling(filas) {
         }
 
         let atributosTabla = ["'" + fila.name_project + "'","'" + fila.name_ecosystem + "'", "'" + fila.date_sampling + "'", "'" + fila.name_site + "'",
-                              "'" + fila.temp_sampling + "'", "'" + fila.temp_air_sampling + "'","'" + fila.id_sampling + "'"];
+                              "'" + fila.temp_sampling + "'", "'" + fila.temp_air_sampling + "'", "'" + fila.collectors_sampling + "'","'" + fila.id_sampling + "'"];
         let botonEdit='<button class="BotonEditar btn btn-info" id="editarSampling" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.name_project + 
                 '</td> <td>' + fila.name_ecosystem + 
-                '</td> <td>' + fila.name_site + 
+                '</td> <td>' + fila.id_site + 
                 '</td> <td>' + fila.date_sampling + 
                 '</td> <td>' + fila.time_sampling + 
                 '</td> <td>' + fila.temp_air_sampling + 
+                '</td> <td>' + fila.collectors_sampling + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminarSampling btn btn-danger" id="borrarSampling" onclick="mostrarBorrarSampling('+fila.id_sampling+')">Eliminar</button>'
                 '</td>  </tr>';
@@ -160,13 +188,16 @@ function getAtributos(tipo){
      }
 }
 
-function mostrarModal(tipo, id_project=null, id_ecosystem=null, id_sampling=null, id_site=null, date_sampling=null, 
+function mostrarModalSampling(tipo, id_project=null, id_ecosystem=null, id_sampling=null, id_site=null, date_sampling=null, 
                         time_sampling=null, temp_air_sampling=null, collectors_sampling=null){
     // Ventana modal
     document.getElementById("ventanaModal").style.display = "block";
     document.getElementById("Titulo").innerHTML = '<h2>'+tipo+'</h2>';
     document.getElementById("aceptar").innerHTML = tipo;
 
+    getListEcosystems(id_ecosystem);
+    getListProyectos(id_project);
+    getListSites(id_site);
 
     if(tipo.includes("Editar")){
         $("#formSampling").attr('action' , 'javascript:getAtributos("Editar");');
@@ -178,13 +209,12 @@ function mostrarModal(tipo, id_project=null, id_ecosystem=null, id_sampling=null
         $("#date_sampling").val(date_sampling);
         $("#time_sampling").val(time_sampling);
         $("#temp_air_sampling").val(temp_air_sampling);
-        $("#collectors_sampling").val(file_project);
+        $("#collectors_sampling").val( collectors_sampling);
     }
     else{
         if(tipo.includes("Buscar")){
             document.getElementById("id_project").required = false;
             document.getElementById("id_ecosystem").required = false;
-            document.getElementById("id_sampling").required = false;
             document.getElementById("id_site").required = false;
             document.getElementById("date_sampling").required = false;
             document.getElementById("time_sampling").required = false;
@@ -196,7 +226,6 @@ function mostrarModal(tipo, id_project=null, id_ecosystem=null, id_sampling=null
         else{
             document.getElementById("id_project").required =true;
             document.getElementById("id_ecosystem").required = true;
-            document.getElementById("id_sampling").required = true;
             document.getElementById("id_site").required = true;
             document.getElementById("date_sampling").required = true;
             document.getElementById("time_sampling").required = true;
@@ -217,6 +246,60 @@ function mostrarModal(tipo, id_project=null, id_ecosystem=null, id_sampling=null
     }
     setLang();
 }
+
+  function rellenarSelectEcosystems(tipo, filas, ecosystem) {
+    let element = document.getElementById(tipo);
+    let option = document.createElement('option');
+    
+    // Eliminar opciones existentes antes de agregar las nuevas
+    element.innerHTML = '';
+    
+    filas.forEach(fila => {
+        option = document.createElement('option');
+        option.value = fila.id_ecosystem;
+        option.textContent = fila.name_ecosystem;
+        element.appendChild(option);
+    })
+    
+    if (ecosystem != null) element.value = ecosystem;
+    
+  }
+  
+  function rellenarSelectProyectos(tipo, filas, proyecto) {
+    let element = document.getElementById(tipo);
+    let option = document.createElement('option');
+    
+    // Eliminar opciones existentes antes de agregar las nuevas
+    element.innerHTML = '';
+    
+    filas.forEach(fila => {
+        option = document.createElement('option');
+        option.value = fila.id_project;
+        option.textContent = fila.name_project;
+        element.appendChild(option);
+    })
+    
+    if (proyecto != null) element.value = proyecto;
+    
+  }
+
+    function rellenarSelectSites(tipo, filas, site) {
+    let element = document.getElementById(tipo);
+    let option = document.createElement('option');
+    
+    // Eliminar opciones existentes antes de agregar las nuevas
+    element.innerHTML = '';
+    
+    filas.forEach(fila => {
+        option = document.createElement('option');
+        option.value = fila.id_site;
+        option.textContent = fila.country_site + ':' + fila.state_province_site + ':' +fila.city_town_site;
+        element.appendChild(option);
+    })
+    
+    if (proyecto != null) element.value = site;
+    
+  }
 
 function cerrarModal(){
     // Ventana modal
