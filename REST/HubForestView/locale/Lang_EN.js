@@ -14,6 +14,7 @@ arrayEN={
 	'ecosystemsMenu': 'Ecosystems',
 	'sitesMenu': 'Sites',
 	'projectEcosystemMenu': 'Project-ecosystems',
+	'samplingMethodMenu': 'Sampling metodologies',
 	//FOOTER
 	'followUs': 'Follow us:',
 	'contactUs': 'Contact',
@@ -118,9 +119,9 @@ arrayEN={
 	//PROJECT_ECOSYSTEM
 	'titleProjectEcosystem': 'Project/ecosystems',
 	'listadoProjectEcosystems':'List of project/ecosystems',
-	'añadirProjectEcosystems': 'Add projects/ecosystem',
+	'añadirProjectEcosystems': 'Add project/ecosystem',
 	'buscarProjectEcosystems':'Search project/ecosystem',
-	'buscarProjectEcosystems':'Reload table',
+	'reiniciarProjectEcosystemss':'Reload table',
 	'number_replicas_by_sampling':'Nº replicas/sampling',
 	'number_samplings':'Nº samplings',
 	'EditarProjectEcosystems': 'Edit project/ecosystems',
@@ -158,7 +159,6 @@ arrayEN={
 	// SAMPLING_METHODOLOGY
 	'titleSamplingMethod': 'Sampling methodologies',
 	'listadoSamplingMethod': 'List of sampling methodologies',
-	'samplingMethodMenu': 'Sampling metodologies',
 	'añadirSamplingMethod': 'Add methodology',
 	'editSamplingMethod': 'Edit methodology',
 	'buscarSamplingMethod': 'Search methodology',
