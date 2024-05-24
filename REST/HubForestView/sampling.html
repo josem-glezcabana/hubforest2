@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="css/modal.css">
     <link rel="icon" href="img/logo.png" type="image/png">
     <script type="text/javascript" src="js/funcionesComunes.js"></script>
-    <script type="text/javascript" src="js_app/user_project/user_project.js"></script>
-    <script type="text/javascript" src="js_app/proyecto/proyecto.js"></script>
+    <script type="text/javascript" src="js_app/sampling/sampling.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/crearformularios.js"></script>
     <script type="text/javascript" src="js_app/usuario/usuario.js"></script>
@@ -25,7 +24,7 @@
 </head>
 <body onload="(async () => {
     includeHeader(); includeFooter();
-    getListUsuarioProjecto();
+    getListSampling();
 })();">
 
     <!-- Encabezado y Barra de Navegación -->
@@ -48,9 +47,10 @@
                     <th class="fechaSampling">Fecha de creación metodología de muestreo</th>
                     <th class="timeSampling">Tiempo de muestreo</th>
                     <th class="tempSampling">Temperatura</th>
+                    <th class="collectorsSampling">Colectores</th>
             </thead>
             
-            <tbody id="datosSamplings">
+            <tbody id="datosSampling">
             </tbody>
        
             
@@ -87,22 +87,27 @@
 
                 <div class="form-group">
                     <label for="site">Sitio</label>
-                    <select class="form-control" id="id_sitio" name="id_sitio"></select>
+                    <select class="form-control" id="id_site" name="id_site"></select>
                 </div>
 
                 <div class="form-group">
                     <label for="fechaSampling">Tiempo de muestreo:</label>
-                    <input type="date" class="form-control" id="timeSampling" name="timeSampling" >
+                    <input type="date" class="form-control" id="time_sampling" name="time_sampling" >
                 </div>
 
                 <div class="form-group">
                     <label for="timeSampling">Fecha de creación metodología de muestreo:</label>
-                    <input type="datetime-local" class="form-control" id="fechaSampling" name="fechaSampling" >
+                    <input type="datetime-local" class="form-control" id="date_sampling" name="date_sampling" >
                 </div>
 
                 <div class="form-group">
                     <label for="tempSampling">Temperatura:</label>
-                    <input type="number" class="form-control" id="temperatura" name="temperatura" >
+                    <input type="number" class="form-control" id="temp_air_sampling" name="temp_air_sampling" >
+                </div>
+
+                <div class="form-group">
+                    <label for="collectorsSampling">Colectores:</label>
+                    <input type="text" class="form-control" id="collectors_sampling" name="collectors_sampling" >
                 </div>
                 
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>
