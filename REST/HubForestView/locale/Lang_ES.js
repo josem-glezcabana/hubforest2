@@ -170,4 +170,19 @@ arrayES={
 	'bibref_methodology': 'Referencia bibliográfica',
 	'file_methodology': 'Archivo',
 	'samplingMethodError': 'No existen metodologías que coincidan con estos parámetros.',
+
+			// STORAGE_METHOD
+	'listStorage_method': 'Listado de métodos de almacenamiento',
+	'añadirStorage_method': 'Añadir método de almacenamiento',
+	'buscarStorage_method': 'Buscar método de almacenamiento',
+	'reiniciarTablaStorage_method': 'Reiniciar tabla',
+	'name_storage_method': 'Nombre método de almacenamiento',
+	'description_storage_method': 'Descripción método de almacenamiento',
+	'storage_container': 'Contenedor de almacenamiento',
+	'size_storage_container': 'Tamaño contenedor de almacenamiento',
+	'unit_storage_container': 'Unidad contenedor de almacenamiento',
+	'mensajeErrorStorage_method': 'No existen métodos de almacenamiento que coincidan con estos parámetros',
+	'mensajeConfirmarStorage_method': '¿Estás seguro?',
+	'aceptarStorage_method': 'Aceptar',
+	'cerrarStorage_method': 'Cerrar'	
 }

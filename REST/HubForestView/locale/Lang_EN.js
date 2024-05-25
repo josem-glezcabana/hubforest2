@@ -171,5 +171,16 @@ arrayEN={
 	'bibref_methodology': 'Bibliographic reference',
 	'file_methodology': 'File',
 	'samplingMethodError': 'There are no sampling methodologies that match these parameters.',
-	'SamplingMethodPregunta': ''
+	'SamplingMethodPregunta': '',
+
+		// STORAGE_METHOD
+  'listStorage_method': 'List of storage methods',
+  'añadirStorage_method': 'Add storage method',
+  'buscarStorage_method': 'Search storage method',
+  'reiniciarTablaStorage_method': 'Reset table',
+  'name_storage_method': 'Storage method name',
+  'description_storage_method': 'Storage method description',
+  'storage_container': 'Storage container',
+  'size_storage_container': 'Storage container size',
+  'unit_storage_container': 'Storage container unit'
 }

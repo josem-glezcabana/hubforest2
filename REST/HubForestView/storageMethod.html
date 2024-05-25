@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script type="text/javascript" src="js/funcionesComunes.js"></script>
+    <script type="text/javascript" src="js_app/storage_method/storage_method.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/crearformularios.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>    
+    <title>storage_method</title>
+    <!-- Incluye los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body onload="(async () => {
+    includeHeader(); includeFooter();
+    getListStorage_method();
+})();">
+
+    <!-- Encabezado y Barra de Navegación -->
+    <div id="header"></div>
+
+    <div class="container mt-5">
+        <h2 class="listStorage_method">Listado de métodos de almacenamiento</h2>
+        <div class="mt-2 mb-3 float-right">
+            <button class="añadirStorage_method btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('Añadir temporal_sampling_site_params')">Añadir método de almacenamiento</button>
+            <button class="buscarStorage_method btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('Buscar temporal_sampling_site_params')">Buscar método de almacenamiento</button>
+            <button class=" reiniciarTablaStorage_method btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListStorage_method_params()">Reiniciar tabla</button>
+            
+        </div>
+            
+        <table class="table table-striped" id="tablatemporal_sampling_site_params">
+            <thead >
+                    <th class="name_storage_method">Nombre método de almacenamiento</th>
+                    <th class="description_storage_method">Descripción método de almacenamiento</th>
+                    <th class="storage_container">Contenedor de almacenamiento</th>
+                    <th class="size_storage_container">Tamaño contenedor de almacenamiento</th>
+                    <th class="unit_storage_container">Unidad contenedor de almacenamiento</th>
+            </thead>
+            
+            <tbody id="datosStorage_method">
+            </tbody>
+       
+            
+        </table>
+            <div id="formularioentidad"></div>
+        
+    </div>
+    
+    <div id="ventanaModal" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarModal()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="Titulo"></div>
+            <div id="mensajeErrorStorage_method" class="text-center" style="display: none;">             
+                <h7>
+                    No existen métodos de almacenamiento que coincidan con estos parámetros
+                </h7>
+                <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formStorage_method" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id_storage_method" style="display: none;">id_storage_method:</label>
+                    <input type="text" class="form-control" id="id_storage_method" name="id_storage_method" style="display: none;">
+                </div>
+    
+                <div class="form-group">
+                    <label for="name_storage_method">Nombre método de almacenamiento:</label>
+                    <input type="text" class="form-control" id="name_storage_method" name="name_storage_method" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="description_storage_method">Descripción método de almacenamiento:</label>
+                    <input type="text" class="form-control" id="description_storage_method" name="description_storage_method" >
+                </div>
+
+                <div class="form-group">
+                    <label for="storage_container">Contenedor de almacenamiento:</label>
+                    <input type="text" class="form-control" id="storage_container" name="storage_container" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="size_storage_container">Tamaño contenedor de almacenamiento:</label>
+                    <input type="text" class="form-control" id="size_storage_container" name="size_storage_container" >
+                </div>
+
+                <div class="form-group">
+                    <label for="unit_storage_container">Unidad contenedor de almacenamiento:</label>
+                    <input type="text" class="form-control" id="unit_storage_container" name="unit_storage_container" >
+                </div>
+                
+                <button type="submit" id="aceptar" class="btn btn-primary"></button>
+                <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+            </form> 
+        </div>
+    </div>
+    
+    <div id="comprobarBorrar" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="text-center" id="Titulo"><h2 class="mensajeConfirmarStorage_method">¿Estas seguro?</h2></div>
+            
+            <form id="formBorrarStorage_method" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id_storage_method" style="display: none;">Id:</label>
+                    <input type="text" class="form-control" id="idBorrar" name="id_storage_method" style="display: none;">
+                </div>
+                <div class="col text-center">
+                    <button type="submit" id="aceptar" class="aceptarStorage_methodbtn btn-danger">Aceptar</button>
+                    <button type="button" id="cerrar" class="cerrarStorage_method btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
+                </div>
+                
+            </form>  
+        </div>
+    </div>
+</div>
+
+    <!-- Pie de Página -->
+	<div id="footer"><div>
+</body>
+</html>
