@@ -146,6 +146,9 @@ arrayES={
 	'samplingAceptar': 'Aceptar',
 	'cerrarModalSampling': 'Cerrar',
 	'collectorsSampling' : 'Collectors',
+	'colectoresInput': 'Ingrese nombres separados por ":"',
+	'errorValidacion': 'Error validación',
+	'cerrarModalValidacion': 'Cerrar',
 
 	//tempora_sampling_params
 	'aceptar': 'aceptar',

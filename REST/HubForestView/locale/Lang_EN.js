@@ -144,6 +144,9 @@ arrayEN={
 	'samplingAceptar': 'Accept',
 	'cerrarModalSampling': 'Close',
 	'collectorsSampling' : 'Colectors',
+	'colectoresInput': 'Enter names separated by ":"',
+	'errorValidacion': 'Validation Error',
+	'cerrarModalValidacion': 'Close',
 
 	//Atributos
 	'nameRegistro' : 'Name',

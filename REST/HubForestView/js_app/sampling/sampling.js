@@ -8,29 +8,49 @@ async function getListSampling() {
         });   
 }
 
-async function getListByParamSampling(id_project, id_ecosystem, id_sampling, id_site, date_sampling, time_sampling, collectors_sampling) {
+async function getListByParamSampling(id_project, id_ecosystem, id_site, date_sampling, time_sampling, collectors_sampling) {
     const sampling = {
         id_project: id_project,
         id_ecosystem: id_ecosystem,
-        id_sampling: id_sampling,
         id_site: id_site,
         date_sampling: date_sampling,
         time_sampling: time_sampling,
         collectors_sampling: collectors_sampling
     };
-    return peticionBackGeneral('', 'sampling', 'SEARCH_BY', sampling)
-        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaSampling(response['resource']) :  mostrarErrorBusq())
-        .catch(error => {
-            console.error('Error en la solicitud:', error);
-            return null;
-        });
+
+  try {
+    const response = await peticionBackGeneral('', 'sampling', 'SEARCH_BY', sampling);
+
+    if (response['code'] === "RECORDSET_DATOS") {
+      const datos = response['resource'];
+
+      const updatedDatos = await Promise.all(
+        datos.map(async (element) => {
+          const project = await getProyectoPorId(element.id_project);
+          const ecosystem = await getEcosystemPorId(element.id_ecosystem);
+          // Crear un nuevo objeto con las propiedades actualizadas
+          return {
+            ...element,
+            name_project: project[0].name_project,
+            name_ecosystem: ecosystem[0].name_ecosystem
+          };
+        })
+      );
+
+      return construyeTablaSampling(updatedDatos);
+    } else {
+      return mostrarErrorBusq();
+    }
+  } catch (error) {
+    console.error("Error en la solicitud:", error);
+    return null;
+  }    
 }
 
-async function addSampling(id_project, id_ecosystem, id_sampling, id_site, date_sampling, time_sampling, temp_air_sampling, collectors_sampling) {
+async function addSampling(id_project, id_ecosystem, id_site, date_sampling, time_sampling, temp_air_sampling, collectors_sampling) {
     const sampling = {
         id_project: id_project,
         id_ecosystem: id_ecosystem,
-        id_sampling: id_sampling,
         id_site: id_site,
         date_sampling: date_sampling,
         time_sampling: time_sampling,
@@ -50,7 +70,7 @@ async function addSampling(id_project, id_ecosystem, id_sampling, id_site, date_
         });
 }
 
-async function editSampling(id_project, id_ecosystem, id_sampling, id_site, date_sampling, time_sampling, temp_air_sampling, collectors_sampling) {
+async function editSampling(id_project, id_ecosystem,id_sampling, id_site, date_sampling, time_sampling, temp_air_sampling, collectors_sampling) {
     const sampling = {
         id_project: id_project,
         id_ecosystem: id_ecosystem,
@@ -86,32 +106,56 @@ async function deleteProyecto(id_sampling) {
         });
 }
 
-  async function getListEcosystems(ecosystem) {
+async function getListEcosystems(ecosystem) {
     return peticionBackGeneral('', 'ecosystem', 'SEARCH')
         .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectEcosystems("id_ecosystem", response['resource'], ecosystem) : null)
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
         });
-  }
-  
-  async function getListProyectos(proyecto) {
+}
+
+async function getListProyectos(proyecto) {
     return peticionBackGeneral('', 'project', 'SEARCH')
         .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectProyectos("id_project", response['resource'], proyecto) : null)
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
         });
-  }
+}
 
-  async function getListSites(site) {
+async function getListSites(site) {
     return peticionBackGeneral('', 'site', 'SEARCH')
         .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectSites("id_site", response['resource'], site) : null)
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
         });
-  }
+}
+
+async function getEcosystemPorId(id_ecosystem) {
+    const ecosystem = {
+        id_ecosystem: id_ecosystem
+    };
+    return peticionBackGeneral('', 'ecosystem', 'SEARCH_BY', ecosystem)
+        .then(response => response['resource'])
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return null;
+        });
+}
+
+async function getProyectoPorId(id_project) {
+    const project = {
+        id_project: id_project
+    };
+    return peticionBackGeneral('', 'project', 'SEARCH_BY', project)
+        .then(response => response['resource'])
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return null;
+        });
+}
 
 function construyeTablaSampling(filas) {
 
@@ -133,9 +177,9 @@ function construyeTablaSampling(filas) {
             fila.date_sampling = fechaStart + ' ' + horaStart;
         }
 
-        let atributosTabla = ["'" + fila.name_project + "'","'" + fila.name_ecosystem + "'", "'" + fila.date_sampling + "'", "'" + fila.name_site + "'",
-                              "'" + fila.temp_sampling + "'", "'" + fila.temp_air_sampling + "'", "'" + fila.collectors_sampling + "'","'" + fila.id_sampling + "'"];
-        let botonEdit='<button class="BotonEditar btn btn-info" id="editarSampling" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
+        let atributosTabla = ["'" + fila.id_project + "'","'" + fila.id_ecosystem + "'", "'" + fila.id_sampling + "'", "'" + fila.id_site + "'", "'" + fila.date_sampling + "'",
+                              "'" + fila.time_sampling + "'", "'" + fila.temp_air_sampling + "'", "'" + fila.collectors_sampling + "'","'" + fila.id_sampling + "'"];
+        let botonEdit='<button class="BotonEditar btn btn-info" id="editarSampling" onclick="mostrarModalSampling('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.name_project + 
                 '</td> <td>' + fila.name_ecosystem + 
@@ -169,23 +213,40 @@ function construyeTablaSampling(filas) {
 function getAtributos(tipo){
     var id_project = document.getElementById("id_project").value
     var id_ecosystem = document.getElementById("id_ecosystem").value
-    var id_site = document.getElementById("id_sitio").value
-    var date_sampling = document.getElementById("fechaSampling").value
-    var time_sampling = document.getElementById("timeSampling").value
-    var temp_air_sampling = document.getElementById("temperatura").value
-    var collectors_sampling = document.getElementById("collectorsSampling").value
+    var id_site = document.getElementById("id_site").value
+    var date_sampling = document.getElementById("date_sampling").value
+    var time_sampling = document.getElementById("time_sampling").value
+    var temp_air_sampling = document.getElementById("temp_air_sampling").value
+    var collectors_sampling = document.getElementById("collectors_sampling").value
     var id_sampling = document.getElementById("id_sampling").value
-     switch(tipo){
-        case "Editar":
-            editSampling(id_project, id_ecosystem, id_sampling, id_site, date_sampling, time_sampling, temp_air_sampling, collectors_sampling)
-            break;
-        case "Añadir":
-            addSampling(id_project, id_ecosystem, id_sampling, id_site, date_sampling, time_sampling, temp_air_sampling, collectors_sampling)
-            break;
-        case "Buscar":
-            getListByParamSampling(id_project, id_ecosystem, id_sampling, id_site, date_sampling, time_sampling, collectors_sampling)
-            break;
-     }
+    var validacion =validarCampos();
+    if(validacion){
+        switch(tipo){
+            case "Editar":
+                editSampling(id_project, id_ecosystem, id_sampling, id_site, date_sampling, time_sampling, temp_air_sampling, collectors_sampling)
+                break;
+            case "Añadir":
+                addSampling(id_project, id_ecosystem, id_site, date_sampling, time_sampling, temp_air_sampling, collectors_sampling)
+                break;
+            case "Buscar":
+                getListByParamSampling(id_project, id_ecosystem, id_site, date_sampling, time_sampling, collectors_sampling)
+                break;
+        }
+    }
+    else{
+
+    }
+}
+function validarCampos() {
+    var collectorsInput = document.getElementById('collectors_sampling').value;
+    var pattern = /^[a-zA-Z]+(:[a-zA-Z]+)*$/;
+
+    if (!pattern.test(collectorsInput)) {
+        $('#errorModal').modal('show');
+        return false; // Evita que el formulario se envíe
+    }
+
+    return true; // Permite que el formulario se envíe
 }
 
 function mostrarModalSampling(tipo, id_project=null, id_ecosystem=null, id_sampling=null, id_site=null, date_sampling=null, 
@@ -221,7 +282,7 @@ function mostrarModalSampling(tipo, id_project=null, id_ecosystem=null, id_sampl
             document.getElementById("temp_air_sampling").required = false;
             document.getElementById("collectors_sampling").required = false;
 
-            $("#formProyecto").attr('action' , 'javascript:getAtributos("Buscar");');
+            $("#formSampling").attr('action' , 'javascript:getAtributos("Buscar");');
         }
         else{
             document.getElementById("id_project").required =true;
@@ -232,7 +293,7 @@ function mostrarModalSampling(tipo, id_project=null, id_ecosystem=null, id_sampl
             document.getElementById("temp_air_sampling").required = true;
             document.getElementById("collectors_sampling").required = true;
 
-            $("#formProyecto").attr('action' , 'javascript:getAtributos("Añadir");');
+            $("#formSampling").attr('action' , 'javascript:getAtributos("Añadir");');
         }
 
         $("#id_project").val('');
@@ -297,7 +358,7 @@ function mostrarModalSampling(tipo, id_project=null, id_ecosystem=null, id_sampl
         element.appendChild(option);
     })
     
-    if (proyecto != null) element.value = site;
+    if (site != null) element.value = site;
     
   }
 

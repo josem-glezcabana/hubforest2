@@ -10,7 +10,6 @@
     <script type="text/javascript" src="js_app/sampling/sampling.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/crearformularios.js"></script>
-    <script type="text/javascript" src="js_app/usuario/usuario.js"></script>
     <script type="text/javascript" src="js/md5.js"></script>   
     <script type="text/javascript" src="locale/idioma.js"></script>
     <script type="text/javascript" src="locale/Lang_EN.js"></script>
@@ -75,6 +74,9 @@
             </div>
             <form id="formSampling" action="" method="post" onsubmit="">
 
+                <!-- Campo oculto para id_sampling -->
+                <input type="hidden" id="id_sampling" name="id_sampling" value="">
+
                 <div class="form-group">
                     <label for="name_project">Nombre proyecto:</label>
                     <select class="form-control" id="id_project" name="id_project"></select>
@@ -91,13 +93,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="fechaSampling">Tiempo de muestreo:</label>
-                    <input type="date" class="form-control" id="time_sampling" name="time_sampling" >
+                    <label for="fechaSampling">Fecha de creación metodología de muestreo</label>
+                    <input type="date" class="form-control" id="date_sampling" name="date_sampling" >
                 </div>
 
                 <div class="form-group">
-                    <label for="timeSampling">Fecha de creación metodología de muestreo:</label>
-                    <input type="datetime-local" class="form-control" id="date_sampling" name="date_sampling" >
+                    <label for="timeSampling">:Tiempo de muestreo:</label>
+                    <input type="time" class="form-control" id="time_sampling" name="time_sampling" >
                 </div>
 
                 <div class="form-group">
@@ -108,6 +110,7 @@
                 <div class="form-group">
                     <label for="collectorsSampling">Colectores:</label>
                     <input type="text" class="form-control" id="collectors_sampling" name="collectors_sampling" >
+                    <small id="collectorsHelp" class="colectoresInput form-text text-muted">Ingrese nombres separados por ":"</small>
                 </div>
                 
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>
@@ -136,6 +139,25 @@
             </form>  
         </div>
     </div>
+    </div>
+    <!-- Modal Error colectores -->
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="errorModalLabel">Error de Validación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="colectoresInput modal-body">
+                    Ingrese nombres separados por ":"
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 
