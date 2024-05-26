@@ -388,7 +388,7 @@ DROP TABLE IF EXISTS `storage_method`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `storage_method` (
-  `id_storage_method` int NOT NULL,
+  `id_storage_method` INT AUTO_INCREMENT NOT NULL,
   `name_storage_method` varchar(100) NOT NULL,
   `description_storage_method` varchar(5000) NOT NULL,
   `storage_container` enum('plastic bag','PVC core','plastic container','document') NOT NULL,

@@ -85,6 +85,7 @@ function includeHeader() {
                                     '<li><a class="projectEcosystemMenu dropdown-item" href="project_ecosystem.html">Proyectos-ecosistemas</a></li>' +
                                     '<li><a class="samplingMenu dropdown-item" href="sampling.html">Muestreos</a></li>' +
                                     '<li><a class="samplingMethodMenu dropdown-item" href="sampling_methodology.html">Metodologías de muestreo</a></li>' +
+                                    '<li><a class="storageMethodMenu dropdown-item" href="storageMethod.html">Metodos de almacenamiento</a></li>' +
                                 '</ul>' +
                             '</div>' +
                         '</li>' +

@@ -10,7 +10,10 @@
     <script type="text/javascript" src="js_app/storage_method/storage_method.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/crearformularios.js"></script>
-    <script type="text/javascript" src="js/md5.js"></script>    
+    <script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script type="text/javascript" src="locale/Lang_EN.js"></script>
+    <script type="text/javascript" src="locale/Lang_ES.js"></script>    
     <title>storage_method</title>
     <!-- Incluye los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -29,9 +32,9 @@
     <div class="container mt-5">
         <h2 class="listStorage_method">Listado de métodos de almacenamiento</h2>
         <div class="mt-2 mb-3 float-right">
-            <button class="añadirStorage_method btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('Añadir temporal_sampling_site_params')">Añadir método de almacenamiento</button>
-            <button class="buscarStorage_method btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('Buscar temporal_sampling_site_params')">Buscar método de almacenamiento</button>
-            <button class=" reiniciarTablaStorage_method btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListStorage_method_params()">Reiniciar tabla</button>
+            <button class="añadirStorage_method btn btn-primary float-right" id="abrirModal" onclick="mostrarModalStorage_method('Añadir')">Añadir método de almacenamiento</button>
+            <button class="buscarStorage_method btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalStorage_method('Buscar')">Buscar método de almacenamiento</button>
+            <button class=" reiniciarTablaStorage_method btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListStorage_method()">Reiniciar tabla</button>
             
         </div>
             
@@ -59,7 +62,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             <div id="Titulo"></div>
-            <div id="mensajeErrorStorage_method" class="text-center" style="display: none;">             
+            <div id="mensajeError" class="text-center" style="display: none;">             
                 <h7>
                     No existen métodos de almacenamiento que coincidan con estos parámetros
                 </h7>
@@ -85,12 +88,17 @@
 
                 <div class="form-group">
                     <label for="storage_container">Contenedor de almacenamiento:</label>
-                    <input type="text" class="form-control" id="storage_container" name="storage_container" >
+                    <select class="form-control" id="storage_container" name="storage_container">
+                        <option class="plastic_bag" value="plastic bag">Plastic Bag</option>
+                        <option class="PVC_core" value="PVC core">PVC Core</option>
+                        <option class="plastic_container" value="plastic container">Plastic Container</option>
+                        <option class="document" value="document">Document</option>
+                    </select>
                 </div>
                 
                 <div class="form-group">
                     <label for="size_storage_container">Tamaño contenedor de almacenamiento:</label>
-                    <input type="text" class="form-control" id="size_storage_container" name="size_storage_container" >
+                    <input type="number" class="form-control" id="size_storage_container" name="size_storage_container" >
                 </div>
 
                 <div class="form-group">
@@ -98,8 +106,8 @@
                     <input type="text" class="form-control" id="unit_storage_container" name="unit_storage_container" >
                 </div>
                 
-                <button type="submit" id="aceptar" class="btn btn-primary"></button>
-                <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+                <button type="submit" id="aceptar" class="storageMethodAceptar btn btn-primary">Aceptar</button>
+                <button type="button" id="cerrar" class="storageMethodCerrar btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
             </form> 
         </div>
     </div>

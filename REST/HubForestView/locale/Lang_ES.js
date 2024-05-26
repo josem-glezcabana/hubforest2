@@ -184,5 +184,12 @@ arrayES={
 	'mensajeErrorStorage_method': 'No existen métodos de almacenamiento que coincidan con estos parámetros',
 	'mensajeConfirmarStorage_method': '¿Estás seguro?',
 	'aceptarStorage_method': 'Aceptar',
-	'cerrarStorage_method': 'Cerrar'	
+	'cerrarStorage_method': 'Cerrar',
+	'storageMethodMenu':'Métodos de Almacenamiento',
+	'storageMethodAceptar': 'Aceptar',
+	'storageMethodCerrar': 'Cerrar',
+  'plastic_bag': 'bolsa_plástica',
+  'PVC_core': 'núcleo_PVC',
+  'plastic_container': 'contenedor_plástico',
+  'document': 'documento'
 }

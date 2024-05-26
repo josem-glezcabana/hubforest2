@@ -130,7 +130,7 @@ function getAtributosStorage_method(tipo){
      }
 }
 
-function mostrarModalSamplingMethod(tipo, id_storage_method=null, name_storage_method=null, description_storage_method=null, storage_container=null, size_storage_container=null,
+function mostrarModalStorage_method(tipo, id_storage_method=null, name_storage_method=null, description_storage_method=null, storage_container=null, size_storage_container=null,
   unit_storage_container=null){
     // Ventana modal
     document.getElementById("ventanaModal").style.display = "block";
@@ -140,37 +140,39 @@ function mostrarModalSamplingMethod(tipo, id_storage_method=null, name_storage_m
     if(tipo.includes("edit")){
         $("#formStorage_method").attr('action' , 'javascript:getAtributosStorage_method("Editar");');
 
-        $("#id_sampling_methodology").val(id_sampling_methodology);
-        $("#name_methodology").val(name_methodology);
-        $("#description_methodology").val(description_methodology);
-        $("#bibref_methodology").val(bibref_methodology);
-        $('#form_file_methodology').show();
-        $("#file_methodology").val(file_methodology);
+        $("#id_storage_method").val(id_storage_method);
+        $("#name_storage_method").val(name_storage_method);
+        $("#description_storage_method").val(description_storage_method);
+        $("#storage_container").val(storage_container);
+        $('#size_storage_container').val(size_storage_container)
+        $("#unit_storage_container").val(unit_storage_container);
     }
     else{
         if(tipo.includes("Buscar")){
-            document.getElementById("name_methodology").required = false;
-            document.getElementById("description_methodology").required = false;
-            document.getElementById("bibref_methodology").required = false;
-            document.getElementById("file_methodology").required = false;
+            document.getElementById("name_storage_method").required = false;
+            document.getElementById("description_storage_method").required = false;
+            document.getElementById("storage_container").required = false;
+            document.getElementById("size_storage_container").required = false;
+            document.getElementById("unit_storage_container").required = false;
 
             $("#formStorage_method").attr('action' , 'javascript:getAtributosStorage_method("Buscar");');
         }
         else{
-            document.getElementById("name_methodology").required = true;
-            document.getElementById("description_methodology").required = true;
-            document.getElementById("bibref_methodology").required = true;
-            $('#form_file_methodology').show();
-            document.getElementById("file_methodology").required = false;
+            document.getElementById("name_storage_method").required = true;
+            document.getElementById("description_storage_method").required = true;
+            document.getElementById("storage_container").required = true;
+            document.getElementById("size_storage_container").required = false
+            document.getElementById("unit_storage_container").required = false;
 
             $("#formStorage_method").attr('action' , 'javascript:getAtributosStorage_method("Añadir");');
         }
 
-        $("#id_sampling_methodology").val('');
-        $("#name_methodology").val('');
-        $("#description_methodology").val('');
-        $("#bibref_methodology").val('');
-        $("#file_project").val('');
+        $("#id_storage_method").val('');
+        $("#name_storage_method").val('');
+        $("#description_storage_method").val('');
+        $("#storage_container").val('');
+        $('#size_storage_container').val('')
+        $("#unit_storage_container").val('');
     }
     setLang();
     document.getElementById("aceptar").classList.remove(tipo);
@@ -182,7 +184,7 @@ function cerrarModal(){
     modal.style.display = "none"
 }
 
-function mostrarBorrarStorage_methodd(id){
+function mostrarBorrarStorage_method(id){
     // Ventana modal
     document.getElementById("comprobarBorrar").style.display = "block";
     $("#idBorrar").val(id)

@@ -182,5 +182,12 @@ arrayEN={
   'description_storage_method': 'Storage method description',
   'storage_container': 'Storage container',
   'size_storage_container': 'Storage container size',
-  'unit_storage_container': 'Storage container unit'
+  'unit_storage_container': 'Storage container unit',
+	'storageMethodMenu':'Storage Methods',
+	'storageMethodAceptar': 'Accept',
+	'storageMethodCerrar': 'Close',
+  'plastic_bag': 'plastic_bag',
+  'PVC_core': 'PVC_core',
+  'plastic_container': 'plastic_container',
+  'document': 'document'
 }
