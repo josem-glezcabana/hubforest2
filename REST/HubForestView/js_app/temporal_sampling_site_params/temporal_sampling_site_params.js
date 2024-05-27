@@ -120,7 +120,7 @@ function construyeTablatemporal_sampling_site_params(filas) {
     $("#datostemporal_sampling_site_params").html("");
     filas.forEach(fila => {
         var atributosTabla = ["'" + fila.id_project + "'","'" + fila.id_ecosystem + "'", "'" + fila.id_ecosystem_param + "'", "'" + fila.category_param + "'", "'" + fila.name_ecosystem_param + "'", "'" + fila.values_ecosystem_param + "'"];
-        var botonEdit='<button class="btn btn-info" id="editartemporal_sampling_site_params" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
+        var botonEdit='<button class="btn btn-info editartemporal_sampling_site_params" id="editartemporal_sampling_site_params" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_project + 
                 '</td> <td>' + fila.id_ecosystem + 
@@ -129,12 +129,37 @@ function construyeTablatemporal_sampling_site_params(filas) {
                 '</td> <td>' + fila.name_ecosystem_param + 
                 '</td> <td>' + fila.values_ecosystem_param + 
                 '</td> <td class="text-center">' + botonEdit +
-                '</td> <td class="text-center"><button class="btn btn-danger" id="borrartemporal_sampling_site_params" onclick="mostrarBorrar('+fila.id_project+', '+fila.id_ecosystem+', '+fila.id_ecosystem_param+')">Eliminar</button>'
+                '</td> <td class="text-center"><button class="btn btn-danger borrartemporal_sampling_site_params" id="borrartemporal_sampling_site_params" onclick="mostrarBorrar('+fila.id_project+', '+fila.id_ecosystem+', '+fila.id_ecosystem_param+')">Eliminar</button>'
                 '</td>  </tr>';
+    });
+
+    recuperarYComprobarUsuarioLogeadoIsAdmin().then(resultado => {
+        if (!resultado) {
+            let editartemporal_sampling_site_params = document.getElementsByClassName("editartemporal_sampling_site_params");
+            for (const fila of editartemporal_sampling_site_params) {
+                fila.style.display = 'none';
+            }
+            let borrartemporal_sampling_site_params = document.getElementsByClassName("borrartemporal_sampling_site_params");
+            for (const fila of borrartemporal_sampling_site_params) {
+                fila.style.display = 'none';
+            }
+            $("#abrirModal").hide();
+        } else {
+            let editartemporal_sampling_site_params = document.getElementsByClassName("editartemporal_sampling_site_params");
+            for (const fila of editartemporal_sampling_site_params) {
+                fila.style.display = 'block';
+            }
+            let borrartemporal_sampling_site_params = document.getElementsByClassName("borrartemporal_sampling_site_params");
+            for (const fila of borrartemporal_sampling_site_params) {
+                fila.style.display = 'block';
+            }
+            $("#abrirModal").show();
+        }
     });
     
     $("#datostemporal_sampling_site_params").append(filasTabla);
     cerrarModal()
+    setLang();
 }
 
 function getAtributos(tipo){
@@ -200,6 +225,7 @@ function mostrarModal(tipo, id_project=null, id_ecosystem=null, id_ecosystem_par
         $("#name_ecosystem_param").val('');
         $("#values_ecosystem_param").val('');
     }
+    setLang();
 }
 
 function cerrarModal(){

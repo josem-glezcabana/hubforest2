@@ -106,20 +106,45 @@ function construyeTablaEcosystem(filas) {
     $("#datosEcosystems").html("");
     filas.forEach(fila => {
         var atributosTabla = ["'" + fila.id_ecosystem + "'","'" + fila.name_ecosystem + "'", "'" + fila.description_ecosystem + "'", "'" + fila.bib_ref_ecosystem + "'"];
-        var botonEdit='<button class="btn btn-info" id="editarEcosystem" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
+        var botonEdit='<button class="btn btn-info editarEcosystem" id="editarEcosystem" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_ecosystem + 
                 '</td> <td>' + fila.name_ecosystem + 
                 '</td> <td>' + fila.description_ecosystem + 
                 '</td> <td>' + fila.bib_ref_ecosystem + 
                 '</td> <td class="text-center">' + botonEdit +
-                '</td> <td class="text-center"><button class="btn btn-danger" id="borrarEcosystem" onclick="mostrarBorrar('+fila.id_ecosystem+')">Eliminar</button>'
+                '</td> <td class="text-center"><button class="btn btn-danger borrarEcosystem" id="borrarEcosystem" onclick="mostrarBorrar('+fila.id_ecosystem+')">Eliminar</button>'
                 
                 '</td>  </tr>';
+    });
+
+    recuperarYComprobarUsuarioLogeadoIsAdmin().then(resultado => {
+        if (!resultado) {
+            let editarEcosystem = document.getElementsByClassName("editarEcosystem");
+            for (const fila of editarEcosystem) {
+                fila.style.display = 'none';
+            }
+            let borrarEcosystem = document.getElementsByClassName("borrarEcosystem");
+            for (const fila of borrarEcosystem) {
+                fila.style.display = 'none';
+            }
+            $("#abrirModal").hide();
+        } else {
+            let editarEcosystem = document.getElementsByClassName("editarEcosystem");
+            for (const fila of editarEcosystem) {
+                fila.style.display = 'block';
+            }
+            let borrarEcosystem = document.getElementsByClassName("borrarEcosystem");
+            for (const fila of borrarEcosystem) {
+                fila.style.display = 'block';
+            }
+            $("#abrirModal").show();
+        }
     });
     
     $("#datosEcosystems").append(filasTabla);
     cerrarModal()
+    setLang();
 }
 
 function getAtributos(tipo){
@@ -174,6 +199,7 @@ function mostrarModal(tipo, id_ecosystem=null, name_ecosystem=null, description_
         $("#description_ecosystem").val('');
         $("#bib_ref_ecosystem").val('');
     }
+    setLang();
 }
 
 function cerrarModal(){
