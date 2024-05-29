@@ -202,7 +202,7 @@ function mostrarModalSamplingMethod(tipo, id_sampling_methodology=null, name_met
         $("#name_methodology").val('');
         $("#description_methodology").val('');
         $("#bibref_methodology").val('');
-        $("#file_project").val('');
+        $("#file_methodology").val('');
     }
     setLang();
     document.getElementById("aceptar").classList.remove(tipo);

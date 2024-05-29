@@ -71,23 +71,48 @@ function includeHeader() {
                             '<a class="inicioPage nav-link" href="index.html">Inicio</a>' +
                         '</li>' +
                         '<li class="nav-item">' +
+                            '<a class="usuariosMenu nav-link" href="listaUsuarios.html">Usuarios</a>' +
+                        '</li>' +
+                        '<li class="nav-item">' +
                             '<div class="dropdown">' +
-                                '<button class="seccionesMenu btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Secciones' +
+                                '<button class="proyectosMenu btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Proyectos' +
                                     '<span class="caret"></span>' +
                                 '</button>' +
                                 '<ul class="dropdown-menu">' +
-                                    '<li><a class="usuariosMenu dropdown-item" href="listaUsuarios.html">Usuarios</a></li>' +
                                     '<li><a class="proyectosMenu dropdown-item" href="proyectos.html">Proyectos</a></li>' +
-                                    '<li><a class="ecosystemsMenu dropdown-item" href="listaEcosystem.html">Ecosistemas</a></li>' +
                                     '<li id="permisosMenu"><a class="permisosMenu dropdown-item" href="permisos.html">Permisos Proyectos</a></li>' +
-                                    '<li><a class="sitesMenu dropdown-item" href="sites.html">Sitios</a></li>' +
-                                    '<li><a class="TemporalsamplingSiteMenu dropdown-item" href="listaTemporal_sampling_site_params.html">Temp. samp. sites</a></li>' +
+                                    '<li><a class="ecosystemsMenu dropdown-item" href="listaEcosystem.html">Ecosistemas</a></li>' +
                                     '<li><a class="projectEcosystemMenu dropdown-item" href="project_ecosystem.html">Proyectos-ecosistemas</a></li>' +
-                                    '<li><a class="samplingMenu dropdown-item" href="sampling.html">Muestreos</a></li>' +
-                                    '<li><a class="samplingMethodMenu dropdown-item" href="sampling_methodology.html">Metodologías de muestreo</a></li>' +
-                                    '<li><a class="storageMethodMenu dropdown-item" href="storageMethod.html">Metodos de almacenamiento</a></li>' +
                                 '</ul>' +
                             '</div>' +
+                        '</li>' +
+                        '<li class="nav-item">' +
+                            '<div class="dropdown">' +
+                                '<button class="samplingMenu btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Muestras' +
+                                    '<span class="caret"></span>' +
+                                '</button>' +
+                                '<ul class="dropdown-menu">' +
+                                    '<li><a class="samplingMenu dropdown-item" href="sampling.html">Muestras</a></li>' +
+                                    '<li><a class="samplingMethodMenu dropdown-item" href="sampling_methodology.html">Metodologías de muestreo</a></li>' +
+                                '</ul>' +
+                            '</div>' +
+                        '</li>' +
+                        '<li class="nav-item">' +
+                            '<div class="dropdown">' +
+                                '<button class="sitesMenu btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Sitios' +
+                                    '<span class="caret"></span>' +
+                                '</button>' +
+                                '<ul class="dropdown-menu">' +
+                                    '<li><a class="sitesMenu dropdown-item" href="sites.html">Sitios</a></li>' +
+                                    '<li><a class="TemporalsamplingSiteMenu dropdown-item" href="listaTemporal_sampling_site_params.html">Temp. samp. sites</a></li>' +
+                                '</ul>' +
+                            '</div>' +
+                        '</li>' +
+                        '<li class="nav-item">' +
+                            '<a class="storageMethodMenu nav-link" href="storageMethod.html">Metodos de almacenamiento</a>' +
+                        '</li>' +
+                        '<li class="nav-item">' +
+                            '<a class="labProcessMenu nav-link" href="lab_process.html">Procesos laboratorio</a>' +
                         '</li>' +
                     '</ul>' +
                 '</nav>' +

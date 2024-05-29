@@ -14,7 +14,9 @@ arrayES={
 	'ecosystemsMenu': 'Ecosistemas',
 	'sitesMenu': 'Sitios',
 	'projectEcosystemMenu': 'Proyectos-ecosistemas',
+	'samplingMenu': 'Muestras',
 	'samplingMethodMenu': 'Metodologías de muestra',
+	'labProcessMenu': 'Procesos laboratorio',
 	//FOOTER
 	'followUs': 'Síguenos en:',
 	'contactUs': 'Contacto',
@@ -191,5 +193,17 @@ arrayES={
   'plastic_bag': 'bolsa_plástica',
   'PVC_core': 'núcleo_PVC',
   'plastic_container': 'contenedor_plástico',
-  'document': 'documento'
+  'document': 'documento',
+
+  	// LAB_PROCESS
+	'titleLabProcess': 'Procesos de laboratorio',
+	'listadoLabProcess': 'Listado de procesos de laboratorio',
+	'añadirLabProcess': 'Añadir proceso',
+	'editLabProcess': 'Editar proceso',
+	'buscarLabProcess': 'Buscar proceso',
+	'name_lab_process': 'Nombre del proceso',
+	'description_lab_process': 'Descripción del proceso',
+	'bibref_lab_process': 'Referencia bibliográfica',
+	'file_lab_process': 'Archivo',
+	'LabProcessError': 'No existen procesos de laboratorio que coincidan con estos parámetros',
 }

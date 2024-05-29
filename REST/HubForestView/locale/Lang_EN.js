@@ -14,7 +14,9 @@ arrayEN={
 	'ecosystemsMenu': 'Ecosystems',
 	'sitesMenu': 'Sites',
 	'projectEcosystemMenu': 'Project-ecosystems',
+	'samplingMenu': 'Samplings',
 	'samplingMethodMenu': 'Sampling metodologies',
+	'labProcessMenu': 'Laboratory processes',
 	//FOOTER
 	'followUs': 'Follow us:',
 	'contactUs': 'Contact',
@@ -189,5 +191,17 @@ arrayEN={
   'plastic_bag': 'plastic_bag',
   'PVC_core': 'PVC_core',
   'plastic_container': 'plastic_container',
-  'document': 'document'
+  'document': 'document',
+
+  	// LAB_PROCESS
+	'titleLabProcess': 'Laboratory processes',
+	'listadoLabProcess': 'List of laboratory processes',
+	'añadirLabProcess': 'Add process',
+	'editLabProcess': 'Edit process',
+	'buscarLabProcess': 'Search process',
+	'name_lab_process': 'Process name',
+	'description_lab_process': 'Process description',
+	'bibref_lab_process': 'Bibliographic reference',
+	'file_lab_process': 'File',
+	'LabProcessError': 'There are no lab. processes that match these parameters.',
 }
