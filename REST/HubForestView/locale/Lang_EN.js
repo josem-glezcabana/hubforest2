@@ -216,5 +216,19 @@ arrayEN={
 	'description_analysis_technique': 'Description',
 	'bib_analysis_technique': 'Bibliographic reference',
 	'file_analysis_tecnique': 'File',
-	'AnalysisTechniqueError': 'There are no analysis techniques that match these parameters.'
+	'AnalysisTechniqueError': 'There are no analysis techniques that match these parameters.',
+
+	// CHARACTERISTIC_SAMPLE
+  'characteristicSampleMenu': 'Sample Characteristics',
+  'listadoCharacteristicSample': 'Sample Characteristics',
+  'añadirCharacteristicSample': 'Add Sample Characteristic',
+  'buscarCharacteristicSample': 'Search Sample Characteristic',
+  'reiniciarCharacteristicSample': 'Reset Table',
+  'name_unit': 'Unit Name',
+  'name_characteristic': 'Characteristic Name',
+  'characteristicSampleError': 'No sample characteristics match these parameters',
+  'aceptarrModalCharacteristicSample': 'Accept',
+  'cerrarModalCharacteristicSample': 'Close',
+  'characteristicSamplePregunta': 'Are you sure?',
+  'mensajeBorrarCharacteristicSample': 'The characteristic will be deleted'
 }

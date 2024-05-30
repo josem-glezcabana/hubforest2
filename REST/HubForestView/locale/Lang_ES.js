@@ -222,5 +222,19 @@ arrayES={
 
 	// CHARACTERISTIC_SAMPLE
 	'characteristicSampleMenu': 'Características muestra',
-	'listadoCharacteristicSample': 'Características muestra'
+	'listadoCharacteristicSample': 'Características muestra',
+	'añadirCharacteristicSample': 'Añadir característica muestra',
+	'buscarCharacteristicSample': 'Buscar carecterística muestra',
+	'reiniciarCharacteristicSample': 'Reiniciar tabla',
+	'name_unit': 'Nombre Unidad',
+	'name_characteristic': 'Nombre característica',
+	'characteristicSampleError': 'No existen características de muestras que coincidan con estos parámetros',
+	'aceptarrModalCharacteristicSample' :'Aceptar',
+	'cerrarModalCharacteristicSample': 'Cerrar',
+	'characteristicSamplePregunta':'¿Estás seguro?',
+	'mensajeBorrarCharacteristicSample': 'Se van eliminar la característica',
+
+
+
+
 }
