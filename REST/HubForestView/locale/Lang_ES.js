@@ -218,5 +218,9 @@ arrayES={
 	'description_analysis_technique': 'Descripción',
 	'bib_analysis_technique': 'Referencia bibliográfica',
 	'file_analysis_tecnique': 'Archivo',
-	'AnalysisTechniqueError': 'No existen técnicas de análisis que coincidan con estos parámetros.'
+	'AnalysisTechniqueError': 'No existen técnicas de análisis que coincidan con estos parámetros.',
+
+	// CHARACTERISTIC_SAMPLE
+	'characteristicSampleMenu': 'Características muestra',
+	'listadoCharacteristicSample': 'Características muestra'
 }
