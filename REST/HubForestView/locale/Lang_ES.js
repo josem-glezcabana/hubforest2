@@ -17,6 +17,7 @@ arrayES={
 	'samplingMenu': 'Muestras',
 	'samplingMethodMenu': 'Metodologías de muestra',
 	'labProcessMenu': 'Procesos laboratorio',
+	'analysisTechniqueMenu': 'Técnicas análisis',
 	//FOOTER
 	'followUs': 'Síguenos en:',
 	'contactUs': 'Contacto',
@@ -206,4 +207,16 @@ arrayES={
 	'bibref_lab_process': 'Referencia bibliográfica',
 	'file_lab_process': 'Archivo',
 	'LabProcessError': 'No existen procesos de laboratorio que coincidan con estos parámetros',
+
+	// ANALYSIS_TECHNIQUE
+	'titleAnalysisTechnique': 'Técnicas de análisis',
+	'listadoAnalysisTechnique': 'Listado de técnicas de análisis',
+	'añadirAnalysisTechnique': 'Añadir técnica análisis',
+	'buscarAnalysisTechnique': 'Buscar técnica análisis',
+	'editAnalysisTechnique': 'Editar técnica análisis',
+	'name_analysis_technique': 'Nombre de la técnica',
+	'description_analysis_technique': 'Descripción',
+	'bib_analysis_technique': 'Referencia bibliográfica',
+	'file_analysis_tecnique': 'Archivo',
+	'AnalysisTechniqueError': 'No existen técnicas de análisis que coincidan con estos parámetros.'
 }

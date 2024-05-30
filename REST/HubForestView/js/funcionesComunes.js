@@ -112,7 +112,15 @@ function includeHeader() {
                             '<a class="storageMethodMenu nav-link" href="storageMethod.html">Metodos de almacenamiento</a>' +
                         '</li>' +
                         '<li class="nav-item">' +
-                            '<a class="labProcessMenu nav-link" href="lab_process.html">Procesos laboratorio</a>' +
+                            '<div class="dropdown">' +
+                                '<button class="labProcessMenu btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Laboratorio' +
+                                    '<span class="caret"></span>' +
+                                '</button>' +
+                                '<ul class="dropdown-menu">' +
+                                    '<li><a class="labProcessMenu dropdown-item" href="lab_process.html">Procesos laboratorio</a></li>' +
+                                    '<li><a class="analysisTechniqueMenu dropdown-item" href="analysis_technique.html">Técnicas análisis</a></li>' +
+                                '</ul>' +
+                            '</div>' +
                         '</li>' +
                     '</ul>' +
                 '</nav>' +

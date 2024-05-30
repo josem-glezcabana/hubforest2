@@ -15,8 +15,9 @@ arrayEN={
 	'sitesMenu': 'Sites',
 	'projectEcosystemMenu': 'Project-ecosystems',
 	'samplingMenu': 'Samplings',
-	'samplingMethodMenu': 'Sampling metodologies',
+	'samplingMethodMenu': 'Sampling methodologies',
 	'labProcessMenu': 'Laboratory processes',
+	'analysisTechniqueMenu': 'Analysis techniques',
 	//FOOTER
 	'followUs': 'Follow us:',
 	'contactUs': 'Contact',
@@ -204,4 +205,16 @@ arrayEN={
 	'bibref_lab_process': 'Bibliographic reference',
 	'file_lab_process': 'File',
 	'LabProcessError': 'There are no lab. processes that match these parameters.',
+
+	// ANALYSIS_TECHNIQUE
+	'titleAnalysisTechnique': 'Analysis techniques',
+	'listadoAnalysisTechnique': 'List of analysis techniques',
+	'añadirAnalysisTechnique': 'Add analysis technique',
+	'buscarAnalysisTechnique': 'Search analysis technique',
+	'editAnalysisTechnique': 'Edit analysis technique',
+	'name_analysis_technique': 'Analysis technique name',
+	'description_analysis_technique': 'Description',
+	'bib_analysis_technique': 'Bibliographic reference',
+	'file_analysis_tecnique': 'File',
+	'AnalysisTechniqueError': 'There are no analysis techniques that match these parameters.'
 }
