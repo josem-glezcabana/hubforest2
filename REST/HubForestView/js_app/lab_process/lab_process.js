@@ -100,14 +100,14 @@ function construyeTablaLabProcess(filas) {
     $("#datosLabProcess").html("");
     filas.forEach(fila => {
         let atributosTabla = ["'" + fila.id_lab_process + "'","'" + fila.name_lab_process + "'", "'" + fila.description_lab_process + "'",
-                              "'" + fila.bib_lab_process + "'","'" + fila.file_lab_process + "'"];
+                              "'" + fila.bib_lab_process + "'"/* ,"'" + fila.file_lab_process + "'" */];
         let botonEdit='<button class="BotonEditar btn btn-info editarLabProcess" id="editarLabProcess" onclick="mostrarModalLabProcess('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_lab_process + 
                 '</td> <td>' + fila.name_lab_process + 
                 '</td> <td>' + fila.description_lab_process + 
                 '</td> <td>' + fila.bib_lab_process + 
-                '</td> <td>' + fila.file_lab_process + 
+                // '</td> <td>' + fila.file_lab_process + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarLabProcess" id="borrarLabProcess" onclick="mostrarBorrarLabProcess('+fila.id_lab_process+')">Eliminar</button>'
                 

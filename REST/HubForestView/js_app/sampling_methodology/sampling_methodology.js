@@ -100,14 +100,14 @@ function construyeTablaSamplingMethod(filas) {
     $("#datosSamplingMethod").html("");
     filas.forEach(fila => {
         let atributosTabla = ["'" + fila.id_sampling_methodology + "'","'" + fila.name_methodology + "'", "'" + fila.description_methodology + "'",
-                              "'" + fila.bibref_methodology + "'","'" + fila.file_methodology + "'"];
+                              "'" + fila.bibref_methodology + "'"/* ,"'" + fila.file_methodology + "'" */];
         let botonEdit='<button class="BotonEditar btn btn-info editarSamplingMethod" id="editarSamplingMethod" onclick="mostrarModalSamplingMethod('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_sampling_methodology + 
                 '</td> <td>' + fila.name_methodology + 
                 '</td> <td>' + fila.description_methodology + 
                 '</td> <td>' + fila.bibref_methodology + 
-                '</td> <td>' + fila.file_methodology + 
+                // '</td> <td>' + fila.file_methodology + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarSamplingMethod" id="borrarSamplingMethod" onclick="mostrarBorrarSamplingMethod('+fila.id_sampling_methodology+')">Eliminar</button>'
                 
