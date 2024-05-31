@@ -41,7 +41,7 @@ arrayEN={
 	'buscarPermiso' : 'Search permit',
 	'reiniciarPermisos' : 'Reload table',
 	'name_project' : 'Name project',
-	'name_user' : 'Name user',
+	'name_user_project' : 'Name User',
 	'rol' : 'Role',
 	'permisosError' : 'There are no permissions that match these parameters',
 	'cerrarModalPermiso' : 'Close',
@@ -51,8 +51,6 @@ arrayEN={
 	'EditarPermisos' : 'Edit Permissions',
 	'BuscarPermisos' : 'Permissions Search',
 	'AñadirPermisos' : 'Add Permissions',
-	'name_project' : 'Name Project',
-	'name_user' : 'Name User',
 	'fechaProyecto': 'Date of entry into the Project',
 	'mensajeBorrarPermisos':'The permissions of the specified user will be removed',
 	//USUARIOS
@@ -151,18 +149,6 @@ arrayEN={
 	'errorValidacion': 'Validation Error',
 	'cerrarModalValidacion': 'Close',
 
-	//Atributos
-	'nameRegistro' : 'Name',
-	'passwordLogin' : 'Password',
-	'botonLogin' : 'Log in',
-	'botonIrRegistrar' : 'Register',
-	'registroNombre' : 'Name',
-	'registroApellido' : 'Surname',
-	'registroOrganizacion' : 'Organization',
-	'registroEmail' : 'Email',
-	'registroPassword' : 'Password',
-	'registroPosition' : 'Position',
-
 	// SAMPLING_METHODOLOGY
 	'titleSamplingMethod': 'Sampling methodologies',
 	'listadoSamplingMethod': 'List of sampling methodologies',
@@ -230,5 +216,16 @@ arrayEN={
   'aceptarrModalCharacteristicSample': 'Accept',
   'cerrarModalCharacteristicSample': 'Close',
   'characteristicSamplePregunta': 'Are you sure?',
-  'mensajeBorrarCharacteristicSample': 'The characteristic will be deleted'
+  'mensajeBorrarCharacteristicSample': 'The characteristic will be deleted',
+
+	// ECOSYSTEM
+	'titleEcosystem': 'Ecosystems',
+	'listadoEcosystems': 'List of ecosystems',
+	'añadirEcosystem': 'Add ecosystem',
+	'buscarEcosystem': 'Search ecosystem',
+	'editarEcosystem': 'Edit ecosystem',
+	'name_ecosystem': 'Ecosystem name',
+	'description_ecosystem': 'Description',
+	'bib_ref_ecosystem': 'Bibliographic reference',
+	'EcosystemError': 'There are no ecosystems that match these parameters.'
 }

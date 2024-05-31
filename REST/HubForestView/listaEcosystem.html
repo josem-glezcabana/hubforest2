@@ -14,7 +14,7 @@
     <script type="text/javascript" src="locale/idioma.js"></script>
     <script type="text/javascript" src="locale/Lang_EN.js"></script>
     <script type="text/javascript" src="locale/Lang_ES.js"></script>
-    <title>Listado de ecosystems</title>
+    <title class="titleEcosystem">Ecosistemas</title>
     <!-- Incluye los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -30,11 +30,11 @@
     <div id="header"></div>
 
     <div class="container mt-5">
-        <h2>Listado de ecosystems</h2>
+        <h2 class="listadoEcosystems">Listado de ecosistemas</h2>
         <div class="mt-2 mb-3 float-right">
-            <button class="btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('Añadir ecosystem')">Añadir ecosystem</button>
-            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('Buscar ecosystem')">Buscar ecosystem</button>
-            <button class="btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListEcosystems()">Reiniciar tabla</button>
+            <button class="añadirEcosystem btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('añadirEcosystem')">Añadir ecosistema</button>
+            <button class="buscarEcosystem btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('buscarEcosystem')">Buscar ecosistema</button>
+            <button class="reiniciarTabla btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListEcosystems()">Reiniciar tabla</button>
             
         </div>
             
@@ -66,8 +66,8 @@
             </button>
             <div id="Titulo"></div>
             <div id="mensajeError" class="text-center" style="display: none;">             
-                <h7>
-                    No existen ecosystems que coincidan con estos parámetros
+                <h7 class="EcosystemError">
+                    No existen ecosistemas que coincidan con estos parámetros
                 </h7>
                 <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
                     <span aria-hidden="true">&times;</span>
@@ -105,7 +105,7 @@
             <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
                 <span aria-hidden="true">&times;</span>
             </button>
-            <div class="text-center" id="Titulo"><h2>¿Estas seguro?</h2></div>
+            <div class="text-center" id="Titulo"><h2 class="DeletePregunta">¿Estás seguro?</h2></div>
             
             <form id="formBorrarEcosystem" action="" method="post" onsubmit="">
                 <div class="form-group">
@@ -113,14 +113,13 @@
                     <input type="text" class="form-control" id="idBorrar" name="id_ecosystem" style="display: none;">
                 </div>
                 <div class="col text-center">
-                    <button type="submit" id="aceptar" class="btn btn-danger">Aceptar</button>
-                    <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
+                    <button type="submit" id="aceptar" class="DeleteAceptar btn btn-danger">Aceptar</button>
+                    <button type="button" id="cerrar" class="DeleteCerrar btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
                 </div>
                 
             </form>  
         </div>
     </div>
-</div>
 
     <!-- Pie de Página -->
 	<div id="footer"><div>

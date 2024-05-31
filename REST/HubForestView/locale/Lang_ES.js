@@ -41,7 +41,7 @@ arrayES={
 	'buscarPermiso' : 'Buscar permiso',
 	'reiniciarPermisos' : 'Reiniciar tabla',
 	'name_project' : 'Nombre proyecto',
-	'name_user' : 'Nombre usuario',
+	'name_user_project' : 'Nombre usuario',
 	'rol' : 'Rol',
 	'permisosError' : 'No existen permisos que coincidan con estos parámetros',
 	'cerrarModalPermiso' : 'Cerrar',
@@ -51,8 +51,6 @@ arrayES={
 	'EditarPermisos' : 'Editar permisos',
 	'BuscarPermisos' : 'Buscar Permisos',
 	'AñadirPermisos' : 'Añadir Permisos',
-	'name_project' : 'Nombre Proyecto',
-	'name_user' : 'Nombre Usuario',
 	'fechaProyecto': 'Fecha de entrada en el Proyecto',
 	'mensajeBorrarPermisos':'Se van eliminar los permisos del usuario indicado',
 	//USUARIOS
@@ -82,7 +80,7 @@ arrayES={
 	'responsable_project': 'Responsable',
 	'organization_project': 'Organización',
 	'description_project': 'Descripción',
-	'id_sampling_methodology': 'Metodología de sampling',
+	'id_sampling_methodology': 'Metodología de muestra',
 	'file_project': 'Archivo',
 	'code_project': 'Código de proyecto',
 	'acronym_project': 'Acrónimo',
@@ -137,8 +135,6 @@ arrayES={
 	'listadoSampling': 'Listado de metodologías de muestreo',
 	'añadirSampling': 'Añadir metodología de muestreo',
 	'buscarSampling': 'Buscar metodología de muestreo',
-	'name_project': 'Nombre Proyecto',
-	'name_ecosystem': 'Nombre ecosistema',
 	'site': 'sitio',
 	'fechaSampling': 'Fecha de creación metodología de muestreo' ,
 	'timeampling': 'Tiempo de muestreo',
@@ -234,7 +230,14 @@ arrayES={
 	'characteristicSamplePregunta':'¿Estás seguro?',
 	'mensajeBorrarCharacteristicSample': 'Se van eliminar la característica',
 
-
-
-
+	// ECOSYSTEM
+	'titleEcosystem': 'Ecosistemas',
+	'listadoEcosystems': 'Listado de ecosistemas',
+	'añadirEcosystem': 'Añadir ecosistema',
+	'buscarEcosystem': 'Buscar ecosistema',
+	'editarEcosystem': 'Editar ecosistema',
+	'name_ecosystem': 'Nombre ecosistema',
+	'description_ecosystem': 'Descripción',
+	'bib_ref_ecosystem': 'Referencia bibliográfica',
+	'EcosystemError': 'No existen ecosistemas que coincidan con estos parámetros.'
 }
