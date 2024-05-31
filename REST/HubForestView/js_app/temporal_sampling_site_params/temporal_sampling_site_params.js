@@ -110,7 +110,7 @@ function construyeTablatemporal_sampling_site_params(filas) {
 
     var filasTabla = ''
 
-    var tipo = "'Editar temporal_sampling_site_params'"
+    var tipo = "'editTemporal_sampling_site_params'"
 
     var element = document.getElementById("datostemporal_sampling_site_params");
     while (element.firstChild) {
@@ -120,7 +120,7 @@ function construyeTablatemporal_sampling_site_params(filas) {
     $("#datostemporal_sampling_site_params").html("");
     filas.forEach(fila => {
         var atributosTabla = ["'" + fila.id_project + "'","'" + fila.id_ecosystem + "'", "'" + fila.id_ecosystem_param + "'", "'" + fila.category_param + "'", "'" + fila.name_ecosystem_param + "'", "'" + fila.values_ecosystem_param + "'"];
-        var botonEdit='<button class="btn btn-info editartemporal_sampling_site_params" id="editartemporal_sampling_site_params" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
+        var botonEdit='<button class="BotonEditar btn btn-info" id="editartemporal_sampling_site_params" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_project + 
                 '</td> <td>' + fila.id_ecosystem + 
@@ -129,13 +129,13 @@ function construyeTablatemporal_sampling_site_params(filas) {
                 '</td> <td>' + fila.name_ecosystem_param + 
                 '</td> <td>' + fila.values_ecosystem_param + 
                 '</td> <td class="text-center">' + botonEdit +
-                '</td> <td class="text-center"><button class="btn btn-danger borrartemporal_sampling_site_params" id="borrartemporal_sampling_site_params" onclick="mostrarBorrar('+fila.id_project+', '+fila.id_ecosystem+', '+fila.id_ecosystem_param+')">Eliminar</button>'
+                '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrartemporal_sampling_site_params" id="borrartemporal_sampling_site_params" onclick="mostrarBorrar('+fila.id_project+', '+fila.id_ecosystem+', '+fila.id_ecosystem_param+')">Eliminar</button>'
                 '</td>  </tr>';
     });
 
     recuperarYComprobarUsuarioLogeadoIsAdmin().then(resultado => {
         if (!resultado) {
-            let editartemporal_sampling_site_params = document.getElementsByClassName("editartemporal_sampling_site_params");
+            let editartemporal_sampling_site_params = document.getElementsByClassName("BotonEditar");
             for (const fila of editartemporal_sampling_site_params) {
                 fila.style.display = 'none';
             }
@@ -145,7 +145,7 @@ function construyeTablatemporal_sampling_site_params(filas) {
             }
             $("#abrirModal").hide();
         } else {
-            let editartemporal_sampling_site_params = document.getElementsByClassName("editartemporal_sampling_site_params");
+            let editartemporal_sampling_site_params = document.getElementsByClassName("BotonEditar");
             for (const fila of editartemporal_sampling_site_params) {
                 fila.style.display = 'block';
             }
@@ -186,9 +186,9 @@ function mostrarModal(tipo, id_project=null, id_ecosystem=null, id_ecosystem_par
                             values_ecosystem_param=null){
     // Ventana modal
     document.getElementById("ventanaModal").style.display = "block";
-    document.getElementById("Titulo").innerHTML = '<h2>'+tipo+'</h2>';
-    document.getElementById("aceptar").innerHTML = tipo;
-    if(tipo.includes("Editar")){
+    document.getElementById("Titulo").innerHTML = '<h2 class="'+tipo+'">'+tipo+'</h2>';
+    document.getElementById("aceptar").classList.add(tipo);
+    if(tipo.includes("edit")){
         $("#formtemporal_sampling_site_params").attr('action' , 'javascript:getAtributos("Editar");');
         $("#id_project").val(id_project);
         $("#id_ecosystem").val(id_ecosystem);
@@ -198,7 +198,7 @@ function mostrarModal(tipo, id_project=null, id_ecosystem=null, id_ecosystem_par
         $("#values_ecosystem_param").val(values_ecosystem_param);
     }
     else{
-        if(tipo.includes("Buscar")){
+        if(tipo.includes("buscar")){
             document.getElementById("id_project").required = false;
             document.getElementById("id_ecosystem").required = false;
             document.getElementById("id_ecosystem_param").required = false;
@@ -226,6 +226,7 @@ function mostrarModal(tipo, id_project=null, id_ecosystem=null, id_ecosystem_par
         $("#values_ecosystem_param").val('');
     }
     setLang();
+    document.getElementById("aceptar").classList.remove(tipo);
 }
 
 function cerrarModal(){

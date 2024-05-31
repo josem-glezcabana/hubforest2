@@ -149,6 +149,20 @@ arrayEN={
 	'errorValidacion': 'Validation Error',
 	'cerrarModalValidacion': 'Close',
 
+	//temporal_sampling_site_params
+	'titleTemporalSamplingSiteParams': 'Temporal sampling-site params',
+	'listadodetemporal_sampling_site_params': 'List of temporal sampling-site params',
+	'añadirtemporal_sampling_site_params': 'Add param',
+	'buscartemporal_sampling_site_params': 'Search param',
+	'editTemporal_sampling_site_params': 'Edit param',
+	'id_ecosystem_param': 'Ecosystem param',
+	'id_project': 'Project',
+	'id_ecosystem': 'Ecosystem',
+	'category_param': 'Category',
+	'name_ecosystem_param': 'Param name',
+	'values_ecosystem_param': 'Values',
+	'TemporalSamplingSiteParamsError': 'There are no temporal params that match these parameters.',
+
 	// SAMPLING_METHODOLOGY
 	'titleSamplingMethod': 'Sampling methodologies',
 	'listadoSamplingMethod': 'List of sampling methodologies',

@@ -110,7 +110,6 @@ arrayES={
 	'orientation_site': 'Orientation sitio',
 	'sitios_error': 'No existen sitios que coincidan con estos parámetros',
 	'sitiosPregunta': '¿Estás seguro?',
-	'aceptar': 'Aceptar',
 	'cerrar': 'Cerrar',
 	'editar': 'Editar',
 	'eliminar': 'Eliminar',
@@ -149,14 +148,19 @@ arrayES={
 	'errorValidacion': 'Error validación',
 	'cerrarModalValidacion': 'Cerrar',
 
-	//tempora_sampling_params
-	'aceptar': 'aceptar',
-	'listadodetemporal_sampling_site_params': 'Listado de temporal_sampling_site_params',
-	'añadirtemporal_sampling_site_params': 'Añadir temporal_sampling_site_params',
-	'buscartemporal_sampling_site_params': 'Buscar temporal_sampling_site_params',
-	'reiniciartemporal_sampling_site_params': 'Reiniciar table',
-	'noexistentemporal_sampling_site_paramsquecoincidanconestosparametros': 'No existen temporal_sampling_site_params que coindidan con estos parámetros',
-	'temporal_sampling_site_paramsPregunta': '¿Estás seguro?',
+	//temporal_sampling_site_params
+	'titleTemporalSamplingSiteParams': 'Parámetros temporales muestra-sitio',
+	'listadodetemporal_sampling_site_params': 'Listado de parámetros temporales muestra-sitio',
+	'añadirtemporal_sampling_site_params': 'Añadir parámetro',
+	'buscartemporal_sampling_site_params': 'Buscar parámetro',
+	'editTemporal_sampling_site_params': 'Editar parámetro',
+	'id_ecosystem_param': 'Parámetro de ecosistema',
+	'id_project': 'Proyecto',
+	'id_ecosystem': 'Ecosistema',
+	'category_param': 'Categoría',
+	'name_ecosystem_param': 'Nombre del parámetro',
+	'values_ecosystem_param': 'Valores',
+	'TemporalSamplingSiteParamsError': 'No existen parámetros temporales muestra-sitio que coincidan con estos parámetros',
 
 	// SAMPLING_METHODOLOGY
 	'titleSamplingMethod': 'Metologías de muestra',
