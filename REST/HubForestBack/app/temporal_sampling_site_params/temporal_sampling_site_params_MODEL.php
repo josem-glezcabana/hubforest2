@@ -14,9 +14,9 @@ class temporal_sampling_site_params_MODEL extends ModelBase{
 	function __construct(){
 
 		$this->tabla = 'temporal_sampling_site_params';
-		$this->clave = array('id_project','id_ecosystem','id_ecosystem_param');
+		$this->clave = array('id_ecosystem_param','id_project','id_ecosystem');
 		$this->foraneas = array();
-		$this->autoincrement = array();
+		$this->autoincrement = array('id_ecosystem_param');
         $this->unicos = array();
 
 	}

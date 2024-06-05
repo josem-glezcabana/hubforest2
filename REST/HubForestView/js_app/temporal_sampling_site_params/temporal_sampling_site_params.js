@@ -11,12 +11,11 @@ async function getListtemporal_sampling_site_params() {
 }
 
 
-async function getListByParamtemporal_sampling_site_params(id_project, id_ecosystem, id_ecosystem_param, category_param,
+async function getListByParamtemporal_sampling_site_params(id_project, id_ecosystem, category_param,
     name_ecosystem_param, values_ecosystem_param) {
     const temporal_sampling_site_params = {
         id_project: id_project,
         id_ecosystem: id_ecosystem,
-        id_ecosystem_param: id_ecosystem_param,
         category_param: category_param,
         name_ecosystem_param: name_ecosystem_param,
         values_ecosystem_param: values_ecosystem_param
@@ -29,12 +28,11 @@ async function getListByParamtemporal_sampling_site_params(id_project, id_ecosys
         });
 }
 
-async function getListByParamtemporal_sampling_site_params_search(id_project, id_ecosystem, id_ecosystem_param, category_param,
+async function getListByParamtemporal_sampling_site_params_search(id_project, id_ecosystem, category_param,
     name_ecosystem_param, values_ecosystem_param) {
         const temporal_sampling_site_params = {
             id_project: id_project,
             id_ecosystem: id_ecosystem,
-            id_ecosystem_param: id_ecosystem_param,
             category_param: category_param,
             name_ecosystem_param: name_ecosystem_param,
             values_ecosystem_param: values_ecosystem_param
@@ -47,12 +45,10 @@ async function getListByParamtemporal_sampling_site_params_search(id_project, id
         });
 }
 
-async function addtemporal_sampling_site_params(id_project, id_ecosystem, id_ecosystem_param, category_param,
-    name_ecosystem_param, values_ecosystem_param) {
+async function addtemporal_sampling_site_params(id_project, id_ecosystem, category_param, name_ecosystem_param, values_ecosystem_param) {
         const temporal_sampling_site_params = {
             id_project: id_project,
             id_ecosystem: id_ecosystem,
-            id_ecosystem_param: id_ecosystem_param,
             category_param: category_param,
             name_ecosystem_param: name_ecosystem_param,
             values_ecosystem_param: values_ecosystem_param
@@ -70,12 +66,12 @@ async function addtemporal_sampling_site_params(id_project, id_ecosystem, id_eco
         });
 }
 
-async function edittemporal_sampling_site_params(id_project, id_ecosystem, id_ecosystem_param, category_param,
+async function edittemporal_sampling_site_params(id_ecosystem_param, id_project, id_ecosystem, category_param,
     name_ecosystem_param, values_ecosystem_param) {
         const temporal_sampling_site_params = {
+            id_ecosystem_param: id_ecosystem_param,
             id_project: id_project,
             id_ecosystem: id_ecosystem,
-            id_ecosystem_param: id_ecosystem_param,
             category_param: category_param,
             name_ecosystem_param: name_ecosystem_param,
             values_ecosystem_param: values_ecosystem_param
@@ -92,14 +88,33 @@ async function edittemporal_sampling_site_params(id_project, id_ecosystem, id_ec
         });
 }
 
-async function deletetemporal_sampling_site_params(id_project, id_ecosystem, id_ecosystem_param) {
-    
-    return peticionBackGeneral('', 'temporal_sampling_site_params', 'DELETE', {'id_project': id_project},
-        {'id_ecosystem': id_ecosystem}, {'id_ecosystem_param': id_ecosystem_param})
-        .then(response => {
+async function deletetemporal_sampling_site_params(id_ecosystem_param, id_project, id_ecosystem) {    
+    return peticionBackGeneral('', 'temporal_sampling_site_params', 'DELETE', {
+        'id_ecosystem_param': id_ecosystem_param,
+        'id_project': id_project,
+        'id_ecosystem': id_ecosystem
+    }).then(response => {
             location.reload();
             return { status: 'OK', data: response };
         })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return null;
+        });
+}
+
+async function getListProjectParams(project_params) {
+    return peticionBackGeneral('', 'project', 'SEARCH')
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectProject("id_project", response['resource'], project_params) : null)
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return null;
+        });
+}
+
+async function getListEcosystemParams(ecosystem_params) {
+    return peticionBackGeneral('', 'ecosystem', 'SEARCH')
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectEcosystem("id_ecosystem", response['resource'], ecosystem_params) : null)
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
@@ -119,17 +134,17 @@ function construyeTablatemporal_sampling_site_params(filas) {
 
     $("#datostemporal_sampling_site_params").html("");
     filas.forEach(fila => {
-        var atributosTabla = ["'" + fila.id_project + "'","'" + fila.id_ecosystem + "'", "'" + fila.id_ecosystem_param + "'", "'" + fila.category_param + "'", "'" + fila.name_ecosystem_param + "'", "'" + fila.values_ecosystem_param + "'"];
+        var atributosTabla = ["'" + fila.id_ecosystem_param + "'", "'" + fila.id_project + "'","'" + fila.id_ecosystem + "'", "'" + fila.category_param + "'", "'" + fila.name_ecosystem_param + "'", "'" + fila.values_ecosystem_param + "'"];
         var botonEdit='<button class="BotonEditar btn btn-info" id="editartemporal_sampling_site_params" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
-        filasTabla += '<tr> <td>' + fila.id_project + 
+        filasTabla += '<tr> <td>' + fila.id_ecosystem_param +
                 '</td> <td>' + fila.id_ecosystem + 
-                '</td> <td>' + fila.id_ecosystem_param + 
+                '</td> <td>' + fila.id_project + 
                 '</td> <td>' + fila.category_param + 
                 '</td> <td>' + fila.name_ecosystem_param + 
                 '</td> <td>' + fila.values_ecosystem_param + 
                 '</td> <td class="text-center">' + botonEdit +
-                '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrartemporal_sampling_site_params" id="borrartemporal_sampling_site_params" onclick="mostrarBorrar('+fila.id_project+', '+fila.id_ecosystem+', '+fila.id_ecosystem_param+')">Eliminar</button>'
+                '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrartemporal_sampling_site_params" id="borrartemporal_sampling_site_params" onclick="mostrarBorrar(' + fila.id_ecosystem_param + ',' + fila.id_project + ',' + fila.id_ecosystem + ')">Eliminar</button>'
                 '</td>  </tr>';
     });
 
@@ -163,36 +178,40 @@ function construyeTablatemporal_sampling_site_params(filas) {
 }
 
 function getAtributos(tipo){
+    var id_ecosystem_param = document.getElementById("id_ecosystem_param").value
     var id_project = document.getElementById("id_project").value
     var id_ecosystem = document.getElementById("id_ecosystem").value
-    var id_ecosystem_param = document.getElementById("id_ecosystem_param").value
     var category_param = document.getElementById("category_param").value
     var name_ecosystem_param = document.getElementById("name_ecosystem_param").value
     var values_ecosystem_param = document.getElementById("values_ecosystem_param").value
      switch(tipo){
         case "Editar":
-            edittemporal_sampling_site_params(id_project,id_ecosystem, id_ecosystem_param, category_param, name_ecosystem_param, values_ecosystem_param)
+            edittemporal_sampling_site_params(id_ecosystem_param, id_project, id_ecosystem, category_param, name_ecosystem_param, values_ecosystem_param)
             break;
         case "Añadir":
-            addtemporal_sampling_site_params(id_project,id_ecosystem, id_ecosystem_param, category_param, name_ecosystem_param, values_ecosystem_param)
+            addtemporal_sampling_site_params(id_project, id_ecosystem, category_param, name_ecosystem_param, values_ecosystem_param)
             break;
         case "Buscar":
-            getListByParamtemporal_sampling_site_params_search(id_project,id_ecosystem, id_ecosystem_param, category_param, name_ecosystem_param, values_ecosystem_param)
+            getListByParamtemporal_sampling_site_params_search(id_project, id_ecosystem, category_param, name_ecosystem_param, values_ecosystem_param)
             break;
      }
 }
 
-function mostrarModal(tipo, id_project=null, id_ecosystem=null, id_ecosystem_param=null, category_param=null, name_ecosystem_param=null, 
+function mostrarModal(tipo, id_ecosystem_param=null, id_project=null, id_ecosystem=null, category_param=null, name_ecosystem_param=null, 
                             values_ecosystem_param=null){
     // Ventana modal
     document.getElementById("ventanaModal").style.display = "block";
     document.getElementById("Titulo").innerHTML = '<h2 class="'+tipo+'">'+tipo+'</h2>';
     document.getElementById("aceptar").classList.add(tipo);
+
+    getListProjectParams(id_ecosystem);
+    getListEcosystemParams(id_project);
+
     if(tipo.includes("edit")){
         $("#formtemporal_sampling_site_params").attr('action' , 'javascript:getAtributos("Editar");');
+        $("#id_ecosystem_param").val(id_ecosystem_param);
         $("#id_project").val(id_project);
         $("#id_ecosystem").val(id_ecosystem);
-        $("#id_ecosystem_param").val(id_ecosystem_param);
         $("#category_param").val(category_param);
         $("#name_ecosystem_param").val(name_ecosystem_param);
         $("#values_ecosystem_param").val(values_ecosystem_param);
@@ -201,7 +220,6 @@ function mostrarModal(tipo, id_project=null, id_ecosystem=null, id_ecosystem_par
         if(tipo.includes("buscar")){
             document.getElementById("id_project").required = false;
             document.getElementById("id_ecosystem").required = false;
-            document.getElementById("id_ecosystem_param").required = false;
             document.getElementById("category_param").required = false;
             document.getElementById("name_ecosystem_param").required = false;
             document.getElementById("values_ecosystem_param").required = false;
@@ -210,7 +228,6 @@ function mostrarModal(tipo, id_project=null, id_ecosystem=null, id_ecosystem_par
         else{
             document.getElementById("id_project").required = true;
             document.getElementById("id_ecosystem").required = true;
-            document.getElementById("id_ecosystem_param").required = true;
             document.getElementById("category_param").required = true;
             document.getElementById("name_ecosystem_param").required = true;
             document.getElementById("values_ecosystem_param").required = true;
@@ -218,9 +235,9 @@ function mostrarModal(tipo, id_project=null, id_ecosystem=null, id_ecosystem_par
             $("#formtemporal_sampling_site_params").attr('action' , 'javascript:getAtributos("Añadir");');
         }
 
+        $("#id_ecosystem_param").val('');
         $("#id_project").val('');
         $("#id_ecosystem").val('');
-        $("#id_ecosystem_param").val('');
         $("#category_param").val('');
         $("#name_ecosystem_param").val('');
         $("#values_ecosystem_param").val('');
@@ -229,20 +246,67 @@ function mostrarModal(tipo, id_project=null, id_ecosystem=null, id_ecosystem_par
     document.getElementById("aceptar").classList.remove(tipo);
 }
 
+function rellenarSelectProject(tipo, filas, project) {
+    let element = document.getElementById(tipo);
+    let option = document.createElement('option');
+
+      // Eliminar opciones existentes antes de agregar las nuevas
+    element.innerHTML = '';
+    option.value = "";
+    option.textContent = "-- Selecciona proyecto --";
+    element.appendChild(option);
+
+    filas.forEach(fila => {
+        option = document.createElement('option');
+        option.value = fila.id_project;
+        option.textContent = fila.name_project;
+        element.appendChild(option);
+    })
+
+    if (project != null) element.value = project;
+}
+
+function rellenarSelectEcosystem(tipo, filas, ecosystem) {
+    let element = document.getElementById(tipo);
+    let option = document.createElement('option');
+
+      // Eliminar opciones existentes antes de agregar las nuevas
+    element.innerHTML = '';
+    option.value = "";
+    option.textContent = "-- Selecciona ecosistema --";
+    element.appendChild(option);
+
+    filas.forEach(fila => {
+        option = document.createElement('option');
+        option.value = fila.id_ecosystem;
+        option.textContent = fila.name_ecosystem;
+        element.appendChild(option);
+    })
+
+    if (ecosystem != null) element.value = ecosystem;
+}
+
+
 function cerrarModal(){
     // Ventana modal
     var modal = document.getElementById("ventanaModal");
     modal.style.display = "none"
 }
 
-function mostrarBorrar(id){
+function mostrarBorrar(id_ecosystem_param, id_project, id_ecosystem){
     // Ventana modal
+    const attributes = [id_ecosystem_param, id_project, id_ecosystem];
     document.getElementById("comprobarBorrar").style.display = "block";
-    $("#idBorrar").val(id)
+    $("#idBorrar").val(attributes)
     $("#formBorrartemporal_sampling_site_params").attr('action' , 'javascript:borrar();');
 }
 
 function borrar(){
-    var id = document.getElementById("idBorrar").value
-    deletetemporal_sampling_site_params(id)
+    let ids = $("#idBorrar").val();
+    let id_array = ids.split(',');
+    // Obtenemos los IDs por separado
+    let id_ecosystem_param = id_array[0];
+    let id_project = id_array[1];
+    let id_ecosystem = id_array[2];
+    deletetemporal_sampling_site_params(id_ecosystem_param, id_project, id_ecosystem)
 }

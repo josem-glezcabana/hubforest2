@@ -18,6 +18,7 @@ arrayEN={
 	'samplingMethodMenu': 'Sampling methodologies',
 	'labProcessMenu': 'Laboratory processes',
 	'analysisTechniqueMenu': 'Analysis techniques',
+	'TemporalsamplingSiteMenu': 'Temporal sampling-site params',
 	//FOOTER
 	'followUs': 'Follow us:',
 	'contactUs': 'Contact',
@@ -155,7 +156,7 @@ arrayEN={
 	'añadirtemporal_sampling_site_params': 'Add param',
 	'buscartemporal_sampling_site_params': 'Search param',
 	'editTemporal_sampling_site_params': 'Edit param',
-	'id_ecosystem_param': 'Ecosystem param',
+	'id_ecosystem_param': 'Id',
 	'id_project': 'Project',
 	'id_ecosystem': 'Ecosystem',
 	'category_param': 'Category',
