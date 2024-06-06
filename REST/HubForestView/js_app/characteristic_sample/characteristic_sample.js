@@ -135,6 +135,22 @@ function construyeTablaCharacteristicSample(filas) {
                 '</td>  </tr>';
     });
     
+    recuperarYComprobarUsuarioLogeadoIsAdmin().then(resultado => {
+        if (!resultado) {
+            let elements = document.getElementsByClassName('BotonEliminarCharacteristicSample');
+            for (let e of elements) {
+                e.style.display = 'none';
+            }
+            $("#abrirModal").hide();
+        } else {
+            let elements = document.getElementsByClassName('BotonEliminarCharacteristicSample');
+            for (let e of elements) {
+                e.style.display = 'block';
+            }
+            $("#abrirModal").show();
+        }
+    });
+
     $("#datosCharacteristicSample").append(filasTabla);
     cerrarModal();
     setLang();
