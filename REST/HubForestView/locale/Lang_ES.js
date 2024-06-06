@@ -162,6 +162,11 @@ arrayES={
 	'name_ecosystem_param': 'Nombre del parámetro',
 	'values_ecosystem_param': 'Valores',
 	'TemporalSamplingSiteParamsError': 'No existen parámetros temporales muestra-sitio que coincidan con estos parámetros',
+	'select_category': '-- Seleciona categoría --',
+	'ecosystem': 'Ecosistema',
+	'humus': 'Humus',
+	'soil_auger': 'Barrena de tierra',
+	'soil_pit': 'Pozo',
 
 	// SAMPLING_METHODOLOGY
 	'titleSamplingMethod': 'Metologías de muestra',

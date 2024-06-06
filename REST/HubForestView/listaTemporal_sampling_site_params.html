@@ -90,10 +90,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="category_param">category_param:</label>
-                    <input type="text" class="form-control" id="category_param" name="category_param" >
+                    <label for="category_param" class="category_param">category_param:</label>
+                    <select class="form-control" id="category_param" name="category_param">
+                        <option class="select_category" value="">-- Selecciona categoría --</option>
+                        <option class="ecosystem" value="ecosystem">Ecosistema</option>
+                        <option class="humus" value="humus">Humus</option>
+                        <option class="soil_auger" value="soil_auger">Soil Auger</option>
+                        <option class="soil_pit" value="soil_pit">Soil Pit</option>
+                    </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="name_ecosystem_param">name_ecosystem_param:</label>
                     <input type="text" class="form-control" id="name_ecosystem_param" name="name_ecosystem_param" >

@@ -163,6 +163,11 @@ arrayEN={
 	'name_ecosystem_param': 'Param name',
 	'values_ecosystem_param': 'Values',
 	'TemporalSamplingSiteParamsError': 'There are no temporal params that match these parameters.',
+	'select_category': '-- Select category --',
+	'ecosystem': 'Ecosystem',
+	'humus': 'Humus',
+	'soil_auger': 'Soil auger',
+	'soil_pit': 'Soil pit',
 
 	// SAMPLING_METHODOLOGY
 	'titleSamplingMethod': 'Sampling methodologies',
