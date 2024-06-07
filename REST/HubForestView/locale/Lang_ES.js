@@ -249,5 +249,19 @@ arrayES={
 	'name_ecosystem': 'Nombre ecosistema',
 	'description_ecosystem': 'Descripción',
 	'bib_ref_ecosystem': 'Referencia bibliográfica',
-	'EcosystemError': 'No existen ecosistemas que coincidan con estos parámetros.'
+	'EcosystemError': 'No existen ecosistemas que coincidan con estos parámetros.',
+
+	// Analysis_preparation
+	'titleAnalysisPreparation': 'Métodos de preparación de análisis',
+	'listAnalysis_preparation': 'Listado de métodos de preparación de análisis',
+	'añadiranalysis_preparation': 'Añadir método de preparación de análisis',
+	'buscaranalysis_preparation': 'Buscar método de preparación de análisis',
+	'name_analysis_preparation': 'Nombre método de preparación de análisis',
+	'mensajeErrorAnalysis_preparation': 'No existen métodos de preparaciones de análisis que coincidan con estos parámetros',
+	'mensajeConfirmarAnalysis_preparation': '¿Estás seguro?',
+	'aceptarAnalysis_preparation': 'Aceptar',
+	'cerrarAnalysis_preparation': 'Cerrar',
+	'analysisPreparationMenu':'Métodos de preparación de análisis',
+	'storageMethodAceptar': 'Aceptar',
+	'storageMethodCerrar': 'Cerrar',
 }

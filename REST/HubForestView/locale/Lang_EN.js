@@ -247,5 +247,19 @@ arrayEN={
 	'name_ecosystem': 'Ecosystem name',
 	'description_ecosystem': 'Description',
 	'bib_ref_ecosystem': 'Bibliographic reference',
-	'EcosystemError': 'There are no ecosystems that match these parameters.'
+	'EcosystemError': 'There are no ecosystems that match these parameters.',
+
+	// ANALYSIS_PREPARATION
+	'titleAnalysisPreparation': 'Analysis preparation methods',
+	'listAnalysis_preparation': 'List of analysis preparation methods',
+	'añadiranalysis_preparation': 'Add analysis preparation method',
+	'buscaranalysis_preparation': 'Search analysis preparation method',
+	'name_analysis_preparation': 'Analysis preparation method name',
+	'mensajeErrorAnalysis_preparation': 'There are no analytical preparation methods that match these parameters.',
+	'mensajeConfirmarAnalysis_preparation': '¿Are you sure?',
+	'aceptarAnalysis_preparation': 'Accept',
+	'cerrarAnalysis_preparation': 'Close',
+	'analysisPreparationMenu':'Analysis preparation methods',
+	'analysisPreparationAceptar': 'Accept',
+	'analysisPreparationCerrar': 'Close',
 }
