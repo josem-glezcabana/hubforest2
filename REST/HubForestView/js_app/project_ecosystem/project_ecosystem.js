@@ -33,7 +33,7 @@ async function getListProjectEcosystem() {
       
     };
     return peticionBackGeneral('', 'project_ecosystem', 'SEARCH', project_ecosystem)
-        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaProjectEcosystem(response['resource']) : console.log(response))
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaProjectEcosystem(response['resource']) : mostrarErrorBusq())
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
@@ -193,7 +193,6 @@ async function getListProjectEcosystem() {
             addProjectEcosystem(id_project, id_ecosystem, number_replicas_by_sampling, number_samplings)
             break;
         case "Buscar":
-            console.log("HOla")
             getListByParamProjectEcosystem_search(id_project, id_ecosystem, number_replicas_by_sampling, number_samplings)
             break;
      }
@@ -212,7 +211,6 @@ async function getListProjectEcosystem() {
     if(tipo.includes("Editar")){
         $("#formProjectEcosystem").attr('action' , 'javascript:getAtributos("Editar");');
         
-        console.log(id_project)
         $("#id_project").val(id_project);
         $("#id_ecosystem").val(id_ecosystem);
         $("#number_replicas_by_sampling").val(number_replicas_by_sampling);
@@ -291,7 +289,6 @@ async function getListProjectEcosystem() {
     
     $("#idProject").val(project)
     $("#idEcosystem").val(ecosystem)
-    console.log(ecosystem)
     $("#formBorrarProjectEcosystem").attr('action' , 'javascript:borrar();');
   }
   

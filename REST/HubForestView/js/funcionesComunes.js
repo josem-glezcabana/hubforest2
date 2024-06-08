@@ -166,7 +166,7 @@ function includeFooter() {
                 '<div class="row w-50 d-flex justify-content-around">' +
                 '<span class="followUs">Siguenos en:</span>' +
                 '<div class="row">' +
-                '<a href="https://github.com/ncgomez17/HubForest" target="_blank">' +
+                '<a href="https://github.com/josem-glezcabana/hubforest2    " target="_blank">' +
                 '<img src="img/github-icon.svg" alt="Instagram" width="24" height="24">' +
                 '</a>' +
                 '<a href="https://www.instagram.com/ruben_fb_2" target="_blank">' +

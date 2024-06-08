@@ -180,7 +180,8 @@ arrayES={
 	'file_methodology': 'Archivo',
 	'samplingMethodError': 'No existen metodologías que coincidan con estos parámetros.',
 
-			// STORAGE_METHOD
+	// STORAGE_METHOD
+	'titleStorageMethod': 'Métodos de almacenamiento',
 	'listStorage_method': 'Listado de métodos de almacenamiento',
 	'añadirStorage_method': 'Añadir método de almacenamiento',
 	'buscarStorage_method': 'Buscar método de almacenamiento',
@@ -197,10 +198,10 @@ arrayES={
 	'storageMethodMenu':'Métodos de Almacenamiento',
 	'storageMethodAceptar': 'Aceptar',
 	'storageMethodCerrar': 'Cerrar',
-  'plastic_bag': 'bolsa_plástica',
-  'PVC_core': 'núcleo_PVC',
-  'plastic_container': 'contenedor_plástico',
-  'document': 'documento',
+	'plastic_bag': 'bolsa_plástica',
+	'PVC_core': 'núcleo_PVC',
+	'plastic_container': 'contenedor_plástico',
+	'document': 'documento',
 
   	// LAB_PROCESS
 	'titleLabProcess': 'Procesos de laboratorio',
@@ -227,6 +228,7 @@ arrayES={
 	'AnalysisTechniqueError': 'No existen técnicas de análisis que coincidan con estos parámetros.',
 
 	// CHARACTERISTIC_SAMPLE
+	'titleCharacteristicSample': 'Características muestra',
 	'characteristicSampleMenu': 'Características muestra',
 	'listadoCharacteristicSample': 'Características muestra',
 	'añadirCharacteristicSample': 'Añadir característica muestra',
@@ -258,10 +260,6 @@ arrayES={
 	'buscaranalysis_preparation': 'Buscar método de preparación de análisis',
 	'name_analysis_preparation': 'Nombre método de preparación de análisis',
 	'mensajeErrorAnalysis_preparation': 'No existen métodos de preparaciones de análisis que coincidan con estos parámetros',
-	'mensajeConfirmarAnalysis_preparation': '¿Estás seguro?',
-	'aceptarAnalysis_preparation': 'Aceptar',
-	'cerrarAnalysis_preparation': 'Cerrar',
 	'analysisPreparationMenu':'Métodos de preparación de análisis',
-	'storageMethodAceptar': 'Aceptar',
-	'storageMethodCerrar': 'Cerrar',
+	'editAnalysis_preparation': 'Editar preparación análisis'
 }

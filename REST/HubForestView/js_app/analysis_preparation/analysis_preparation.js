@@ -146,7 +146,7 @@ function mostrarModalAnalysisPreparation(tipo, id_analysis_preparation=null, nam
         $("#name_analysis_preparation").val(name_analysis_preparation);
     }
     else{
-        if(tipo.includes("Buscar")){
+        if(tipo.includes("buscar")){
             document.getElementById("name_analysis_preparation").required = false;
             $("#formAnalysis_preparation").attr('action' , 'javascript:getAtributosAnalysis_preparation("Buscar");');
         }
