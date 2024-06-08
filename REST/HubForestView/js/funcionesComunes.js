@@ -68,9 +68,6 @@ function includeHeader() {
                 '<nav class="navbar navbar-expand-md navbar-dark">' +
                     '<ul class="navbar-nav ml-auto">' +
                         '<li class="nav-item">' +
-                            '<a class="inicioPage nav-link" href="index.html">Inicio</a>' +
-                        '</li>' +
-                        '<li class="nav-item">' +
                             '<a class="usuariosMenu nav-link" href="listaUsuarios.html">Usuarios</a>' +
                         '</li>' +
                         '<li class="nav-item">' +

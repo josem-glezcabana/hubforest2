@@ -7,7 +7,6 @@ arrayEN={
 	'DeleteAceptar' : 'Accept',
 	'DeleteCerrar': 'Close',
 	//HEADER
-	'inicioPage': 'Start',
 	'seccionesMenu': 'Sections',
 	'usuariosMenu': 'Users',
 	'proyectosMenu': 'Projects',

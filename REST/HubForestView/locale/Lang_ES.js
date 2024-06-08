@@ -7,7 +7,6 @@ arrayES={
 	'DeleteAceptar' : 'Aceptar',
 	'DeleteCerrar': 'Cerrar',
 	//HEADER
-	'inicioPage': 'Inicio',
 	'seccionesMenu': 'Secciones',
 	'usuariosMenu': 'Usuarios',
 	'proyectosMenu': 'Proyectos',
