@@ -248,7 +248,7 @@ arrayEN={
 	'name_ecosystem': 'Ecosystem name',
 	'description_ecosystem': 'Description',
 	'bib_ref_ecosystem': 'Bibliographic reference',
-	'EcosystemError': 'There are no ecosystems that match these parameters.'
+	'EcosystemError': 'There are no ecosystems that match these parameters.',
 
 		// ANALYSIS_PREPARATION
 		'titleAnalysisPreparation': 'Analysis preparation methods',
@@ -258,7 +258,7 @@ arrayEN={
 		'name_analysis_preparation': 'Analysis preparation method name',
 		'mensajeErrorAnalysis_preparation': 'There are no analytical preparation methods that match these parameters.',
 		'analysisPreparationMenu':'Analysis preparation methods',
-		'editAnalysis_preparation': 'Edit analysis preparation'
+		'editAnalysis_preparation': 'Edit analysis preparation',
 
 			// REPLICA
 	'titleReplicas': 'Replicas',
