@@ -78,7 +78,6 @@ async function addSite(country_site, state_province_site, city_town_site, geogra
     
     return peticionBackGeneral('', 'site', 'ADD', site)
         .then(response => {
-            console.log(response)
             location.reload();
             response['resource']
             return { status: 'OK', data: response };

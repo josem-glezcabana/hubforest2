@@ -14,7 +14,7 @@
     <script type="text/javascript" src="locale/idioma.js"></script>
     <script type="text/javascript" src="locale/Lang_EN.js"></script>
     <script type="text/javascript" src="locale/Lang_ES.js"></script>
-    <title class="titleTemporalSamplingSiteParams">temporal_sampling_site_params</title>
+    <title class="titleTemporalSamplingSiteParams">temporal sampling_site params</title>
     <!-- Incluye los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -30,7 +30,7 @@
     <div id="header"></div>
 
     <div class="container mt-5">
-        <h2 class="listadodetemporal_sampling_site_params">Listado de temporal_sampling_site_params</h2>
+        <h2 class="listadodetemporal_sampling_site_params">Listado de temporal sampling_site params</h2>
         <div style="overflow-x:scroll;">
             <div class="mt-2 mb-3 float-right">
                 <button class="añadirtemporal_sampling_site_params btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('añadirtemporal_sampling_site_params')">Añadir parámetro</button>
@@ -41,9 +41,9 @@
                 
             <table class="table table-striped" id="tablatemporal_sampling_site_params">
                 <thead >
+                    <th class="id_ecosystem_param">id_ecosystem_param</th>
                         <th class="id_project">id_project</th>
                         <th class="id_ecosystem">id_ecosystem</th>
-                        <th class="id_ecosystem_param">id_ecosystem_param</th>
                         <th class="category_param">category_param</th>
                         <th class="name_ecosystem_param">name_ecosystem_param</th>
                         <th class="values_ecosystem_param">values_ecosystem_param</th>
@@ -75,25 +75,31 @@
             </div>
             <form id="formtemporal_sampling_site_params" action="" method="post" onsubmit="">
                 <div class="form-group">
-                    <label for="id_project" style="display: none;">id_project:</label>
-                    <input type="text" class="form-control" id="id_project" name="id_project" style="display: none;">
+                    <label for="id_project">id_project:</label>
+                    <select class="form-control" id="id_project" name="id_project"></select>
                 </div>
     
                 <div class="form-group">
                     <label for="id_ecosystem">id_ecosystem:</label>
-                    <input type="text" class="form-control" id="id_ecosystem" name="id_ecosystem" >
+                    <select class="form-control" id="id_ecosystem" name="id_ecosystem"></select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="id_ecosystem_param">id_ecosystem_param:</label>
-                    <input type="text" class="form-control" id="id_ecosystem_param" name="id_ecosystem_param" >
+                    <label for="id_ecosystem_param" style="display: none;">id_ecosystem_param:</label>
+                    <input type="text" class="form-control" id="id_ecosystem_param" name="id_ecosystem_param" style="display: none;">
                 </div>
 
                 <div class="form-group">
-                    <label for="category_param">category_param:</label>
-                    <input type="text" class="form-control" id="category_param" name="category_param" >
+                    <label for="category_param" class="category_param">category_param:</label>
+                    <select class="form-control" id="category_param" name="category_param">
+                        <option class="select_category" value="">-- Selecciona categoría --</option>
+                        <option class="ecosystem" value="ecosystem">Ecosistema</option>
+                        <option class="humus" value="humus">Humus</option>
+                        <option class="soil_auger" value="soil_auger">Soil Auger</option>
+                        <option class="soil_pit" value="soil_pit">Soil Pit</option>
+                    </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="name_ecosystem_param">name_ecosystem_param:</label>
                     <input type="text" class="form-control" id="name_ecosystem_param" name="name_ecosystem_param" >

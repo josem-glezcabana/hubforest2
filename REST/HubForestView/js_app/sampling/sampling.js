@@ -195,12 +195,24 @@ function construyeTablaSampling(filas) {
 
     recuperarYComprobarUsuarioLogeadoIsAdmin().then(resultado => {
         if (!resultado) {
-            $("#editarSampling").hide();
-            $("#borrarSampling").hide();
+            let elements = document.getElementsByClassName('BotonEditar');
+            for (let e of elements) {
+                e.style.display = 'none';
+            }
+            elements = document.getElementsByClassName('BotonEliminarSampling');
+            for (let e of elements) {
+                e.style.display = 'none';
+            }
             $("#abrirModal").hide();
         } else {
-            $("#editarSampling").show();
-            $("#borrarSampling").show();
+            let elements = document.getElementsByClassName('BotonEditar');
+            for (let e of elements) {
+                e.style.display = 'block';
+            }
+            elements = document.getElementsByClassName('BotonEliminarSampling');
+            for (let e of elements) {
+                e.style.display = 'block';
+            }
             $("#abrirModal").show();
         }
     });

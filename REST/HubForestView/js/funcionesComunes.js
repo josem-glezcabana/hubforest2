@@ -68,9 +68,6 @@ function includeHeader() {
                 '<nav class="navbar navbar-expand-md navbar-dark">' +
                     '<ul class="navbar-nav ml-auto">' +
                         '<li class="nav-item">' +
-                            '<a class="inicioPage nav-link" href="index.html">Inicio</a>' +
-                        '</li>' +
-                        '<li class="nav-item">' +
                             '<a class="usuariosMenu nav-link" href="listaUsuarios.html">Usuarios</a>' +
                         '</li>' +
                         '<li class="nav-item">' +
@@ -121,6 +118,7 @@ function includeHeader() {
                                 '<ul class="dropdown-menu">' +
                                     '<li><a class="labProcessMenu dropdown-item" href="lab_process.html">Procesos laboratorio</a></li>' +
                                     '<li><a class="analysisTechniqueMenu dropdown-item" href="analysis_technique.html">Técnicas análisis</a></li>' +
+                                    '<li><a class="analysisPreparationMenu dropdown-item" href="analysispreparation.html">Preparación del análisis</a></li>' +
                                 '</ul>' +
                             '</div>' +
                         '</li>' +
@@ -166,7 +164,7 @@ function includeFooter() {
                 '<div class="row w-50 d-flex justify-content-around">' +
                 '<span class="followUs">Siguenos en:</span>' +
                 '<div class="row">' +
-                '<a href="https://github.com/ncgomez17/HubForest" target="_blank">' +
+                '<a href="https://github.com/josem-glezcabana/hubforest2    " target="_blank">' +
                 '<img src="img/github-icon.svg" alt="Instagram" width="24" height="24">' +
                 '</a>' +
                 '<a href="https://www.instagram.com/ruben_fb_2" target="_blank">' +

@@ -7,7 +7,6 @@ arrayES={
 	'DeleteAceptar' : 'Aceptar',
 	'DeleteCerrar': 'Cerrar',
 	//HEADER
-	'inicioPage': 'Inicio',
 	'seccionesMenu': 'Secciones',
 	'usuariosMenu': 'Usuarios',
 	'proyectosMenu': 'Proyectos',
@@ -18,6 +17,7 @@ arrayES={
 	'samplingMethodMenu': 'Metodologías de muestra',
 	'labProcessMenu': 'Procesos laboratorio',
 	'analysisTechniqueMenu': 'Técnicas análisis',
+	'TemporalsamplingSiteMenu': 'Parámetros temporales muestra-sitio',
 	//FOOTER
 	'followUs': 'Síguenos en:',
 	'contactUs': 'Contacto',
@@ -131,19 +131,19 @@ arrayES={
 	'BuscarProjectEcosystemss': 'Buscar Proyecto/ecosistema',
 
 	//SAMPLING
-	'listadoSampling': 'Listado de metodologías de muestreo',
-	'añadirSampling': 'Añadir metodología de muestreo',
-	'buscarSampling': 'Buscar metodología de muestreo',
+	'listadoSampling': 'Listado de muestras',
+	'añadirSampling': 'Añadir muestra',
+	'buscarSampling': 'Buscar muestra',
 	'site': 'sitio',
-	'fechaSampling': 'Fecha de creación metodología de muestreo' ,
+	'fechaSampling': 'Fecha de creación muestra' ,
 	'timeampling': 'Tiempo de muestreo',
 	'tempSampling': 'Temperatura',
-	'samplingError': 'No existen metodologías de muestreo que coincidan con estos parámetros',
+	'samplingError': 'No existen muestras que coincidan con estos parámetros',
 	'samplingPregunta' : '¿Estás seguro?',
-	'mensajeBorrarSamplings': 'Se va borrar el sampling indicado',
+	'mensajeBorrarSamplings': 'Se va borrar la muestra indicada',
 	'samplingAceptar': 'Aceptar',
 	'cerrarModalSampling': 'Cerrar',
-	'collectorsSampling' : 'Collectors',
+	'collectorsSampling' : 'Colectores',
 	'colectoresInput': 'Ingrese nombres separados por ":"',
 	'errorValidacion': 'Error validación',
 	'cerrarModalValidacion': 'Cerrar',
@@ -154,13 +154,18 @@ arrayES={
 	'añadirtemporal_sampling_site_params': 'Añadir parámetro',
 	'buscartemporal_sampling_site_params': 'Buscar parámetro',
 	'editTemporal_sampling_site_params': 'Editar parámetro',
-	'id_ecosystem_param': 'Parámetro de ecosistema',
+	'id_ecosystem_param': 'Id',
 	'id_project': 'Proyecto',
 	'id_ecosystem': 'Ecosistema',
 	'category_param': 'Categoría',
 	'name_ecosystem_param': 'Nombre del parámetro',
 	'values_ecosystem_param': 'Valores',
 	'TemporalSamplingSiteParamsError': 'No existen parámetros temporales muestra-sitio que coincidan con estos parámetros',
+	'select_category': '-- Seleciona categoría --',
+	'ecosystem': 'Ecosistema',
+	'humus': 'Humus',
+	'soil_auger': 'Barrena de tierra',
+	'soil_pit': 'Pozo',
 
 	// SAMPLING_METHODOLOGY
 	'titleSamplingMethod': 'Metologías de muestra',
@@ -174,7 +179,8 @@ arrayES={
 	'file_methodology': 'Archivo',
 	'samplingMethodError': 'No existen metodologías que coincidan con estos parámetros.',
 
-			// STORAGE_METHOD
+	// STORAGE_METHOD
+	'titleStorageMethod': 'Métodos de almacenamiento',
 	'listStorage_method': 'Listado de métodos de almacenamiento',
 	'añadirStorage_method': 'Añadir método de almacenamiento',
 	'buscarStorage_method': 'Buscar método de almacenamiento',
@@ -191,10 +197,10 @@ arrayES={
 	'storageMethodMenu':'Métodos de Almacenamiento',
 	'storageMethodAceptar': 'Aceptar',
 	'storageMethodCerrar': 'Cerrar',
-  'plastic_bag': 'bolsa_plástica',
-  'PVC_core': 'núcleo_PVC',
-  'plastic_container': 'contenedor_plástico',
-  'document': 'documento',
+	'plastic_bag': 'bolsa_plástica',
+	'PVC_core': 'núcleo_PVC',
+	'plastic_container': 'contenedor_plástico',
+	'document': 'documento',
 
   	// LAB_PROCESS
 	'titleLabProcess': 'Procesos de laboratorio',
@@ -221,6 +227,7 @@ arrayES={
 	'AnalysisTechniqueError': 'No existen técnicas de análisis que coincidan con estos parámetros.',
 
 	// CHARACTERISTIC_SAMPLE
+	'titleCharacteristicSample': 'Características muestra',
 	'characteristicSampleMenu': 'Características muestra',
 	'listadoCharacteristicSample': 'Características muestra',
 	'añadirCharacteristicSample': 'Añadir característica muestra',
@@ -243,7 +250,17 @@ arrayES={
 	'name_ecosystem': 'Nombre ecosistema',
 	'description_ecosystem': 'Descripción',
 	'bib_ref_ecosystem': 'Referencia bibliográfica',
-	'EcosystemError': 'No existen ecosistemas que coincidan con estos parámetros.',
+	'EcosystemError': 'No existen ecosistemas que coincidan con estos parámetros.'
+
+	// Analysis_preparation
+	'titleAnalysisPreparation': 'Métodos de preparación de análisis',
+	'listAnalysis_preparation': 'Listado de métodos de preparación de análisis',
+	'añadiranalysis_preparation': 'Añadir método de preparación de análisis',
+	'buscaranalysis_preparation': 'Buscar método de preparación de análisis',
+	'name_analysis_preparation': 'Nombre método de preparación de análisis',
+	'mensajeErrorAnalysis_preparation': 'No existen métodos de preparaciones de análisis que coincidan con estos parámetros',
+	'analysisPreparationMenu':'Métodos de preparación de análisis',
+	'editAnalysis_preparation': 'Editar preparación análisis'
 
 	// REPLICA
 	'titleReplicas': 'Replicas',

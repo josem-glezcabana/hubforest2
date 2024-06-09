@@ -67,7 +67,6 @@ async function editEcosystem(id_ecosystem, name_ecosystem, description_ecosystem
 
     return peticionBackGeneral('', 'ecosystem', 'EDIT', ecosystem)
         .then(response => {
-            console.log('response: ', response)
             location.reload();
             return { status: 'OK', data: response };
         })

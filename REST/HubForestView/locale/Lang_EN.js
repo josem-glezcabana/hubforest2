@@ -7,7 +7,6 @@ arrayEN={
 	'DeleteAceptar' : 'Accept',
 	'DeleteCerrar': 'Close',
 	//HEADER
-	'inicioPage': 'Start',
 	'seccionesMenu': 'Sections',
 	'usuariosMenu': 'Users',
 	'proyectosMenu': 'Projects',
@@ -18,6 +17,7 @@ arrayEN={
 	'samplingMethodMenu': 'Sampling methodologies',
 	'labProcessMenu': 'Laboratory processes',
 	'analysisTechniqueMenu': 'Analysis techniques',
+	'TemporalsamplingSiteMenu': 'Temporal sampling-site params',
 	//FOOTER
 	'followUs': 'Follow us:',
 	'contactUs': 'Contact',
@@ -155,13 +155,18 @@ arrayEN={
 	'añadirtemporal_sampling_site_params': 'Add param',
 	'buscartemporal_sampling_site_params': 'Search param',
 	'editTemporal_sampling_site_params': 'Edit param',
-	'id_ecosystem_param': 'Ecosystem param',
+	'id_ecosystem_param': 'Id',
 	'id_project': 'Project',
 	'id_ecosystem': 'Ecosystem',
 	'category_param': 'Category',
 	'name_ecosystem_param': 'Param name',
 	'values_ecosystem_param': 'Values',
 	'TemporalSamplingSiteParamsError': 'There are no temporal params that match these parameters.',
+	'select_category': '-- Select category --',
+	'ecosystem': 'Ecosystem',
+	'humus': 'Humus',
+	'soil_auger': 'Soil auger',
+	'soil_pit': 'Soil pit',
 
 	// SAMPLING_METHODOLOGY
 	'titleSamplingMethod': 'Sampling methodologies',
@@ -176,23 +181,24 @@ arrayEN={
 	'samplingMethodError': 'There are no sampling methodologies that match these parameters.',
 	'SamplingMethodPregunta': '',
 
-		// STORAGE_METHOD
-  'listStorage_method': 'List of storage methods',
-  'añadirStorage_method': 'Add storage method',
-  'buscarStorage_method': 'Search storage method',
-  'reiniciarTablaStorage_method': 'Reset table',
-  'name_storage_method': 'Storage method name',
-  'description_storage_method': 'Storage method description',
-  'storage_container': 'Storage container',
-  'size_storage_container': 'Storage container size',
-  'unit_storage_container': 'Storage container unit',
+	// STORAGE_METHOD
+	'titleStorageMethod': 'Storage methods',
+	'listStorage_method': 'List of storage methods',
+	'añadirStorage_method': 'Add storage method',
+	'buscarStorage_method': 'Search storage method',
+	'reiniciarTablaStorage_method': 'Reset table',
+	'name_storage_method': 'Storage method name',
+	'description_storage_method': 'Storage method description',
+	'storage_container': 'Storage container',
+	'size_storage_container': 'Storage container size',
+	'unit_storage_container': 'Storage container unit',
 	'storageMethodMenu':'Storage Methods',
 	'storageMethodAceptar': 'Accept',
 	'storageMethodCerrar': 'Close',
-  'plastic_bag': 'plastic_bag',
-  'PVC_core': 'PVC_core',
-  'plastic_container': 'plastic_container',
-  'document': 'document',
+	'plastic_bag': 'plastic_bag',
+	'PVC_core': 'PVC_core',
+	'plastic_container': 'plastic_container',
+	'document': 'document',
 
   	// LAB_PROCESS
 	'titleLabProcess': 'Laboratory processes',
@@ -219,18 +225,19 @@ arrayEN={
 	'AnalysisTechniqueError': 'There are no analysis techniques that match these parameters.',
 
 	// CHARACTERISTIC_SAMPLE
-  'characteristicSampleMenu': 'Sample Characteristics',
-  'listadoCharacteristicSample': 'Sample Characteristics',
-  'añadirCharacteristicSample': 'Add Sample Characteristic',
-  'buscarCharacteristicSample': 'Search Sample Characteristic',
-  'reiniciarCharacteristicSample': 'Reset Table',
-  'name_unit': 'Unit Name',
-  'name_characteristic': 'Characteristic Name',
-  'characteristicSampleError': 'No sample characteristics match these parameters',
-  'aceptarrModalCharacteristicSample': 'Accept',
-  'cerrarModalCharacteristicSample': 'Close',
-  'characteristicSamplePregunta': 'Are you sure?',
-  'mensajeBorrarCharacteristicSample': 'The characteristic will be deleted',
+	'titleCharacteristicSample': 'Sample Characteristics',
+	'characteristicSampleMenu': 'Sample Characteristics',
+	'listadoCharacteristicSample': 'Sample Characteristics',
+	'añadirCharacteristicSample': 'Add Sample Characteristic',
+	'buscarCharacteristicSample': 'Search Sample Characteristic',
+	'reiniciarCharacteristicSample': 'Reset Table',
+	'name_unit': 'Unit Name',
+	'name_characteristic': 'Characteristic Name',
+	'characteristicSampleError': 'No sample characteristics match these parameters',
+	'aceptarrModalCharacteristicSample': 'Accept',
+	'cerrarModalCharacteristicSample': 'Close',
+	'characteristicSamplePregunta': 'Are you sure?',
+	'mensajeBorrarCharacteristicSample': 'The characteristic will be deleted',
 
 	// ECOSYSTEM
 	'titleEcosystem': 'Ecosystems',
@@ -241,9 +248,19 @@ arrayEN={
 	'name_ecosystem': 'Ecosystem name',
 	'description_ecosystem': 'Description',
 	'bib_ref_ecosystem': 'Bibliographic reference',
-	'EcosystemError': 'There are no ecosystems that match these parameters.',
+	'EcosystemError': 'There are no ecosystems that match these parameters.'
 
-	// REPLICA
+		// ANALYSIS_PREPARATION
+		'titleAnalysisPreparation': 'Analysis preparation methods',
+		'listAnalysis_preparation': 'List of analysis preparation methods',
+		'añadiranalysis_preparation': 'Add analysis preparation method',
+		'buscaranalysis_preparation': 'Search analysis preparation method',
+		'name_analysis_preparation': 'Analysis preparation method name',
+		'mensajeErrorAnalysis_preparation': 'There are no analytical preparation methods that match these parameters.',
+		'analysisPreparationMenu':'Analysis preparation methods',
+		'editAnalysis_preparation': 'Edit analysis preparation'
+
+			// REPLICA
 	'titleReplicas': 'Replicas',
 	'listadoReplicas': 'List of replicas',
 	'editarR': 'Edit replica',

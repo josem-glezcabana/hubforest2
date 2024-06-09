@@ -227,6 +227,30 @@ function construyeTablaUsuario(filas) {
                 
                 '</td>  </tr>';
     });
+
+    recuperarYComprobarUsuarioLogeadoIsAdmin().then(resultado => {
+        if (!resultado) {
+            let elements = document.getElementsByClassName('BotonEditar');
+            for (let e of elements) {
+                e.style.display = 'none';
+            }
+            elements = document.getElementsByClassName('BotonEliminar');
+            for (let e of elements) {
+                e.style.display = 'none';
+            }
+            $("#abrirModal").hide();
+        } else {
+            let elements = document.getElementsByClassName('BotonEditar');
+            for (let e of elements) {
+                e.style.display = 'block';
+            }
+            elements = document.getElementsByClassName('BotonEliminar');
+            for (let e of elements) {
+                e.style.display = 'block';
+            }
+            $("#abrirModal").show();
+        }
+    });
     
     $("#datosUsuarios").append(filasTabla);
     cerrarModal();

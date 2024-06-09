@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script type="text/javascript" src="js/funcionesComunes.js"></script>
+    <script type="text/javascript" src="js_app/analysis_preparation/analysis_preparation.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/crearformularios.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script type="text/javascript" src="locale/Lang_EN.js"></script>
+    <script type="text/javascript" src="locale/Lang_ES.js"></script>    
+    <title class="titleAnalysisPreparation">analysis_preparation</title>
+    <!-- Incluye los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body onload="(async () => {
+    includeHeader(); includeFooter();
+    getListAnalysis_preparation();
+})();">
+
+    <!-- Encabezado y Barra de Navegación -->
+    <div id="header"></div>
+
+    <div class="container mt-5">
+        <h2 class="listAnalysis_preparation">Listado de preparación de analisis</h2>
+        <div class="mt-2 mb-3 float-right">
+            <button class="añadiranalysis_preparation btn btn-primary float-right" id="abrirModal" onclick="mostrarModalAnalysisPreparation('añadiranalysis_preparation')">Añadir preparación de analisis</button>
+            <button class="buscaranalysis_preparation btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalAnalysisPreparation('buscaranalysis_preparation')">Buscar preparación de analisis</button>
+            <button class=" reiniciarTabla btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListAnalysis_preparation()">Reiniciar tabla</button>
+            
+        </div>
+            
+        <table class="table table-striped" id="tablatemporal_sampling_site_params">
+            <thead >
+                    <th class="name_analysis_preparation">Nombre de la preparación del analisis</th>
+            </thead>
+            
+            <tbody id="datosAnalysis_preparation">
+            </tbody>
+       
+            
+        </table>
+            <div id="formularioentidad"></div>
+        
+    </div>
+    
+    <div id="ventanaModal" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarModal()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="Titulo"></div>
+            <div id="mensajeError" class="text-center" style="display: none;">             
+                <h7>
+                    No existen preparaciones de análisis que coincidan con estos parámetros
+                </h7>
+                <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formAnalysis_preparation" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id_analysis_preparation" style="display: none;">id_analysis_preparation:</label>
+                    <input type="text" class="form-control" id="id_analysis_preparation" name="id_analysis_preparation" style="display: none;">
+                </div>
+    
+                <div class="form-group">
+                    <label for="name_analysis_preparation">Nombre de la preparación de analisis:</label>
+                    <input type="text" class="form-control" id="name_analysis_preparation" name="name_analysis_preparation" >
+                </div>
+
+                <button type="submit" id="aceptar" class="btn btn-primary">Aceptar</button>
+                <button type="button" id="cerrar" class="cerrar btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+            </form> 
+        </div>
+    </div>
+    
+    <div id="comprobarBorrar" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="text-center" id="Titulo"><h2 class="DeletePregunta">¿Estas seguro?</h2></div>
+            
+            <form id="formBorrarAnalysis_preparation" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id_analysis_preparation" style="display: none;">Id:</label>
+                    <input type="text" class="form-control" id="idBorrar" name="id_analysis_preparation" style="display: none;">
+                </div>
+                <div class="col text-center">
+                    <button type="submit" id="aceptar" class="DeleteAceptar btn btn-danger">Aceptar</button>
+                    <button type="button" id="cerrar" class="DeleteCerrar btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
+                </div>
+                
+            </form>  
+        </div>
+    </div>
+</div>
+
+    <!-- Pie de Página -->
+	<div id="footer"><div>
+</body>
+</html>
