@@ -95,6 +95,7 @@ function includeHeader() {
                                     '<li><a class="samplingMenu dropdown-item" href="sampling.html">Muestras</a></li>' +
                                     '<li><a class="samplingMethodMenu dropdown-item" href="sampling_methodology.html">Metodologías de muestreo</a></li>' +
                                     '<li><a class="characteristicSampleMenu dropdown-item" href="characteristic_sample.html">Características muestra</a></li>' +
+                                    '<li><a class="replicaMenu dropdown-item" href="replica.html">Replica</a></li>' +
                                 '</ul>' +
                             '</div>' +
                         '</li>' +

@@ -15,7 +15,7 @@ class project_ecosystem_MODEL extends ModelBase{
 
 		$this->tabla = 'project_ecosystem';
 		$this->clave = array('id_project','id_ecosystem');
-		$this->foraneas = array();
+		$this->foraneas = array('project'=>'id_project', 'ecosystem'=>'id_ecosystem');
 		$this->autoincrement = array();
         $this->unicos = array();
 

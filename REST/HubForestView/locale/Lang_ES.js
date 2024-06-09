@@ -243,5 +243,17 @@ arrayES={
 	'name_ecosystem': 'Nombre ecosistema',
 	'description_ecosystem': 'Descripción',
 	'bib_ref_ecosystem': 'Referencia bibliográfica',
-	'EcosystemError': 'No existen ecosistemas que coincidan con estos parámetros.'
+	'EcosystemError': 'No existen ecosistemas que coincidan con estos parámetros.',
+
+	// REPLICA
+	'titleReplicas': 'Replicas',
+	'listadoReplicas': 'Listado de replicas',
+	'añadirReplica': 'Añadir replica',
+	'buscarReplica': 'Buscar replica',
+	'editarR': 'Editar replica',
+	'añadirR': 'Añadir replica',
+	'buscarR': 'Buscar replica',
+	'id_replica': 'Replica', 
+	'id_sampling': 'Muestreo',
+	'EcosystemError': 'No existen replicas que coincidan con estos parámetros.'
 }

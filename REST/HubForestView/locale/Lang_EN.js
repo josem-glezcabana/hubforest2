@@ -241,5 +241,17 @@ arrayEN={
 	'name_ecosystem': 'Ecosystem name',
 	'description_ecosystem': 'Description',
 	'bib_ref_ecosystem': 'Bibliographic reference',
-	'EcosystemError': 'There are no ecosystems that match these parameters.'
+	'EcosystemError': 'There are no ecosystems that match these parameters.',
+
+	// REPLICA
+	'titleReplicas': 'Replicas',
+	'listadoReplicas': 'List of replicas',
+	'editarR': 'Edit replica',
+	'añadirR': 'Add replica',
+	'buscarR': 'Search replica',
+	'añadirReplica': 'Add replica',
+	'buscarReplica': 'Search replica',
+	'id_replica': 'Replica', 
+	'id_sampling': 'Sampling',
+	'EcosystemError': 'There are no replicas that match these parameters.'
 }
