@@ -1,7 +1,7 @@
 async function getListProjectEcosystem() {
 
     return peticionBackGeneral('', 'project_ecosystem', 'SEARCH')
-        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaProjectEcosystem(response['resource']) : null)
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaProjectEcosystem(response['resource']) : console.log(response))
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
@@ -123,15 +123,15 @@ async function getListProjectEcosystem() {
     $("#datosProjectEcosystems").html("");
     filas.forEach(fila => {
         
-        let atributosTabla = ["'" + fila.id_project + "'","'" + fila.id_ecosystem + "'","'" + fila.number_replicas_by_sampling + "'","'" + fila.number_samplings + "'"];
+        let atributosTabla = ["'" + fila.id_project.id_project + "'","'" + fila.id_ecosystem.id_ecosystem + "'","'" + fila.number_replicas_by_sampling + "'","'" + fila.number_samplings + "'"];
         let botonEdit='<button class="BotonEditar btn btn-info " id="editarProjectEcosystem" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
   
-        filasTabla += '<tr> <td>' + fila.id_ecosystem + 
-            '</td> <td>' + fila.id_project +  
+        filasTabla += '<tr> <td>' + fila.id_ecosystem.name_ecosystem + 
+            '</td> <td>' + fila.id_project.name_project +  
             '</td> <td>' + fila.number_replicas_by_sampling + 
             '</td> <td>' + fila.number_samplings + 
             '</td> <td class="text-center">' + botonEdit +
-            '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarProjectEcosystem" onclick="mostrarBorrar('+fila.id_project+','+fila.id_ecosystem+')">Eliminar</button>'
+            '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarProjectEcosystem" onclick="mostrarBorrar('+fila.id_project.id_project+','+fila.id_ecosystem.id_ecosystem+')">Eliminar</button>'
                 
             '</td>  </tr>';
 

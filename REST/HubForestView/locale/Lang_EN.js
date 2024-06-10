@@ -250,13 +250,25 @@ arrayEN={
 	'bib_ref_ecosystem': 'Bibliographic reference',
 	'EcosystemError': 'There are no ecosystems that match these parameters.',
 
-	// ANALYSIS_PREPARATION
-	'titleAnalysisPreparation': 'Analysis preparation methods',
-	'listAnalysis_preparation': 'List of analysis preparation methods',
-	'añadiranalysis_preparation': 'Add analysis preparation method',
-	'buscaranalysis_preparation': 'Search analysis preparation method',
-	'name_analysis_preparation': 'Analysis preparation method name',
-	'mensajeErrorAnalysis_preparation': 'There are no analytical preparation methods that match these parameters.',
-	'analysisPreparationMenu':'Analysis preparation methods',
-	'editAnalysis_preparation': 'Edit analysis preparation'
+		// ANALYSIS_PREPARATION
+		'titleAnalysisPreparation': 'Analysis preparation methods',
+		'listAnalysis_preparation': 'List of analysis preparation methods',
+		'añadiranalysis_preparation': 'Add analysis preparation method',
+		'buscaranalysis_preparation': 'Search analysis preparation method',
+		'name_analysis_preparation': 'Analysis preparation method name',
+		'mensajeErrorAnalysis_preparation': 'There are no analytical preparation methods that match these parameters.',
+		'analysisPreparationMenu':'Analysis preparation methods',
+		'editAnalysis_preparation': 'Edit analysis preparation',
+
+			// REPLICA
+	'titleReplicas': 'Replicas',
+	'listadoReplicas': 'List of replicas',
+	'editarR': 'Edit replica',
+	'añadirR': 'Add replica',
+	'buscarR': 'Search replica',
+	'añadirReplica': 'Add replica',
+	'buscarReplica': 'Search replica',
+	'id_replica': 'Replica', 
+	'id_sampling': 'Sampling',
+	'EcosystemError': 'There are no replicas that match these parameters.'
 }

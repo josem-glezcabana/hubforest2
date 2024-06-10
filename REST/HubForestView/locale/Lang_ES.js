@@ -260,5 +260,17 @@ arrayES={
 	'name_analysis_preparation': 'Nombre método de preparación de análisis',
 	'mensajeErrorAnalysis_preparation': 'No existen métodos de preparaciones de análisis que coincidan con estos parámetros',
 	'analysisPreparationMenu':'Métodos de preparación de análisis',
-	'editAnalysis_preparation': 'Editar preparación análisis'
+	'editAnalysis_preparation': 'Editar preparación análisis',
+
+	// REPLICA
+	'titleReplicas': 'Replicas',
+	'listadoReplicas': 'Listado de replicas',
+	'añadirReplica': 'Añadir replica',
+	'buscarReplica': 'Buscar replica',
+	'editarR': 'Editar replica',
+	'añadirR': 'Añadir replica',
+	'buscarR': 'Buscar replica',
+	'id_replica': 'Replica', 
+	'id_sampling': 'Muestreo',
+	'EcosystemError': 'No existen replicas que coincidan con estos parámetros.'
 }
