@@ -25,9 +25,9 @@ DROP TABLE IF EXISTS `analysis_preparation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `analysis_preparation` (
-  `Id_analysis_preparation` int NOT NULL AUTO_INCREMENT,
+  `id_analysis_preparation` int NOT NULL AUTO_INCREMENT,
   `name_analysis_preparation` varchar(100) NOT NULL,
-  PRIMARY KEY (`Id_analysis_preparation`)
+  PRIMARY KEY (`id_analysis_preparation`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -648,7 +648,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','admin','admin','hubforest','admin@email.com',NULL,'21232f297a57a5a743894a0e4a801fc3','SI'),(2,'user','user','user','hubforest','user@email.com',NULL,'ee11cbb19052e40b07aac0ca060c23ee','NO');
+INSERT INTO `user` VALUES (1,'admin','admin','admin','hubforest','admin@email.com','','21232f297a57a5a743894a0e4a801fc3','SI'),(2,'user','user','user','hubforest','user@email.com','','ee11cbb19052e40b07aac0ca060c23ee','NO');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
