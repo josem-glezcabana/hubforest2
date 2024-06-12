@@ -226,6 +226,20 @@ arrayES={
 	'file_analysis_tecnique': 'Archivo',
 	'AnalysisTechniqueError': 'No existen técnicas de análisis que coincidan con estos parámetros.',
 
+	// CHARACTERISTIC
+	'titleCharacteristic': 'Caracteristicas',
+	'listadoCharacteristics': 'Listado de caracteristicas',
+	'añadirCharacteristic': 'Añadir caracteristica',
+	'buscarCharacteristic': 'Buscar caracteristica',
+	'editarCharacteristic': 'Editar caracteristica',
+	'name_characteristic': 'Nombre caracteristica',
+	'description_characteristic': 'Descripción',
+	'data_type_characteristic': 'Tipo de dato',
+	'bib_ref_characteristic': 'Referencia bibliográfica',
+	'file_characteristic': 'Archivo',
+	'characteristicMenu': 'Caracteristicas',
+	'CharacteristicError': 'No existen caracteristicas que coincidan con estos parámetros.',
+
 	// CHARACTERISTIC_SAMPLE
 	'titleCharacteristicSample': 'Características muestra',
 	'characteristicSampleMenu': 'Características muestra',
@@ -272,5 +286,7 @@ arrayES={
 	'buscarR': 'Buscar replica',
 	'id_replica': 'Replica', 
 	'id_sampling': 'Muestreo',
-	'EcosystemError': 'No existen replicas que coincidan con estos parámetros.'
+	'ReplicaError': 'No existen replicas que coincidan con estos parámetros.'
+
+	
 }

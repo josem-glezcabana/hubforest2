@@ -230,13 +230,13 @@ async function getListReplicas() {
     document.getElementById("Titulo").innerHTML = '<h2 class="'+tipo+'">'+tipo+'</h2>';
     document.getElementById("aceptar").classList.add(tipo);
   
-  
+    
     getListEcosystems(id_ecosystem)
     getListProyectos(id_project)
     getListSites(id_site)
     getListSamplings(id_sampling)
   
-    if(tipo.includes("Editar")){
+    if(tipo.includes("editar")){
         $("#formReplica").attr('action' , 'javascript:getAtributos("Editar");');
         
         $("#id_replica").val(id_replica);
@@ -279,7 +279,9 @@ async function getListReplicas() {
         $("#date_sampling").val('');
     }
     setLang();
+    console.log(tipo)
     document.getElementById("aceptar").classList.remove(tipo);
+    
   }
   
   function rellenarSelectEcosystems(tipo, filas, ecosystem) {

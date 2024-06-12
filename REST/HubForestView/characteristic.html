@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script type="text/javascript" src="js/funcionesComunes.js"></script>
+    <script type="text/javascript" src="js_app/characteristics/characteristics.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/crearformularios.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script type="text/javascript" src="locale/Lang_EN.js"></script>
+    <script type="text/javascript" src="locale/Lang_ES.js"></script>
+    <title class="titleCharacteristic">Caracteristicas</title>
+    <!-- Incluye los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body onload="(async () => {
+    includeHeader(); includeFooter();
+    getListCharacteristics();
+})();">
+
+    <!-- Encabezado y Barra de Navegación -->
+    <div id="header"></div>
+
+    <div class="container mt-5">
+        <h2 class="listadoCharacteristics">Listado de Caracteristicas</h2>
+        <div class="mt-2 mb-3 float-right">
+            <button class="añadirCharacteristic btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('añadirCharacteristic')">Añadir caracteristica</button>
+            <button class="buscarCharacteristic btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('buscarCharacteristic')">Buscar caracteristica</button>
+            <button class="reiniciarTabla btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListCharacteristics()">Reiniciar tabla</button>
+            
+        </div>
+            
+        <table class="table table-striped" id="tablaCharacteristics">
+            <thead >
+                    <th class="id_characteristic">Id</div>
+                    </th>
+                    <th class="name_characteristic">Nombre</div>
+                    </th>
+                    <th class="description_characteristic">Descripción</div>
+                    </th>
+                    <th class="data_type_characteristic">Tipo de dato</div>
+                    </th>
+                    <th class="bib_ref_characteristic">Bib ref</div>
+                    </th>
+                    <th class="file_characteristic">Archivo</div>
+                    </th>
+            </thead>
+            
+            <tbody id="datosCharacteristics">
+            </tbody>
+       
+            
+        </table>
+            <div id="formularioentidad"></div>
+        
+    </div>
+    
+    <div id="ventanaModal" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarModal()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="Titulo"></div>
+            <div id="mensajeError" class="text-center" style="display: none;">             
+                <h7 class="CharacteristicError">
+                    No existen caracteristicas que coincidan con estos parámetros
+                </h7>
+                <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formCharacteristic" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id_characteristic" style="display: none;">Id:</label>
+                    <input type="text" class="form-control" id="id_characteristic" name="id_characteristic" style="display: none;">
+                </div>
+    
+                <div class="form-group">
+                    <label for="name_characteristic">Nombre:</label>
+                    <input type="text" class="form-control" id="name_characteristic" name="name_characteristic" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="description_characteristic">Descripción:</label>
+                    <input type="text" class="form-control" id="description_characteristic" name="description_characteristic" >
+                </div>
+
+                <div class="form-group">
+                    <label for="data_type_characteristic">Tipo de dato:</label>
+                    <select class="form-control" id="data_type_characteristic" name="data_type_characteristic">
+                        <option value="number">Number</option>
+                        <option value="set">Set</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bib_ref_characteristic">Bib ref:</label>
+                    <input type="text" class="form-control" id="bib_ref_characteristic" name="bib_ref_characteristic" >
+                </div>
+
+                <div id="form_file_characteristic" class="form-group">
+                    <label for="file_characteristic">Archivo:</label>
+                    <input type="file" class="form-control" id="file_characteristic" name="file_characteristic" >
+                </div>
+                
+                <button type="submit" id="aceptar" class="btn btn-primary"></button>
+                <button type="button" id="cerrar" class="btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+            </form> 
+        </div>
+    </div>
+    
+    <div id="comprobarBorrar" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="text-center" id="Titulo"><h2 class="DeletePregunta">¿Estás seguro?</h2></div>
+            
+            <form id="formBorrarCharacteristic" action="" method="post" onsubmit="">
+                <div class="form-group">
+                    <label for="id_characteristic" style="display: none;">Id:</label>
+                    <input type="text" class="form-control" id="idBorrar" name="id_characteristic" style="display: none;">
+                </div>
+                <div class="col text-center">
+                    <button type="submit" id="aceptar" class="DeleteAceptar btn btn-danger">Aceptar</button>
+                    <button type="button" id="cerrar" class="DeleteCerrar btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
+                </div>
+                
+            </form>  
+        </div>
+    </div>
+
+    <!-- Pie de Página -->
+	<div id="footer"><div>
+</body>
+</html>

@@ -224,6 +224,20 @@ arrayEN={
 	'file_analysis_tecnique': 'File',
 	'AnalysisTechniqueError': 'There are no analysis techniques that match these parameters.',
 
+	// CHARACTERISTIC
+	'titleCharacteristic': 'Characteristics',
+	'listadoCharacteristics': 'List of characteristics',
+	'añadirCharacteristic': 'Add characteristic',
+	'buscarCharacteristic': 'Search characteristic',
+	'editarCharacteristic': 'Edit characteristic',
+	'name_characteristic': 'Characteristic name',
+	'description_characteristic': 'Descriptión',
+	'data_type_characteristic': 'Data type',
+	'bib_ref_characteristic': 'Bibliographic reference',
+	'file_characteristic': 'File',
+	'characteristicMenu': 'Characteristics',
+	'CharacteristicError': 'There are no characteristics that match these parameters.',
+
 	// CHARACTERISTIC_SAMPLE
 	'titleCharacteristicSample': 'Sample Characteristics',
 	'characteristicSampleMenu': 'Sample Characteristics',
@@ -250,17 +264,17 @@ arrayEN={
 	'bib_ref_ecosystem': 'Bibliographic reference',
 	'EcosystemError': 'There are no ecosystems that match these parameters.',
 
-		// ANALYSIS_PREPARATION
-		'titleAnalysisPreparation': 'Analysis preparation methods',
-		'listAnalysis_preparation': 'List of analysis preparation methods',
-		'añadiranalysis_preparation': 'Add analysis preparation method',
-		'buscaranalysis_preparation': 'Search analysis preparation method',
-		'name_analysis_preparation': 'Analysis preparation method name',
-		'mensajeErrorAnalysis_preparation': 'There are no analytical preparation methods that match these parameters.',
-		'analysisPreparationMenu':'Analysis preparation methods',
-		'editAnalysis_preparation': 'Edit analysis preparation',
+	// ANALYSIS_PREPARATION
+	'titleAnalysisPreparation': 'Analysis preparation methods',
+	'listAnalysis_preparation': 'List of analysis preparation methods',
+	'añadiranalysis_preparation': 'Add analysis preparation method',
+	'buscaranalysis_preparation': 'Search analysis preparation method',
+	'name_analysis_preparation': 'Analysis preparation method name',
+	'mensajeErrorAnalysis_preparation': 'There are no analytical preparation methods that match these parameters.',
+	'analysisPreparationMenu':'Analysis preparation methods',
+	'editAnalysis_preparation': 'Edit analysis preparation',
 
-			// REPLICA
+		// REPLICA
 	'titleReplicas': 'Replicas',
 	'listadoReplicas': 'List of replicas',
 	'editarR': 'Edit replica',
