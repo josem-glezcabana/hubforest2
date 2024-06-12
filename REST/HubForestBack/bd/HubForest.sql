@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `analysis_preparation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `analysis_preparation` (
-  `id_analysis_preparation` int NOT NULL AUTO_INCREMENT,
+  `Id_analysis_preparation` int NOT NULL AUTO_INCREMENT,
   `name_analysis_preparation` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_analysis_preparation`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`Id_analysis_preparation`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,7 @@ CREATE TABLE `analysis_technique` (
   `name_analysis_technique` varchar(100) NOT NULL,
   `description_analysis_technique` varchar(5000) NOT NULL,
   `bib_analysis_technique` varchar(200) NOT NULL,
-  `file_analysis_tecnique` varchar(100) NOT NULL,
+  `file_analysis_tecnique` varchar(100) DEFAULT '--',
   PRIMARY KEY (`id_analysis_technique`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -81,7 +81,7 @@ CREATE TABLE `characteristic` (
   `description_characteristic` varchar(5000) NOT NULL,
   `data_type_characteristic` enum('number','set') NOT NULL,
   `bibref_characteristic` varchar(200) NOT NULL,
-  `file_characteristic` varchar(100) NOT NULL,
+  `file_characteristic` varchar(100) DEFAULT '--',
   PRIMARY KEY (`id_characteristic`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -161,7 +161,7 @@ CREATE TABLE `lab_process` (
   `name_lab_process` varchar(100) NOT NULL,
   `description_lab_process` varchar(5000) NOT NULL,
   `bib_lab_process` varchar(100) NOT NULL,
-  `file_lab_process` varchar(100) NOT NULL,
+  `file_lab_process` varchar(100) DEFAULT '--',
   PRIMARY KEY (`id_lab_process`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -191,7 +191,7 @@ CREATE TABLE `project` (
   `responsable_project` int NOT NULL,
   `organization_project` varchar(100) NOT NULL,
   `description_project` varchar(500) DEFAULT '--',
-  `file_project` varchar(100) NOT NULL,
+  `file_project` varchar(100) DEFAULT '--',
   `code_project` varchar(50) NOT NULL,
   `acronym_project` varchar(15) NOT NULL,
   `id_sampling_methodology` int NOT NULL,
@@ -331,7 +331,7 @@ CREATE TABLE `sampling_methodology` (
   `name_methodology` varchar(100) NOT NULL,
   `description_methodology` varchar(5000) NOT NULL,
   `bibref_methodology` varchar(200) NOT NULL,
-  `file_methodology` varchar(100) NOT NULL,
+  `file_methodology` varchar(100) DEFAULT '--',
   PRIMARY KEY (`id_sampling_methodology`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -388,14 +388,14 @@ DROP TABLE IF EXISTS `storage_method`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `storage_method` (
-  `id_storage_method` int NOT NULL,
+  `id_storage_method` int NOT NULL AUTO_INCREMENT,
   `name_storage_method` varchar(100) NOT NULL,
   `description_storage_method` varchar(5000) NOT NULL,
   `storage_container` enum('plastic bag','PVC core','plastic container','document') NOT NULL,
   `size_storage_container` int DEFAULT '0',
   `unit_storage_container` varchar(30) DEFAULT '--',
   PRIMARY KEY (`id_storage_method`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -420,7 +420,7 @@ CREATE TABLE `technique_sample` (
   `name_technique_sample` varchar(100) NOT NULL,
   `description_technique_sample` varchar(5000) NOT NULL,
   `bib_technique_sample` varchar(200) NOT NULL,
-  `file_technique_sample` varchar(100) NOT NULL,
+  `file_technique_sample` varchar(100) DEFAULT '--',
   PRIMARY KEY (`id_technique_sample`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -576,10 +576,12 @@ CREATE TABLE `token_in_sampling` (
   UNIQUE KEY `id_token_in_sampling` (`id_token_in_sampling`),
   KEY `project_tok_idx` (`id_project`),
   KEY `ecos_tok_idx` (`id_ecosystem`),
-  KEY `storage_meth_idx` (`id_storage_method`),
+  KEY `storag_meth_idx` (`id_storage_method`),
+  KEY `tech_sample_idx` (`id_technique_sample`),
   CONSTRAINT `ecos_tok` FOREIGN KEY (`id_ecosystem`) REFERENCES `project_ecosystem` (`id_ecosystem`),
   CONSTRAINT `project_tok` FOREIGN KEY (`id_project`) REFERENCES `project_ecosystem` (`id_project`),
-  CONSTRAINT `storage_meth` FOREIGN KEY (`id_storage_method`) REFERENCES `storage_method` (`id_storage_method`)
+  CONSTRAINT `storag_meth` FOREIGN KEY (`id_storage_method`) REFERENCES `storage_method` (`id_storage_method`),
+  CONSTRAINT `tech_sample` FOREIGN KEY (`id_technique_sample`) REFERENCES `technique_sample` (`id_technique_sample`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -688,4 +690,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-10  1:24:36
+-- Dump completed on 2024-06-12 18:07:33
