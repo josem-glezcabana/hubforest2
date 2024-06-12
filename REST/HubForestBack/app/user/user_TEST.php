@@ -20,11 +20,14 @@ function USER_TEST(){
 
 	$prueba = 'editar correcto';
 	$POST = array(
+				'id_user'=> 5,
 				'name_user'=> ' Nombre2', 
 				'surname_user'=> 'Apellid2', 
 				'position_user'=> '999999999',
 				'organization_user'=> 'Org1',
-				'email_user'=> 'user@email.com', 
+				'email_user'=> 'nombre@email.com',
+				'passwd'=> '519aff21ba5d7bc5c4383a08e8736e97',	// contraseña en md5 del usuario
+				'is_admin'=> 'NO',
 				'controlador'=>$entidad,
 				'action'=>$accion
 			);
