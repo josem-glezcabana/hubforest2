@@ -20,11 +20,11 @@ function AUTH_TEST(){
 
 	$prueba = 'registrar correcto';
 	$POST = array(
-				'name_user'=> '99', 
+				'name_user'=> 'user99', 
 				'surname_user'=> 'Nombre9', 
 				'organization_user'=> 'Apellidos9',
-				'email_user'=> '09/09/9999', 
-				'passwd'=> 'Direccion9',
+				'email_user'=> 'user99@email.com', 
+				'passwd'=> 'dc647eb65e6711e155375218212b3964',		// contraseña encriptada utilizando algoritmo md5
 				'position_user'=> '999999999',
 				'is_admin'=> 'true',
 				'controlador'=>$entidad,
@@ -34,23 +34,6 @@ function AUTH_TEST(){
 	$codeEsperado = 'REGISTRAR_OK';
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
-//--------------------------------------------------------------------------------------------------------------------
-
-$prueba = 'registrar correcto';
-$POST = array(
-			'name_user'=> '99', 
-			'surname_user'=> 'Nombre9', 
-			'organization_user'=> 'Apellidos9',
-			'email_user'=> '09/09/9999', 
-			'passwd'=> 'Direccion9',
-			'position_user'=> '999999999',
-			'is_admin'=> 'true',
-			'controlador'=>$entidad,
-			'action'=>$accion
-		);
-
-	$codeEsperado = 'REGISTRAR_OK';
-	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 //--------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------
@@ -63,22 +46,22 @@ $POST = array(
 //---------------------------------------------------------------------------------------------------------------------
 //Prueba usuario incorrecto, la contraseña no está encriptada en md5
 	$prueba = 'login usuario incorrecto';
-	$POST = array('name_user' => 'passwd', 'contrasena' => 'prueba','controlador'=>'AUTH','action'=>'LOGIN');
+	$POST = array('name_user' => 'passwd', 'passwd' => 'prueba','controlador'=>'AUTH','action'=>'LOGIN');
 	$codeEsperado = 'USUARIO_LOGIN_KO';
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
 //Prueba usuario correcto, la contraseña está encriptada en md5
 	$prueba = 'login usuario correcto';
-	$POST = array('name_user' => 'user', 'contrasena' => 'c893bad68927b457dbed39460e6afd62','controlador'=>'AUTH','action'=>'LOGIN');
+	$POST = array('name_user' => 'user99', 'passwd' => 'dc647eb65e6711e155375218212b3964','controlador'=>'AUTH','action'=>'LOGIN');
 	$codeEsperado = 'LOGIN_OK';
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
 //Prueba usuario admin correcto, la contraseña está encriptada en md5
 	$prueba = 'login contraseña correcto';
-	$POST = array('name_user' => 'admin', 'contrasena' => 'c893bad68927b457dbed39460e6afd62','controlador'=>'AUTH','action'=>'LOGIN');
-	$codeEsperado = 'USUARIO_PASS_KO';
+	$POST = array('name_user' => 'user99', 'passwd' => 'passwd','controlador'=>'AUTH','action'=>'LOGIN');
+	$codeEsperado = 'USUARIO_LOGIN_KO';
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
@@ -91,7 +74,7 @@ $POST = array(
 //---------------------------------------------------------------------------------------------------------------------
 
 	$prueba = 'cambiar contraseña correcto';
-	$POST = array('name_user' => 'admin', 'contrasena' => 'prueba','controlador'=>'AUTH','action'=>'CAMBIAR_CONTRASENA');
+	$POST = array('name_user' => 'user99', 'passwd' => 'prueba_cambio_contraseña','controlador'=>'AUTH','action'=>'CAMBIAR_CONTRASENA');
 	$codeEsperado = 'CAMBIAR_contrasena_OK';
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
