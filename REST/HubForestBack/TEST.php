@@ -23,10 +23,10 @@ include './app/user/user_TEST.php';
 $rest = USER_TEST();
 guardar_test($resultadosTESTS, $rest);
 
-// //prueba project
-// include './app/project/project_TEST.php';
-// $rest = AUTH_TEST();
-// guardar_test($resultadosTESTS, $rest);
+//prueba project
+include './app/project/project_TEST.php';
+$rest = PROJECT_TEST();
+guardar_test($resultadosTESTS, $rest);
 
 // //prueba sampling_methodology
 // include './app/sampling_methodology/sampling_methodology_TEST.php';
