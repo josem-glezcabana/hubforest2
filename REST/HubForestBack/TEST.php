@@ -38,10 +38,10 @@ include './app/lab_process/lab_process_TEST.php';
 $rest = LAB_PROCESS_TEST();
 guardar_test($resultadosTESTS, $rest);
 
-// //prueba analysis_preparation
-// include './app/analysis_preparation/analysis_preparation_TEST.php';
-// $rest = AUTH_TEST();
-// guardar_test($resultadosTESTS, $rest);
+//prueba analysis_preparation
+include './app/analysis_preparation/analysis_preparation_TEST.php';
+$rest = ANALYSIS_PREPARATION_TEST();
+guardar_test($resultadosTESTS, $rest);
 
 // //prueba analysis_technique
 // include './app/analysis_technique/analysis_technique_TEST.php';
