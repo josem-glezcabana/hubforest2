@@ -71,6 +71,23 @@ function USER_TEST(){
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
+	
+    //rol
+	$entidad = 'user';
+	$accion = 'DELETE';
+	$tipo = 'Accion';
+
+//---------------------------------------------------------------------------------------------------------------------
+//Prueba buscar usuario por nombre correcto
+	$prueba = 'delete usuario incorrecto: no se indica id_user';
+	$POST = array('name_user' => 'nombreprueba',
+                'controlador'=>$entidad,
+                'action'=>$accion
+            );
+	$codeEsperado = 'id_user_es_nulo_KO';
+	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
+
+	//---------------------------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------

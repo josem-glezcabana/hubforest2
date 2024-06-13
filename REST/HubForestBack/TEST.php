@@ -6,7 +6,10 @@ $_SESSION['test'] = true;
 include_once './Comun/config.php';
 include_once './Comun/FuncionesGenerales.php';
 
+// URL para peticiones (despliegue con Docker)
 define ('urlnoRest','http://127.0.0.1:8080/HubForestBack/index.php');
+// URL para las peticiones (despliegue con el instalador)
+// define ('urlnoRest','http://127.0.0.1:80/hubforest2/REST/HubForestBack/index.php');
 
 $resultadosTESTS = array();
 
