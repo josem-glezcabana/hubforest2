@@ -33,10 +33,10 @@ include './app/sampling_methodology/sampling_methodology_TEST.php';
 $rest = SAMPLING_METHODOLOGY_TEST();
 guardar_test($resultadosTESTS, $rest);
 
-// //prueba lab_process
-// include './app/lab_process/lab_process_TEST.php';
-// $rest = AUTH_TEST();
-// guardar_test($resultadosTESTS, $rest);
+//prueba lab_process
+include './app/lab_process/lab_process_TEST.php';
+$rest = LAB_PROCESS_TEST();
+guardar_test($resultadosTESTS, $rest);
 
 // //prueba analysis_preparation
 // include './app/analysis_preparation/analysis_preparation_TEST.php';
