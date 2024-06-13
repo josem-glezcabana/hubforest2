@@ -28,10 +28,10 @@ include './app/project/project_TEST.php';
 $rest = PROJECT_TEST();
 guardar_test($resultadosTESTS, $rest);
 
-// //prueba sampling_methodology
-// include './app/sampling_methodology/sampling_methodology_TEST.php';
-// $rest = AUTH_TEST();
-// guardar_test($resultadosTESTS, $rest);
+//prueba sampling_methodology
+include './app/sampling_methodology/sampling_methodology_TEST.php';
+$rest = SAMPLING_METHODOLOGY_TEST();
+guardar_test($resultadosTESTS, $rest);
 
 // //prueba lab_process
 // include './app/lab_process/lab_process_TEST.php';

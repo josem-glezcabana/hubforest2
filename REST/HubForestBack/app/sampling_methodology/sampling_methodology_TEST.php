@@ -1,6 +1,6 @@
 <?php
 
-function PROJECT_TEST(){
+function SAMPLING_METHODOLOGY_TEST(){
 
 
 	include_once './Base/TEST_CLASS_sin_CURL.php';
@@ -12,7 +12,7 @@ function PROJECT_TEST(){
 //--------------------------------------------------------------------------------------------------------------------
 
 	//rol
-	$entidad = 'project';
+	$entidad = 'sampling_methodology';
 	$accion = 'ADD';
 	$tipo = 'Accion';
 
@@ -20,15 +20,10 @@ function PROJECT_TEST(){
 
 	$prueba = 'añadir correcto';
 	$POST = array(
-				'name_project'=> 'AddTestProject', 
-				'start_date_project'=> '2024-07-31', 
-				'end_date_project'=> '2024-12-31', 
-				'responsable_project'=> 1,
-				'organization_project'=> 'Org1',
-				'description_project'=> 'Proyecto de prueba para tests',
-				'code_project'=> 'ADDT1',
-                'acronym_project'=> 'ADDPTest',
-				'id_sampling_methodology'=> 1,
+				'name_methodology'=> 'methodTest1', 
+				'description_methodology'=> 'Metodología para tests',
+				'bibref_methodology'=> 'bibrefTest',
+                'file_methodology'=> 'filetest.txt',
 				'controlador'=>$entidad,
 				'action'=>$accion
 			);
@@ -39,34 +34,7 @@ function PROJECT_TEST(){
 //--------------------------------------------------------------------------------------------------------------------
 
 	//rol
-	$entidad = 'project';
-	$accion = 'ADD';
-	$tipo = 'Accion';
-
-	//---------------------------------------------------------------------------------------------------------------------
-
-	$prueba = 'añadir incorrecto: formato erróneo de fechas';
-	$POST = array(
-				'name_project'=> 'AddTestProject', 
-				'start_date_project'=> '31-07-2024', 
-				'end_date_project'=> '31-08-2024', 
-				'responsable_project'=> 1,
-				'organization_project'=> 'Org1',
-				'description_project'=> 'Proyecto de prueba para tests',
-				'code_project'=> 'ADDT1',
-                'acronym_project'=> 'ADDPTest',
-				'id_sampling_methodology'=> 1,
-				'controlador'=>$entidad,
-				'action'=>$accion
-			);
-
-	$codeEsperado = 'SQL_KO';
-	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
-
-//--------------------------------------------------------------------------------------------------------------------
-
-	//rol
-	$entidad = 'project';
+	$entidad = 'sampling_methodology';
 	$accion = 'EDIT';
 	$tipo = 'Accion';
 
@@ -74,16 +42,11 @@ function PROJECT_TEST(){
 
 	$prueba = 'editar correcto';
 	$POST = array(
-                'id_project'=> 5,
-                'name_project'=> 'AddTestProject', 
-                'start_date_project'=> '2024-07-31', 
-                'end_date_project'=> '2024-12-31', 
-                'responsable_project'=> 1,
-                'organization_project'=> 'testOrg',
-                'description_project'=> 'Proyecto de prueba para tests',
-                'code_project'=> 'TEST123',
-                'acronym_project'=> 'PTest',
-                'id_sampling_methodology'=> 1,
+                'id_sampling_methodology'=> 2,
+                'name_methodology'=> 'methodTest1', 
+                'description_methodology'=> 'Metodología para tests editada',
+				'bibref_methodology'=> 'bibrefTest',
+                'file_methodology'=> 'filetest.txt',
                 'controlador'=>$entidad,
                 'action'=>$accion
             );
@@ -95,13 +58,14 @@ function PROJECT_TEST(){
 //--------------------------------------------------------------------------------------------------------------------
 
 	//rol
-	$entidad = 'project';
+	$entidad = 'sampling_methodology';
 	$accion = 'DELETE';
 	$tipo = 'Accion';
 
 //---------------------------------------------------------------------------------------------------------------------
-	$prueba = 'delete proyecto correcto';
-	$POST = array('id_project' => 5,
+
+	$prueba = 'delete metodología de muestra correcto';
+	$POST = array('id_sampling_methodology' => 5,
                 'controlador'=>$entidad,
                 'action'=>$accion
             );
@@ -111,25 +75,25 @@ function PROJECT_TEST(){
 	//---------------------------------------------------------------------------------------------------------------------
 
     //---------------------------------------------------------------------------------------------------------------------
-	$prueba = 'delete proyecto incorrecto: no se indica id_project';
-	$POST = array('name_project' => 'nombreprueba',
+	$prueba = 'delete metodología de muestra incorrecto: no se indica id_sampling_methodology';
+	$POST = array('name_methodology' => 'nombreprueba',
                 'controlador'=>$entidad,
                 'action'=>$accion
             );
-	$codeEsperado = 'id_project_es_nulo_KO';
+	$codeEsperado = 'id_sampling_methodology_es_nulo_KO';
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
 
     //rol
-	$entidad = 'project';
+	$entidad = 'sampling_methodology';
 	$accion = 'SEARCH';
 	$tipo = 'Accion';
 
 //---------------------------------------------------------------------------------------------------------------------
-//Prueba buscar proyecto por nombre correcto
-	$prueba = 'search proyecto por nombre correcto';
-	$POST = array('name_project' => 'TestProject',
+//Prueba buscar metodología de muestra por nombre correcto
+	$prueba = 'search metodología de muestra por nombre correcto';
+	$POST = array('name_methodology' => 'methodTest1',
                 'controlador'=>$entidad,
                 'action'=>$accion
             );
@@ -139,9 +103,9 @@ function PROJECT_TEST(){
 	//---------------------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------------------------
-//Prueba buscar proyecto por nombre no existente
-	$prueba = 'search proyecto por nombre no existente';
-	$POST = array('name_project' => 'prueba',
+//Prueba buscar metodología de muestra por nombre no existente
+	$prueba = 'search metodología de muestra por nombre no existente';
+	$POST = array('name_methodology' => 'prueba',
                 'controlador'=>$entidad,
                 'action'=>$accion
             );
