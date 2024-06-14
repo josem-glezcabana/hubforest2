@@ -135,7 +135,6 @@ async function getListReplicas() {
   }
   
   function construyeTablaReplica(filas) {
-    console.log(filas)
     let filasTabla = '';
     let tipo = "'editarR'";
     let element = document.getElementById("datosReplicas");
