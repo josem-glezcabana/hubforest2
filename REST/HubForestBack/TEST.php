@@ -70,6 +70,10 @@ $rest = USER_PROJECT_TEST();
 guardar_test($resultadosTESTS, $rest);
 
 
+include './app/temporal_sampling_site_params/temporal_sampling_site_params_TEST.php';
+$rest = TEMPORAL_SAMPLING_SITE_PARAMS_TEST();
+guardar_test($resultadosTESTS, $rest);
+
 session_destroy();
 //presentar resultados
 presentarResultadosPruebas($resultadosTESTS);
