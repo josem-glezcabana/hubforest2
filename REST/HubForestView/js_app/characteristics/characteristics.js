@@ -9,12 +9,12 @@ async function getListCharacteristics() {
         
 }
 
-async function getListByParamCharacteristics(name_characteristic, description_characteristic, data_type_characteristic, bib_ref_characteristic, file_characteristic) {
+async function getListByParamCharacteristics(name_characteristic, description_characteristic, data_type_characteristic, bibref_characteristic, file_characteristic) {
     const characteristic = {
         name_characteristic: name_characteristic,
         description_characteristic: description_characteristic,
         data_type_characteristic: data_type_characteristic,
-        bib_ref_characteristic: bib_ref_characteristic,
+        bibref_characteristic: bibref_characteristic,
         file_characteristic: file_characteristic
     };
     return peticionBackGeneral('', 'characteristic', 'SEARCH_BY', characteristic)
@@ -25,12 +25,12 @@ async function getListByParamCharacteristics(name_characteristic, description_ch
         });
 }
 
-async function getListByParamCharacteristics_search(name_characteristic, description_characteristic, data_type_characteristic, bib_ref_characteristic, file_characteristic) {
+async function getListByParamCharacteristics_search(name_characteristic, description_characteristic, data_type_characteristic, bibref_characteristic, file_characteristic) {
     const characteristic = {
         name_characteristic: name_characteristic,
         description_characteristic: description_characteristic,
         data_type_characteristic: data_type_characteristic,
-        bib_ref_characteristic: bib_ref_characteristic,
+        bibref_characteristic: bibref_characteristic,
         file_characteristic: file_characteristic
     };
     return peticionBackGeneral('', 'characteristic', 'SEARCH', characteristic)
@@ -41,12 +41,12 @@ async function getListByParamCharacteristics_search(name_characteristic, descrip
         });
 }
 
-async function addCharacteristic(name_characteristic, description_characteristic, data_type_characteristic, bib_ref_characteristic, file_characteristic) {
+async function addCharacteristic(name_characteristic, description_characteristic, data_type_characteristic, bibref_characteristic, file_characteristic) {
     const characteristic = {
         name_characteristic: name_characteristic,
         description_characteristic: description_characteristic,
         data_type_characteristic: data_type_characteristic,
-        bib_ref_characteristic: bib_ref_characteristic,
+        bibref_characteristic: bibref_characteristic,
         file_characteristic: file_characteristic
     };
 
@@ -62,13 +62,13 @@ async function addCharacteristic(name_characteristic, description_characteristic
         });
 }
 
-async function editCharacteristic(id_characteristic, name_characteristic, description_characteristic, data_type_characteristic, bib_ref_characteristic, file_characteristic) {
+async function editCharacteristic(id_characteristic, name_characteristic, description_characteristic, data_type_characteristic, bibref_characteristic, file_characteristic) {
     const characteristic = {
         id_characteristic: id_characteristic,
         name_characteristic: name_characteristic,
         description_characteristic: description_characteristic,
         data_type_characteristic: data_type_characteristic,
-        bib_ref_characteristic: bib_ref_characteristic,
+        bibref_characteristic: bibref_characteristic,
         file_characteristic: file_characteristic
     };
 
@@ -106,17 +106,17 @@ function construyeTablaCharacteristic(filas) {
     while (element.firstChild) {
         element.removeChild(element.firstChild);
     }
-    //'name_characteristic','description_characteristic','data_type_characteristic','bib_ref_characteristic','file_characteristic'
+    //'name_characteristic','description_characteristic','data_type_characteristic','bibref_characteristic','file_characteristic'
     $("#datosCharacteristics").html("");
     filas.forEach(fila => {
-        var atributosTabla = ["'" + fila.id_characteristic + "'","'" + fila.name_characteristic + "'", "'" + fila.description_characteristic + "'", "'" + fila.data_type_characteristic + "'", "'" + fila.bib_ref_characteristic + "'" , "'" + fila.file_characteristic + "'"];
+        var atributosTabla = ["'" + fila.id_characteristic + "'","'" + fila.name_characteristic + "'", "'" + fila.description_characteristic + "'", "'" + fila.data_type_characteristic + "'", "'" + fila.bibref_characteristic + "'" , "'" + fila.file_characteristic + "'"];
         var botonEdit='<button class="BotonEditar btn btn-info" id="editarCharacteristic" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_characteristic + 
                 '</td> <td>' + fila.name_characteristic + 
                 '</td> <td>' + fila.description_characteristic +
                 '</td> <td>' + fila.data_type_characteristic + 
-                '</td> <td>' + fila.bib_ref_characteristic + 
+                '</td> <td>' + fila.bibref_characteristic + 
                 '</td> <td>' + fila.file_characteristic +
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarCharacteristic" id="borrarCharacteristic" onclick="mostrarBorrar('+fila.id_characteristic+')">Eliminar</button>'
@@ -152,28 +152,28 @@ function construyeTablaCharacteristic(filas) {
     cerrarModal()
     setLang();
 }
-//'name_characteristic','description_characteristic','data_type_characteristic','bib_ref_characteristic','file_characteristic'
+//'name_characteristic','description_characteristic','data_type_characteristic','bibref_characteristic','file_characteristic'
 function getAtributos(tipo){
     var id_characteristic = document.getElementById("id_characteristic").value
     var name_characteristic = document.getElementById("name_characteristic").value
     var description_characteristic = document.getElementById("description_characteristic").value
     var data_type_characteristic = document.getElementById("data_type_characteristic").value
-    var bib_ref_characteristic = document.getElementById("bib_ref_characteristic").value
+    var bibref_characteristic = document.getElementById("bibref_characteristic").value
     var file_characteristic = document.getElementById("file_characteristic").value
      switch(tipo){
         case "Editar":
-            editCharacteristic(id_characteristic, name_characteristic, description_characteristic, data_type_characteristic, bib_ref_characteristic, file_characteristic)
+            editCharacteristic(id_characteristic, name_characteristic, description_characteristic, data_type_characteristic, bibref_characteristic, file_characteristic)
             break;
         case "Añadir":
-            addCharacteristic(name_characteristic, description_characteristic, data_type_characteristic, bib_ref_characteristic, file_characteristic)
+            addCharacteristic(name_characteristic, description_characteristic, data_type_characteristic, bibref_characteristic, file_characteristic)
             break;
         case "Buscar":
-            getListByParamCharacteristics_search(name_characteristic, description_characteristic, data_type_characteristic, bib_ref_characteristic, file_characteristic)
+            getListByParamCharacteristics_search(name_characteristic, description_characteristic, data_type_characteristic, bibref_characteristic, file_characteristic)
             break;
      }
 }
 
-function mostrarModal(tipo, id_characteristic=null, name_characteristic=null, description_characteristic=null, data_type_characteristic=null, bib_ref_characteristic=null, file_characteristic=null){
+function mostrarModal(tipo, id_characteristic=null, name_characteristic=null, description_characteristic=null, data_type_characteristic=null, bibref_characteristic=null, file_characteristic=null){
     // Ventana modal
     document.getElementById("ventanaModal").style.display = "block";
     document.getElementById("Titulo").innerHTML = '<h2 class="'+tipo+'">'+tipo+'</h2>';
@@ -186,7 +186,7 @@ function mostrarModal(tipo, id_characteristic=null, name_characteristic=null, de
         $("#name_characteristic").val(name_characteristic);
         $("#description_characteristic").val(description_characteristic);
         $("#data_type_characteristic").val(data_type_characteristic);
-        $("#bib_ref_characteristic").val(bib_ref_characteristic);
+        $("#bibref_characteristic").val(bibref_characteristic);
         $('#form_file_characteristic').show();
        // $("#file_characteristic").val(file_characteristic);
     }
@@ -195,7 +195,7 @@ function mostrarModal(tipo, id_characteristic=null, name_characteristic=null, de
             document.getElementById("name_characteristic").required = false;
             document.getElementById("description_characteristic").required = false;
             document.getElementById("data_type_characteristic").required = false;
-            document.getElementById("bib_ref_characteristic").required = false;
+            document.getElementById("bibref_characteristic").required = false;
             $('#form_file_characteristic').hide();
             document.getElementById("file_characteristic").required = false;
 
@@ -205,7 +205,7 @@ function mostrarModal(tipo, id_characteristic=null, name_characteristic=null, de
             document.getElementById("name_characteristic").required = true;
             document.getElementById("description_characteristic").required = true;
             document.getElementById("data_type_characteristic").required = true;
-            document.getElementById("bib_ref_characteristic").required = true;
+            document.getElementById("bibref_characteristic").required = true;
             $('#form_file_characteristic').show();
             document.getElementById("file_characteristic").required = false;
 
@@ -216,7 +216,7 @@ function mostrarModal(tipo, id_characteristic=null, name_characteristic=null, de
         $("#name_characteristic").val('');
         $("#description_characteristic").val('');
         $("#data_type_characteristic").val('');
-        $("#bib_ref_characteristic").val('');
+        $("#bibref_characteristic").val('');
         $("#file_characteristic").val('');
     }
     setLang();

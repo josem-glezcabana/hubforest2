@@ -1,6 +1,6 @@
 <?php
 
-function USER_TEST(){
+function LAB_PROCESS_TEST(){
 
 
 	include_once './Base/TEST_CLASS_sin_CURL.php';
@@ -12,22 +12,18 @@ function USER_TEST(){
 //--------------------------------------------------------------------------------------------------------------------
 
 	//rol
-	$entidad = 'user';
-	$accion = 'EDIT';
+	$entidad = 'lab_process';
+	$accion = 'ADD';
 	$tipo = 'Accion';
 
 	//---------------------------------------------------------------------------------------------------------------------
 
-	$prueba = 'editar correcto';
+	$prueba = 'añadir correcto';
 	$POST = array(
-				'id_user'=> 5,
-				'name_user'=> ' Nombre2', 
-				'surname_user'=> 'Apellid2', 
-				'position_user'=> '999999999',
-				'organization_user'=> 'Org1',
-				'email_user'=> 'nombre@email.com',
-				'passwd'=> '519aff21ba5d7bc5c4383a08e8736e97',	// contraseña en md5 del usuario
-				'is_admin'=> 'NO',
+				'name_lab_process'=> 'labTest1', 
+				'description_lab_process'=> 'Proceso de laboratorio para tests',
+				'bib_lab_process'=> 'biblabTest',
+                'file_lab_process'=> 'filetest.txt',
 				'controlador'=>$entidad,
 				'action'=>$accion
 			);
@@ -36,17 +32,40 @@ function USER_TEST(){
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 //--------------------------------------------------------------------------------------------------------------------
+
+	//rol
+	$entidad = 'lab_process';
+	$accion = 'EDIT';
+	$tipo = 'Accion';
+
+	//---------------------------------------------------------------------------------------------------------------------
+
+	$prueba = 'editar correcto';
+	$POST = array(
+                'id_lab_process'=> 2,
+                'name_lab_process'=> 'labTest1', 
+                'description_lab_process'=> 'Proceso de laboratorio para tests editada',
+				'bib_lab_process'=> 'biblabTest',
+                'file_lab_process'=> 'filetest.txt',
+                'controlador'=>$entidad,
+                'action'=>$accion
+            );
+
+	$codeEsperado = 'SQL_OK';
+	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
+
+//--------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------
 
 	//rol
-	$entidad = 'user';
+	$entidad = 'lab_process';
 	$accion = 'DELETE';
 	$tipo = 'Accion';
 
 //---------------------------------------------------------------------------------------------------------------------
-//Prueba eliminar usuario correcto
-	$prueba = 'delete usuario correcto';
-	$POST = array('id_user' => 3,
+
+	$prueba = 'delete proceso de laboratorio correcto';
+	$POST = array('id_lab_process' => 5,
                 'controlador'=>$entidad,
                 'action'=>$accion
             );
@@ -54,16 +73,27 @@ function USER_TEST(){
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
-	
+
+    //---------------------------------------------------------------------------------------------------------------------
+	$prueba = 'delete proceso de laboratorio incorrecto: no se indica id_lab_process';
+	$POST = array('name_lab_process' => 'nombreprueba',
+                'controlador'=>$entidad,
+                'action'=>$accion
+            );
+	$codeEsperado = 'id_lab_process_es_nulo_KO';
+	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
+
+	//---------------------------------------------------------------------------------------------------------------------
+
     //rol
-	$entidad = 'user';
+	$entidad = 'lab_process';
 	$accion = 'SEARCH';
 	$tipo = 'Accion';
 
 //---------------------------------------------------------------------------------------------------------------------
-//Prueba buscar usuario por nombre correcto
-	$prueba = 'search usuario por nombre correcto';
-	$POST = array('name_user' => 'user',
+//Prueba buscar proceso de laboratorio por nombre correcto
+	$prueba = 'search proceso de laboratorio por nombre correcto';
+	$POST = array('name_lab_process' => 'labTest1',
                 'controlador'=>$entidad,
                 'action'=>$accion
             );
@@ -71,20 +101,15 @@ function USER_TEST(){
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
-	
-    //rol
-	$entidad = 'user';
-	$accion = 'DELETE';
-	$tipo = 'Accion';
 
 //---------------------------------------------------------------------------------------------------------------------
-//Prueba buscar usuario por nombre correcto
-	$prueba = 'delete usuario incorrecto: no se indica id_user';
-	$POST = array('name_user' => 'nombreprueba',
+//Prueba buscar proceso de laboratorio por nombre no existente
+	$prueba = 'search proceso de laboratorio por nombre no existente';
+	$POST = array('name_lab_process' => 'prueba',
                 'controlador'=>$entidad,
                 'action'=>$accion
             );
-	$codeEsperado = 'id_user_es_nulo_KO';
+	$codeEsperado = 'RECORDSET_VACIO';
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------

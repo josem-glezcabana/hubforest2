@@ -1,6 +1,6 @@
 <?php
 
-function USER_TEST(){
+function SAMPLING_METHODOLOGY_TEST(){
 
 
 	include_once './Base/TEST_CLASS_sin_CURL.php';
@@ -12,22 +12,18 @@ function USER_TEST(){
 //--------------------------------------------------------------------------------------------------------------------
 
 	//rol
-	$entidad = 'user';
-	$accion = 'EDIT';
+	$entidad = 'sampling_methodology';
+	$accion = 'ADD';
 	$tipo = 'Accion';
 
 	//---------------------------------------------------------------------------------------------------------------------
 
-	$prueba = 'editar correcto';
+	$prueba = 'añadir correcto';
 	$POST = array(
-				'id_user'=> 5,
-				'name_user'=> ' Nombre2', 
-				'surname_user'=> 'Apellid2', 
-				'position_user'=> '999999999',
-				'organization_user'=> 'Org1',
-				'email_user'=> 'nombre@email.com',
-				'passwd'=> '519aff21ba5d7bc5c4383a08e8736e97',	// contraseña en md5 del usuario
-				'is_admin'=> 'NO',
+				'name_methodology'=> 'methodTest1', 
+				'description_methodology'=> 'Metodología para tests',
+				'bibref_methodology'=> 'bibrefTest',
+                'file_methodology'=> 'filetest.txt',
 				'controlador'=>$entidad,
 				'action'=>$accion
 			);
@@ -36,17 +32,40 @@ function USER_TEST(){
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 //--------------------------------------------------------------------------------------------------------------------
+
+	//rol
+	$entidad = 'sampling_methodology';
+	$accion = 'EDIT';
+	$tipo = 'Accion';
+
+	//---------------------------------------------------------------------------------------------------------------------
+
+	$prueba = 'editar correcto';
+	$POST = array(
+                'id_sampling_methodology'=> 2,
+                'name_methodology'=> 'methodTest1', 
+                'description_methodology'=> 'Metodología para tests editada',
+				'bibref_methodology'=> 'bibrefTest',
+                'file_methodology'=> 'filetest.txt',
+                'controlador'=>$entidad,
+                'action'=>$accion
+            );
+
+	$codeEsperado = 'SQL_OK';
+	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
+
+//--------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------
 
 	//rol
-	$entidad = 'user';
+	$entidad = 'sampling_methodology';
 	$accion = 'DELETE';
 	$tipo = 'Accion';
 
 //---------------------------------------------------------------------------------------------------------------------
-//Prueba eliminar usuario correcto
-	$prueba = 'delete usuario correcto';
-	$POST = array('id_user' => 3,
+
+	$prueba = 'delete metodología de muestra correcto';
+	$POST = array('id_sampling_methodology' => 5,
                 'controlador'=>$entidad,
                 'action'=>$accion
             );
@@ -54,16 +73,27 @@ function USER_TEST(){
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
-	
+
+    //---------------------------------------------------------------------------------------------------------------------
+	$prueba = 'delete metodología de muestra incorrecto: no se indica id_sampling_methodology';
+	$POST = array('name_methodology' => 'nombreprueba',
+                'controlador'=>$entidad,
+                'action'=>$accion
+            );
+	$codeEsperado = 'id_sampling_methodology_es_nulo_KO';
+	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
+
+	//---------------------------------------------------------------------------------------------------------------------
+
     //rol
-	$entidad = 'user';
+	$entidad = 'sampling_methodology';
 	$accion = 'SEARCH';
 	$tipo = 'Accion';
 
 //---------------------------------------------------------------------------------------------------------------------
-//Prueba buscar usuario por nombre correcto
-	$prueba = 'search usuario por nombre correcto';
-	$POST = array('name_user' => 'user',
+//Prueba buscar metodología de muestra por nombre correcto
+	$prueba = 'search metodología de muestra por nombre correcto';
+	$POST = array('name_methodology' => 'methodTest1',
                 'controlador'=>$entidad,
                 'action'=>$accion
             );
@@ -71,20 +101,15 @@ function USER_TEST(){
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
-	
-    //rol
-	$entidad = 'user';
-	$accion = 'DELETE';
-	$tipo = 'Accion';
 
 //---------------------------------------------------------------------------------------------------------------------
-//Prueba buscar usuario por nombre correcto
-	$prueba = 'delete usuario incorrecto: no se indica id_user';
-	$POST = array('name_user' => 'nombreprueba',
+//Prueba buscar metodología de muestra por nombre no existente
+	$prueba = 'search metodología de muestra por nombre no existente';
+	$POST = array('name_methodology' => 'prueba',
                 'controlador'=>$entidad,
                 'action'=>$accion
             );
-	$codeEsperado = 'id_user_es_nulo_KO';
+	$codeEsperado = 'RECORDSET_VACIO';
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
