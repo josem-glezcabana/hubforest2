@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `hubforest` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `hubforest` /*!40100 DEFAULT CHARACTER SET utf8mb4  */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `hubforest`;
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
@@ -270,7 +270,7 @@ CREATE TABLE `replica` (
   CONSTRAINT `proj_rep` FOREIGN KEY (`id_project`) REFERENCES `sampling` (`id_project`),
   CONSTRAINT `sampl_rep` FOREIGN KEY (`id_sampling`) REFERENCES `sampling` (`id_sampling`),
   CONSTRAINT `site_rep` FOREIGN KEY (`id_site`) REFERENCES `sampling` (`id_site`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -607,7 +607,7 @@ CREATE TABLE `unit` (
   `name_unit` varchar(100) DEFAULT '--',
   `description_unit` varchar(5000) DEFAULT '--',
   PRIMARY KEY (`id_unit`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
