@@ -53,6 +53,11 @@ include './app/characteristic/characteristic_TEST.php';
 $rest = CHARACTERISTIC_TEST();
 guardar_test($resultadosTESTS, $rest);
 
+//prueba site
+include './app/site/site_TEST.php';
+$rest = SITE_TEST();
+guardar_test($resultadosTESTS, $rest);
+
 include './app/characteristic_sample/characteristic_sample_TEST.php';
 $rest = CHARACTERISTIC_SAMPLE_TEST();
 guardar_test($resultadosTESTS, $rest);
@@ -61,9 +66,18 @@ include './app/ecosystem/ecosystem_TEST.php';
 $rest = ECOSYSTEM_TEST();
 guardar_test($resultadosTESTS, $rest);
 
+//prueba project_ecosystem
+include './app/project_ecosystem/project_ecosystem_TEST.php';
+$rest = PROJECT_ECOSYSTEM_TEST();
+guardar_test($resultadosTESTS, $rest);
+
 
 include './app/sampling/sampling_TEST.php';
 $rest = SAMPLING_TEST();
+guardar_test($resultadosTESTS, $rest);
+
+include './app/replica/replica_TEST.php';
+$rest = REPLICA_TEST();
 guardar_test($resultadosTESTS, $rest);
 
 include './app/storage_method/storage_method_TEST.php';
