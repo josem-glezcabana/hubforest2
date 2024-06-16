@@ -94,6 +94,7 @@ function includeHeader() {
                                     '<li><a class="characteristicMenu dropdown-item" href="characteristic.html">Características</a></li>' +
                                     '<li><a class="characteristicSampleMenu dropdown-item" href="characteristic_sample.html">Características muestra</a></li>' +
                                     '<li><a class="replicaMenu dropdown-item" href="replica.html">Replica</a></li>' +
+                                    // '<li><a class="techniqueSampleMenu dropdown-item" href="technique_sample.html">Técnicas de muestreo</a></li>' +
                                 '</ul>' +
                             '</div>' +
                         '</li>' +
@@ -120,7 +121,7 @@ function includeHeader() {
                                     '<li><a class="labProcessMenu dropdown-item" href="lab_process.html">Procesos laboratorio</a></li>' +
                                     '<li><a class="analysisTechniqueMenu dropdown-item" href="analysis_technique.html">Técnicas análisis</a></li>' +
                                     '<li><a class="analysisPreparationMenu dropdown-item" href="analysispreparation.html">Preparación del análisis</a></li>' +
-                                    '<li><a class="titleTokenAnalysis dropdown-item" href="token_in_analysis.html">Token en analisis</a></li>' +
+                                    // '<li><a class="titleTokenAnalysis dropdown-item" href="token_in_analysis.html">Token en analisis</a></li>' +
                                 '</ul>' +
                             '</div>' +
                         '</li>' +
