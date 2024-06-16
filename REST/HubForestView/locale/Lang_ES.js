@@ -286,7 +286,18 @@ arrayES={
 	'buscarR': 'Buscar replica',
 	'id_replica': 'Replica', 
 	'id_sampling': 'Muestreo',
-	'ReplicaError': 'No existen replicas que coincidan con estos parámetros.'
+	'ReplicaError': 'No existen replicas que coincidan con estos parámetros.',
 
+	// TOKEN_IN_ANALYSIS
+	'titleTokenAnalysis': 'Token en analisis',
+	'listadoTokenAnalysis': 'Listado de tokens en analisis',
+	'añadirTokenAnalysis': 'Añadir token en analisis ',
+	'buscarTokenAnalysis': 'Buscar token en analisis',
+	'editarTokenAnalysis': 'Editar token en analisis',
+	'id_token_in_analysis': 'Token en analisis',
+	'id_token_in_lab': 'Token en laboratorio', 
+	'id_analysis_technique': 'Tecnica de analisis', 
+	'id_analysis_preparation': 'Preparacion de analisis',
+	'TokenAnalysisError': 'No existen tokens en analisis que coincidan con estos parámetros.'
 	
 }

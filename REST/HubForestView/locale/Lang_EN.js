@@ -284,5 +284,17 @@ arrayEN={
 	'buscarReplica': 'Search replica',
 	'id_replica': 'Replica', 
 	'id_sampling': 'Sampling',
-	'EcosystemError': 'There are no replicas that match these parameters.'
+	'EcosystemError': 'There are no replicas that match these parameters.',
+
+	// TOKEN_IN_ANALYSIS
+	'titleTokenAnalysis': 'Token in analysis',
+	'listadoTokenAnalysis': 'Listado de tokens in analysis',
+	'añadirTokenAnalysis': 'Add token in analysis ',
+	'buscarTokenAnalysis': 'Search token in analysis',
+	'editarTokenAnalysis': 'Edit token in analysis',
+	'id_token_in_analysis': 'Token in analysis',
+	'id_token_in_lab': 'Token in lab', 
+	'id_analysis_technique': 'Analysis technique', 
+	'id_analysis_preparation': 'Analysis preparation',
+	'TokenAnalysisError': 'There are no tokens in analysis that match these parameters.'
 }

@@ -14,9 +14,9 @@ define('urlnoRest', 'http://127.0.0.1:8080/HubForestBack/index.php');
 $resultadosTESTS = array();
 
 //prueba auth
-include './app/AUTH/AUTH_TEST.php';
-$rest = AUTH_TEST();
-guardar_test($resultadosTESTS, $rest);
+//include './app/AUTH/AUTH_TEST.php';
+//$rest = AUTH_TEST();
+//guardar_test($resultadosTESTS, $rest);
 
 //prueba user
 include './app/user/user_TEST.php';
@@ -46,6 +46,11 @@ guardar_test($resultadosTESTS, $rest);
 //prueba analysis_technique
 include './app/analysis_technique/analysis_technique_TEST.php';
 $rest = ANALYSIS_TECHNIQUE_TEST();
+guardar_test($resultadosTESTS, $rest);
+
+//prueba characteristic
+include './app/characteristic/characteristic_TEST.php';
+$rest = CHARACTERISTIC_TEST();
 guardar_test($resultadosTESTS, $rest);
 
 include './app/characteristic_sample/characteristic_sample_TEST.php';

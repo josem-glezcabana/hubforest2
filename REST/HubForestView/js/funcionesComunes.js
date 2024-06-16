@@ -120,6 +120,7 @@ function includeHeader() {
                                     '<li><a class="labProcessMenu dropdown-item" href="lab_process.html">Procesos laboratorio</a></li>' +
                                     '<li><a class="analysisTechniqueMenu dropdown-item" href="analysis_technique.html">Técnicas análisis</a></li>' +
                                     '<li><a class="analysisPreparationMenu dropdown-item" href="analysispreparation.html">Preparación del análisis</a></li>' +
+                                    '<li><a class="titleTokenAnalysis dropdown-item" href="token_in_analysis.html">Token en analisis</a></li>' +
                                 '</ul>' +
                             '</div>' +
                         '</li>' +
