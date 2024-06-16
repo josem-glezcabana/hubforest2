@@ -289,15 +289,26 @@ arrayES={
 	'ReplicaError': 'No existen replicas que coincidan con estos parámetros.',
 
 	// TOKEN_IN_ANALYSIS
-	'titleTokenAnalysis': 'Token en analisis',
-	'listadoTokenAnalysis': 'Listado de tokens en analisis',
-	'añadirTokenAnalysis': 'Añadir token en analisis ',
-	'buscarTokenAnalysis': 'Buscar token en analisis',
-	'editarTokenAnalysis': 'Editar token en analisis',
-	'id_token_in_analysis': 'Token en analisis',
+	'titleTokenAnalysis': 'Token en análisis',
+	'listadoTokenAnalysis': 'Listado de tokens en análisis',
+	'añadirTokenAnalysis': 'Añadir token en análisis ',
+	'buscarTokenAnalysis': 'Buscar token en análisis',
+	'editarTokenAnalysis': 'Editar token en análisis',
+	'id_token_in_analysis': 'Token en análisis',
 	'id_token_in_lab': 'Token en laboratorio', 
-	'id_analysis_technique': 'Tecnica de analisis', 
-	'id_analysis_preparation': 'Preparacion de analisis',
-	'TokenAnalysisError': 'No existen tokens en analisis que coincidan con estos parámetros.'
-	
+	'id_analysis_technique': 'Tecnica de análisis', 
+	'id_analysis_preparation': 'Preparacion de análisis',
+	'TokenAnalysisError': 'No existen tokens en análisis que coincidan con estos parámetros.',
+
+	// TECHNIQUE_SAMPLE
+	'titleTechniqueSample': 'Técnicas de muestreo',
+	'listadoTechniqueSample': 'Listado de técnicas de muestreo',
+	'añadirTechniqueSample': 'Añadir técnica',
+	'buscarTechniqueSample': 'Buscar técnica',
+	'editTechniqueSample': 'Editar técnica',
+	'name_technique_sample': 'Nombre de la técnica',
+	'description_technique_sample': 'Descripción técnica',
+	'bib_technique_sample': 'Referencia bibliográfica',
+	'file_technique_sample': 'Archivo',
+	'TechniqueSampleError': 'No existen técnicas de muestreo que coincidan con estos parámetros',
 }

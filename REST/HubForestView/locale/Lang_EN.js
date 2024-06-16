@@ -296,5 +296,17 @@ arrayEN={
 	'id_token_in_lab': 'Token in lab', 
 	'id_analysis_technique': 'Analysis technique', 
 	'id_analysis_preparation': 'Analysis preparation',
-	'TokenAnalysisError': 'There are no tokens in analysis that match these parameters.'
+	'TokenAnalysisError': 'There are no tokens in analysis that match these parameters.',
+
+	// TECHNIQUE_SAMPLE
+	'titleTechniqueSample': 'Technique sample',
+	'listadoTechniqueSample': 'List of sample techniques',
+	'añadirTechniqueSample': 'Add technique',
+	'buscarTechniqueSample': 'Search technique',
+	'editTechniqueSample': 'Edit technique',
+	'name_technique_sample': 'Sample technique name',
+	'description_technique_sample': 'Sample technique description',
+	'bib_technique_sample': 'Bibliographic reference',
+	'file_technique_sample': 'File',
+	'TechniqueSampleError': 'There are no sample techniques that match these parameters',
 }
