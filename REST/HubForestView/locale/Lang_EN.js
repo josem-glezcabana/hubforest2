@@ -309,4 +309,16 @@ arrayEN={
 	'bib_technique_sample': 'Bibliographic reference',
 	'file_technique_sample': 'File',
 	'TechniqueSampleError': 'There are no sample techniques that match these parameters',
+
+	// TEMPORAL_SAMPLING_SITE_VALUES
+	'titleTemporalValues': 'Temporal sampling-site values',
+	'listadoTemporalValues': 'List of temporal sampling-site values',
+	'añadirTemporalValue': 'Add temp. value',
+	'buscarTemporalValue': 'Search temp. value',
+	'editTemporalValues': 'Edit temporal value',
+	'id_ecosystem_param': 'Ecosystem param id',
+	'id_replica': 'Replica',
+	'id_sampling': 'Sampling id',
+	'value_ecosystem_param': 'Value',
+	'temporalValuesError': 'There are no temporal values that match these parameters',
 }

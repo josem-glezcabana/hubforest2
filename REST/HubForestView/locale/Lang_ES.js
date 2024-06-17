@@ -311,4 +311,16 @@ arrayES={
 	'bib_technique_sample': 'Referencia bibliográfica',
 	'file_technique_sample': 'Archivo',
 	'TechniqueSampleError': 'No existen técnicas de muestreo que coincidan con estos parámetros',
+
+	// TEMPORAL_SAMPLING_SITE_VALUES
+	'titleTemporalValues': 'Valores temporales muestra-sitio',
+	'listadoTemporalValues': 'Lista de valores temporales muestra-sitio',
+	'añadirTemporalValue': 'Añadir valor temporal',
+	'buscarTemporalValue': 'Buscar valor temporal',
+	'editTemporalValues': 'Editar valor temporal',
+	'id_ecosystem_param': 'Id parámetro ecosistema',
+	'id_replica': 'Replica',
+	'id_sampling': 'Id muestra',
+	'value_ecosystem_param': 'Valor',
+	'temporalValuesError': 'No existen valores temporales que coincidan con estos parámetros',
 }
