@@ -178,7 +178,7 @@ function mostrarModal(tipo, id_characteristic=null, name_characteristic=null, de
     document.getElementById("ventanaModal").style.display = "block";
     document.getElementById("Titulo").innerHTML = '<h2 class="'+tipo+'">'+tipo+'</h2>';
     document.getElementById("aceptar").classList.add(tipo);
-    console.log(tipo)
+
     if(tipo.includes("editar")){
         $("#formCharacteristic").attr('action' , 'javascript:getAtributos("Editar");');
 
@@ -221,7 +221,6 @@ function mostrarModal(tipo, id_characteristic=null, name_characteristic=null, de
     }
     setLang();
     document.getElementById("aceptar").classList.remove(tipo);
-    console.log
 }
 
 function cerrarModal(){

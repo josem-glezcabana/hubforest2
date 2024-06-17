@@ -36,7 +36,7 @@ async function getListReplicas() {
       
     };
     return peticionBackGeneral('', 'replica', 'SEARCH', replica)
-        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaReplica(response['resource']) : console.log(response))
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaReplica(response['resource']) : mostrarErrorBusq())
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
@@ -278,7 +278,6 @@ async function getListReplicas() {
         $("#date_sampling").val('');
     }
     setLang();
-    console.log(tipo)
     document.getElementById("aceptar").classList.remove(tipo);
     
   }

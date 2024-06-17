@@ -45,7 +45,6 @@ async function addTechniqueSample(name_technique_sample, description_technique_s
 
     return peticionBackGeneral('', 'technique_sample', 'ADD', technique_sample)
         .then(response => {
-            console.log('response', response)
             location.reload();
             response['resource']
             return { status: 'OK', data: response };
