@@ -323,4 +323,22 @@ arrayES={
 	'id_sampling': 'Id muestra',
 	'value_ecosystem_param': 'Valor',
 	'temporalValuesError': 'No existen valores temporales que coincidan con estos parámetros',
+
+	//UNITS
+	'titleUnit':'Unidades',
+	'listadoUnit':'Unidades',
+	'añadirUnit':'Añadir unidad',
+	'editarUnit':'Editar unidad',
+	'reiniciarUnit':'Reiniciar tabla',
+	'name_unit':'Nombre unidad',
+	'description_unit':'Descripción de la unidad',
+	'unitError':'No existen unidades que coincidan con estos parámetros',
+	'aceptarUnitbtn':'Aceptar',
+	'cerrarModalUnit':'Cerrar',
+	'unitPregunta':'¿Estás seguro?',
+	'mensajeBorrarUnit':'Se va eliminar la unidad',
+
+	//TOKEN IN LAB
+	'titleTokenInLab':'Token en laboratorio',
+	'listadoTokenInLab':'Token en laboratorio'
 }

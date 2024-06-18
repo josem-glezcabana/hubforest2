@@ -321,4 +321,23 @@ arrayEN={
 	'id_sampling': 'Sampling id',
 	'value_ecosystem_param': 'Value',
 	'temporalValuesError': 'There are no temporal values that match these parameters',
+
+	//UNITS
+	'titleUnit':'Units',
+	'listadoUnit':'Units',
+	'añadirUnit':'Add unit',
+	'editarUnit':'Edit unit',
+	'reiniciarUnit':'Reload table',
+	'name_unit':'Unit name',
+	'description_unit':' Description unit',
+	'unitError':'There are no units that match these parameters',
+	'aceptarUnitbtn':'Accept',
+	'cerrarModalUnit':'Close',
+	'unitPregunta':'Are you sure?',
+	'mensajeBorrarUnit':'The unit will be deleted',
+
+
+	//TOKEN IN LAB
+	'titleTokenInLab':'Token in lab',
+	'listadoTokenInLab':'Token in lab',
 }
