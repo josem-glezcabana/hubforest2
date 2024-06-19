@@ -231,7 +231,6 @@ function mostrarModal(tipo, id_token_in_analysis=null, id_token_in_lab=null, id_
     }
     setLang();
     document.getElementById("aceptar").classList.remove(tipo);
-    console.log
 }
 
 function rellenarSelectTokenLab(tipo, filas, token_in_lab) {

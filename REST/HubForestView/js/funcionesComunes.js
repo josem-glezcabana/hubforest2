@@ -92,8 +92,10 @@ function includeHeader() {
                                     '<li><a class="samplingMenu dropdown-item" href="sampling.html">Muestras</a></li>' +
                                     '<li><a class="samplingMethodMenu dropdown-item" href="sampling_methodology.html">Metodologías de muestreo</a></li>' +
                                     '<li><a class="characteristicMenu dropdown-item" href="characteristic.html">Características</a></li>' +
+                                    '<li><a class="titleUnit dropdown-item" href="unit.html">Unidades</a></li>' +
                                     '<li><a class="characteristicSampleMenu dropdown-item" href="characteristic_sample.html">Características muestra</a></li>' +
                                     '<li><a class="replicaMenu dropdown-item" href="replica.html">Replica</a></li>' +
+                                    '<li><a class="techniqueSampleMenu dropdown-item" href="technique_sample.html">Técnicas de muestreo</a></li>' +
                                 '</ul>' +
                             '</div>' +
                         '</li>' +
@@ -105,6 +107,7 @@ function includeHeader() {
                                 '<ul class="dropdown-menu">' +
                                     '<li><a class="sitesMenu dropdown-item" href="sites.html">Sitios</a></li>' +
                                     '<li><a class="TemporalsamplingSiteMenu dropdown-item" href="listaTemporal_sampling_site_params.html">Temp. samp. sites</a></li>' +
+                                    '<li><a class="TemporalsamplingSiteValueMenu dropdown-item" href="temporal_sampling_site_values.html">Valores temporales samp. sites</a></li>' +
                                 '</ul>' +
                             '</div>' +
                         '</li>' +
@@ -121,6 +124,7 @@ function includeHeader() {
                                     '<li><a class="analysisTechniqueMenu dropdown-item" href="analysis_technique.html">Técnicas análisis</a></li>' +
                                     '<li><a class="analysisPreparationMenu dropdown-item" href="analysispreparation.html">Preparación del análisis</a></li>' +
                                     '<li><a class="titleTokenAnalysis dropdown-item" href="token_in_analysis.html">Token en analisis</a></li>' +
+                                    '<li><a class="titleTokenInLab dropdown-item" href="token_in_lab.html">Token en laboratorio</a></li>' +
                                 '</ul>' +
                             '</div>' +
                         '</li>' +

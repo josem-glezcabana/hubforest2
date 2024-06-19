@@ -296,5 +296,48 @@ arrayEN={
 	'id_token_in_lab': 'Token in lab', 
 	'id_analysis_technique': 'Analysis technique', 
 	'id_analysis_preparation': 'Analysis preparation',
-	'TokenAnalysisError': 'There are no tokens in analysis that match these parameters.'
+	'TokenAnalysisError': 'There are no tokens in analysis that match these parameters.',
+
+	// TECHNIQUE_SAMPLE
+	'titleTechniqueSample': 'Technique sample',
+	'listadoTechniqueSample': 'List of sample techniques',
+	'añadirTechniqueSample': 'Add technique',
+	'buscarTechniqueSample': 'Search technique',
+	'editTechniqueSample': 'Edit technique',
+	'name_technique_sample': 'Sample technique name',
+	'description_technique_sample': 'Sample technique description',
+	'bib_technique_sample': 'Bibliographic reference',
+	'file_technique_sample': 'File',
+	'TechniqueSampleError': 'There are no sample techniques that match these parameters',
+
+	// TEMPORAL_SAMPLING_SITE_VALUES
+	'titleTemporalValues': 'Temporal sampling-site values',
+	'listadoTemporalValues': 'List of temporal sampling-site values',
+	'añadirTemporalValue': 'Add temp. value',
+	'buscarTemporalValue': 'Search temp. value',
+	'editTemporalValues': 'Edit temporal value',
+	'id_ecosystem_param': 'Ecosystem param id',
+	'id_replica': 'Replica',
+	'id_sampling': 'Sampling id',
+	'value_ecosystem_param': 'Value',
+	'temporalValuesError': 'There are no temporal values that match these parameters',
+
+	//UNITS
+	'titleUnit':'Units',
+	'listadoUnit':'Units',
+	'añadirUnit':'Add unit',
+	'editarUnit':'Edit unit',
+	'reiniciarUnit':'Reload table',
+	'name_unit':'Unit name',
+	'description_unit':' Description unit',
+	'unitError':'There are no units that match these parameters',
+	'aceptarUnitbtn':'Accept',
+	'cerrarModalUnit':'Close',
+	'unitPregunta':'Are you sure?',
+	'mensajeBorrarUnit':'The unit will be deleted',
+
+
+	//TOKEN IN LAB
+	'titleTokenInLab':'Token in lab',
+	'listadoTokenInLab':'Token in lab',
 }

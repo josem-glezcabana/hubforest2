@@ -289,15 +289,56 @@ arrayES={
 	'ReplicaError': 'No existen replicas que coincidan con estos parámetros.',
 
 	// TOKEN_IN_ANALYSIS
-	'titleTokenAnalysis': 'Token en analisis',
-	'listadoTokenAnalysis': 'Listado de tokens en analisis',
-	'añadirTokenAnalysis': 'Añadir token en analisis ',
-	'buscarTokenAnalysis': 'Buscar token en analisis',
-	'editarTokenAnalysis': 'Editar token en analisis',
-	'id_token_in_analysis': 'Token en analisis',
+	'titleTokenAnalysis': 'Token en análisis',
+	'listadoTokenAnalysis': 'Listado de tokens en análisis',
+	'añadirTokenAnalysis': 'Añadir token en análisis ',
+	'buscarTokenAnalysis': 'Buscar token en análisis',
+	'editarTokenAnalysis': 'Editar token en análisis',
+	'id_token_in_analysis': 'Token en análisis',
 	'id_token_in_lab': 'Token en laboratorio', 
-	'id_analysis_technique': 'Tecnica de analisis', 
-	'id_analysis_preparation': 'Preparacion de analisis',
-	'TokenAnalysisError': 'No existen tokens en analisis que coincidan con estos parámetros.'
-	
+	'id_analysis_technique': 'Tecnica de análisis', 
+	'id_analysis_preparation': 'Preparacion de análisis',
+	'TokenAnalysisError': 'No existen tokens en análisis que coincidan con estos parámetros.',
+
+	// TECHNIQUE_SAMPLE
+	'titleTechniqueSample': 'Técnicas de muestreo',
+	'listadoTechniqueSample': 'Listado de técnicas de muestreo',
+	'añadirTechniqueSample': 'Añadir técnica',
+	'buscarTechniqueSample': 'Buscar técnica',
+	'editTechniqueSample': 'Editar técnica',
+	'name_technique_sample': 'Nombre de la técnica',
+	'description_technique_sample': 'Descripción técnica',
+	'bib_technique_sample': 'Referencia bibliográfica',
+	'file_technique_sample': 'Archivo',
+	'TechniqueSampleError': 'No existen técnicas de muestreo que coincidan con estos parámetros',
+
+	// TEMPORAL_SAMPLING_SITE_VALUES
+	'titleTemporalValues': 'Valores temporales muestra-sitio',
+	'listadoTemporalValues': 'Lista de valores temporales muestra-sitio',
+	'añadirTemporalValue': 'Añadir valor temporal',
+	'buscarTemporalValue': 'Buscar valor temporal',
+	'editTemporalValues': 'Editar valor temporal',
+	'id_ecosystem_param': 'Id parámetro ecosistema',
+	'id_replica': 'Replica',
+	'id_sampling': 'Id muestra',
+	'value_ecosystem_param': 'Valor',
+	'temporalValuesError': 'No existen valores temporales que coincidan con estos parámetros',
+
+	//UNITS
+	'titleUnit':'Unidades',
+	'listadoUnit':'Unidades',
+	'añadirUnit':'Añadir unidad',
+	'editarUnit':'Editar unidad',
+	'reiniciarUnit':'Reiniciar tabla',
+	'name_unit':'Nombre unidad',
+	'description_unit':'Descripción de la unidad',
+	'unitError':'No existen unidades que coincidan con estos parámetros',
+	'aceptarUnitbtn':'Aceptar',
+	'cerrarModalUnit':'Cerrar',
+	'unitPregunta':'¿Estás seguro?',
+	'mensajeBorrarUnit':'Se va eliminar la unidad',
+
+	//TOKEN IN LAB
+	'titleTokenInLab':'Token en laboratorio',
+	'listadoTokenInLab':'Token en laboratorio'
 }

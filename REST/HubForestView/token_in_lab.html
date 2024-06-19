@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script type="text/javascript" src="js/funcionesComunes.js"></script>
+    <script type="text/javascript" src="js_app/token_in_lab/token_in_lab.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/crearformularios.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>   
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script type="text/javascript" src="locale/Lang_EN.js"></script>
+    <script type="text/javascript" src="locale/Lang_ES.js"></script>
+    <title class="titleCharacteristicSample">token_in_lab</title>
+    <!-- Incluye los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body onload="(async () => {
+    includeHeader(); includeFooter();
+    getListTokenInLab();
+})();">
+
+    <!-- Encabezado y Barra de Navegación -->
+    <div id="header"></div>
+    <div id="contenido" >
+    <div class="container mt-5">
+        <h2 class="listadoTokenInLab">Token en laboratorio</h2>
+        <div class="mt-2 mb-3 float-right">
+            <button class="añadirUnit btn btn-primary float-right" id="abrirModal" onclick="mostrarModalUnit('AñadirUnit')">Añadir unidad</button>
+            <button class="buscarUnit btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalUnit('BuscarUnit')">Buscar unidad</button>
+            <button class="reiniciarUnit btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListUnit()">Reiniciar tabla</button>
+            
+        </div>
+            
+        <table class="table table-striped" id="tablaUnit">
+            <thead >
+                    <th class="name_unit">Nombre Unidad</th>
+                    <th class="description_unit">Descripción unidad</th>
+            </thead>
+            
+            <tbody id="datosUnit">
+            </tbody>
+       
+            
+        </table>
+            <div id="formularioentidad"></div>
+        
+    </div>
+    
+    <div id="ventanaModal" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarModal()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="Titulo"></div>
+            <div id="mensajeError" class="text-center" style="display: none;">             
+                <h7 class="unitError">
+                    No existen unidades que coincidan con estos parámetros
+                </h7>
+                <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formUnit" action="" method="post" onsubmit="">
+
+                <div class="form-group">
+                    <label for="name_unit">Nombre unidad:</label>
+                    <select class="form-control" id="name_unit" name="name_unit"></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description_unit">Descripción de la unidad:</label>
+                    <select class="form-control" id="description_unit" name="description_unit"></select>
+                </div>
+                
+                <button type="submit" id="aceptar" class="aceptarUnitbtn btn-primary">Aceptar</button>
+                <button type="button" id="cerrar" class="cerrarModalUnit btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+            </form> 
+        </div>
+    </div>
+    
+    <div id="comprobarBorrar" class="modal">
+        <div class="contenido-modal">
+            <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="text-center" id="Titulo"><h2 class="unitPregunta">¿Estas seguro?</h2></div>
+            
+            <form id="formBorrarUnit" action="" method="post" onsubmit="">
+                <br>
+                <div class="form-group">
+                    <h5 class="mensajeBorrarUnit text-center">Se van elimina la unidad</h5>
+                    <input type="text" class="form-control" id="idBorrar" style="display: none;">
+                </div>
+                <div class="col text-center">
+                    <button type="submit" id="aceptar" class="aceptarUnitbtn  btn btn-danger">Aceptar</button>
+                    <button type="button" id="cerrar" class="cerrarModalUnit btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
+                </div>     
+            </form>  
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Pie de Página -->
+	<div id="footer"><div>
+</body>
+</html>
