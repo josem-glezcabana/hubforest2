@@ -44,7 +44,7 @@
                 <th class="name_lab_process">Nombre del proceso</th>
                 <th class="description_lab_process">Descripción</th>
                 <th class="bib_lab_process">Referencia bibliográfica</th>
-                <!-- <th class="file_lab_process">Archivo</th> -->
+                <th class="file_lab_process">Archivo</th>
             </thead>
 
             <tbody id="datosLabProcess">
@@ -89,9 +89,14 @@
                     <input type="text" class="form-control" id="bib_lab_process" name="bib_lab_process">
                 </div>
 
-                <div id="form_file_lab_process" class="form-group">
+                <div id="form_old_file_lab_process" class="form-group">
                     <label for="file_lab_process">Archivo:</label>
-                    <input type="file" class="form-control" id="file_lab_process" name="file_lab_process">
+                    <input type="text" class="form-control" id="file_lab_process" name="file_lab_process" readonly>
+                </div>
+
+                <div id="form_file_lab_process" class="form-group">
+                    <label for="new_file_lab_process">Archivo:</label>
+                    <input type="file" class="form-control" id="new_file_lab_process" name="new_file_lab_process">
                 </div>
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>
                 <button type="button" id="cerrar" class="cerrar btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
