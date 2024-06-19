@@ -44,7 +44,7 @@
                 <th class="name_technique_sample">Nombre de la técnica</th>
                 <th class="description_technique_sample">Descripción</th>
                 <th class="bib_technique_sample">Referencia bibliográfica</th>
-                <!-- <th class="file_technique_sample">Archivo</th> -->
+                <th class="file_technique_sample">Archivo</th>
             </thead>
 
             <tbody id="datosTechniqueSample">
@@ -89,9 +89,14 @@
                     <input type="text" class="form-control" id="bib_technique_sample" name="bib_technique_sample">
                 </div>
 
+                <div id="form_old_file_technique_sample" class="form-group">
+                    <label for="file_technique_sample">Archivo actual:</label>
+                    <input type="text" class="form-control" id="file_technique_sample" name="file_technique_sample" readonly>
+                </div>
+
                 <div id="form_file_technique_sample" class="form-group">
-                    <label for="file_technique_sample">Archivo:</label>
-                    <input type="file" class="form-control" id="file_technique_sample" name="file_technique_sample">
+                    <label for="new_file_technique_sample">Archivo:</label>
+                    <input type="file" class="form-control" id="new_file_technique_sample" name="new_file_technique_sample">
                 </div>
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>
                 <button type="button" id="cerrar" class="cerrar btn btn-secondary" onclick="cerrarModal()">Cerrar</button>

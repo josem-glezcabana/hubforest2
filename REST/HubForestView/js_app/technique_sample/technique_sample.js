@@ -43,7 +43,7 @@ async function addTechniqueSample(name_technique_sample, description_technique_s
         file_technique_sample: file_technique_sample
     };
 
-    return peticionBackGeneral('', 'technique_sample', 'ADD', technique_sample)
+    return peticionBackGeneral('formTechniqueSample', 'technique_sample', 'ADD')
         .then(response => {
             location.reload();
             response['resource']
@@ -64,7 +64,7 @@ async function editTechniqueSample(id_technique_sample, name_technique_sample, d
         file_technique_sample: file_technique_sample
     };
 
-    return peticionBackGeneral('', 'technique_sample', 'EDIT', technique_sample)
+    return peticionBackGeneral('formTechniqueSample', 'technique_sample', 'EDIT')
         .then(response => {
             location.reload();
             return { status: 'OK', data: response };
@@ -99,14 +99,14 @@ function construyeTablaTechSample(filas) {
     $("#datosTechniqueSample").html("");
     filas.forEach(fila => {
         let atributosTabla = ["'" + fila.id_technique_sample + "'","'" + fila.name_technique_sample + "'", "'" + fila.description_technique_sample + "'",
-                              "'" + fila.bib_technique_sample + "'"/* ,"'" + fila.file_technique_sample + "'" */];
+                              "'" + fila.bib_technique_sample + "'","'" + fila.file_technique_sample + "'"];
         let botonEdit='<button class="BotonEditar btn btn-info editarTechniqueSample" id="editarTechniqueSample" onclick="mostrarModalTechSample('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_technique_sample + 
                 '</td> <td>' + fila.name_technique_sample + 
                 '</td> <td>' + fila.description_technique_sample + 
                 '</td> <td>' + fila.bib_technique_sample + 
-                // '</td> <td>' + fila.file_technique_sample + 
+                '</td> <td>' + fila.file_technique_sample + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarTechniqueSample" id="borrarTechniqueSample" onclick="mostrarBorrarTechSample('+fila.id_technique_sample+')">Eliminar</button>'
                 
@@ -147,7 +147,7 @@ function getAtributosTechSample(tipo){
     let name_technique_sample = document.getElementById("name_technique_sample").value
     let description_technique_sample = document.getElementById("description_technique_sample").value
     let bib_technique_sample = document.getElementById("bib_technique_sample").value
-    let file_technique_sample = document.getElementById("file_technique_sample").value
+    let file_technique_sample = document.getElementById("new_file_technique_sample").value
     switch(tipo){
         case "Editar":
             editTechniqueSample(id_technique_sample, name_technique_sample, description_technique_sample, bib_technique_sample, file_technique_sample)
@@ -174,16 +174,18 @@ function mostrarModalTechSample(tipo, id_technique_sample=null, name_technique_s
         $("#name_technique_sample").val(name_technique_sample);
         $("#description_technique_sample").val(description_technique_sample);
         $("#bib_technique_sample").val(bib_technique_sample);
+        $('#form_old_file_technique_sample').show();
         $('#form_file_technique_sample').show();
-        // $("#file_technique_sample").val(file_technique_sample);
+        $("#file_technique_sample").val(file_technique_sample);
     }
     else{
+        $('#form_old_file_technique_sample').hide();
         if(tipo.includes("buscar")){
             document.getElementById("name_technique_sample").required = false;
             document.getElementById("description_technique_sample").required = false;
             document.getElementById("bib_technique_sample").required = false;
             $('#form_file_technique_sample').hide();
-            document.getElementById("file_technique_sample").required = false;
+            document.getElementById("new_file_technique_sample").required = false;
 
             $("#formTechniqueSample").attr('action' , 'javascript:getAtributosTechSample("Buscar");');
         }
@@ -192,7 +194,7 @@ function mostrarModalTechSample(tipo, id_technique_sample=null, name_technique_s
             document.getElementById("description_technique_sample").required = true;
             document.getElementById("bib_technique_sample").required = true;
             $('#form_file_technique_sample').show();
-            document.getElementById("file_technique_sample").required = false;
+            document.getElementById("new_file_technique_sample").required = false;
 
             $("#formTechniqueSample").attr('action' , 'javascript:getAtributosTechSample("Añadir");');
         }
