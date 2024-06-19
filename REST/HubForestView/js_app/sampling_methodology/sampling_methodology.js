@@ -43,7 +43,7 @@ async function addSamplingMethod(name_methodology, description_methodology, bibr
         file_methodology: file_methodology
     };
 
-    return peticionBackGeneral('', 'sampling_methodology', 'ADD', sampling_methodology)
+    return peticionBackGeneral('formSamplingMethod', 'sampling_methodology', 'ADD')
         .then(response => {
             location.reload();
             response['resource']
@@ -64,7 +64,7 @@ async function editSamplingMethod(id_sampling_methodology, name_methodology, des
         file_methodology: file_methodology
     };
 
-    return peticionBackGeneral('', 'sampling_methodology', 'EDIT', sampling_methodolody)
+    return peticionBackGeneral('formSamplingMethod', 'sampling_methodology', 'EDIT')
         .then(response => {
             location.reload();
             return { status: 'OK', data: response };
@@ -100,14 +100,14 @@ function construyeTablaSamplingMethod(filas) {
     $("#datosSamplingMethod").html("");
     filas.forEach(fila => {
         let atributosTabla = ["'" + fila.id_sampling_methodology + "'","'" + fila.name_methodology + "'", "'" + fila.description_methodology + "'",
-                              "'" + fila.bibref_methodology + "'"/* ,"'" + fila.file_methodology + "'" */];
+                              "'" + fila.bibref_methodology + "'","'" + fila.file_methodology + "'"];
         let botonEdit='<button class="BotonEditar btn btn-info editarSamplingMethod" id="editarSamplingMethod" onclick="mostrarModalSamplingMethod('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_sampling_methodology + 
                 '</td> <td>' + fila.name_methodology + 
                 '</td> <td>' + fila.description_methodology + 
                 '</td> <td>' + fila.bibref_methodology + 
-                // '</td> <td>' + fila.file_methodology + 
+                '</td> <td>' + fila.file_methodology + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarSamplingMethod" id="borrarSamplingMethod" onclick="mostrarBorrarSamplingMethod('+fila.id_sampling_methodology+')">Eliminar</button>'
                 
@@ -148,7 +148,7 @@ function getAtributosSamplingMethod(tipo){
     let name_methodology = document.getElementById("name_methodology").value
     let description_methodology = document.getElementById("description_methodology").value
     let bibref_methodology = document.getElementById("bibref_methodology").value
-    let file_methodology = document.getElementById("file_methodology").value
+    let file_methodology = document.getElementById("new_file_methodology").value
      switch(tipo){
         case "Editar":
             editSamplingMethod(id_sampling_methodology, name_methodology, description_methodology, bibref_methodology, file_methodology)
@@ -175,16 +175,18 @@ function mostrarModalSamplingMethod(tipo, id_sampling_methodology=null, name_met
         $("#name_methodology").val(name_methodology);
         $("#description_methodology").val(description_methodology);
         $("#bibref_methodology").val(bibref_methodology);
+        $('#form_old_file_methodology').show();
         $('#form_file_methodology').show();
         $("#file_methodology").val(file_methodology);
     }
     else{
+        $('#form_old_file_methodology').hide();
         if(tipo.includes("Buscar")){
             document.getElementById("name_methodology").required = false;
             document.getElementById("description_methodology").required = false;
             document.getElementById("bibref_methodology").required = false;
             $('#form_file_methodology').hide();
-            document.getElementById("file_methodology").required = false;
+            document.getElementById("new_file_methodology").required = false;
 
             $("#formSamplingMethod").attr('action' , 'javascript:getAtributosSamplingMethod("Buscar");');
         }
@@ -193,7 +195,7 @@ function mostrarModalSamplingMethod(tipo, id_sampling_methodology=null, name_met
             document.getElementById("description_methodology").required = true;
             document.getElementById("bibref_methodology").required = true;
             $('#form_file_methodology').show();
-            document.getElementById("file_methodology").required = false;
+            document.getElementById("new_file_methodology").required = false;
 
             $("#formSamplingMethod").attr('action' , 'javascript:getAtributosSamplingMethod("Añadir");');
         }

@@ -46,7 +46,7 @@
                 <th class="name_methodology">Nombre de la metodología</th>
                 <th class="description_methodology">Descripción</th>
                 <th class="bibref_methodology">Referencia bibliográfica</th>
-                <!-- <th class="file_methodology">Archivo</th> -->
+                <th class="file_methodology">Archivo</th>
             </thead>
             
             <tbody id="datosSamplingMethod">
@@ -93,9 +93,14 @@
                     <input type="text" class="form-control" id="bibref_methodology" name="bibref_methodology">
                 </div>
 
-                <div id="form_file_methodology" class="form-group">
+                <div id="form_old_file_methodology" class="form-group">
                     <label for="file_methodology">Archivo:</label>
-                    <input type="file" class="form-control" id="file_methodology" name="file_methodology">
+                    <input type="text" class="form-control" id="file_methodology" name="file_methodology" readonly>
+                </div>
+
+                <div id="form_file_methodology" class="form-group">
+                    <label for="new_file_methodology">Archivo:</label>
+                    <input type="file" class="form-control" id="new_file_methodology" name="new_file_methodology">
                 </div>
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>
                 <button type="button" id="cerrar" class="cerrar btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
