@@ -68,13 +68,13 @@ async function addProyecto(name_project, start_date_project, end_date_project, r
         responsable_project: responsable_project,
         organization_project: organization_project,
         description_project: description_project,
-        file_project: file_project,
+        new_file_project: file_project,
         code_project: code_project,
         acronym_project: acronym_project,
         id_sampling_methodology: id_sampling_methodology
     };
 
-    return peticionBackGeneral('', 'project', 'ADD', project)
+    return peticionBackGeneral('formProyecto', 'project', 'ADD')
         .then(response => {
             location.reload();
             response['resource']
@@ -101,7 +101,7 @@ async function editProyecto(id_project, name_project, start_date_project, end_da
         id_sampling_methodology: id_sampling_methodology
     };
 
-    return peticionBackGeneral('', 'project', 'EDIT', project)
+    return peticionBackGeneral('formProyecto', 'project', 'EDIT')
         .then(response => {
             location.reload();
             return { status: 'OK', data: response };
@@ -230,7 +230,7 @@ function getAtributosProyecto(tipo){
     var responsable_project = document.getElementById("responsable_project").value
     var organization_project = document.getElementById("organization_project").value
     var description_project = document.getElementById("description_project").value
-    var file_project = document.getElementById("file_project").value
+    var file_project = document.getElementById("new_file_project").value
     let code_project = document.getElementById("code_project").value
     let acronym_project = document.getElementById("acronym_project").value
     let id_sampling_methodology = document.getElementById("id_sampling_methodology").value
@@ -270,6 +270,7 @@ function mostrarModalProyecto(tipo, id_project=null, name_project=null, start_da
         $("#responsable_project").val(responsable_project);
         $("#organization_project").val(organization_project);
         $("#description_project").val(description_project);
+        $('#form_old_file_project').show();
         $('#form_file_project').show();
         $("#file_project").val(file_project);
         $("#code_project").val(code_project);
@@ -277,6 +278,7 @@ function mostrarModalProyecto(tipo, id_project=null, name_project=null, start_da
         $("#id_sampling_methodology").val(id_sampling_methodology);
     }
     else{
+        $('#form_old_file_project').hide();
         if(tipo.includes("Buscar")){
             document.getElementById("name_project").required = false;
             document.getElementById("start_date_project").required = false;
@@ -285,7 +287,7 @@ function mostrarModalProyecto(tipo, id_project=null, name_project=null, start_da
             document.getElementById("organization_project").required = false;
             document.getElementById("description_project").required = false;
             $('#form_file_project').hide();
-            document.getElementById("file_project").required = false;
+            document.getElementById("new_file_project").required = false;
             document.getElementById("code_project").required = false;
             document.getElementById("acronym_project").required = false;
             document.getElementById("id_sampling_methodology").required = false;
@@ -300,7 +302,7 @@ function mostrarModalProyecto(tipo, id_project=null, name_project=null, start_da
             document.getElementById("organization_project").required = true;
             document.getElementById("description_project").required = false;
             $('#form_file_project').show();
-            document.getElementById("file_project").required = false;
+            document.getElementById("new_file_project").required = false;
             document.getElementById("code_project").required = true;
             document.getElementById("acronym_project").required = true;
             document.getElementById("id_sampling_methodology").required = true;
