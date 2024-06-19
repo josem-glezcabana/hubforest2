@@ -43,7 +43,7 @@ async function addAnalysisTechnique(name_analysis_technique, description_analysi
         file_analysis_tecnique: file_analysis_tecnique
     };
 
-    return peticionBackGeneral('', 'analysis_technique', 'ADD', analysis_technique)
+    return peticionBackGeneral('formAnalysisTechnique', 'analysis_technique', 'ADD')
         .then(response => {
             location.reload();
             response['resource']
@@ -64,7 +64,7 @@ async function editAnalysisTechnique(id_analysis_technique, name_analysis_techni
         file_analysis_tecnique: file_analysis_tecnique
     };
 
-    return peticionBackGeneral('', 'analysis_technique', 'EDIT', analysis_technique)
+    return peticionBackGeneral('formAnalysisTechnique', 'analysis_technique', 'EDIT')
         .then(response => {
             location.reload();
             return { status: 'OK', data: response };
@@ -99,14 +99,14 @@ function construyeTablaAnalysisTech(filas) {
     $("#datosAnalysisTechnique").html("");
     filas.forEach(fila => {
         let atributosTabla = ["'" + fila.id_analysis_technique + "'","'" + fila.name_analysis_technique + "'", "'" + fila.description_analysis_technique + "'",
-                              "'" + fila.bib_analysis_technique + "'"/* ,"'" + fila.file_analysis_tecnique + "'" */];
+                              "'" + fila.bib_analysis_technique + "'","'" + fila.file_analysis_tecnique + "'"];
         let botonEdit='<button class="BotonEditar btn btn-info editarAnalysisTechnique" id="editarAnalysisTechnique" onclick="mostrarModalAnalysisTechnique('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_analysis_technique + 
                 '</td> <td>' + fila.name_analysis_technique + 
                 '</td> <td>' + fila.description_analysis_technique + 
                 '</td> <td>' + fila.bib_analysis_technique + 
-                // '</td> <td>' + fila.file_analysis_tecnique + 
+                '</td> <td>' + fila.file_analysis_tecnique + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarAnalysisTechnique" id="borrarAnalysisTechnique" onclick="mostrarBorrarAnalysisTechnique('+fila.id_analysis_technique+')">Eliminar</button>'
                 
@@ -147,7 +147,7 @@ function getAtributosAnalysisTechnique(tipo){
     let name_analysis_technique = document.getElementById("name_analysis_technique").value
     let description_analysis_technique = document.getElementById("description_analysis_technique").value
     let bib_analysis_technique = document.getElementById("bib_analysis_technique").value
-    let file_analysis_tecnique = document.getElementById("file_analysis_tecnique").value
+    let file_analysis_tecnique = document.getElementById("new_file_analysis_tecnique").value
     switch(tipo){
         case "Editar":
             editAnalysisTechnique(id_analysis_technique, name_analysis_technique, description_analysis_technique, bib_analysis_technique, file_analysis_tecnique)
@@ -174,16 +174,18 @@ function mostrarModalAnalysisTechnique(tipo, id_analysis_technique=null, name_an
         $("#name_analysis_technique").val(name_analysis_technique);
         $("#description_analysis_technique").val(description_analysis_technique);
         $("#bib_analysis_technique").val(bib_analysis_technique);
+        $('#form_old_file_analysis_tecnique').show();
         $('#form_file_analysis_tecnique').show();
-        // $("#file_analysis_tecnique").val(file_analysis_tecnique);
+        $("#file_analysis_tecnique").val(file_analysis_tecnique);
     }
     else{
+        $('#form_old_file_analysis_tecnique').hide();
         if(tipo.includes("buscar")){
             document.getElementById("name_analysis_technique").required = false;
             document.getElementById("description_analysis_technique").required = false;
             document.getElementById("bib_analysis_technique").required = false;
             $('#form_file_analysis_tecnique').hide();
-            document.getElementById("file_analysis_tecnique").required = false;
+            document.getElementById("new_file_analysis_tecnique").required = false;
 
             $("#formAnalysisTechnique").attr('action' , 'javascript:getAtributosAnalysisTechnique("Buscar");');
         }
@@ -192,7 +194,7 @@ function mostrarModalAnalysisTechnique(tipo, id_analysis_technique=null, name_an
             document.getElementById("description_analysis_technique").required = true;
             document.getElementById("bib_analysis_technique").required = true;
             $('#form_file_analysis_tecnique').show();
-            document.getElementById("file_analysis_tecnique").required = false;
+            document.getElementById("new_file_analysis_tecnique").required = false;
 
             $("#formAnalysisTechnique").attr('action' , 'javascript:getAtributosAnalysisTechnique("Añadir");');
         }
