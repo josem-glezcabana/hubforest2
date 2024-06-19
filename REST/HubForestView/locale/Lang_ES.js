@@ -64,6 +64,7 @@ arrayES={
 	'email_user': 'Correo',
 	'organization_user': 'Organización',
 	'position_user': 'Puesto',
+	'file_curr_user': 'Fichero del usuario',
 	'usuariosError': 'No existen usuarios que coincidan con estos parámetros',
 	'cerrarModalUsuario': 'Cerrar',
 	'usuariosPregunta': '¿Estás seguro?',

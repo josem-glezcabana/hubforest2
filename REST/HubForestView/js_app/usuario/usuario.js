@@ -67,7 +67,7 @@ async function addUsuario(name_user, surname_user, organization_user, email_user
         is_admin: "NO"
     };
 
-    return peticionBackGeneral('', 'user', 'ADD', user)
+    return peticionBackGeneral('formUsuario', 'user', 'ADD', user)
         .then(response => {
             location.reload();
             response['resource']
@@ -92,7 +92,7 @@ async function editUsuario(id_user, name_user, surname_user, organization_user, 
         is_admin: "NO"
     };
 
-    return peticionBackGeneral('', 'user', 'EDIT', user)
+    return peticionBackGeneral('formUsuario', 'user', 'EDIT', user)
         .then(response => {
             location.reload();
             return { status: 'OK', data: response };
@@ -213,7 +213,8 @@ function construyeTablaUsuario(filas) {
 
     $("#datosUsuarios").html("");
     filas.forEach(fila => {
-        var atributosTabla = ["'" + fila.id_user + "'","'" + fila.name_user + "'", "'" + fila.surname_user + "'", "'" + fila.passwd + "'", "'" + fila.email_user + "'", "'" + fila.organization_user + "'","'" + fila.position_user + "'"];
+        var atributosTabla = ["'" + fila.id_user + "'","'" + fila.name_user + "'", "'" + fila.surname_user + "'", "'" + fila.passwd + "'",
+            "'" + fila.email_user + "'", "'" + fila.organization_user + "'","'" + fila.position_user + "'", "'" + fila.file_curr_user + "'"];
         var botonEdit='<button class="BotonEditar btn btn-info" id="editarUsuario" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.id_user + 
@@ -222,6 +223,7 @@ function construyeTablaUsuario(filas) {
                 '</td> <td>' + fila.email_user + 
                 '</td> <td>' + fila.organization_user + 
                 '</td> <td>' + fila.position_user + 
+                '</td> <td>' + fila.file_curr_user + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarUsuario" onclick="mostrarBorrar('+fila.id_user+')">Eliminar</button>'
                 
@@ -265,7 +267,7 @@ function getAtributos(tipo){
     var email_user = document.getElementById("email_user").value
     var passwd = encriptar("passwd")
     var position_user = document.getElementById("position_user").value
-    var file_curr_user = document.getElementById("file_curr_user").value
+    var file_curr_user = document.getElementById("new_file_curr_user").value
      switch(tipo){
         case "Editar":
             editUsuario(id_user,name_user, surname_user, organization_user, email_user, passwd, position_user, file_curr_user)
@@ -292,6 +294,7 @@ function mostrarModal(tipo, id_user=null, name_user=null, surname_user=null, pas
         $("#name_user").val(name_user);
         $('#formPassword').show();
         $("#passwd").val(passwd);
+        $('#form_old_file_curr_user').show();
         $('#form_file_curr_user').show();
         $("#surname_user").val(surname_user);
         $("#email_user").val(email_user);
@@ -300,6 +303,7 @@ function mostrarModal(tipo, id_user=null, name_user=null, surname_user=null, pas
         $("#file_curr_user").val(file_curr_user);
     }
     else{
+        $('#form_old_file_curr_user').hide();
         if(tipo.includes("Buscar")){
             document.getElementById("name_user").required = false;
             $('#formPassword').hide();
@@ -309,7 +313,7 @@ function mostrarModal(tipo, id_user=null, name_user=null, surname_user=null, pas
             document.getElementById("organization_user").required = false;
             document.getElementById("position_user").required = false;
             $('#form_file_curr_user').hide();
-            document.getElementById("file_curr_user").required = false;
+            document.getElementById("new_file_curr_user").required = false;
 
             $("#formUsuario").attr('action' , 'javascript:getAtributos("Buscar");');
         }
@@ -322,7 +326,7 @@ function mostrarModal(tipo, id_user=null, name_user=null, surname_user=null, pas
             document.getElementById("organization_user").required = true;
             document.getElementById("position_user").required = true;
             $('#form_file_curr_user').show();
-            document.getElementById("file_curr_user").required = false;
+            document.getElementById("new_file_curr_user").required = false;
 
             $("#formUsuario").attr('action' , 'javascript:getAtributos("Añadir");');
         }

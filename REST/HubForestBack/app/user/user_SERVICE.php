@@ -31,6 +31,11 @@ class user_SERVICE extends appServiceBase
 
 		$this->modelo = $this->crearModelOne('user');
 
+		// para los ficheros, se define este array de arrays. Cada elemento de este array es otro array con los siguientes atributos:
+		// nombre del campo del fichero que se inserta, nombre de campo de la BBDD, carpeta directorio de los ficheros de esta entidad, array de extensiones y tamaño en bytes
+		$this->files = array(
+			array('new_file_curr_user', 'file_curr_user', './files/user/', array('txt', 'pdf', 'docx'), 200000)
+		);
 	}
 
 	function cambiar_contrasena()

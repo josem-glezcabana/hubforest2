@@ -64,6 +64,7 @@ arrayEN={
 	'email_user': 'Email',
 	'organization_user': 'Organisation',
 	'position_user': 'Position',
+	'file_curr_user': 'Users file',
 	'usuariosError': 'There are no users that match these parameters',
 	'cerrarModalUsuario': 'Close',
 	'usuariosPregunta': 'Are you sure?',

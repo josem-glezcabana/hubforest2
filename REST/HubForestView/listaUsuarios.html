@@ -48,6 +48,7 @@
                     <th class="email_user">Correo</th>
                     <th class="organization_user">Organización</th>
                     <th class="position_user">Puesto</th>
+                    <th class="file_curr_user">Archivo</th>
             </thead>
             
             <tbody id="datosUsuarios">
@@ -59,7 +60,7 @@
         
     </div>
     
-    <div id="ventanaModal" class="modal">
+    <div id="ventanaModal" class="modal" style="overflow-y:scroll;">
         <div class="contenido-modal">
             <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarModal()" data-close>
                 <span aria-hidden="true">&times;</span>
@@ -109,9 +110,14 @@
                     <input type="text" class="form-control" id="position_user" name="position_user" >
                 </div>
 
+                <div id="form_old_file_curr_user" class="form-group">
+                    <label for="file_curr_user">Archivo actual:</label>
+                    <input type="text" class="form-control" id="file_curr_user" name="file_curr_user" readonly>
+                </div>
+
                 <div id="form_file_curr_user" class="form-group">
-                    <label for="file_curr_user">Archivo:</label>
-                    <input type="file" class="form-control" id="file_curr_user" name="file_curr_user" >
+                    <label for="new_file_curr_user">Archivo:</label>
+                    <input type="file" class="form-control" id="new_file_curr_user" name="new_file_curr_user">
                 </div>
                 
                 <button type="submit" id="aceptar" class="btn btn-primary"></button>
