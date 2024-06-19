@@ -229,7 +229,7 @@ abstract class appServiceBase{
 			$ruta = $files[2];
 			$extensiones = $files[3];
 			$size = $files[4];
-
+			
 			//si trae un string trae el valor anterior y ningun nuevo fichero
 			if ($_FILES[$nuevofichero]['name']==''){
 				$this->modelo->$fichero = $_POST[$fichero];
@@ -266,6 +266,7 @@ abstract class appServiceBase{
 				}
 				
 				if(empty($errors)==true){
+					
 					$this->modelo->$fichero = $file_name;
 					$this->modelo->valores[$fichero] = $file_name;
 

@@ -47,12 +47,13 @@ async function addCharacteristic(name_characteristic, description_characteristic
         description_characteristic: description_characteristic,
         data_type_characteristic: data_type_characteristic,
         bibref_characteristic: bibref_characteristic,
-        file_characteristic: file_characteristic
+        nuevo_file_characteristic: file_characteristic
     };
 
-    return peticionBackGeneral('', 'characteristic', 'ADD', characteristic)
+    return peticionBackGeneral('formCharacteristic', 'characteristic', 'ADD')
         .then(response => {
-            location.reload();
+           // location.reload();
+           console.log(response)
             response['resource']
             return { status: 'OK', data: response };
         })
@@ -72,7 +73,7 @@ async function editCharacteristic(id_characteristic, name_characteristic, descri
         file_characteristic: file_characteristic
     };
 
-    return peticionBackGeneral('', 'characteristic', 'EDIT', characteristic)
+    return peticionBackGeneral('formCharacteristic', 'characteristic', 'EDIT')
         .then(response => {
             location.reload();
             return { status: 'OK', data: response };
@@ -159,7 +160,7 @@ function getAtributos(tipo){
     var description_characteristic = document.getElementById("description_characteristic").value
     var data_type_characteristic = document.getElementById("data_type_characteristic").value
     var bibref_characteristic = document.getElementById("bibref_characteristic").value
-    var file_characteristic = document.getElementById("file_characteristic").value
+    var file_characteristic = document.getElementById("nuevo_file_characteristic").value
      switch(tipo){
         case "Editar":
             editCharacteristic(id_characteristic, name_characteristic, description_characteristic, data_type_characteristic, bibref_characteristic, file_characteristic)
@@ -187,17 +188,20 @@ function mostrarModal(tipo, id_characteristic=null, name_characteristic=null, de
         $("#description_characteristic").val(description_characteristic);
         $("#data_type_characteristic").val(data_type_characteristic);
         $("#bibref_characteristic").val(bibref_characteristic);
+        $('#form_ant_file_characteristic').show();
         $('#form_file_characteristic').show();
+        $('#file_characteristic').val(file_characteristic);
        // $("#file_characteristic").val(file_characteristic);
     }
     else{
+        $('#form_ant_file_characteristic').hide();
         if(tipo.includes("buscar")){
             document.getElementById("name_characteristic").required = false;
             document.getElementById("description_characteristic").required = false;
             document.getElementById("data_type_characteristic").required = false;
             document.getElementById("bibref_characteristic").required = false;
             $('#form_file_characteristic').hide();
-            document.getElementById("file_characteristic").required = false;
+            document.getElementById("nuevo_file_characteristic").required = false;
 
             $("#formCharacteristic").attr('action' , 'javascript:getAtributos("Buscar");');
         }
@@ -207,7 +211,7 @@ function mostrarModal(tipo, id_characteristic=null, name_characteristic=null, de
             document.getElementById("data_type_characteristic").required = true;
             document.getElementById("bibref_characteristic").required = true;
             $('#form_file_characteristic').show();
-            document.getElementById("file_characteristic").required = false;
+            document.getElementById("nuevo_file_characteristic").required = false;
 
             $("#formCharacteristic").attr('action' , 'javascript:getAtributos("Añadir");');
         }

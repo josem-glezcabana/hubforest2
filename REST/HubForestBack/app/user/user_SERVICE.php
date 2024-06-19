@@ -44,4 +44,4 @@ class user_SERVICE extends appServiceBase
 		return $res;
 	}
 
-}
+} 
