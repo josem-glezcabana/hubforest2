@@ -28,7 +28,7 @@ class characteristic_SERVICE extends appServiceBase{
 
 		$this->modelo = $this->crearModelOne('characteristic');
 		$this->files = array(
-			array("nuevo_file_characteristic", "file_characteristic", "./files/", array("txt", "pdf"), 200000)
+			array("nuevo_file_characteristic", "file_characteristic", "./files/characteristic/", array("txt", "pdf"), 200000)
 		);
 	}
 
