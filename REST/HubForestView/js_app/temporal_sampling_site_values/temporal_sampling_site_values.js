@@ -77,8 +77,8 @@ async function editTemporalValues(id_ecosystem_param, id_replica, id_sampling, v
         });
 }
 
-async function deleteTemporalValues(id_ecosystem_param, id_replica, id_sampling) {    
-    return peticionBackGeneral('', 'temporal_sampling_site_params', 'DELETE', {
+async function deleteTemporalValues(id_ecosystem_param, id_replica, id_sampling) {
+    return peticionBackGeneral('', 'temporal_sampling_site_values', 'DELETE', {
         'id_ecosystem_param': id_ecosystem_param,
         'id_replica': id_replica,
         'id_sampling': id_sampling
@@ -130,7 +130,6 @@ function construyeTablaTemporalValues(filas) {
 
     $("#datosTemporalValues").html("");
     filas.forEach(fila => {
-        console.log('fila', fila)
         let atributosTabla = ["'" + fila.id_ecosystem_param + "'", "'" + fila.id_replica + "'", "'" + fila.id_sampling + "'", "'" + fila.value_ecosystem_param + "'"];
         let botonEdit='<button class="BotonEditar btn btn-info editarTemporalValues" id="editarTemporalValues" onclick="mostrarModalTempValues('+tipo+','+atributosTabla+')">Editar</button>'
 
@@ -139,7 +138,7 @@ function construyeTablaTemporalValues(filas) {
                 '</td> <td>' + fila.id_sampling + 
                 '</td> <td>' + fila.value_ecosystem_param + 
                 '</td> <td class="text-center">' + botonEdit +
-                '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarTemporalValues" id="borrarTemporalValues" onclick="mostrarBorrarTemporalValues(' + fila.id_ecosystem_param + ',' + fila.id_replica + ',' + fila.id_sampling + ')">Eliminar</button>'
+                '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarTemporalValues" id="borrarTemporalValues" onclick="mostrarBorrarTemporalValues(' + fila.id_ecosystem_param + ', \'' + fila.id_replica + '\',' + fila.id_sampling + ')">Eliminar</button>'
                 
                 '</td>  </tr>';
     });
@@ -303,8 +302,6 @@ function cerrarModal(){
 }
 
 function mostrarBorrarTemporalValues(id_ecosystem_param, id_replica, id_sampling){
-    console.log('id_replica', id_replica)
-    console.log('tipo replica: ', typeof id_replica)
     // Ventana modal
     const attributes = [id_ecosystem_param, id_replica, id_sampling];
     document.getElementById("comprobarBorrar").style.display = "block";
