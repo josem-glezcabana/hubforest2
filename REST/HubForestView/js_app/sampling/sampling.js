@@ -253,7 +253,7 @@ function validarCampos() {
     var collectorsInput = document.getElementById('collectors_sampling').value;
     var pattern = /^[a-zA-Z]+(:[a-zA-Z]+)*$/;
 
-    if (!pattern.test(collectorsInput)) {
+    if (collectorsInput.trim() !== "" && !pattern.test(collectorsInput)) {
         $('#errorModal').modal('show');
         return false; // Evita que el formulario se envíe
     }
