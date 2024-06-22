@@ -39,9 +39,32 @@ function USER_TEST(){
 //--------------------------------------------------------------------------------------------------------------------
 
 	//rol
-	$entidad = 'user';
+	$accion = 'SEARCH';
+
+	//---------------------------------------------------------------------------------------------------------------------
+//Prueba buscar usuario por nombre correcto
+	$prueba = 'search usuario por nombre correcto';
+	$POST = array('name_user' => 'user',
+                'controlador'=>$entidad,
+                'action'=>$accion
+            );
+	$codeEsperado = 'RECORDSET_DATOS';
+	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
+
+	//---------------------------------------------------------------------------------------------------------------------
+//Prueba buscar usuario por nombre no encontrado
+	$prueba = 'search usuario por nombre correcto';
+	$POST = array('name_user' => 'prueba',
+                'controlador'=>$entidad,
+                'action'=>$accion
+            );
+	$codeEsperado = 'RECORDSET_VACIO';
+	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
+
+	//---------------------------------------------------------------------------------------------------------------------
+
+	//rol
 	$accion = 'DELETE';
-	$tipo = 'Accion';
 
 //---------------------------------------------------------------------------------------------------------------------
 //Prueba eliminar usuario correcto
@@ -54,28 +77,6 @@ function USER_TEST(){
 	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
 	//---------------------------------------------------------------------------------------------------------------------
-	
-    //rol
-	$entidad = 'user';
-	$accion = 'SEARCH';
-	$tipo = 'Accion';
-
-//---------------------------------------------------------------------------------------------------------------------
-//Prueba buscar usuario por nombre correcto
-	$prueba = 'search usuario por nombre correcto';
-	$POST = array('name_user' => 'user',
-                'controlador'=>$entidad,
-                'action'=>$accion
-            );
-	$codeEsperado = 'RECORDSET_DATOS';
-	$pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
-
-	//---------------------------------------------------------------------------------------------------------------------
-	
-    //rol
-	$entidad = 'user';
-	$accion = 'DELETE';
-	$tipo = 'Accion';
 
 //---------------------------------------------------------------------------------------------------------------------
 //Prueba buscar usuario por nombre correcto

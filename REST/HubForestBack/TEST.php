@@ -93,6 +93,16 @@ include './app/temporal_sampling_site_params/temporal_sampling_site_params_TEST.
 $rest = TEMPORAL_SAMPLING_SITE_PARAMS_TEST();
 guardar_test($resultadosTESTS, $rest);
 
+//prueba technique_sample
+include './app/technique_sample/technique_sample_TEST.php';
+$rest = TECHNIQUE_SAMPLE_TEST();
+guardar_test($resultadosTESTS, $rest);
+
+//prueba technique_sample
+include './app/temporal_sampling_site_values/temporal_sampling_site_values_TEST.php';
+$rest = TEMPORAL_SAMPLING_SITE_VALUES_TEST();
+guardar_test($resultadosTESTS, $rest);
+
 session_destroy();
 //presentar resultados
 presentarResultadosPruebas($resultadosTESTS);
