@@ -41,9 +41,9 @@ async function addTokenInLab(id_token_in_sampling,id_lab_process) {
       });
 }
 
-async function deleteTokenInLab(id_token_in_lab) {
+async function deleteTokenInLab(id_token_in_lab, id_token_in_sampling) {
   
-  return peticionBackGeneral('', 'token_in_lab', 'DELETE', {'id_token_in_lab': id_token_in_lab})
+  return peticionBackGeneral('', 'token_in_lab', 'DELETE', {'id_token_in_lab': id_token_in_lab, 'id_token_in_sampling': id_token_in_sampling})
       .then(response => {
           location.reload();
           return { status: 'OK', data: response };
@@ -54,18 +54,18 @@ async function deleteTokenInLab(id_token_in_lab) {
       });
 }
 
-async function getListUsuariosPermisos(usuario) {
-  return peticionBackGeneral('', 'user', 'SEARCH')
-      .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectUsuarios("id_user", response['resource'], usuario) : null)
+async function getListTokenInSampling(token_in_sampling) {
+  return peticionBackGeneral('', 'token_in_sampling', 'SEARCH')
+      .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectTokenInSampling("id_token_in_sampling", response['resource'], token_in_sampling) : null)
       .catch(error => {
           console.error('Error en la solicitud:', error);
           return null;
       });
 }
 
-async function getListProyectosPermisos(proyecto) {
-  return peticionBackGeneral('', 'project', 'SEARCH')
-      .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectProyectos("id_project", response['resource'], proyecto) : null)
+async function getListLabProcess(lab_process) {
+  return peticionBackGeneral('', 'lab_process', 'SEARCH')
+      .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectLabProcess("id_lab_process", response['resource'], lab_process) : null)
       .catch(error => {
           console.error('Error en la solicitud:', error);
           return null;
@@ -75,7 +75,6 @@ async function getListProyectosPermisos(proyecto) {
 function construyeTablaTokenInLab(filas) {
 
   let filasTabla = '';
-  let tipo = "'EditarTokenInLab'";
   let element = document.getElementById("datosTokenInLab");
   while (element.firstChild) {
       element.removeChild(element.firstChild);
@@ -87,7 +86,7 @@ function construyeTablaTokenInLab(filas) {
       filasTabla += '<tr> <td>' + fila.id_token_in_lab + 
               '</td> <td>' + fila.id_token_in_sampling + 
               '</td> <td>' + fila.id_lab_process+ 
-              '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarTokenInLab" onclick="mostrarBorrarTokenInLab(' + fila.id_token_in_lab +')">Eliminar</button>'
+              '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarTokenInLab" onclick="mostrarBorrarTokenInLab(' + fila.id_token_in_lab + ','  + fila.id_token_in_sampling + '\)">Eliminar</button>'
               '</td>  </tr>';
   });
   
@@ -97,7 +96,6 @@ function construyeTablaTokenInLab(filas) {
 }
 
 async function getAtributosTokenInLab(tipo){
-  var id_token_in_lab = document.getElementById("id_token_in_lab").value
   var id_token_in_sampling = document.getElementById("id_token_in_sampling").value
   var id_lab_process = document.getElementById("id_lab_process").value
    switch(tipo){
@@ -105,7 +103,7 @@ async function getAtributosTokenInLab(tipo){
           addTokenInLab(id_token_in_sampling, id_lab_process)
           break;
       case "Buscar":
-          getListByParamUsuarioProyecto(id_token_in_sampling, id_lab_process)
+          getListByParamTokenInLab(id_token_in_sampling, id_lab_process)
           break;
    }
 }
@@ -118,13 +116,12 @@ function mostrarModalTokenInLab(tipo, id_token_in_lab=null, id_token_in_sampling
   document.getElementById("aceptar").classList.add(tipo);
 
 
-  getListUsuariosPermisos(id_user);
-  getListProyectosPermisos(id_project);
+  getListTokenInSampling(id_token_in_sampling);
+  getListLabProcess(id_lab_process);
       if(tipo.includes("Buscar")){
           $("#formTokenInLab").attr('action' , 'javascript:getAtributosTokenInLab("Buscar");');
       }
       else{
-        document.getElementById("id_token_in_lab").required = true;
         document.getElementById("id_token_in_sampling").required = true;
         document.getElementById("id_lab_process").required = true;
 
@@ -137,7 +134,7 @@ function mostrarModalTokenInLab(tipo, id_token_in_lab=null, id_token_in_sampling
   setLang();
 }
 
-function rellenarSelectUsuarios(tipo, filas, usuario) {
+function rellenarSelectTokenInSampling(tipo, filas, token_in_sampling) {
   let element = document.getElementById(tipo);
   let option = document.createElement('option');
   
@@ -146,16 +143,16 @@ function rellenarSelectUsuarios(tipo, filas, usuario) {
   
   filas.forEach(fila => {
       option = document.createElement('option');
-      option.value = fila.id_user;
-      option.textContent = fila.name_user;
+      option.value = fila.id_token_in_sampling;
+      option.textContent = fila.id_token_in_sampling;
       element.appendChild(option);
   })
   
-  if (usuario != null) element.value = usuario;
+  if (token_in_sampling != null) element.value = token_in_sampling;
   
 }
 
-function rellenarSelectProyectos(tipo, filas, proyecto) {
+function rellenarSelectLabProcess(tipo, filas, lab_process) {
   let element = document.getElementById(tipo);
   let option = document.createElement('option');
   
@@ -164,12 +161,12 @@ function rellenarSelectProyectos(tipo, filas, proyecto) {
   
   filas.forEach(fila => {
       option = document.createElement('option');
-      option.value = fila.id_project;
-      option.textContent = fila.name_project;
+      option.value = fila.id_lab_process;
+      option.textContent = fila.name_lab_process;
       element.appendChild(option);
   })
   
-  if (proyecto != null) element.value = proyecto;
+  if (lab_process != null) element.value = lab_process;
   
 }
 
@@ -179,15 +176,19 @@ function cerrarModal(){
   modal.style.display = "none"
 }
 
-function mostrarBorrarTokenInLab(id_token_in_lab){
-  // Ventana modal
+function mostrarBorrarTokenInLab(id_token_in_lab, id_token_in_sampling){
+
+  const attributes = [id_token_in_lab,id_token_in_sampling]
   document.getElementById("comprobarBorrar").style.display = "block";
-  $("#idBorrar").val(id_token_in_lab)
+  $("#idBorrar").val(attributes)
   $("#formBorrarTokenInLab").attr('action' , 'javascript:borrarTokenInLab();');
 }
 
 function borrarTokenInLab(){
-  var id = $("#idBorrar").val();
-    
-  deleteTokenInLab(id)
+  var ids = $("#idBorrar").val();
+    var idArray = ids.split(","); 
+    // Obtener los IDs por separado
+    var id_token_in_lab = idArray[0];
+    var id_token_in_sampling = idArray[1];
+  deleteTokenInLab(id_token_in_lab, id_token_in_sampling)
 }

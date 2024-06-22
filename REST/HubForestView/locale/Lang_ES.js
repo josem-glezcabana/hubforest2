@@ -340,6 +340,17 @@ arrayES={
 	'mensajeBorrarUnit':'Se va eliminar la unidad',
 
 	//TOKEN IN LAB
-	'titleTokenInLab':'Token en laboratorio',
-	'listadoTokenInLab':'Token en laboratorio'
+  'titleTokenInLab': 'Token in lab',
+  'listadoTokenInLab': 'Token in lab',
+  'añadirTokenInlab': 'Add token in lab',
+  'editarTokenInlab': 'Edit token in lab',
+  'reiniciarTokenInlab': 'Reset table',
+  'id_token_in_lab': 'Token in lab',
+  'id_token_in_sampling': 'Token in sample',
+  'id_lab_process': 'Lab process ID',
+  'tokenInlabError': 'No lab tokens match these parameters',
+  'aceptarTokenInlabbtn': 'Accept',
+  'cerrarModalTokenInlab': 'Close',
+  'tokenInlabPregunta': 'Are you sure?',
+  'mensajeBorrarTokenInlab': 'The lab token will be deleted'
 }

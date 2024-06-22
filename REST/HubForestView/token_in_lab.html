@@ -32,19 +32,20 @@
     <div class="container mt-5">
         <h2 class="listadoTokenInLab">Token en laboratorio</h2>
         <div class="mt-2 mb-3 float-right">
-            <button class="añadirUnit btn btn-primary float-right" id="abrirModal" onclick="mostrarModalUnit('AñadirUnit')">Añadir unidad</button>
-            <button class="buscarUnit btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalUnit('BuscarUnit')">Buscar unidad</button>
-            <button class="reiniciarUnit btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListUnit()">Reiniciar tabla</button>
+            <button class="añadirTokenInLab btn btn-primary float-right" id="abrirModal" onclick="mostrarModalTokenInLab('AñadirTokenInLab')">Añadir token en laboratorio</button>
+            <button class="buscarTokenInLab btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalTokenInLab('BuscarTokenInLab')">Buscar token en laboratorio</button>
+            <button class="reiniciarTokenInLab btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListTokenInLab()">Reiniciar tabla</button>
             
         </div>
             
-        <table class="table table-striped" id="tablaUnit">
+        <table class="table table-striped" id="tablaTokenInLab">
             <thead >
-                    <th class="name_unit">Nombre Unidad</th>
-                    <th class="description_unit">Descripción unidad</th>
+                    <th class="id_token_in_lab">Id token en laboratorio</th>
+                    <th class="id_token_in_sampling">Id token en muestra</th>
+                    <th class="id_lab_process">Id token en proceso de laboratorio</th>
             </thead>
             
-            <tbody id="datosUnit">
+            <tbody id="datosTokenInLab">
             </tbody>
        
             
@@ -60,27 +61,32 @@
             </button>
             <div id="Titulo"></div>
             <div id="mensajeError" class="text-center" style="display: none;">             
-                <h7 class="unitError">
-                    No existen unidades que coincidan con estos parámetros
+                <h7 class="tokenInLabError">
+                    No existen tokens en laboratorio que coincidan con estos parámetros
                 </h7>
                 <button class="btn sticky-top" aria-label="Close alert" onclick="cerrarErrorBusq()" data-close>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="formUnit" action="" method="post" onsubmit="">
+            <form id="formTokenInLab" action="" method="post" onsubmit="">
 
                 <div class="form-group">
-                    <label for="name_unit">Nombre unidad:</label>
-                    <select class="form-control" id="name_unit" name="name_unit"></select>
+                    <label style="display: none;" for="idTokenInLab">Id token en laboratorio:</label>
+                    <select style="display: none;"class="form-control" id="id_token_in_lab" name="id_token_in_lab"></select>
                 </div>
 
                 <div class="form-group">
-                    <label for="description_unit">Descripción de la unidad:</label>
-                    <select class="form-control" id="description_unit" name="description_unit"></select>
+                    <label for="idTokenInSampling">Id token muestra:</label>
+                    <select class="form-control" id="id_token_in_sampling" name="id_token_in_sampling"></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_lab_process">Id proceso laboratorio:</label>
+                    <select class="form-control" id="id_lab_process" name="id_lab_process"></select>
                 </div>
                 
-                <button type="submit" id="aceptar" class="aceptarUnitbtn btn-primary">Aceptar</button>
-                <button type="button" id="cerrar" class="cerrarModalUnit btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
+                <button type="submit" id="aceptar" class="aceptarTokenInLabbtn btn btn-primary">Aceptar</button>
+                <button type="button" id="cerrar" class="cerrarModalTokenInLab btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
             </form> 
         </div>
     </div>
@@ -90,17 +96,17 @@
             <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
                 <span aria-hidden="true">&times;</span>
             </button>
-            <div class="text-center" id="Titulo"><h2 class="unitPregunta">¿Estas seguro?</h2></div>
+            <div class="text-center" id="Titulo"><h2 class="tokenInLabPregunta">¿Estas seguro?</h2></div>
             
-            <form id="formBorrarUnit" action="" method="post" onsubmit="">
+            <form id="formBorrarTokenInLab" action="" method="post" onsubmit="">
                 <br>
                 <div class="form-group">
-                    <h5 class="mensajeBorrarUnit text-center">Se van elimina la unidad</h5>
+                    <h5 class="mensajeBorrarTokenInLab text-center">Se va eliminar el token de laboratorio</h5>
                     <input type="text" class="form-control" id="idBorrar" style="display: none;">
                 </div>
                 <div class="col text-center">
-                    <button type="submit" id="aceptar" class="aceptarUnitbtn  btn btn-danger">Aceptar</button>
-                    <button type="button" id="cerrar" class="cerrarModalUnit btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
+                    <button type="submit" id="aceptar" class="aceptarTokenInLabbtn  btn btn-danger">Aceptar</button>
+                    <button type="button" id="cerrar" class="cerrarModalTokenInLab btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
                 </div>     
             </form>  
         </div>
