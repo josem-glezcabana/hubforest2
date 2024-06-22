@@ -14,7 +14,7 @@
     <script type="text/javascript" src="locale/idioma.js"></script>
     <script type="text/javascript" src="locale/Lang_EN.js"></script>
     <script type="text/javascript" src="locale/Lang_ES.js"></script>
-    <title class="titleCharacteristicSample">unit</title>
+    <title class="titleUnit">unit</title>
     <!-- Incluye los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -32,8 +32,8 @@
     <div class="container mt-5">
         <h2 class="listadoUnit">Unidades</h2>
         <div class="mt-2 mb-3 float-right">
-            <button class="añadirUnit btn btn-primary float-right" id="abrirModal" onclick="mostrarModalUnit('AñadirUnit')">Añadir unidad</button>
-            <button class="buscarUnit btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalUnit('BuscarUnit')">Buscar unidad</button>
+            <button class="añadirUnit btn btn-primary float-right" id="abrirModal" onclick="mostrarModalUnit('Añadir')">Añadir unidad</button>
+            <button class="buscarUnit btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalUnit('Buscar')">Buscar unidad</button>
             <button class="reiniciarUnit btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListUnit()">Reiniciar tabla</button>
             
         </div>
@@ -70,16 +70,21 @@
             <form id="formUnit" action="" method="post" onsubmit="">
 
                 <div class="form-group">
+                    <label for="id_unit" style="display: none;">Id unit:</label>
+                    <input type="text" class="form-control" id="id_unit" name="id_unit" style="display: none;">
+                </div>
+
+                <div class="form-group">
                     <label for="name_unit">Nombre unidad:</label>
-                    <select class="form-control" id="name_unit" name="name_unit"></select>
+                    <input type="text" class="form-control" id="name_unit" name="name_unit"></select>
                 </div>
 
                 <div class="form-group">
                     <label for="description_unit">Descripción de la unidad:</label>
-                    <select class="form-control" id="description_unit" name="description_unit"></select>
+                    <input type="text" class="form-control" id="description_unit" name="description_unit"></select>
                 </div>
                 
-                <button type="submit" id="aceptar" class="aceptarUnitbtn btn-primary">Aceptar</button>
+                <button type="submit" id="aceptar" class="aceptarUnitbtn  btn btn-primary">Aceptar</button>
                 <button type="button" id="cerrar" class="cerrarModalUnit btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
             </form> 
         </div>

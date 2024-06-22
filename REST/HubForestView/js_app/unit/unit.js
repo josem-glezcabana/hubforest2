@@ -22,6 +22,19 @@ async function getListByParamUnit(name_unit, description_unit) {
         });
 }
 
+async function getListByParamUnit_search(name_unit, description_unit) {
+    const unit = {
+        name_unit: name_unit,
+        description_unit: description_unit
+    };
+    return peticionBackGeneral('', 'unit', 'SEARCH', unit)
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaUnit(response['resource']) :  mostrarErrorBusq())
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            return null;
+        });
+}
+
 async function addUnit(name_unit, description_unit) {
     const unit = {
         name_unit: name_unit,
@@ -30,8 +43,7 @@ async function addUnit(name_unit, description_unit) {
 
     return peticionBackGeneral('', 'unit', 'ADD', unit)
         .then(response => {
-           // location.reload();
-           console.log(response)
+            location.reload();
             response['resource']
             return { status: 'OK', data: response };
         })
@@ -41,7 +53,7 @@ async function addUnit(name_unit, description_unit) {
         });
 }
 
-async function editUnit(name_unit, description_unit) {
+async function editUnit(id_unit, name_unit, description_unit) {
     const unit = {
         id_unit: id_unit,
         name_unit: name_unit,
@@ -85,8 +97,8 @@ function construyeTablaUnit(filas) {
     //'name_characteristic','description_characteristic','data_type_characteristic','bibref_characteristic','file_characteristic'
     $("#datosUnit").html("");
     filas.forEach(fila => {
-        var atributosTabla = ["'" + fila.id_unit + "'","'" + fila.name_unit + "'", "'" + fila.description_unit];
-        var botonEdit='<button class="BotonEditar btn btn-info" id="editarUnit" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
+        var atributosTabla = ["'" + fila.id_unit + "'","'" + fila.name_unit + "'", "'" + fila.description_unit + "'" ];
+        var botonEdit='<button class="BotonEditar btn btn-info" id="editarUnit" onclick="mostrarModalUnit('+tipo+','+atributosTabla+')">Editar</button>'
 
         filasTabla += '<tr> <td>' + fila.name_unit + 
                 '</td> <td>' + fila.description_unit + 
@@ -137,12 +149,12 @@ function getAtributos(tipo){
             addUnit(name_unit, description_unit)
             break;
         case "Buscar":
-            getListByParamUnit(name_unit, description_unit)
+            getListByParamUnit_search(name_unit, description_unit)
             break;
      }
 }
 
-function mostrarModal(tipo, id_unit=null, name_unit=null, description_unit=null){
+function mostrarModalUnit(tipo, id_unit=null, name_unit=null, description_unit=null){
     // Ventana modal
     document.getElementById("ventanaModal").style.display = "block";
     document.getElementById("Titulo").innerHTML = '<h2 class="'+tipo+'">'+tipo+'</h2>';
@@ -157,7 +169,7 @@ function mostrarModal(tipo, id_unit=null, name_unit=null, description_unit=null)
        // $("#file_characteristic").val(file_characteristic);
     }
     else{
-        if(tipo.includes("buscar")){
+        if(tipo.includes("Buscar")){
             document.getElementById("name_unit").required = false;
             document.getElementById("description_unit").required = false;
 
