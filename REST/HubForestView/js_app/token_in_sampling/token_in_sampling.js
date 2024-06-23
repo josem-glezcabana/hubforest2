@@ -1,59 +1,59 @@
-async function getListReplicas() {
+async function getListTokenInSampling() {
 
-    return peticionBackGeneral('', 'replica', 'SEARCH')
-        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaReplica(response['resource']) : console.log(response))
+    return peticionBackGeneral('', 'token_in_sampling', 'SEARCH')
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaTokenInSampling(response['resource']) : console.log(response))
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
         });       
   }
-  //id_project, id_ecosystem, id_site, id_sampling
-  async function getListByParamReplica(id_replica, id_project, id_ecosystem, id_site, id_sampling) {
-    const replica = {
-        id_replica: id_replica,
+  //id_project, id_ecosystem, id_storage_method, id_technique_sample
+  async function getListByParamTokenInSampling(id_token_in_sampling, id_project, id_ecosystem, id_storage_method, id_technique_sample) {
+    const token_in_sampling = {
+        id_token_in_sampling: id_token_in_sampling,
         id_project: id_project,
         id_ecosystem: id_ecosystem,
-        id_site: id_site,
-        id_sampling: id_sampling
+        id_storage_method: id_storage_method,
+        id_technique_sample: id_technique_sample
         
     };
-    return peticionBackGeneral('', 'replica', 'SEARCH_BY', replica)
-        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaReplica(response['resource']) :  mostrarErrorBusq())
+    return peticionBackGeneral('', 'token_in_sampling', 'SEARCH_BY', token_in_sampling)
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaTokenInSampling(response['resource']) :  mostrarErrorBusq())
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
         });
   }
   
-  async function getListByParamReplica_search(id_replica, id_project, id_ecosystem, id_site, id_sampling) {
-    const replica = {
-        id_replica: id_replica,
+  async function getListByParamTokenInSampling_search(id_token_in_sampling, id_project, id_ecosystem, id_storage_method, id_technique_sample) {
+    const token_in_sampling = {
+        id_token_in_sampling: id_token_in_sampling,
         id_project: id_project,
         id_ecosystem: id_ecosystem,
-        id_site: id_site,
-        id_sampling: id_sampling
+        id_storage_method: id_storage_method,
+        id_technique_sample: id_technique_sample
 
       
     };
-    return peticionBackGeneral('', 'replica', 'SEARCH', replica)
-        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaReplica(response['resource']) : mostrarErrorBusq())
+    return peticionBackGeneral('', 'token_in_sampling', 'SEARCH', token_in_sampling)
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? construyeTablaTokenInSampling(response['resource']) : mostrarErrorBusq())
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
         });
   }
   
-  async function addReplica(id_replica, id_project, id_ecosystem, id_site, id_sampling) {
-    const replica = {
-        id_replica: id_replica,
+  async function addTokenInSampling(id_token_in_sampling, id_project, id_ecosystem, id_storage_method, id_technique_sample) {
+    const token_in_sampling = {
+        id_token_in_sampling: id_token_in_sampling,
         id_project: id_project,
         id_ecosystem: id_ecosystem,
-        id_site: id_site,
-        id_sampling: id_sampling
+        id_storage_method: id_storage_method,
+        id_technique_sample: id_technique_sample
       
     };
   
-    return peticionBackGeneral('', 'replica', 'ADD', replica)
+    return peticionBackGeneral('', 'token_in_sampling', 'ADD', token_in_sampling)
         .then(response => {
             location.reload();
             return { status: 'OK', data: response };
@@ -64,20 +64,21 @@ async function getListReplicas() {
         });
   }
   
-  async function editReplica(id_replica, id_project, id_ecosystem, id_site, id_sampling) {
-    const replica = {
-        id_replica: id_replica,
+  async function editTokenInSampling(id_token_in_sampling, id_project, id_ecosystem, id_storage_method, id_technique_sample) {
+    const token_in_sampling = {
+        id_token_in_sampling: id_token_in_sampling,
         id_project: id_project,
         id_ecosystem: id_ecosystem,
-        id_site: id_site,
-        id_sampling: id_sampling
-     
+        id_storage_method: id_storage_method,
+        id_technique_sample: id_technique_sample
+        
       
     };
   
-    return peticionBackGeneral('', 'replica', 'EDIT', replica)
+    return peticionBackGeneral('', 'token_in_sampling', 'EDIT', token_in_sampling)
         .then(response => {
             location.reload();
+            
             return { status: 'OK', data: response };
         })
         .catch(error => {
@@ -86,8 +87,8 @@ async function getListReplicas() {
         });
   }
   
-  async function deleteReplica(id_replica) {
-    return peticionBackGeneral('', 'replica', 'DELETE', {'id_replica': id_replica})
+  async function deleteTokenInSampling(id_token_in_sampling) {
+    return peticionBackGeneral('', 'token_in_sampling', 'DELETE', {'id_token_in_sampling': id_token_in_sampling})
         .then(response => {
             location.reload();
             return { status: 'OK', data: response };
@@ -116,45 +117,45 @@ async function getListReplicas() {
         });
   }
 
-  async function getListSites(site) {
-    return peticionBackGeneral('', 'site', 'SEARCH')
-        .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectSites("id_site", response['resource'], site) : null)
+  async function getListStorageMethod(storage_method) {
+    return peticionBackGeneral('', 'storage_method', 'SEARCH')
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectStorageMethod("id_storage_method", response['resource'], storage_method) : null)
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
         });
   }
 
-  async function getListSamplings(sampling) {
-    return peticionBackGeneral('', 'sampling', 'SEARCH')
-        .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectSamplings("id_sampling", response['resource'], sampling) : null)
+  async function getListTechnSample(technique_sample) {
+    return peticionBackGeneral('', 'technique_sample', 'SEARCH')
+        .then(response => (response['code'] === 'RECORDSET_DATOS') ? rellenarSelectTechnSample("id_technique_sample", response['resource'], technique_sample) : null)
         .catch(error => {
             console.error('Error en la solicitud:', error);
             return null;
         });
   }
   
-  function construyeTablaReplica(filas) {
+  function construyeTablaTokenInSampling(filas) {
     let filasTabla = '';
-    let tipo = "'editarR'";
-    let element = document.getElementById("datosReplicas");
+    let tipo = "'editarTokenInSampling'";
+    let element = document.getElementById("datosTokenInSampling");
     while (element.firstChild) {
         element.removeChild(element.firstChild);
     }
     
-    $("#datosReplicas").html("");
+    $("#datosTokenInSampling").html("");
     filas.forEach(fila => {
         
-        let atributosTabla = ["'" + fila.id_replica + "'", "'" + fila.id_project.id_project + "'","'" + fila.id_ecosystem.id_ecosystem + "'","'" + fila.id_site + "'","'" + fila.id_sampling + "'"];
-        let botonEdit='<button class="BotonEditar btn btn-info " id="editarReplica" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
+        let atributosTabla = ["'" + fila.id_token_in_sampling + "'", "'" + fila.id_project.id_project + "'","'" + fila.id_ecosystem.id_ecosystem + "'","'" + fila.id_storage_method.id_storage_method + "'","'" + fila.id_technique_sample.id_technique_sample + "'"];
+        let botonEdit='<button class="BotonEditar btn btn-info " id="editarTokenInSampling" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
   
-        filasTabla += '<tr> <td>' + fila.id_replica + 
+        filasTabla += '<tr> <td>' + fila.id_token_in_sampling + 
             '</td> <td>' + fila.id_project.name_project +  
             '</td> <td>' + fila.id_ecosystem.name_ecosystem +  
-            '</td> <td>' + fila.id_site + 
-            '</td> <td>' + fila.id_sampling + 
+            '</td> <td>' + fila.id_storage_method.name_storage_method + 
+            '</td> <td>' + fila.id_technique_sample.name_technique_sample + 
             '</td> <td class="text-center">' + botonEdit +
-            '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarReplica" onclick="mostrarBorrar(\''+fila.id_replica+'\')">Eliminar</button>'
+            '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarTokenInSampling" onclick="mostrarBorrar(\''+fila.id_token_in_sampling+'\')">Eliminar</button>'
                 
             '</td>  </tr>';
 
@@ -163,7 +164,7 @@ async function getListReplicas() {
     
     comprobarAdmin();
 
-    $("#datosReplicas").append(filasTabla);
+    $("#datosTokenInSampling").append(filasTabla);
     cerrarModal()
     setLang();
   }
@@ -179,7 +180,7 @@ async function getListReplicas() {
                 for (var e of elements) {
                     e.style.display ='none';
                 }
-            elements = document.getElementsByClassName('añadirReplica');
+            elements = document.getElementsByClassName('añadirTokenInSampling');
                 for (var e of elements) {
                     e.style.display ='none';
                 }
@@ -193,7 +194,7 @@ async function getListReplicas() {
                 for (var e of elements) {
                     e.style.display ='block';
                 }
-            elements = document.getElementsByClassName('añadirReplica');
+            elements = document.getElementsByClassName('añadirTokenInSampling');
                 for (var e of elements) {
                     e.style.display ='block';
                 }
@@ -202,28 +203,29 @@ async function getListReplicas() {
   }
   
   function getAtributos(tipo){
-    var id_replica = document.getElementById("id_replica").value;
+    var id_token_in_sampling = document.getElementById("id_token_in_sampling").value;
     var id_project = document.getElementById("id_project").value;
     var id_ecosystem = document.getElementById("id_ecosystem").value;
-    var id_site = document.getElementById("id_site").value;
-    var id_sampling = document.getElementById("id_sampling").value;
+    var id_storage_method = document.getElementById("id_storage_method").value;
+    var id_technique_sample = document.getElementById("id_technique_sample").value;
  
 
      switch(tipo){
         case "Editar":
-            editReplica(id_replica, id_project, id_ecosystem, id_site, id_sampling)
+            
+            editTokenInSampling(id_token_in_sampling, id_project, id_ecosystem, id_storage_method, id_technique_sample)
             break;
         case "Añadir":
-            addReplica(id_replica, id_project, id_ecosystem, id_site, id_sampling)
+            addTokenInSampling(id_token_in_sampling, id_project, id_ecosystem, id_storage_method, id_technique_sample)
             break;
         case "Buscar":
            
-            getListByParamReplica_search(id_replica, id_project, id_ecosystem, id_site, id_sampling)
+            getListByParamTokenInSampling_search(id_token_in_sampling, id_project, id_ecosystem, id_storage_method, id_technique_sample)
             break;
      }
   }
   
-  function mostrarModal(tipo, id_replica=null, id_project=null, id_ecosystem=null, id_site=null, id_sampling=null){
+  function mostrarModal(tipo, id_token_in_sampling=null, id_project=null, id_ecosystem=null, id_storage_method=null, id_technique_sample=null){
     // Ventana modal
     document.getElementById("ventanaModal").style.display = "block";
     document.getElementById("Titulo").innerHTML = '<h2 class="'+tipo+'">'+tipo+'</h2>';
@@ -232,50 +234,48 @@ async function getListReplicas() {
     
     getListEcosystems(id_ecosystem)
     getListProyectos(id_project)
-    getListSites(id_site)
-    getListSamplings(id_sampling)
+    getListStorageMethod(id_storage_method)
+    getListTechnSample(id_technique_sample)
   
     if(tipo.includes("editar")){
-        $("#formReplica").attr('action' , 'javascript:getAtributos("Editar");');
+        $("#formTokenInSampling").attr('action' , 'javascript:getAtributos("Editar");');
         
-        $("#id_replica").val(id_replica);
-        $("#idReplica").hide();
+        $("#id_token_in_sampling").val(id_token_in_sampling);
         $("#id_project").val(id_project);
         $("#id_ecosystem").val(id_ecosystem);
-        $("#id_site").val(id_site);
-        $("#id_sampling").val(id_sampling);
+        $("#id_storage_method").val(id_storage_method);
+        $("#id_technique_sample").val(id_technique_sample);
        
     }
     else{
-        $("#idReplica").show();
         if(tipo.includes("Buscar")){
            
-            document.getElementById("id_replica").required = false;
+
             document.getElementById("id_project").required = false;
             document.getElementById("id_ecosystem").required = false;
-            document.getElementById("id_site").required = false;
-            document.getElementById("id_sampling").required = false;
+            document.getElementById("id_storage_method").required = false;
+            document.getElementById("id_technique_sample").required = false;
            
 
-            $("#formReplica").attr('action' , 'javascript:getAtributos("Buscar");');
+            $("#formTokenInSampling").attr('action' , 'javascript:getAtributos("Buscar");');
         }
         else{
-            document.getElementById("id_replica").required = true;
+
             document.getElementById("id_project").required = true;
             document.getElementById("id_ecosystem").required = true;
-            document.getElementById("id_site").required = true;
-            document.getElementById("id_sampling").required = true;
+            document.getElementById("id_storage_method").required = true;
+            document.getElementById("id_technique_sample").required = true;
   
-            $("#formReplica").attr('action' , 'javascript:getAtributos("Añadir");');
+            $("#formTokenInSampling").attr('action' , 'javascript:getAtributos("Añadir");');
         }
         
 
-        $("#id_replica").val('');
+        $("#id_token_in_sampling").val('');
         $("#id_project").val('');
         $("#id_ecosystem").val('');
-        $("#id_site").val('');
-        $("#id_sampling").val('');
-        $("#date_sampling").val('');
+        $("#id_storage_method").val('');
+        $("#id_technique_sample").val('');
+        $("#date_technique_sample").val('');
     }
     setLang();
     document.getElementById("aceptar").classList.remove(tipo);
@@ -308,6 +308,7 @@ async function getListReplicas() {
     element.innerHTML = '';
     
     filas.forEach(fila => {
+    
         option = document.createElement('option');
         option.value = fila.id_project.id_project;
         option.textContent = fila.id_project.name_project;
@@ -318,25 +319,26 @@ async function getListReplicas() {
     
   }
 
-  function rellenarSelectSites(tipo, filas, site) {
+  function rellenarSelectStorageMethod(tipo, filas, storage_method) {
     let element = document.getElementById(tipo);
     let option = document.createElement('option');
     
     // Eliminar opciones existentes antes de agregar las nuevas
     element.innerHTML = '';
     
+    
     filas.forEach(fila => {
         option = document.createElement('option');
-        option.value = fila.id_site;
-        option.textContent = fila.id_site;
+        option.value = fila.id_storage_method;
+        option.textContent = fila.id_storage_method;
         element.appendChild(option);
     })
     
-    if (site != null) element.value = site;
+    if (storage_method != null) element.value = storage_method;
     
   }
 
-  function rellenarSelectSamplings(tipo, filas, sampling) {
+  function rellenarSelectTechnSample(tipo, filas, technique_sample) {
     let element = document.getElementById(tipo);
     let option = document.createElement('option');
     
@@ -345,12 +347,12 @@ async function getListReplicas() {
     
     filas.forEach(fila => {
         option = document.createElement('option');
-        option.value = fila.id_sampling;
-        option.textContent = fila.id_sampling;
+        option.value = fila.id_technique_sample;
+        option.textContent = fila.id_technique_sample;
         element.appendChild(option);
     })
     
-    if (sampling != null) element.value = sampling;
+    if (technique_sample != null) element.value = technique_sample;
     
   }
   
@@ -360,17 +362,17 @@ async function getListReplicas() {
     modal.style.display = "none"
   }
   
-  function mostrarBorrar(replica){
+  function mostrarBorrar(token_in_sampling){
     // Ventana modal
     document.getElementById("comprobarBorrar").style.display = "block";
     
-    $("#idBorrar").val(replica)
-    $("#formBorrarReplica").attr('action' , 'javascript:borrar();');
+    $("#idBorrar").val(token_in_sampling)
+    $("#formBorrarTokenInSampling").attr('action' , 'javascript:borrar();');
   }
   
   function borrar(){
-    var id_replica = document.getElementById("idBorrar").value
+    var id_token_in_sampling = document.getElementById("idBorrar").value
 
    
-    deleteReplica(id_replica)
+    deleteTokenInSampling(id_token_in_sampling)
   }

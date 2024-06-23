@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `hubforest` /*!40100 DEFAULT CHARACTER SET utf8mb4 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `hubforest` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `hubforest`;
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
@@ -270,7 +270,7 @@ CREATE TABLE `replica` (
   CONSTRAINT `proj_rep` FOREIGN KEY (`id_project`) REFERENCES `sampling` (`id_project`),
   CONSTRAINT `sampl_rep` FOREIGN KEY (`id_sampling`) REFERENCES `sampling` (`id_sampling`),
   CONSTRAINT `site_rep` FOREIGN KEY (`id_site`) REFERENCES `sampling` (`id_site`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -422,7 +422,7 @@ CREATE TABLE `technique_sample` (
   `bib_technique_sample` varchar(200) NOT NULL,
   `file_technique_sample` varchar(100) DEFAULT '--',
   PRIMARY KEY (`id_technique_sample`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -508,12 +508,12 @@ CREATE TABLE `token_in_analysis` (
   `id_token_in_lab` int NOT NULL,
   `id_analysis_technique` int NOT NULL,
   `id_analysis_preparation` int NOT NULL,
-  PRIMARY KEY (`id_token_in_analysis`,`id_token_in_lab`),
+  PRIMARY KEY (`id_token_in_analysis`),
   UNIQUE KEY `id_token_in_analysis` (`id_token_in_analysis`),
   KEY `analisis_prep_idx` (`id_analysis_preparation`),
   KEY `analisis_tec_idx` (`id_analysis_technique`),
   KEY `token_in_lab_idx` (`id_token_in_lab`),
-  CONSTRAINT `analisis_prep` FOREIGN KEY (`id_analysis_preparation`) REFERENCES `analysis_preparation` (`Id_analysis_preparation`),
+  CONSTRAINT `analisis_prep` FOREIGN KEY (`id_analysis_preparation`) REFERENCES `analysis_preparation` (`id_analysis_preparation`),
   CONSTRAINT `analisis_tec` FOREIGN KEY (`id_analysis_technique`) REFERENCES `analysis_technique` (`id_analysis_technique`),
   CONSTRAINT `token_in_lab` FOREIGN KEY (`id_token_in_lab`) REFERENCES `token_in_lab` (`id_token_in_lab`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
@@ -572,7 +572,7 @@ CREATE TABLE `token_in_sampling` (
   `id_ecosystem` int NOT NULL,
   `id_storage_method` int NOT NULL,
   `id_technique_sample` int NOT NULL,
-  PRIMARY KEY (`id_token_in_sampling`,`id_project`,`id_ecosystem`),
+  PRIMARY KEY (`id_token_in_sampling`),
   UNIQUE KEY `id_token_in_sampling` (`id_token_in_sampling`),
   KEY `project_tok_idx` (`id_project`),
   KEY `ecos_tok_idx` (`id_ecosystem`),
@@ -607,7 +607,7 @@ CREATE TABLE `unit` (
   `name_unit` varchar(100) DEFAULT '--',
   `description_unit` varchar(5000) DEFAULT '--',
   PRIMARY KEY (`id_unit`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -690,4 +690,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-12 18:07:33
+-- Dump completed on 2024-06-23  4:10:29

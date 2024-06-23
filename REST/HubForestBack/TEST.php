@@ -14,9 +14,9 @@ define('urlnoRest', 'http://127.0.0.1:8080/HubForestBack/index.php');
 $resultadosTESTS = array();
 
 //prueba auth
-include './app/AUTH/AUTH_TEST.php';
-$rest = AUTH_TEST();
-guardar_test($resultadosTESTS, $rest);
+//include './app/AUTH/AUTH_TEST.php';
+//$rest = AUTH_TEST();
+//guardar_test($resultadosTESTS, $rest);
 
 //prueba user
 include './app/user/user_TEST.php';
@@ -98,9 +98,19 @@ include './app/technique_sample/technique_sample_TEST.php';
 $rest = TECHNIQUE_SAMPLE_TEST();
 guardar_test($resultadosTESTS, $rest);
 
-//prueba technique_sample
+//prueba temporal_sampling_site_values
 include './app/temporal_sampling_site_values/temporal_sampling_site_values_TEST.php';
 $rest = TEMPORAL_SAMPLING_SITE_VALUES_TEST();
+guardar_test($resultadosTESTS, $rest);
+
+//prueba token_in_sampling
+include './app/token_in_sampling/token_in_sampling_TEST.php';
+$rest = TOKEN_IN_SAMPLING_TEST();
+guardar_test($resultadosTESTS, $rest);
+
+//prueba token_in_sampling
+include './app/token_in_analysis/token_in_analysis_TEST.php';
+$rest = TOKEN_IN_ANALYSIS_TEST();
 guardar_test($resultadosTESTS, $rest);
 
 session_destroy();

@@ -23,7 +23,7 @@ class token_in_sampling_SERVICE extends appServiceBase{
 		$this->notnull = array(
 						'ADD' => array('id_project','id_ecosystem','id_storage_method','id_technique_sample'),
 						'EDIT' => array('id_project','id_ecosystem','id_storage_method','id_technique_sample'),
-						'DELETE' => array('id_token_in_sampling','id_project','id_ecosystem')
+						'DELETE' => array('id_token_in_sampling')
 						);
 
 		$this->modelo = $this->crearModelOne('token_in_sampling');

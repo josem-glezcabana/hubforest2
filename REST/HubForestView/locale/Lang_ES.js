@@ -340,17 +340,14 @@ arrayES={
 	'mensajeBorrarUnit':'Se va eliminar la unidad',
 
 	//TOKEN IN LAB
-  'titleTokenInLab': 'Token in lab',
-  'listadoTokenInLab': 'Token in lab',
-  'añadirTokenInlab': 'Add token in lab',
-  'editarTokenInlab': 'Edit token in lab',
-  'reiniciarTokenInlab': 'Reset table',
-  'id_token_in_lab': 'Token in lab',
-  'id_token_in_sampling': 'Token in sample',
-  'id_lab_process': 'Lab process ID',
-  'tokenInlabError': 'No lab tokens match these parameters',
-  'aceptarTokenInlabbtn': 'Accept',
-  'cerrarModalTokenInlab': 'Close',
-  'tokenInlabPregunta': 'Are you sure?',
-  'mensajeBorrarTokenInlab': 'The lab token will be deleted'
+	'titleTokenInLab': 'Token in lab',
+	'listadoTokenInLab': 'Token in lab',
+
+	//TOKEN IN SAMPLING
+	'titleTokenInSampling': 'Token en muestra',
+	'listadoTokenInSampling': 'Token en muestra',
+	'añadirTokenInSampling': 'Añadir token en muestra',
+	'buscarTokenInSampling': 'Buscar token en muestra',
+	'id_storage_method': 'Metodo de almacenamiento',
+	'id_technique_sample': 'Tecnica de muestreo'
 }

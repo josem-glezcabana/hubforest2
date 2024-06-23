@@ -125,6 +125,7 @@ function includeHeader() {
                                     '<li><a class="analysisPreparationMenu dropdown-item" href="analysispreparation.html">Preparación del análisis</a></li>' +
                                     '<li><a class="titleTokenAnalysis dropdown-item" href="token_in_analysis.html">Token en analisis</a></li>' +
                                     '<li><a class="titleTokenInLab dropdown-item" href="token_in_lab.html">Token en laboratorio</a></li>' +
+                                    '<li><a class="titleTokenInSampling dropdown-item" href="token_in_sampling.html">Token en muestra</a></li>' +
                                 '</ul>' +
                             '</div>' +
                         '</li>' +

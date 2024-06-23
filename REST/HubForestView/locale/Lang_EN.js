@@ -341,4 +341,23 @@ arrayEN={
 	//TOKEN IN LAB
 	'titleTokenInLab':'Token in lab',
 	'listadoTokenInLab':'Token in lab',
+	'añadirTokenInlab': 'Add token in lab',
+	'editarTokenInlab': 'Edit token in lab',
+	'reiniciarTokenInlab': 'Reset table',
+	'id_token_in_lab': 'Token in lab',
+	'id_token_in_sampling': 'Token in sample',
+	'id_lab_process': 'Lab process ID',
+	'tokenInlabError': 'No lab tokens match these parameters',
+	'aceptarTokenInlabbtn': 'Accept',
+	'cerrarModalTokenInlab': 'Close',
+	'tokenInlabPregunta': 'Are you sure?',
+	'mensajeBorrarTokenInlab': 'The lab token will be deleted',
+
+	//TOKEN IN SAMPLING
+	'titleTokenInSampling': 'Token in sampling',
+	'listadoTokenInSampling': 'Token in sampling',
+	'añadirTokenInSampling': 'Add token in sampling',
+	'buscarTokenInSampling': 'Search token in sampling',
+	'id_storage_method': 'Storage method',
+	'id_technique_sample': 'technique_sample'
 }
