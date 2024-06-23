@@ -102,11 +102,15 @@ function construyeTablaTechSample(filas) {
                               "'" + fila.bib_technique_sample + "'","'" + fila.file_technique_sample + "'"];
         let botonEdit='<button class="BotonEditar btn btn-info editarTechniqueSample" id="editarTechniqueSample" onclick="mostrarModalTechSample('+tipo+','+atributosTabla+')">Editar</button>'
 
+        // Generar el enlace de descarga
+        let fileURL = fila.file_technique_sample ? '../../HubForestBack/files/technique_sample/' + fila.file_technique_sample : '';
+        let enlaceArchivo = fileURL ? '<a href="' + fileURL + '" download>'+fila.file_technique_sample+'</a>' : '';
+
         filasTabla += '<tr> <td>' + fila.id_technique_sample + 
                 '</td> <td>' + fila.name_technique_sample + 
                 '</td> <td>' + fila.description_technique_sample + 
                 '</td> <td>' + fila.bib_technique_sample + 
-                '</td> <td>' + fila.file_technique_sample + 
+                '</td> <td>' + enlaceArchivo + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarTechniqueSample" id="borrarTechniqueSample" onclick="mostrarBorrarTechSample('+fila.id_technique_sample+')">Eliminar</button>'
                 

@@ -103,11 +103,15 @@ function construyeTablaLabProcess(filas) {
                               "'" + fila.bib_lab_process + "'","'" + fila.file_lab_process + "'"];
         let botonEdit='<button class="BotonEditar btn btn-info editarLabProcess" id="editarLabProcess" onclick="mostrarModalLabProcess('+tipo+','+atributosTabla+')">Editar</button>'
 
+        // Generar el enlace de descarga del fichero, si lo tiene
+        let fileURL = fila.file_lab_process ? '../../HubForestBack/files/lab_process/' + fila.file_lab_process : '';
+        let enlaceArchivo = fileURL ? '<a href="' + fileURL + '" download>'+fila.file_lab_process+'</a>' : '';
+
         filasTabla += '<tr> <td>' + fila.id_lab_process + 
                 '</td> <td>' + fila.name_lab_process + 
                 '</td> <td>' + fila.description_lab_process + 
                 '</td> <td>' + fila.bib_lab_process + 
-                '</td> <td>' + fila.file_lab_process + 
+                '</td> <td>' + enlaceArchivo + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarLabProcess" id="borrarLabProcess" onclick="mostrarBorrarLabProcess('+fila.id_lab_process+')">Eliminar</button>'
                 

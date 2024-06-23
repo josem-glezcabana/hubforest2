@@ -18,6 +18,8 @@ arrayEN={
 	'labProcessMenu': 'Laboratory processes',
 	'analysisTechniqueMenu': 'Analysis techniques',
 	'TemporalsamplingSiteMenu': 'Temporal sampling-site params',
+	'TemporalsamplingSiteValueMenu': 'Temporal sampling-site values',
+	'techniqueSampleMenu': 'Technique sample',
 	//FOOTER
 	'followUs': 'Follow us:',
 	'contactUs': 'Contact',

@@ -113,12 +113,16 @@ function construyeTablaCharacteristic(filas) {
         var atributosTabla = ["'" + fila.id_characteristic + "'","'" + fila.name_characteristic + "'", "'" + fila.description_characteristic + "'", "'" + fila.data_type_characteristic + "'", "'" + fila.bibref_characteristic + "'" , "'" + fila.file_characteristic + "'"];
         var botonEdit='<button class="BotonEditar btn btn-info" id="editarCharacteristic" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
+        // Generar el enlace de descarga del fichero, si lo tiene
+        let fileURL = fila.file_characteristic ? '../../HubForestBack/files/characteristic/' + fila.file_characteristic : '';
+        let enlaceArchivo = fileURL ? '<a href="' + fileURL + '" download>'+fila.file_characteristic+'</a>' : '';
+
         filasTabla += '<tr> <td>' + fila.id_characteristic + 
                 '</td> <td>' + fila.name_characteristic + 
                 '</td> <td>' + fila.description_characteristic +
                 '</td> <td>' + fila.data_type_characteristic + 
                 '</td> <td>' + fila.bibref_characteristic + 
-                '</td> <td>' + fila.file_characteristic +
+                '</td> <td>' + enlaceArchivo +
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarCharacteristic" id="borrarCharacteristic" onclick="mostrarBorrar('+fila.id_characteristic+')">Eliminar</button>'
                 

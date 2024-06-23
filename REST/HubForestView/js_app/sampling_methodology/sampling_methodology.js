@@ -103,11 +103,15 @@ function construyeTablaSamplingMethod(filas) {
                               "'" + fila.bibref_methodology + "'","'" + fila.file_methodology + "'"];
         let botonEdit='<button class="BotonEditar btn btn-info editarSamplingMethod" id="editarSamplingMethod" onclick="mostrarModalSamplingMethod('+tipo+','+atributosTabla+')">Editar</button>'
 
+        // Generar el enlace de descarga del fichero, si lo tiene
+        let fileURL = fila.file_methodology ? '../../HubForestBack/files/sampling_methodology/' + fila.file_methodology : '';
+        let enlaceArchivo = fileURL ? '<a href="' + fileURL + '" download>'+fila.file_methodology+'</a>' : '';
+
         filasTabla += '<tr> <td>' + fila.id_sampling_methodology + 
                 '</td> <td>' + fila.name_methodology + 
                 '</td> <td>' + fila.description_methodology + 
                 '</td> <td>' + fila.bibref_methodology + 
-                '</td> <td>' + fila.file_methodology + 
+                '</td> <td>' + enlaceArchivo + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarSamplingMethod" id="borrarSamplingMethod" onclick="mostrarBorrarSamplingMethod('+fila.id_sampling_methodology+')">Eliminar</button>'
                 

@@ -102,11 +102,15 @@ function construyeTablaAnalysisTech(filas) {
                               "'" + fila.bib_analysis_technique + "'","'" + fila.file_analysis_tecnique + "'"];
         let botonEdit='<button class="BotonEditar btn btn-info editarAnalysisTechnique" id="editarAnalysisTechnique" onclick="mostrarModalAnalysisTechnique('+tipo+','+atributosTabla+')">Editar</button>'
 
+        // Generar el enlace de descarga del fichero, si lo tiene
+        let fileURL = fila.file_analysis_tecnique ? '../../HubForestBack/files/analysis_technique/' + fila.file_analysis_tecnique : '';
+        let enlaceArchivo = fileURL ? '<a href="' + fileURL + '" download>'+fila.file_analysis_tecnique+'</a>' : '';
+
         filasTabla += '<tr> <td>' + fila.id_analysis_technique + 
                 '</td> <td>' + fila.name_analysis_technique + 
                 '</td> <td>' + fila.description_analysis_technique + 
                 '</td> <td>' + fila.bib_analysis_technique + 
-                '</td> <td>' + fila.file_analysis_tecnique + 
+                '</td> <td>' + enlaceArchivo + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger borrarAnalysisTechnique" id="borrarAnalysisTechnique" onclick="mostrarBorrarAnalysisTechnique('+fila.id_analysis_technique+')">Eliminar</button>'
                 

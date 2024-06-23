@@ -18,6 +18,8 @@ arrayES={
 	'labProcessMenu': 'Procesos laboratorio',
 	'analysisTechniqueMenu': 'Técnicas análisis',
 	'TemporalsamplingSiteMenu': 'Parámetros temporales muestra-sitio',
+	'TemporalsamplingSiteValueMenu': 'Valores temporales muestra-sitio',
+	'techniqueSampleMenu': 'Técnicas de muestreo',
 	//FOOTER
 	'followUs': 'Síguenos en:',
 	'contactUs': 'Contacto',

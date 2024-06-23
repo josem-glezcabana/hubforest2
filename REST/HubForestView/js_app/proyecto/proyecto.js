@@ -176,6 +176,10 @@ function construyeTablaProyecto(filas) {
                               "'" + fila.file_project + "'", "'" + fila.code_project + "'", "'" + fila.acronym_project + "'", "'" + fila.id_sampling_methodology + "'"];
         let botonEdit='<button class="BotonEditar btn btn-info editarProyecto" id="editarProyecto" onclick="mostrarModalProyecto('+tipo+','+atributosTabla+')">Editar</button>'
 
+        // Generar el enlace de descarga del fichero, si lo tiene
+        let fileURL = fila.file_project ? '../../HubForestBack/files/project/' + fila.file_project : '';
+        let enlaceArchivo = fileURL ? '<a href="' + fileURL + '" download>'+fila.file_project+'</a>' : '';
+
         filasTabla += '<tr> <td>' + fila.id_project + 
                 '</td> <td>' + fila.name_project + 
                 '</td> <td>' + fila.start_date_project + 
@@ -183,7 +187,7 @@ function construyeTablaProyecto(filas) {
                 '</td> <td>' + fila.responsable_project + 
                 '</td> <td>' + fila.organization_project + 
                 '</td> <td>' + fila.description_project + 
-                '</td> <td>' + fila.file_project + 
+                '</td> <td>' + enlaceArchivo + 
                 '</td> <td>' + fila.code_project + 
                 '</td> <td>' + fila.acronym_project +
                 '</td> <td>' + fila.id_sampling_methodology +

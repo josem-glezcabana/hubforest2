@@ -217,13 +217,17 @@ function construyeTablaUsuario(filas) {
             "'" + fila.email_user + "'", "'" + fila.organization_user + "'","'" + fila.position_user + "'", "'" + fila.file_curr_user + "'"];
         var botonEdit='<button class="BotonEditar btn btn-info" id="editarUsuario" onclick="mostrarModal('+tipo+','+atributosTabla+')">Editar</button>'
 
+        // Generar el enlace de descarga
+        let fileURL = fila.file_curr_user ? '../../HubForestBack/files/user/' + fila.file_curr_user : '';
+        let enlaceArchivo = fileURL ? '<a href="' + fileURL + '" download>'+fila.file_curr_user+'</a>' : '';
+
         filasTabla += '<tr> <td>' + fila.id_user + 
                 '</td> <td>' + fila.name_user + 
                 '</td> <td>' + fila.surname_user + 
                 '</td> <td>' + fila.email_user + 
                 '</td> <td>' + fila.organization_user + 
                 '</td> <td>' + fila.position_user + 
-                '</td> <td>' + fila.file_curr_user + 
+                '</td> <td>' + enlaceArchivo + 
                 '</td> <td class="text-center">' + botonEdit +
                 '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarUsuario" onclick="mostrarBorrar('+fila.id_user+')">Eliminar</button>'
                 
