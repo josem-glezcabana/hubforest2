@@ -91,11 +91,9 @@ function includeHeader() {
                                 '<ul class="dropdown-menu">' +
                                     '<li><a class="samplingMenu dropdown-item" href="sampling.html">Muestras</a></li>' +
                                     '<li><a class="samplingMethodMenu dropdown-item" href="sampling_methodology.html">Metodologías de muestreo</a></li>' +
-                                    '<li><a class="characteristicMenu dropdown-item" href="characteristic.html">Características</a></li>' +
-                                    '<li><a class="titleUnit dropdown-item" href="unit.html">Unidades</a></li>' +
-                                    '<li><a class="characteristicSampleMenu dropdown-item" href="characteristic_sample.html">Características muestra</a></li>' +
                                     '<li><a class="replicaMenu dropdown-item" href="replica.html">Replica</a></li>' +
                                     '<li><a class="techniqueSampleMenu dropdown-item" href="technique_sample.html">Técnicas de muestreo</a></li>' +
+                                    '<li><a class="storageMethodMenu dropdown-item" href="storageMethod.html">Metodos de almacenamiento</a></li>' +
                                 '</ul>' +
                             '</div>' +
                         '</li>' +
@@ -112,17 +110,35 @@ function includeHeader() {
                             '</div>' +
                         '</li>' +
                         '<li class="nav-item">' +
-                            '<a class="storageMethodMenu nav-link" href="storageMethod.html">Metodos de almacenamiento</a>' +
-                        '</li>' +
-                        '<li class="nav-item">' +
                             '<div class="dropdown">' +
-                                '<button class="labProcessMenu btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Laboratorio' +
+                                '<button class="labMenu btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Laboratorio' +
                                     '<span class="caret"></span>' +
                                 '</button>' +
                                 '<ul class="dropdown-menu">' +
                                     '<li><a class="labProcessMenu dropdown-item" href="lab_process.html">Procesos laboratorio</a></li>' +
                                     '<li><a class="analysisTechniqueMenu dropdown-item" href="analysis_technique.html">Técnicas análisis</a></li>' +
                                     '<li><a class="analysisPreparationMenu dropdown-item" href="analysispreparation.html">Preparación del análisis</a></li>' +
+                                '</ul>' +
+                            '</div>' +
+                        '</li>' +
+                        '<li class="nav-item">' +
+                            '<div class="dropdown">' +
+                                '<button class="characteristicMenu btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Características' +
+                                    '<span class="caret"></span>' +
+                                '</button>' +
+                                '<ul class="dropdown-menu">' +
+                                    '<li><a class="characteristicMenu dropdown-item" href="characteristic.html">Características</a></li>' +
+                                    '<li><a class="characteristicSampleMenu dropdown-item" href="characteristic_sample.html">Características muestra</a></li>' +
+                                    '<li><a class="titleUnit dropdown-item" href="unit.html">Unidades</a></li>' +
+                                '</ul>' +
+                            '</div>' +
+                        '</li>' +
+                        '<li class="nav-item">' +
+                            '<div class="dropdown">' +
+                                '<button class="tokenMenu btn nav-link dropdown-toggle" type="button" data-toggle="dropdown">Tokens' +
+                                    '<span class="caret"></span>' +
+                                '</button>' +
+                                '<ul class="dropdown-menu">' +
                                     '<li><a class="titleTokenAnalysis dropdown-item" href="token_in_analysis.html">Token en analisis</a></li>' +
                                     '<li><a class="titleTokenInLab dropdown-item" href="token_in_lab.html">Token en laboratorio</a></li>' +
                                     '<li><a class="titleTokenInSampling dropdown-item" href="token_in_sampling.html">Token en muestra</a></li>' +
@@ -239,6 +255,13 @@ function cerrarBorrar(){
 /**Función para encriptar la pass en md5*/
 function encriptar(idElemento){
   	return hex_md5(document.getElementById(idElemento).value);
+}
+
+function submitOnEnter(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("loginButton").click();
+    }
 }
 
 function iniciarSesion() {

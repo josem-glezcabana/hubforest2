@@ -19,7 +19,10 @@ arrayEN={
 	'analysisTechniqueMenu': 'Analysis techniques',
 	'TemporalsamplingSiteMenu': 'Temporal sampling-site params',
 	'TemporalsamplingSiteValueMenu': 'Temporal sampling-site values',
-	'techniqueSampleMenu': 'Technique sample',
+	'techniqueSampleMenu': 'Sample technique',
+	'unitMenu': 'Units',
+	'labMenu': 'Laboratory and analysis',
+	'tokenMenu': 'Tokens',
 	//FOOTER
 	'followUs': 'Follow us:',
 	'contactUs': 'Contact',
@@ -247,7 +250,6 @@ arrayEN={
 	'listadoCharacteristicSample': 'Sample Characteristics',
 	'añadirCharacteristicSample': 'Add Sample Characteristic',
 	'buscarCharacteristicSample': 'Search Sample Characteristic',
-	'reiniciarCharacteristicSample': 'Reset Table',
 	'name_unit': 'Unit Name',
 	'name_characteristic': 'Characteristic Name',
 	'characteristicSampleError': 'No sample characteristics match these parameters',
@@ -291,7 +293,7 @@ arrayEN={
 
 	// TOKEN_IN_ANALYSIS
 	'titleTokenAnalysis': 'Token in analysis',
-	'listadoTokenAnalysis': 'Listado de tokens in analysis',
+	'listadoTokenAnalysis': 'List of tokens in analysis',
 	'añadirTokenAnalysis': 'Add token in analysis ',
 	'buscarTokenAnalysis': 'Search token in analysis',
 	'editarTokenAnalysis': 'Edit token in analysis',
@@ -329,6 +331,7 @@ arrayEN={
 	'titleUnit':'Units',
 	'listadoUnit':'Units',
 	'añadirUnit':'Add unit',
+	'buscarUnit':'Search unit',
 	'editarUnit':'Edit unit',
 	'reiniciarUnit':'Reload table',
 	'name_unit':'Unit name',
@@ -343,16 +346,14 @@ arrayEN={
 	//TOKEN IN LAB
 	'titleTokenInLab':'Token in lab',
 	'listadoTokenInLab':'Token in lab',
-	'añadirTokenInlab': 'Add token in lab',
-	'editarTokenInlab': 'Edit token in lab',
-	'reiniciarTokenInlab': 'Reset table',
+	'añadirTokenInLab': 'Add token in lab',
+	'buscarTokenInLab': 'Search token in lab',
 	'id_token_in_lab': 'Token in lab',
 	'id_token_in_sampling': 'Token in sample',
 	'id_lab_process': 'Lab process ID',
-	'tokenInlabError': 'No lab tokens match these parameters',
+	'tokenInlabError': 'There are no lab tokens that match these parameters',
 	'aceptarTokenInlabbtn': 'Accept',
 	'cerrarModalTokenInlab': 'Close',
-	'tokenInlabPregunta': 'Are you sure?',
 	'mensajeBorrarTokenInlab': 'The lab token will be deleted',
 
 	//TOKEN IN SAMPLING
@@ -360,6 +361,8 @@ arrayEN={
 	'listadoTokenInSampling': 'Token in sampling',
 	'añadirTokenInSampling': 'Add token in sampling',
 	'buscarTokenInSampling': 'Search token in sampling',
+	'editarTokenInSampling': 'Edit token in sampling',
 	'id_storage_method': 'Storage method',
-	'id_technique_sample': 'technique_sample'
+	'id_technique_sample': 'Technique sample',
+	'mensajeBorrarTokenInSampling': 'The token in sampling will be deleted'
 }

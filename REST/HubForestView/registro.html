@@ -32,7 +32,7 @@
   <div class="row">
       <div class="col-md-6 offset-md-3">
           <h2 class="text-center mb-4">Login</h2>
-          <form id="formLogin">
+          <form id="formLogin" onkeypress="submitOnEnter(event)">
               <div class="form-group">
                   <label class="nameRegistro" for="nameLogin">Name:</label>
                   <input type="text" class="form-control" id="nameLogin" name="nameLogin" required>
@@ -43,7 +43,7 @@
                   <input type="password" class="form-control" id="passwordLogin" name="passwordLogin" required>
               </div>
 
-              <button type="button" class="botonLogin btn btn-primary" onclick="iniciarSesion()">Log in</button>
+              <button type="button" class="botonLogin btn btn-primary" id="loginButton" onclick="iniciarSesion()">Log in</button>
               <button type="button" class="botonIrRegistrar btn btn-link" data-toggle="modal" data-target="#registroModal">Register</button>
           </form>
       </div>

@@ -32,8 +32,8 @@
     <div class="container mt-5">
         <h2 class="listadoTokenInSampling">Token en muestra</h2>
         <div class="mt-2 mb-3 float-right">
-            <button class="añadirTokenInSampling btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('AñadirTokenInSampling')">Añadir token en muestra</button>
-            <button class="buscarTokenInSampling btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('BuscarTokenInSampling')">Buscar token en muestra</button>
+            <button class="añadirTokenInSampling btn btn-primary float-right" id="abrirModal" onclick="mostrarModal('añadirTokenInSampling')">Añadir token en muestra</button>
+            <button class="buscarTokenInSampling btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModal('buscarTokenInSampling')">Buscar token en muestra</button>
             <button class="reiniciarTabla btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListTokenInSampling()">Reiniciar tabla</button>
             
         </div>
@@ -79,26 +79,26 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="idProject">Proyecto:</label>
+                    <label for="id_project">Proyecto:</label>
                     <select class="form-control" id="id_project" name="id_project"></select>
                 </div>
 
                 <div class="form-group">
-                    <label for="idEcosystem">Ecosistema:</label>
+                    <label for="id_ecosystem">Ecosistema:</label>
                     <select class="form-control" id="id_ecosystem" name="id_ecosystem"></select>
                 </div>
 
                 <div class="form-group">
-                    <label for="idStorageMethod">Metodo de almacenamiento:</label>
+                    <label for="id_storage_method">Metodo de almacenamiento:</label>
                     <select class="form-control" id="id_storage_method" name="id_storage_method"></select>
                 </div>
 
                 <div class="form-group">
-                    <label for="idTechnSample">Tecnica de muestreo:</label>
+                    <label for="id_technique_sample">Tecnica de muestreo:</label>
                     <select class="form-control" id="id_technique_sample" name="id_technique_sample"></select>
                 </div>
                 
-                <button type="submit" id="aceptar" class="aceptarTokenInSamplingbtn btn btn-primary">Aceptar</button>
+                <button type="submit" id="aceptar" class="btn btn-primary">Aceptar</button>
                 <button type="button" id="cerrar" class="cerrarModalTokenInSampling btn btn-secondary" onclick="cerrarModal()">Cerrar</button>
             </form> 
         </div>
@@ -118,7 +118,7 @@
                     <input type="text" class="form-control" id="idBorrar" style="display: none;">
                 </div>
                 <div class="col text-center">
-                    <button type="submit" id="aceptar" class="aceptarTokenInSamplingbtn  btn btn-danger">Aceptar</button>
+                    <button type="submit" id="aceptar" class="btn btn-danger">Aceptar</button>
                     <button type="button" id="cerrar" class="cerrarModalTokenInSampling btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
                 </div>     
             </form>  

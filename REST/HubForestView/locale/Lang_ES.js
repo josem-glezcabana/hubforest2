@@ -20,6 +20,9 @@ arrayES={
 	'TemporalsamplingSiteMenu': 'Parámetros temporales muestra-sitio',
 	'TemporalsamplingSiteValueMenu': 'Valores temporales muestra-sitio',
 	'techniqueSampleMenu': 'Técnicas de muestreo',
+	'unitMenu': 'Unidades',
+	'labMenu': 'Laboratorio y análisis',
+	'tokenMenu': 'Tokens',
 	//FOOTER
 	'followUs': 'Síguenos en:',
 	'contactUs': 'Contacto',
@@ -249,7 +252,6 @@ arrayES={
 	'listadoCharacteristicSample': 'Características muestra',
 	'añadirCharacteristicSample': 'Añadir característica muestra',
 	'buscarCharacteristicSample': 'Buscar carecterística muestra',
-	'reiniciarCharacteristicSample': 'Reiniciar tabla',
 	'name_unit': 'Nombre Unidad',
 	'name_characteristic': 'Nombre característica',
 	'characteristicSampleError': 'No existen características de muestras que coincidan con estos parámetros',
@@ -331,6 +333,7 @@ arrayES={
 	'titleUnit':'Unidades',
 	'listadoUnit':'Unidades',
 	'añadirUnit':'Añadir unidad',
+	'buscarUnit':'Buscar unidad',
 	'editarUnit':'Editar unidad',
 	'reiniciarUnit':'Reiniciar tabla',
 	'name_unit':'Nombre unidad',
@@ -342,14 +345,25 @@ arrayES={
 	'mensajeBorrarUnit':'Se va eliminar la unidad',
 
 	//TOKEN IN LAB
-	'titleTokenInLab': 'Token in lab',
-	'listadoTokenInLab': 'Token in lab',
+	'titleTokenInLab': 'Token en laboratorio',
+	'listadoTokenInLab': 'Token en laboratorio',
+	'añadirTokenInLab': 'Add token en laboratorio',
+	'buscarTokenInLab': 'Buscar token en laboratorio',
+	'id_token_in_lab': 'Token en laboratorio',
+	'id_token_in_sampling': 'Token en muestreo',
+	'id_lab_process': 'ID proceso de laboratorio',
+	'tokenInlabError': 'No existen tokens de laboratorio que coincidan con estos parámetros',
+	'aceptarTokenInlabbtn': 'Aceptar',
+	'cerrarModalTokenInlab': 'Cerrar',
+	'mensajeBorrarTokenInLab': 'Se va eliminar el token de laboratorio',
 
 	//TOKEN IN SAMPLING
 	'titleTokenInSampling': 'Token en muestra',
 	'listadoTokenInSampling': 'Token en muestra',
 	'añadirTokenInSampling': 'Añadir token en muestra',
 	'buscarTokenInSampling': 'Buscar token en muestra',
+	'editarTokenInSampling': 'Editar token en muestra',
 	'id_storage_method': 'Metodo de almacenamiento',
-	'id_technique_sample': 'Tecnica de muestreo'
+	'id_technique_sample': 'Tecnica de muestreo',
+	'mensajeBorrarTokenInSampling': 'Se va eliminar el token de muestra'
 }

@@ -288,6 +288,9 @@ async function getListTokenInSampling() {
     
     // Eliminar opciones existentes antes de agregar las nuevas
     element.innerHTML = '';
+    option.value = "";
+    option.textContent = "-- Selecciona ecosistema --";
+    element.appendChild(option);
     
     filas.forEach(fila => {
         option = document.createElement('option');
@@ -306,6 +309,9 @@ async function getListTokenInSampling() {
     
     // Eliminar opciones existentes antes de agregar las nuevas
     element.innerHTML = '';
+    option.value = "";
+    option.textContent = "-- Selecciona proyecto --";
+    element.appendChild(option);
     
     filas.forEach(fila => {
     
@@ -325,12 +331,14 @@ async function getListTokenInSampling() {
     
     // Eliminar opciones existentes antes de agregar las nuevas
     element.innerHTML = '';
-    
+    option.value = "";
+    option.textContent = "-- Selecciona método --";
+    element.appendChild(option);
     
     filas.forEach(fila => {
         option = document.createElement('option');
         option.value = fila.id_storage_method;
-        option.textContent = fila.id_storage_method;
+        option.textContent = fila.name_storage_method;
         element.appendChild(option);
     })
     
@@ -344,11 +352,14 @@ async function getListTokenInSampling() {
     
     // Eliminar opciones existentes antes de agregar las nuevas
     element.innerHTML = '';
+    option.value = "";
+    option.textContent = "-- Selecciona técnica --";
+    element.appendChild(option);
     
     filas.forEach(fila => {
         option = document.createElement('option');
         option.value = fila.id_technique_sample;
-        option.textContent = fila.id_technique_sample;
+        option.textContent = fila.name_technique_sample;
         element.appendChild(option);
     })
     

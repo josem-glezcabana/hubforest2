@@ -119,7 +119,6 @@ async function getCharacteristicPorId(id_characteristic) {
 function construyeTablaCharacteristicSample(filas) {
 
     let filasTabla = '';
-    let tipo = "'Editar characteristicSample'";
     let element = document.getElementById("datosCharacteristicSample");
     while (element.firstChild) {
         element.removeChild(element.firstChild);
@@ -173,8 +172,8 @@ function getAtributos(tipo){
 function mostrarModalCharacteristicSample(tipo, id_unit=null, id_characteristic=null){
     // Ventana modal
     document.getElementById("ventanaModal").style.display = "block";
-    document.getElementById("Titulo").innerHTML = '<h2>'+tipo+'</h2>';
-    document.getElementById("aceptar").innerHTML = tipo;
+    document.getElementById("Titulo").innerHTML = '<h2 class="'+tipo+'">'+tipo+'</h2>';
+    document.getElementById("aceptar").classList.add(tipo);
 
     getListUnits(id_unit);
     getListCharacteristics(id_characteristic);
@@ -195,6 +194,7 @@ function mostrarModalCharacteristicSample(tipo, id_unit=null, id_characteristic=
         $("#id_unit").val('');
         $("#id_characteristic").val('');
     setLang();
+    document.getElementById("aceptar").classList.remove(tipo);
 }
 
   function rellenarSelectUnits(tipo, filas, unit) {

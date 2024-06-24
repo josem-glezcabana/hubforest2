@@ -32,9 +32,9 @@
     <div class="container mt-5">
         <h2 class="listadoTokenInLab">Token en laboratorio</h2>
         <div class="mt-2 mb-3 float-right">
-            <button class="añadirTokenInLab btn btn-primary float-right" id="abrirModal" onclick="mostrarModalTokenInLab('AñadirTokenInLab')">Añadir token en laboratorio</button>
-            <button class="buscarTokenInLab btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalTokenInLab('BuscarTokenInLab')">Buscar token en laboratorio</button>
-            <button class="reiniciarTokenInLab btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListTokenInLab()">Reiniciar tabla</button>
+            <button class="añadirTokenInLab btn btn-primary float-right" id="abrirModal" onclick="mostrarModalTokenInLab('añadirTokenInLab')">Añadir token en laboratorio</button>
+            <button class="buscarTokenInLab btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="mostrarModalTokenInLab('buscarTokenInLab')">Buscar token en laboratorio</button>
+            <button class="reiniciarTabla btn btn-outline-dark mr-3 float-right" id="abrirModal" onclick="getListTokenInLab()">Reiniciar tabla</button>
             
         </div>
             
@@ -96,7 +96,7 @@
             <button class="btn btn-light float-right" aria-label="Close alert" onclick="cerrarBorrar()" data-close>
                 <span aria-hidden="true">&times;</span>
             </button>
-            <div class="text-center" id="Titulo"><h2 class="tokenInLabPregunta">¿Estas seguro?</h2></div>
+            <div class="text-center" id="Titulo"><h2 class="DeletePregunta">¿Estás seguro?</h2></div>
             
             <form id="formBorrarTokenInLab" action="" method="post" onsubmit="">
                 <br>
@@ -105,8 +105,8 @@
                     <input type="text" class="form-control" id="idBorrar" style="display: none;">
                 </div>
                 <div class="col text-center">
-                    <button type="submit" id="aceptar" class="aceptarTokenInLabbtn  btn btn-danger">Aceptar</button>
-                    <button type="button" id="cerrar" class="cerrarModalTokenInLab btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
+                    <button type="submit" id="aceptar" class="DeleteAceptar  btn btn-danger">Aceptar</button>
+                    <button type="button" id="cerrar" class="DeleteCerrar btn btn-secondary" onclick="cerrarBorrar()">Cerrar</button>
                 </div>     
             </form>  
         </div>
