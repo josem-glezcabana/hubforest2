@@ -113,6 +113,16 @@ include './app/token_in_analysis/token_in_analysis_TEST.php';
 $rest = TOKEN_IN_ANALYSIS_TEST();
 guardar_test($resultadosTESTS, $rest);
 
+//prueba unit
+include './app/unit/unit_TEST.php';
+$rest = UNIT_TEST();
+guardar_test($resultadosTESTS, $rest);
+
+//prueba token in lab
+include './app/token_in_lab/token_in_lab_TEST.php';
+$rest = TOKEN_IN_LAB_TEST();
+guardar_test($resultadosTESTS, $rest);
+
 session_destroy();
 //presentar resultados
 presentarResultadosPruebas($resultadosTESTS);
