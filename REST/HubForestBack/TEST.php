@@ -58,6 +58,11 @@ include './app/site/site_TEST.php';
 $rest = SITE_TEST();
 guardar_test($resultadosTESTS, $rest);
 
+//prueba unit
+include './app/unit/unit_TEST.php';
+$rest = UNIT_TEST();
+guardar_test($resultadosTESTS, $rest);
+
 include './app/characteristic_sample/characteristic_sample_TEST.php';
 $rest = CHARACTERISTIC_SAMPLE_TEST();
 guardar_test($resultadosTESTS, $rest);
@@ -108,14 +113,9 @@ include './app/token_in_sampling/token_in_sampling_TEST.php';
 $rest = TOKEN_IN_SAMPLING_TEST();
 guardar_test($resultadosTESTS, $rest);
 
-//prueba token_in_sampling
+//prueba token_in_analysis
 include './app/token_in_analysis/token_in_analysis_TEST.php';
 $rest = TOKEN_IN_ANALYSIS_TEST();
-guardar_test($resultadosTESTS, $rest);
-
-//prueba unit
-include './app/unit/unit_TEST.php';
-$rest = UNIT_TEST();
 guardar_test($resultadosTESTS, $rest);
 
 //prueba token in lab

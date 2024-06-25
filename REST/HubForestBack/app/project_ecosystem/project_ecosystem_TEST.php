@@ -17,7 +17,7 @@ function PROJECT_ECOSYSTEM_TEST()
 
   //---------------------------------------------------------------------------------------------------------------------
 //Prueba añadir project_ecosystem
-  $prueba = 'Add project_ecosystem';
+  $prueba = 'Add project_ecosystem: project o ecosystem que no existen';
   $POST = array(
     'id_project' => 16,
     'id_ecosystem' => 16,
@@ -26,7 +26,7 @@ function PROJECT_ECOSYSTEM_TEST()
     'controlador' => $entidad,
     'action' => $accion
   );
-  $codeEsperado = 'SQL_OK';
+  $codeEsperado = 'SQL_KO';
   $pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
   //Prueba añadir project_ecosystem 

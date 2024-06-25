@@ -22,6 +22,7 @@ function STORAGE_METHOD_TEST()
     'name_storage_method' => 'Prueba',
     'description_storage_method' => 'Prueba',
     'storage_container' => 'PVC core',
+    'size_storage_container' => 10,
     'controlador' => $entidad,
     'action' => $accion
   );
@@ -32,34 +33,18 @@ function STORAGE_METHOD_TEST()
     'name_storage_method' => 'Prueba2',
     'description_storage_method' => 'Prueba2',
     'storage_container' => 'Plastic bag',
+    'size_storage_container' => 5,
     'controlador' => $entidad,
     'action' => $accion
   );
   $codeEsperado = 'SQL_OK';
   $pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
-
-
-  $accion = 'DELETE';
-
-
-  //---------------------------------------------------------------------------------------------------------------------
-//Prueba eliminar storage_method
-  $prueba = 'delete storage_method';
-  $POST = array(
-    'id_storage_method' => 2,
-    'controlador' => $entidad,
-    'action' => $accion
-  );
-  $codeEsperado = 'SQL_OK';
-  $pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
-
-  //---------------------------------------------------------------------------------------------------------------------
 
   $accion = 'SEARCH';
-
+  
   //---------------------------------------------------------------------------------------------------------------------
-  //Prueba buscar sampling por name_storage_method
-  $prueba = 'search ecosystem por name_storage_method';
+  //Prueba buscar storage_method por name_storage_method
+  $prueba = 'search storage_method por name_storage_method';
   $POST = array(
     'name_storage_method' => 'Prueba',
     'controlador' => $entidad,
@@ -68,8 +53,21 @@ function STORAGE_METHOD_TEST()
   $codeEsperado = 'RECORDSET_DATOS';
   $pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
+  //---------------------------------------------------------------------------------------------------------------------
 
   $accion = 'DELETE';
+
+//Prueba eliminar storage_method  
+  $prueba = 'delete storage_method';
+  $POST = array(
+    'id_storage_method' => 2,
+    'controlador' => $entidad,
+    'action' => $accion
+  );  
+  $codeEsperado = 'SQL_OK';
+  $pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
+
+  //---------------------------------------------------------------------------------------------------------------------
 
   //---------------------------------------------------------------------------------------------------------------------
 //Prueba delete sin storage_method

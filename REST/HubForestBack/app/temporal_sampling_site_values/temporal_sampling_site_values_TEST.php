@@ -18,7 +18,7 @@ function TEMPORAL_SAMPLING_SITE_VALUES_TEST()
 //Prueba añadir temporal_sampling_site_values
   $prueba = 'Add temporal_sampling_site_values';
   $POST = array(
-    'id_ecosystem_param' => 4,
+    'id_ecosystem_param' => 2,
     'id_replica' => 'TEST_1',
     'id_sampling' => 3,
     'value_ecosystem_param' => '200',

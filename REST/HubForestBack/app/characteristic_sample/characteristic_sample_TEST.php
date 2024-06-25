@@ -17,14 +17,14 @@ function CHARACTERISTIC_SAMPLE_TEST()
 
   //---------------------------------------------------------------------------------------------------------------------
 //Prueba añadir characteristic_sample
-  $prueba = 'Add characteristic sample';
+  $prueba = 'Add characteristic sample: se intenta añadir uno que ya existe';
   $POST = array(
     'id_characteristic' => 1,
     'id_unit' => 1,
     'controlador' => $entidad,
     'action' => $accion
   );
-  $codeEsperado = 'SQL_OK';
+  $codeEsperado = 'SQL_KO';
   $pruebas->hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado);
 
   //Prueba añadir characteristic_sample
