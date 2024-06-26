@@ -89,6 +89,22 @@ function construyeTablaTokenInLab(filas) {
               '</td> <td class="text-center"><button class="BotonEliminar btn btn-danger" id="borrarTokenInLab" onclick="mostrarBorrarTokenInLab(' + fila.id_token_in_lab + ','  + fila.id_token_in_sampling + '\)">Eliminar</button>'
               '</td>  </tr>';
   });
+
+  recuperarYComprobarUsuarioLogeadoIsAdmin().then(resultado => {
+    if (!resultado) {
+      let borrarToken = document.getElementsByClassName("BotonEliminar");
+      for (const fila of borrarToken) {
+          fila.style.display = 'none';
+      }
+      $("#abrirModal").hide();
+  } else {
+      let borrarToken = document.getElementsByClassName("BotonEliminar");
+      for (const fila of borrarToken) {
+          fila.style.display = 'block';
+      }
+      $("#abrirModal").show();
+  }
+});
   
   $("#datosTokenInLab").append(filasTabla);
   cerrarModal()
