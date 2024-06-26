@@ -143,7 +143,7 @@ arrayEN={
 	'name_ecosystem': 'Name ecosystem',
 	'site': 'Site',
 	'fechaSampling': 'Date of creation samplings' ,
-	'timeampling': 'Sampling time',
+	'timeSampling': 'Sampling time',
 	'tempSampling': 'Temperature',
 	'samplingError': 'There are no samplings that match these parameters.',
 	'samplingPregunta' : 'Are you sure?',

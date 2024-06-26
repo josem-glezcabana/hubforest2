@@ -142,7 +142,7 @@ arrayES={
 	'buscarSampling': 'Buscar muestra',
 	'site': 'sitio',
 	'fechaSampling': 'Fecha de creación muestra' ,
-	'timeampling': 'Tiempo de muestreo',
+	'timeSampling': 'Tiempo de muestreo',
 	'tempSampling': 'Temperatura',
 	'samplingError': 'No existen muestras que coincidan con estos parámetros',
 	'samplingPregunta' : '¿Estás seguro?',

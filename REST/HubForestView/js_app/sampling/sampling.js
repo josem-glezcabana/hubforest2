@@ -265,8 +265,8 @@ function mostrarModalSampling(tipo, id_project=null, id_ecosystem=null, id_sampl
                         time_sampling=null, temp_air_sampling=null, collectors_sampling=null){
     // Ventana modal
     document.getElementById("ventanaModal").style.display = "block";
-    document.getElementById("Titulo").innerHTML = '<h2>'+tipo+'</h2>';
-    document.getElementById("aceptar").innerHTML = tipo;
+    document.getElementById("Titulo").innerHTML = '<h2 class="'+tipo+'">'+tipo+'</h2>';
+    document.getElementById("aceptar").classList.add(tipo);
 
     getListEcosystems(id_ecosystem);
     getListProyectos(id_project);
@@ -285,7 +285,7 @@ function mostrarModalSampling(tipo, id_project=null, id_ecosystem=null, id_sampl
         $("#collectors_sampling").val( collectors_sampling);
     }
     else{
-        if(tipo.includes("Buscar")){
+        if(tipo.includes("buscar")){
             document.getElementById("id_project").required = false;
             document.getElementById("id_ecosystem").required = false;
             document.getElementById("id_site").required = false;
@@ -318,6 +318,7 @@ function mostrarModalSampling(tipo, id_project=null, id_ecosystem=null, id_sampl
         $("#collectors_sampling").val('');
     }
     setLang();
+    document.getElementById("aceptar").classList.remove(tipo);
 }
 
   function rellenarSelectEcosystems(tipo, filas, ecosystem) {

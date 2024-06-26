@@ -185,7 +185,7 @@ function mostrarModalSamplingMethod(tipo, id_sampling_methodology=null, name_met
     }
     else{
         $('#form_old_file_methodology').hide();
-        if(tipo.includes("Buscar")){
+        if(tipo.includes("buscar")){
             document.getElementById("name_methodology").required = false;
             document.getElementById("description_methodology").required = false;
             document.getElementById("bibref_methodology").required = false;
